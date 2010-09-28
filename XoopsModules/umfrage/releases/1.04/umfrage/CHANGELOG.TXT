@@ -1,0 +1,41 @@
+// $Id: CHANGELOG.TXT 26 2007-11-26 16:27:52Z LupusC $
+
+1.0.3 to 1.0.4
+===================
+BUGFIX:	  Vote button was shown even if no voting was possible
+Solution: There was a logic flaw in class/umfragerenderer.php
+
+BUGFIX:   White Page in CBB when showing a vote
+Solution: In the hack of newbb/viewtopic.php was an error
+
+BUGFIX:	  In CBB a vote could be made even if the poll was over
+Solution: Logic flaw in the hack newbb/viewtopic.php
+
+	
+1.0.2 to 1.0.3
+===================
+BUGFIX: White Page when poll was over and no votes were made
+ADDED:  _PL_HALFBLIND for blind votes wuth result visible
+	_PL_FULLBLIND for complete blind votes
+	Both variables are provided for the use with CBB 3.08
+
+
+1.0.1 to 1.0.2
+===================
+BUGFIX:	In xoops_version.php the version number was not enclosed in apostrophes
+		Reported at sourceforge.net Reqest ID: 1829896
+		https://sourceforge.net/tracker/index.php?func=detail&aid=1829896&group_id=208418&atid=1005616
+ADDED:  	polish language file added (source: kurak_bu)
+
+
+1.00 to 1.0.1
+===================
+
+BUGFIX:	Not logged in users could vote and got a blank screen
+		Bug reported from svaha at xoops.org:
+		When I give anonymous users rights to enter the module,
+		but no right to vote, the vote button shows up in the
+		results screen and when clicked gives a blank screen.
+		Should this button not be hidden for anonymous users?
+-------------------------------------------------------
+

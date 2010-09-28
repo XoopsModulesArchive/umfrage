@@ -1,0 +1,15 @@
+// $Id: UPDATE.TXT 26 2010-03-24 10:48:00Z nachenko $
+
+
+UPDATE 1.0.x to 1.1
+===================
+
+You need to copy this version to your site, then go to Admin > modules and update this module.
+
+Besides adding two new configuration options, this module adds two new columns to the "umfrage_desc" table. Unfortunately, XOOPS does not provide for an automated tool to update database structure and ImpressCMS requires converting the module to its own API to do it, so you'll have to add those columns manually using the SQL commend "ALTER".
+
+These columns are:
+
+"multilimit": tinyint(63) unsigned NOT NULL default '0'
+
+"mail_voter": tinyint(1) unsigned NOT NULL default '0'

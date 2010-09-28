@@ -1,0 +1,10 @@
+// $Id: UPDATE.TXT 26 2007-11-26 16:27:52Z LupusC $
+
+
+UPDATE 1.0.x to 1.0.4
+===================
+
+Just copy the files over your installation. There is no need
+to make an update.
+-------------------------------------------------------
+

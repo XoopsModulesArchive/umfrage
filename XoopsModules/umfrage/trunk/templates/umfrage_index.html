@@ -1,0 +1,33 @@
+<h4><{$lang_pollslist}></h4>
+
+<table width="100%" class="outer" cellspacing='1'>
+  <tr>
+    <th><{$lang_pollquestion}></th>
+    <th align='center'><{$lang_pollvoters}></th>
+    <th align='center'><{$lang_votes}></th>
+    <th align='center'><{$lang_expiration}></th>
+	<{if $showlastcol != 0}>
+    <th>&nbsp;</th>
+	<{/if}>
+  </tr>
+
+<!-- start polls item loop -->
+<{section name=i loop=$polls}>
+  <tr>
+    <td class="even"><{$polls[i].pollQuestion}></td>
+    <td align="center" class="odd"><{$polls[i].pollVoters}></td>
+    <td align="center" class="even"><{$polls[i].pollVotes}></td>
+    <td align="center" class="odd"><{$polls[i].pollEnd}></td>
+	<{if $showlastcol != 0}>
+    <td align="right" class="even">
+
+   <{if $polls[i].polltype ==1 || $polls[i].polltype ==3 && $polls[i].expired ==1 }>
+    <a href="pollresults.php?poll_id=<{$polls[i].pollId}>"><{$polls[i].lang_results}></a>
+   <{/if}>
+</td>
+	<{/if}>
+  </tr>
+<{/section}>
+<!-- end polls item loop -->
+
+</table>
