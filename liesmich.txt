@@ -1,0 +1,105 @@
+$Id: liesmich.txt 26 2007-11-26 16:27:52Z LupusC $
+
+Name:        umfrage
+Version:     1.0.4
+Autor:       Wolfgang Murth (LupusC)
+Xoops:       2.0.x
+sourceforge: http://sourceforge.net/projects/umfrage
+
+==============================================================================
+NEU IN 1.0.4:
+ Nur Bugfixes
+NEU IN 1.0.3:
+ Im Verzeichnis _hack_cbb sind die Dateien zur Anpassung an CBB 3.08 enthalten.
+Diese mÃ¼ssen nur einfach in das newbb Verzeichnis kopiert werden. Wichtig ist
+nur, dass das template newbb_poll_results.html verwendet wird, da hier die 
+die Anzeige von Blind Votes unterdrÃ¼ckt wird.
+==============================================================================
+
+ Dieses Xoops Modul entstand als Weiterentwicklung zu xoopspoll und der 
+Erweiterung für Abstimmungen, deren Ergebnis nicht sichtar ist (Blind Voting).
+
+Warum ein neues Modul?
+ Die Gründe für ein neues Modul waren folgende:
+*  Keine offizielle Weiterentwicklung von xoopspoll
+*  Bestehender xoopspoll Hack von GibaPhp
+Da jegliche Art von eigener Versionsnummer für xoopspoll Verwechslungsgefahr
+bergen würde und zur Verwirrung beitragen würde, fiel der Entschluss dem Modul
+einen neuen Namen zu geben.
+
+Warum ein deutscher Name statt einem englischen?
+ Provokant gefragt. Warum nicht? Damit differenziert sich dieses Modul von den 
+anderen Modulen für Abstimmungen.
+
+Warum neue Funktionalität?
+ Beim Einsatz des xoopspoll Modules mit Blind Voting wurde bald klar, dass
+geheime Abstimmen nicht nur global geregelt sein sollten, sondern dass man
+für jede Abstimmung die Einstellung getrennt vornehmen kann.
+ Ausserdem war es verwirrend, dass bei vielen Links oder Buttons der Anwender
+nach dem Klick darauf zu sehen bekam, dass er entweder schon abgestimmt hat,
+oder keine Berechtigung für diese Aktion habe. Hinter jedem Link oder Button
+sollte auch eine Funkionalität stehen zu welcher der Benutzer berechtigt ist.
+Dies waren die beiden Hauptgründe um xoopspoll zu modifizieren.
+ GibaPhp hat ein Feature implementiert, welches die mehrfache Abstimmung von
+einer IP verhindert. Dies ist nicht implementiert worden, denn bei dynamischen
+Adressen kann es vorkommen, dass verschiedene Personen nur wegen der Zuordnung
+der IP Adresse ihres Providers nicht abstimmen können.
+
+
+Welche Neuerungen gibt es?
+* Drei verschiedene Voting Möglichkeiten
+   - Normale Abstimmung, Zwischenstand und Ergebnis immer sichtbar
+   - Geheime Abstimmung, Zwischenstand und Ergebnis nicht sichtbar
+   - Geheime Abstimmung, Zwischenstand nicht sichtbar, Ergebnis sichtbar
+* Nur Hyperlinks mit Funktion sind sichtbar
+* Nur Buttons, mit denen der Anwender eine berechtigte Aktion setzen kann
+   sind sichtbar
+* Aussehen des Blocks kann mit CSS verändert werden (/templates/umfrage.css)
+   - #pollheader (Frage der Abstimmung
+   - .polleven   (gerade Reihen der Abstimmungsmöglichkeiten)
+   - .pollodd    (ungerade Reihen der Abstimmungsmöglichkeiten)
+   - .pollfooter (Fußzeile der Abstimmung)
+* Textänderungen im Frontendbereich
+   - Wenn die Abstimmung noch läuft wird auf Buttons und Links "Zwischenstand"
+     angezeigt, um die momentane Stimmenverteilung einzusehen
+   - Wenn die Abstimmung beendet ist wird auf Buttons und Links "Endergebnis"
+     angezeigt, um die momentane Stimmenverteilung einzusehen
+* Textänderung im Adminbereich
+   - Wenn man bei einer Abstimmung mehr als nur eine Auswahl treffen kann,
+     lautet der Text "Mehrfache Auswahlmöglichkeit bei der Stimmabgabe"
+* Wenn nach Ende einer Abstimmung der Initiator eine Mail erhält, dann ist das
+    Ergebnis darin angeführt.
+* Die Generierung der Mail an den Initiator der Abstimmung wird dann generiert,
+   wenn die Übersicht der Abstimmungen aufgerufen wird, und nicht wie bisher,
+   wenn nach Abstimmungsende der Button "Abstimmen" angeklickt wird.
+* Option des automatischen Entfernen einer Umfrage aus dem Block wenn diese
+   beendet ist.
+* Beim Erstellen oder Editieren von Umfragen, steht für die Eingabe des Titels
+   ein Textbereich zur Verfügung.
+* Beim Erstellen oder Editieren von Umfragen, ist die Beschreibung der Umfrage
+   nicht mehr zwingend erforderlich.
+* Überarbeitung der Templates
+* UnterstÃ¼tzung von CBB 3.08
+
+Wie kann ich von xoopspoll zu Umfrage umsteigen?
+ Als erstes ist ein Backup der Datenbank zu machen. Dies kann nicht oft genug
+betont werden, um Problemen vorzubeugen.
+ Am besten das Modul installieren und nacher mit phpmyadmin alle Datensätze aus
+den xoopspoll Tabellen auslesen und dann in Umfrage einfügen. Dabei nur die
+Daten mit der Option "Vollständige Inserts" exportieren.  Mit einem Texteditor
+dann die Tabellennamen ändern und die Daten importieren.
+ Alle Polls werden dann auf normale Umfragen gesetzt und das automatische
+Entfernen aus dem Block nach Umfrageende ist deaktiviert.
+Danach kann xoopspoll deaktiviert werden. 
+
+Wie sieht die weitere Entwicklung aus?
+ Das ist eine gute Frage, die zum Zeitpunkt dieser Version nicht definitiv
+gemacht werden kann. So ein Modul lebt natürlich vom Feedback der Anwender.
+ Derzeit wird das Abstimmungsergebnis direkt aus der SQL Tabelle umfrage_option
+geholt und nicht über die Log-Datei berechnet. Dies ist ein Ansatzpunkt zu einer
+Modifikaton, dass im Admin Teil das Abstimmungsergebnis aus der Log Datei neu
+ermittelt werden kann.
+
+Bugs, Requests und anderes
+ Für Bugs, Feature Requests und anderes bitte sourceforge verwenden. Der Link zu
+diesem Projekt findet sich am Anfang dieser Datei.
