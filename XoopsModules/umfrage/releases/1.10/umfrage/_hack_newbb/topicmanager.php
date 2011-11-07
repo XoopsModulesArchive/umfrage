@@ -1,5 +1,5 @@
 <?php
-// $Id: topicmanager.php 17 2010-11-18 09:43:42 Nachenko $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

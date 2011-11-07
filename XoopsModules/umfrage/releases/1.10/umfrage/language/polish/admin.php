@@ -1,6 +1,6 @@
 <?php
 
-// $Id: admin.php 1 2007-10-30 11:28:51Z LupusC $
+// $Id$
 //%%%%%%	Admin Module Name  Polls 	%%%%%
 define("_AM_DBUPDATED", "Baza zosta³a zaktualizowana pomy¶lnie!");
 define("_AM_POLLCONF", "Ustawienia sondy");

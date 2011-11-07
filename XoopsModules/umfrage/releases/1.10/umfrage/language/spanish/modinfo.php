@@ -1,5 +1,5 @@
 <?php
-// $Id: modinfo.php 1 2007-10-30 11:28:51Z LupusC $
+// $Id$
 //Traducción por debianus
 // Module Info
 

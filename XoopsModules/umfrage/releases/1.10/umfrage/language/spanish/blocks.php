@@ -1,5 +1,5 @@
 <?php
-// $Id: blocks.php 1 2007-10-30 11:28:51Z LupusC $
+// $Id$
 //Traducción por debianus
 // Blocks
 define('_BL_POLL_EDIT_SHOWRESULTS', 'Mostrar resultados cuando la votación está expirada o el usuario ha votado ');

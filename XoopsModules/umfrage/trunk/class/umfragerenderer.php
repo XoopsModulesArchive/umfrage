@@ -1,7 +1,7 @@
 <?php
 
 
-// $Id: umfragerenderer.php 26 2007-11-26 16:27:52Z LupusC $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

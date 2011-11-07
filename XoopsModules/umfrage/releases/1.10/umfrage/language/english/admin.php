@@ -1,6 +1,6 @@
 <?php
 
-// $Id: admin.php 1 2007-10-30 11:28:51Z LupusC $
+// $Id$
 //%%%%%%	Admin Module Name  Polls 	%%%%%
 define("_AM_DBUPDATED", "Database Updated Successfully!");
 define("_AM_POLLCONF", "Polls Configuration");

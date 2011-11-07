@@ -1,5 +1,5 @@
 <?php
-// $Id: main.php 17 2010-11-18 09:43:42 Nachenko $
+// $Id$
 if(defined('MAIN_DEFINED')) return;
 define('MAIN_DEFINED',true);
 

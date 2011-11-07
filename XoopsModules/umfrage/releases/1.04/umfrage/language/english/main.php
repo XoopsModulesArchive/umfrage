@@ -1,5 +1,5 @@
 <?php
-// $Id: main.php 17 2007-11-18 14:22:36Z LupusC $
+// $Id$
 //%%%%%%	File Name pollresults.php 	%%%%%
 define("_PL_TOTALVOTES","Total Votes: %s");
 define("_PL_TOTALVOTERS","Total Voters: %s");
