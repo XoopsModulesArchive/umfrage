@@ -1,6 +1,6 @@
 <?php
 
-// $Id: admin.php 1 2007-10-30 11:28:51Z LupusC $
+// $Id$
 //Traducción por debianus
 //%%%%%%	Admin Module Name  Polls 	%%%%%
 define("_AM_DBUPDATED", "Base de datos actualizada con éxito");

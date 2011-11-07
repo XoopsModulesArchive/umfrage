@@ -1,6 +1,6 @@
 <?php
 
-// $Id: comment_post.php 1 2007-10-30 11:28:51Z LupusC $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
