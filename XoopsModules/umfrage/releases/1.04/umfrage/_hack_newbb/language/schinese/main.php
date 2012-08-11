@@ -3,223 +3,223 @@
 if(defined('MAIN_DEFINED')) return;
 define('MAIN_DEFINED',true);
 
-define("_MD_ERROR","´íÎó");
-define("_MD_NOPOSTS","ÉÐÎÞÌû×Ó");
-define("_MD_GO","²é¿´");
-define("_MD_SELFORUM","Ñ¡ÔñÌÖÂÛÇø");
+define("_MD_ERROR","ï¿½ï¿½ï¿½ï¿½");
+define("_MD_NOPOSTS","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_GO","ï¿½é¿´");
+define("_MD_SELFORUM","Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-define('_MD_THIS_FILE_WAS_ATTACHED_TO_THIS_POST','¸½¼þ:');
-define('_MD_ALLOWED_EXTENSIONS','ÔÊÐíµÄÎÄ¼þÀàÐÍ');
-define('_MD_MAX_FILESIZE','ÔÊÐíµÄÎÄ¼þ´óÐ¡');
-define('_MD_ATTACHMENT','¸½¼þ');
-define('_MD_FILESIZE','´óÐ¡');
-define('_MD_HITS','ÏÂÔØ´ÎÊý');
-define('_MD_GROUPS','Èº×é:');
-define('_MD_DEL_ONE','Ö»É¾³ý±¾Ìù');
-define('_MD_DEL_RELATED','É¾³ý±¾Ìù¼°Ïà¹ØÌù');
-define('_MD_MARK_ALL_FORUMS','±ê¼ÇËùÓÐÂÛÌ³Îª');
-define('_MD_MARK_ALL_TOPICS','±ê¼ÇËùÓÐÖ÷ÌâÎª');
-define('_MD_MARK_UNREAD','Î´¶Á');
-define('_MD_MARK_READ','ÒÑ¶Á');
-define('_MD_ALL_FORUM_MARKED','ËùÓÐÂÛÌ³ÒÑ±ê¼Ç');
-define('_MD_ALL_TOPIC_MARKED','ËùÓÐÖ÷ÌâÒÑ±ê¼Ç');
-define('_MD_BOARD_DISCLAIMER','ÃâÔðÉùÃ÷');
+define('_MD_THIS_FILE_WAS_ATTACHED_TO_THIS_POST','ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_ALLOWED_EXTENSIONS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_MAX_FILESIZE','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡');
+define('_MD_ATTACHMENT','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FILESIZE','ï¿½ï¿½Ð¡');
+define('_MD_HITS','ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½');
+define('_MD_GROUPS','Èºï¿½ï¿½:');
+define('_MD_DEL_ONE','Ö»É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DEL_RELATED','É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_MARK_ALL_FORUMS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³Îª');
+define('_MD_MARK_ALL_TOPICS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª');
+define('_MD_MARK_UNREAD','Î´ï¿½ï¿½');
+define('_MD_MARK_READ','ï¿½Ñ¶ï¿½');
+define('_MD_ALL_FORUM_MARKED','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½Ñ±ï¿½ï¿½');
+define('_MD_ALL_TOPIC_MARKED','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½');
+define('_MD_BOARD_DISCLAIMER','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 
 //index.php
-define('_MD_ADMINCP','¿ØÖÆÃæ°å');
-define('_MD_FORUM','ÂÛÌ³');
-define('_MD_WELCOME','%s ÂÛÌ³');
-define("_MD_TOPICS","Ö÷Ìâ");
-define("_MD_POSTS","Ìû×Ó");
-define('_MD_LASTPOST','×îÐÂ·¢±í');
-define('_MD_MODERATOR','°åÖ÷');
-define("_MD_NEWPOSTS","ÐÂÌû");
-define('_MD_NONEWPOSTS','ÎÞÐÂÌû');
-define('_MD_PRIVATEFORUM','ÄÚ²¿ÂÛÌ³');
-define('_MD_BY','×÷Õß'); // Posted by
-define("_MD_TOSTART","Ñ¡ÔñÄúÒªä¯ÀÀµÄÌÖÂÛÇø£¬²¢·¢±íÊÊºÏ¸ÃÌÖÂÛÇøµÄ»°Ìâ");
-define("_MD_TOTALTOPICSC","Ö÷Ìâ×ÜÊý: ");
-define("_MD_TOTALPOSTSC","Ìû×Ó×ÜÊý: ");
-define('_MD_TOTALUSER','ÓÃ»§×ÜÊý: ');
-define('_MD_TIMENOW','µ±Ç°Ê±¼ä: %s');
-define('_MD_LASTVISIT','ÉÏ´ÎÀ´·Ã: %s');
-define('_MD_ADVSEARCH','¸ß¼¶ËÑË÷');
+define('_MD_ADMINCP','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FORUM','ï¿½ï¿½Ì³');
+define('_MD_WELCOME','%s ï¿½ï¿½Ì³');
+define("_MD_TOPICS","ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POSTS","ï¿½ï¿½ï¿½ï¿½");
+define('_MD_LASTPOST','ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½');
+define('_MD_MODERATOR','ï¿½ï¿½ï¿½ï¿½');
+define("_MD_NEWPOSTS","ï¿½ï¿½ï¿½ï¿½");
+define('_MD_NONEWPOSTS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_PRIVATEFORUM','ï¿½Ú²ï¿½ï¿½ï¿½Ì³');
+define('_MD_BY','ï¿½ï¿½ï¿½ï¿½'); // Posted by
+define("_MD_TOSTART","Ñ¡ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÊºÏ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½");
+define("_MD_TOTALTOPICSC","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ");
+define("_MD_TOTALPOSTSC","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ");
+define('_MD_TOTALUSER','ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½: ');
+define('_MD_TIMENOW','ï¿½ï¿½Ç°Ê±ï¿½ï¿½: %s');
+define('_MD_LASTVISIT','ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½: %s');
+define('_MD_ADVSEARCH','ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½');
 define('_MD_POSTEDON','');
-define('_MD_SUBJECT','Ö÷Ìâ');
-define('_MD_INACTIVEFORUM_NEWPOSTS','ÒÑ¹Ø±Õ£¨ÓÐÐÂÌù£©');
-define('_MD_INACTIVEFORUM_NONEWPOSTS','ÒÑ¹Ø±Õ£¨ÎÞÐÂÌù£©');
-define('_MD_SUBFORUMS','×ÓÂÛÌ³');
-define('_MD_MAINFORUMOPT', 'ÂÛÌ³Ñ¡Ïî');
-define("_MD_PENDING_POSTS_FOR_AUTH","µÈºòÉóºËµÄÌû×Ó:");
+define('_MD_SUBJECT','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_INACTIVEFORUM_NEWPOSTS','ï¿½Ñ¹Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_INACTIVEFORUM_NONEWPOSTS','ï¿½Ñ¹Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_SUBFORUMS','ï¿½ï¿½ï¿½ï¿½Ì³');
+define('_MD_MAINFORUMOPT','ï¿½ï¿½Ì³Ñ¡ï¿½ï¿½');
+define("_MD_PENDING_POSTS_FOR_AUTH","ï¿½Èºï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½:");
 
 
 
 //page_header.php
-define('_MD_MODERATEDBY','°åÖ÷');
-define('_MD_SEARCH','ËÑË÷');
-//define('_MD_SEARCHRESULTS','ËÑË÷½á¹û');
-define('_MD_FORUMINDEX','%s ÌÖÂÛÇø');
-define('_MD_POSTNEW','·¢Ìû');
-define('_MD_REGTOPOST','[ÎÞ·¢±íÈ¨] ÇëµÇÂ¼»òÕß×¢²á');
+define('_MD_MODERATEDBY','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_SEARCH','ï¿½ï¿½ï¿½ï¿½');
+//define('_MD_SEARCHRESULTS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FORUMINDEX','%s ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_POSTNEW','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_REGTOPOST','[ï¿½Þ·ï¿½ï¿½ï¿½È¨] ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½');
 
 //search.php
-define('_MD_SEARCHALLFORUMS','ËÑË÷ËùÓÐÌÖÂÛÇø');
-define('_MD_FORUMC','ÌÖÂÛÇø');
-define('_MD_AUTHORC','×÷Õß:');
-define('_MD_SORTBY','ÅÅÐò');
-define('_MD_DATE','×îºó·¢±í');
-define('_MD_TOPIC','Ö÷Ìâ');
-define('_MD_POST2','Ìû×Ó');
-define('_MD_USERNAME','ÓÃ»§Ãû');
-define('_MD_BODY','ÄÚÈÝ');
-define('_MD_SINCE','Ê±¼ä·¶Î§');
+define('_MD_SEARCHALLFORUMS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FORUMC','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_AUTHORC','ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_SORTBY','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DATE','ï¿½ï¿½ó·¢±ï¿½');
+define('_MD_TOPIC','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_POST2','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_USERNAME','ï¿½Ã»ï¿½ï¿½ï¿½');
+define('_MD_BODY','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_SINCE','Ê±ï¿½ä·¶Î§');
 
 //viewforum.php
-define('_MD_REPLIES','»Ø¸´');
-define('_MD_POSTER','×÷Õß');
-define('_MD_VIEWS','µã»÷');
-define('_MD_MORETHAN','ÓÐÐÂÌû [ÈÈÃÅ]');
-define('_MD_MORETHAN2','ÎÞÐÂÌû [ÈÈÃÅ]');
-define('_MD_TOPICSHASATT','°üº¬¸½¼þµÄÖ÷Ìâ');
-define('_MD_TOPICHASPOLL','ÉèÖÃÁËÍ¶Æ±µÄÖ÷Ìâ');
-define('_MD_TOPICLOCKED','±¾Ö÷ÌâÒÑ¾­Ëø¶¨£¬½ûÖ¹»Ø¸´');
-define('_MD_LEGEND','ËµÃ÷');
-define('_MD_NEXTPAGE','ÏÂÒ³');
-define('_MD_SORTEDBY','Ñ¡Ïî');
-define('_MD_TOPICTITLE','Ö÷Ìâ');
-define('_MD_NUMBERREPLIES','»Ø¸´');
-define('_MD_TOPICPOSTER','Ö÷Ìâ×÷Õß');
-define('_MD_TOPICTIME','·¢²¼ÈÕÆÚ');
-define('_MD_LASTPOSTTIME','×îºó»Ø¸´');
-define('_MD_ASCENDING','ÉýÐòÅÅÁÐ');
-define('_MD_DESCENDING','½µÐòÅÅÁÐ');
-define('_MD_FROMLASTHOURS','%sÐ¡Ê±ÒÔÀ´');
-define('_MD_FROMLASTDAYS','%sÌìÒÔÀ´');
-define('_MD_THELASTYEAR','Ò»ÄêÒÔÀ´');
-define('_MD_BEGINNING','È«²¿');
-define('_MD_SEARCHTHISFORUM', 'ËÑË÷±¾°å');
-define('_MD_TOPIC_SUBJECTC','Ö÷ÌâÀà±ð:');
+define('_MD_REPLIES','ï¿½Ø¸ï¿½');
+define('_MD_POSTER','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_VIEWS','ï¿½ï¿½ï¿½');
+define('_MD_MORETHAN','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½ï¿½ï¿½]');
+define('_MD_MORETHAN2','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½ï¿½ï¿½]');
+define('_MD_TOPICSHASATT','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOPICHASPOLL','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOPICLOCKED','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½');
+define('_MD_LEGEND','Ëµï¿½ï¿½');
+define('_MD_NEXTPAGE','ï¿½ï¿½Ò³');
+define('_MD_SORTEDBY','Ñ¡ï¿½ï¿½');
+define('_MD_TOPICTITLE','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_NUMBERREPLIES','ï¿½Ø¸ï¿½');
+define('_MD_TOPICPOSTER','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOPICTIME','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_LASTPOSTTIME','ï¿½ï¿½ï¿½Ø¸ï¿½');
+define('_MD_ASCENDING','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DESCENDING','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FROMLASTHOURS','%sÐ¡Ê±ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FROMLASTDAYS','%sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_THELASTYEAR','Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_BEGINNING','È«ï¿½ï¿½');
+define('_MD_SEARCHTHISFORUM','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOPIC_SUBJECTC','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:');
 
 
-define('_MD_RATINGS','ÆÀ·Ö');
-define("_MD_CAN_ACCESS", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>·ÃÎÊ¸Ã°å.<br />");
-define("_MD_CANNOT_ACCESS", "Äú<strong>²»¿É</strong>·ÃÎÊ¸Ã°å.<br />");
-define("_MD_CAN_POST", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>·¢Ìû.<br />");
-define("_MD_CANNOT_POST", "Äú<strong><font color='red'>²»¿É</font></strong>·¢Ìû.<br />");
-define("_MD_CAN_VIEW", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>²é¿´Ìû×Ó.<br />");
-define("_MD_CANNOT_VIEW", "Äú<strong><font color='red'>²»¿É</font></strong>²é¿´Ìû×Ó.<br />");
-define("_MD_CAN_REPLY", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>»Ø¸´.<br />");
-define("_MD_CANNOT_REPLY", "Äú<strong><font color='red'>²»¿É</font></strong>»Ø¸´.<br />");
-define("_MD_CAN_EDIT", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>±à¼­×Ô¼ºµÄÌû×Ó.<br />");
-define("_MD_CANNOT_EDIT", "Äú<strong><font color='red'>²»¿É</font></strong>±à¼­×Ô¼ºµÄÌû×Ó.<br />");
-define("_MD_CAN_DELETE", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>É¾³ý×Ô¼ºµÄÌû×Ó.<br />");
-define("_MD_CANNOT_DELETE", "Äú<strong><font color='red'>²»¿É</font></strong>É¾³ý×Ô¼ºµÄÌû×Ó.<br />");
-define("_MD_CAN_ADDPOLL", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>·¢ÆðÍ¶Æ±µ÷²é.<br />");
-define("_MD_CANNOT_ADDPOLL", "Äú<strong><font color='red'>²»¿É</font></strong>·¢ÆðÍ¶Æ±µ÷²é.<br />");
-define("_MD_CAN_VOTE", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>ÔÚÍ¶Æ±µ÷²éÖÐÍ¶Æ±.<br />");
-define("_MD_CANNOT_VOTE", "Äú<strong><font color='red'>²»¿É</font></strong>ÔÚÍ¶Æ±µ÷²éÖÐÍ¶Æ±.<br />");
-define("_MD_CAN_ATTACH", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>ÉÏ´«¸½¼þ.<br />");
-define("_MD_CANNOT_ATTACH", "Äú<strong><font color='red'>²»¿É</font></strong>ÉÏ´«¸½¼þ.<br />");
-define("_MD_CAN_NOAPPROVE", "Äú<strong><font color='green'>¿ÉÒÔ</font></strong>²»¾­ÉóºËÖ±½Ó·¢Ìû.<br />");
-define("_MD_CANNOT_NOAPPROVE", "Äú<strong><font color='red'>²»¿É</font></strong>²»¾­ÉóºËÖ±½Ó·¢Ìû.<br />");
-define("_MD_IMTOPICS","ÖØÒªÖ÷Ìâ");
-define("_MD_NOTIMTOPICS","ÆÕÍ¨Ö÷Ìâ");
-define('_MD_FORUMOPTION', 'ÂÛÌ³Ñ¡Ïî');
+define('_MD_RATINGS','ï¿½ï¿½ï¿½ï¿½');
+define("_MD_CAN_ACCESS","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½Ê¸Ã°ï¿½.<br />");
+define("_MD_CANNOT_ACCESS","ï¿½ï¿½<strong>ï¿½ï¿½ï¿½ï¿½</strong>ï¿½ï¿½ï¿½Ê¸Ã°ï¿½.<br />");
+define("_MD_CAN_POST","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_POST","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CAN_VIEW","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½é¿´ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_VIEW","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½é¿´ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CAN_REPLY","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½Ø¸ï¿½.<br />");
+define("_MD_CANNOT_REPLY","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½Ø¸ï¿½.<br />");
+define("_MD_CAN_EDIT","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½à¼­ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_EDIT","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½à¼­ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CAN_DELETE","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>É¾ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_DELETE","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>É¾ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CAN_ADDPOLL","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_ADDPOLL","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CAN_VOTE","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±.<br />");
+define("_MD_CANNOT_VOTE","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±.<br />");
+define("_MD_CAN_ATTACH","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_ATTACH","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½.<br />");
+define("_MD_CAN_NOAPPROVE","ï¿½ï¿½<strong><font color='green'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½.<br />");
+define("_MD_CANNOT_NOAPPROVE","ï¿½ï¿½<strong><font color='red'>ï¿½ï¿½ï¿½ï¿½</font></strong>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½.<br />");
+define("_MD_IMTOPICS","ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½");
+define("_MD_NOTIMTOPICS","ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½");
+define('_MD_FORUMOPTION','ï¿½ï¿½Ì³Ñ¡ï¿½ï¿½');
 
-define('_MD_VAUP','²é¿´ËùÓÐÃ»ÓÐ»Ø¸´µÄÖ÷Ìâ');
-define('_MD_VANP','²é¿´º¬ÓÐÐÂÌûµÄÖ÷Ìâ');
+define('_MD_VAUP','ï¿½é¿´ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð»Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_VANP','ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 
-define('_MD_UNREPLIED','Ã»ÓÐ»Ø¸´µÄÖ÷Ìâ');
-define('_MD_UNREAD','Î´ÔÄ¶ÁµÄÖ÷Ìâ');
-define('_MD_ALL','ËùÓÐÖ÷Ìâ');
-define('_MD_ALLPOSTS','ËùÓÐÌû×Ó');
-define('_MD_VIEW','²é¿´');
+define('_MD_UNREPLIED','Ã»ï¿½Ð»Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_UNREAD','Î´ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_ALL','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_ALLPOSTS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_VIEW','ï¿½é¿´');
 
 //viewtopic.php
-define('_MD_AUTHOR','×÷Õß');
-define('_MD_LOCKTOPIC','Ëø¶¨Ö÷Ìâ');
-define('_MD_UNLOCKTOPIC','½â³ýËø¶¨');
-define('_MD_UNSTICKYTOPIC','½â³ýÖÃ¶¥');
-define('_MD_STICKYTOPIC','Ö÷ÌâÖÃ¶¥');
-define('_MD_DIGESTTOPIC','ÉèÎª¾«»ª');
-define('_MD_UNDIGESTTOPIC','È¡Ïû¾«»ª');
-define('_MD_MERGETOPIC','ºÏ²¢Ö÷Ìâ');
-define('_MD_MOVETOPIC','ÒÆ¶¯Ö÷Ìâ');
-define('_MD_DELETETOPIC','É¾³ýÖ÷Ìâ');
-define('_MD_TOP','»Ø¶¥²¿');
-define('_MD_BOTTOM','µ½µ×²¿');
-define('_MD_PREVTOPIC','Ç°Ò»¸öÖ÷Ìâ');
-define('_MD_NEXTTOPIC','ÏÂÒ»¸öÖ÷Ìâ');
-define('_MD_GROUP','ËùÊôÈº×é:');
-define('_MD_QUICKREPLY','¿ìËÙ»Ø¸´Ö÷Ìâ');
-define('_MD_POSTREPLY','·¢±í»Ø¸´');
-define('_MD_PRINTTOPICS','´òÓ¡Ö÷Ìâ');
-define('_MD_PRINT','´òÓ¡');
-define('_MD_REPORT','¾Ù±¨');
-define('_MD_PM','¶ÌÏûÏ¢');
+define('_MD_AUTHOR','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_LOCKTOPIC','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_UNLOCKTOPIC','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_UNSTICKYTOPIC','ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½');
+define('_MD_STICKYTOPIC','ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½');
+define('_MD_DIGESTTOPIC','ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½');
+define('_MD_UNDIGESTTOPIC','È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_MERGETOPIC','ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_MOVETOPIC','ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DELETETOPIC','É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOP','ï¿½Ø¶ï¿½ï¿½ï¿½');
+define('_MD_BOTTOM','ï¿½ï¿½ï¿½×²ï¿½');
+define('_MD_PREVTOPIC','Ç°Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_NEXTTOPIC','ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_GROUP','ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½:');
+define('_MD_QUICKREPLY','ï¿½ï¿½ï¿½Ù»Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_POSTREPLY','ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½');
+define('_MD_PRINTTOPICS','ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½');
+define('_MD_PRINT','ï¿½ï¿½Ó¡');
+define('_MD_REPORT','ï¿½Ù±ï¿½');
+define('_MD_PM','ï¿½ï¿½ï¿½ï¿½Ï¢');
 define('_MD_EMAIL','Email');
-define('_MD_WWW','Ö÷Ò³');
+define('_MD_WWW','ï¿½ï¿½Ò³');
 define('_MD_AIM','AIM');
 define('_MD_YIM','YIM');
 define('_MD_MSNM','MSNM');
 define('_MD_ICQ','OICQ');
-define('_MD_PRINT_TOPIC_LINK', '±¾ÌùÍøÖ·');
-define('_MD_ADDTOLIST','¼ÓÈëÁªÏµÃûµ¥');
-define('_MD_TOPICOPT', 'Ö÷ÌâÑ¡Ïî');
-define('_MD_VIEWMODE', 'ä¯ÀÀÄ£Ê½');
-define('_MD_NEWEST', 'ÐÂµÄÔÚÇ°');
-define('_MD_OLDEST', '¾ÉµÄÔÚÇ°');
+define('_MD_PRINT_TOPIC_LINK','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·');
+define('_MD_ADDTOLIST','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOPICOPT','ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½');
+define('_MD_VIEWMODE','ï¿½ï¿½ï¿½Ä£Ê½');
+define('_MD_NEWEST','ï¿½Âµï¿½ï¿½ï¿½Ç°');
+define('_MD_OLDEST','ï¿½Éµï¿½ï¿½ï¿½Ç°');
 
-define('_MD_FORUMSEARCH','ÂÛÌ³ËÑË÷');
+define('_MD_FORUMSEARCH','ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ï¿½');
 
-define('_MD_RATED','ÆÀ·Ö:');
-define('_MD_RATE','Ö÷ÌâÆÀ·Ö');
-define('_MD_RATEDESC','¶Ô¸ÃÖ÷ÌâÆÀ·Ö');
-define('_MD_RATING','ÆÀ·Ö');
-define('_MD_RATE1','Ç¿ÁÒ·´¶Ô');
-define('_MD_RATE2','²»ÖªËùÔÆ');
-define('_MD_RATE3','Ò»°ã');
-define('_MD_RATE4','²»´í');
-define('_MD_RATE5','¶¥ !');
+define('_MD_RATED','ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_RATE','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_RATEDESC','ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_RATING','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_RATE1','Ç¿ï¿½Ò·ï¿½ï¿½ï¿½');
+define('_MD_RATE2','ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½');
+define('_MD_RATE3','Ò»ï¿½ï¿½');
+define('_MD_RATE4','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_RATE5','ï¿½ï¿½ !');
 
-define('_MD_TOPICOPTION','Ö÷ÌâÑ¡Ïî');
-define('_MD_KARMA_REQUIREMENT', 'ÄãµÄKarma»ý·Ö %s Ã»ÓÐ´ïµ½Ìû×ÓÒªÇóµÄ±ê×¼ %s. <br /> ÇëÐÞÁ¶¼¸ÈÕÔÙÀ´°É.');
-define('_MD_REPLY_REQUIREMENT', 'ÐèÒª»Ø¸´²ÅÄÜ²é¿´ÄÚÈÝ.');
-define('_MD_TOPICOPTIONADMIN','Ö÷Ìâ¹ÜÀíÑ¡Ïî');
-define('_MD_POLLOPTIONADMIN','Í¶Æ±µ÷²é¹ÜÀíÑ¡Ïî');
+define('_MD_TOPICOPTION','ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½');
+define('_MD_KARMA_REQUIREMENT','ï¿½ï¿½ï¿½Karmaï¿½ï¿½ï¿½ï¿½ %s Ã»ï¿½Ð´ïµ½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ä±ï¿½×¼ %s. <br /> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_REPLY_REQUIREMENT','ï¿½ï¿½Òªï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Ü²é¿´ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_TOPICOPTIONADMIN','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½');
+define('_MD_POLLOPTIONADMIN','Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½');
 
-define('_MD_EDITPOLL','±à¼­Í¶Æ±µ÷²é');
-define('_MD_DELETEPOLL','É¾³ýÍ¶Æ±µ÷²é');
-define('_MD_RESTARTPOLL','ÖØÆô¶¯Í¶Æ±µ÷²é');
-define('_MD_ADDPOLL','Ìí¼ÓÍ¶Æ±µ÷²é');
+define('_MD_EDITPOLL','ï¿½à¼­Í¶Æ±ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DELETEPOLL','É¾ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½');
+define('_MD_RESTARTPOLL','ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½');
+define('_MD_ADDPOLL','ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½');
 
-define('_MD_QUICKREPLY_EMPTY','ÇëÊäÈë¿ìËÙ»Ø¸´µÄÄÚÈÝ');
+define('_MD_QUICKREPLY_EMPTY','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù»Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
-define('_MD_LEVEL','µÈ¼¶:');
+define('_MD_LEVEL','ï¿½È¼ï¿½:');
 define('_MD_HP','HP :');
 define('_MD_MP','MP :');
 define('_MD_EXP','EXP:');
 
-define('_MD_BROWSING','ÕýÔÚä¯ÀÀ:');
-define('_MD_POSTTONEWS','·¢²¼µ½ÐÂÎÅÇø');
+define('_MD_BROWSING','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_POSTTONEWS','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
-define('_MD_EXCEEDTHREADVIEW','»ØÌûÊýÄ¿³¬¹ýÊ÷×´ÏÔÊ¾ËùÔÊÐíµÄÉÏÏÞ<br />×ªÎªÕ¹¿ªÄ£Ê½');
+define('_MD_EXCEEDTHREADVIEW','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br />×ªÎªÕ¹ï¿½ï¿½Ä£Ê½');
 
 
 //forumform.inc
-define('_MD_PRIVATE','ÕâÊÇÒ»¸ö<strong>ÄÚ²¿</strong>ÌÖÂÛÇø.<br />Ö»ÓÐÊÚÈ¨ÓÃ»§²ÅÄÜ·¢±í');
-define('_MD_QUOTE','ÒýÓÃ');
-define('_MD_VIEW_REQUIRE','²é¿´ÒªÇó');
-define('_MD_REQUIRE_KARMA','Karma»ý·Ö');
-define('_MD_REQUIRE_REPLY','»Ø¸´');
-define('_MD_REQUIRE_NULL','ÎÞ');
+define('_MD_PRIVATE','ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½<strong>ï¿½Ú²ï¿½</strong>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.<br />Ö»ï¿½ï¿½ï¿½ï¿½È¨ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ï¿½');
+define('_MD_QUOTE','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_VIEW_REQUIRE','ï¿½é¿´Òªï¿½ï¿½');
+define('_MD_REQUIRE_KARMA','Karmaï¿½ï¿½ï¿½ï¿½');
+define('_MD_REQUIRE_REPLY','ï¿½Ø¸ï¿½');
+define('_MD_REQUIRE_NULL','ï¿½ï¿½');
 
-define("_MD_SELECT_FORMTYPE","Ñ¡Ôñ±à¼­Æ÷");
+define("_MD_SELECT_FORMTYPE","Ñ¡ï¿½ï¿½à¼­ï¿½ï¿½");
 
-define("_MD_FORM_COMPACT","¼ò½à");
-define("_MD_FORM_DHTML","±ê×¼");
+define("_MD_FORM_COMPACT","ï¿½ï¿½ï¿½");
+define("_MD_FORM_DHTML","ï¿½ï¿½×¼");
 define("_MD_FORM_SPAW","Spaw");
 define("_MD_FORM_HTMLAREA","HTMLArea");
 define("_MD_FORM_FCK","FCK");
@@ -227,245 +227,245 @@ define("_MD_FORM_KOIVI","Koivi");
 define("_MD_FORM_TINYMCE","TinyMCE");
 
 // ERROR messages
-define('_MD_ERRORFORUM','´íÎó: Î´Ñ¡ÔñÌÖÂÛÇø!');
-define('_MD_ERRORPOST','´íÎó: Î´Ñ¡ÔñÌû×Ó!');
-define('_MD_NORIGHTTOVIEW','ÄãÃ»ÓÐÈ¨ÏÞ²é¿´¸ÃÖ÷Ìâ.');
-define('_MD_NORIGHTTOPOST','ÄãÃ»ÓÐÈ¨ÏÞÔÚ¸ÃÌÖÂÛÇø·¢Ìû.');
-define('_MD_NORIGHTTOEDIT','ÄãÃ»ÓÐÈ¨ÏÞÐÞ¸Ä¸ÃÌÖÂÛÇøµÄÌû×Ó.');
-define('_MD_NORIGHTTOREPLY','ÄãÃ»ÓÐÈ¨ÏÞÔÚ¸ÃÌÖÂÛÇø»Ø¸´.');
-define('_MD_NORIGHTTOACCESS','ÄãÃ»ÓÐÈ¨ÏÞ·ÃÎÊ¸ÃÌÖÂÛÇø.');
-define('_MD_ERRORTOPIC','´íÎó: Î´Ñ¡ÔñÖ÷Ìâ!');
-define('_MD_ERRORCONNECT','´íÎó: ÎÞ·¨Á¬½Óµ½ÌÖÂÛÇøÊý¾Ý¿â.');
-define('_MD_ERROREXIST','´íÎó: ÄãËùÑ¡ÔñµÄÌÖÂÛÇø²»´æÔÚ£¬ÇëÔÙÊÔÒ»´Î.');
-define('_MD_ERROROCCURED','·¢Éú´íÎó');
-define('_MD_COULDNOTQUERY','ÎÞ·¨²éÑ¯ÌÖÂÛÇø×ÊÁÏ.');
-define('_MD_FORUMNOEXIST','´íÎó: ÄãÑ¡ÔñµÄÖ÷Ìâ/ÌÖÂÛÇø²»´æÔÚ£¬ÇëÔÙÊÔÒ»´Î.');
-define('_MD_USERNOEXIST','ÓÃ»§Õß²»´æÔÚ. ÇëÔÙËÑË÷Ò»±é.');
-define('_MD_COULDNOTREMOVE','´íÎó: ÎÞ·¨É¾³ýÌû×Ó!');
-define('_MD_COULDNOTREMOVETXT','´íÎó: ÎÞ·¨É¾³ýÌû×ÓÄÚÈÝ!');
-define('_MD_TIMEISUP','ÒÑ¾­³¬¹ýÁËËùÔÊÐíµÄ±à¼­Ê±¼äÏÞÖÆ.');
-define('_MD_TIMEISUPDEL','ÒÑ¾­³¬¹ýÁËÉ¾ÌûµÄÊ±¼äÏÞÖÆ.');
+define('_MD_ERRORFORUM','ï¿½ï¿½ï¿½ï¿½: Î´Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
+define('_MD_ERRORPOST','ï¿½ï¿½ï¿½ï¿½: Î´Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
+define('_MD_NORIGHTTOVIEW','ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½Þ²é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_NORIGHTTOPOST','ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_NORIGHTTOEDIT','ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½ï¿½ï¿½Þ¸Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_NORIGHTTOREPLY','ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½.');
+define('_MD_NORIGHTTOACCESS','ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½Þ·ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_ERRORTOPIC','ï¿½ï¿½ï¿½ï¿½: Î´Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
+define('_MD_ERRORCONNECT','ï¿½ï¿½ï¿½ï¿½: ï¿½Þ·ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½.');
+define('_MD_ERROREXIST','ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½.');
+define('_MD_ERROROCCURED','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_COULDNOTQUERY','ï¿½Þ·ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_FORUMNOEXIST','ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½.');
+define('_MD_USERNOEXIST','ï¿½Ã»ï¿½ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½.');
+define('_MD_COULDNOTREMOVE','ï¿½ï¿½ï¿½ï¿½: ï¿½Þ·ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
+define('_MD_COULDNOTREMOVETXT','ï¿½ï¿½ï¿½ï¿½: ï¿½Þ·ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
+define('_MD_TIMEISUP','ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±à¼­Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_TIMEISUPDEL','ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
 
 //reply.php
-define('_MD_ON','ÓÚ'); //Posted on
-define('_MD_USERWROTE','%s Ð´µÀ:'); // %s is username
-define('_MD_RE','»Ø¸´');
+define('_MD_ON','ï¿½ï¿½'); //Posted on
+define('_MD_USERWROTE','%s Ð´ï¿½ï¿½:'); // %s is username
+define('_MD_RE','ï¿½Ø¸ï¿½');
 
 //post.php
-define('_MD_EDITNOTALLOWED','Ã»ÓÐÈ¨ÏÞÐÞ¸ÄÌû×Ó!');
+define('_MD_EDITNOTALLOWED','Ã»ï¿½ï¿½È¨ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½!');
 define('_MD_EDITEDBY','');
-define('_MD_ANONNOTALLOWED','ÓÎ¿ÍÃ»ÓÐ·¢ÌûÈ¨.<br />ÇëÏÈ×¢²á.');
-define('_MD_THANKSSUBMIT','¸ÐÐ»ÄúµÄ·¢Ìû!');
-define('_MD_REPLYPOSTED','ÄúµÄÌû×ÓÓÐÈË»Ø¸´.');
-define('_MD_HELLO','ÄúºÃ %s,');
-define('_MD_URRECEIVING','ÄúÊÕµ½¸ÃemailÊÇÒòÎªÄúÔÚ %s ÌÖÂÛÇø·¢±íµÄÌû×ÓÓÐÈË»ØÓ¦.'); // %s is your site name
-define('_MD_CLICKBELOW','°´ÒÔÏÂÁ´½Ó²é¿´Ìû×Ó:');
-define('_MD_WAITFORAPPROVAL','·Ç³£¸ÐÐ»ÄúÌá½»Ìû×Ó£¬½«ÔÚÍ¨¹ýÉóºËºó·¢±í.');
-define('_MD_POSTING_LIMITED','Çë²»ÒªÔÚ %d ÃëÄÚÁ¬Ðø·¢Ìû');
+define('_MD_ANONNOTALLOWED','ï¿½Î¿ï¿½Ã»ï¿½Ð·ï¿½ï¿½ï¿½È¨.<br />ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½.');
+define('_MD_THANKSSUBMIT','ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½!');
+define('_MD_REPLYPOSTED','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»Ø¸ï¿½.');
+define('_MD_HELLO','ï¿½ï¿½ï¿½ï¿½ %s,');
+define('_MD_URRECEIVING','ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½emailï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ %s ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½Ó¦.'); // %s is your site name
+define('_MD_CLICKBELOW','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²é¿´ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_WAITFORAPPROVAL','ï¿½Ç³ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ëºó·¢±ï¿½.');
+define('_MD_POSTING_LIMITED','ï¿½ë²»Òªï¿½ï¿½ %d ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 //forumform.inc
-define('_MD_NAMEMAIL','ÐÕÃû/Email:');
-define('_MD_LOGOUT','×¢Ïú');
-define('_MD_REGISTER','×¢²á');
-define('_MD_SUBJECTC','±êÌâ:');
-define('_MD_MESSAGEICON','Í¼±ê:');
-define('_MD_MESSAGEC','ÄÚÈÝ:');
-define('_MD_ALLOWEDHTML','ÔÊÐíµÄHTML±êÇ©:');
-define('_MD_OPTIONS','¸½¼ÓÑ¡Ïî:');
-define('_MD_POSTANONLY','ÄäÃû·¢±í');
-define('_MD_DOSMILEY','Ê¹ÓÃ±íÇéÍ¼');
-define('_MD_DOXCODE','ÆôÓÃXoopsÄÚÖÃÂë');
-define('_MD_DOBR','ÆôÓÃ»»ÐÐ·û(Èç¹ûÆôÓÃHTML±êÇ©£¬½¨Òé¹Ø±Õ)');
-define('_MD_DOHTML','Ê¹ÓÃHTML±êÇ©');
-define('_MD_NEWPOSTNOTIFY', 'ÓÐÐÂÌùÊ±Í¨ÖªÎÒ');
-define('_MD_ATTACHSIG','Ê¹ÓÃÇ©Ãûµµ');
-define('_MD_POST','·¢±í');
-define('_MD_SUBMIT','È·¶¨');
-define('_MD_CANCELPOST','È¡Ïû');
-define('_MD_REMOVE','È¡Ïû');
-define('_MD_UPLOAD','ÉÏ´«');
+define('_MD_NAMEMAIL','ï¿½ï¿½ï¿½ï¿½/Email:');
+define('_MD_LOGOUT','×¢ï¿½ï¿½');
+define('_MD_REGISTER','×¢ï¿½ï¿½');
+define('_MD_SUBJECTC','ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_MESSAGEICON','Í¼ï¿½ï¿½:');
+define('_MD_MESSAGEC','ï¿½ï¿½ï¿½ï¿½:');
+define('_MD_ALLOWEDHTML','ï¿½ï¿½ï¿½ï¿½ï¿½HTMLï¿½ï¿½Ç©:');
+define('_MD_OPTIONS','ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½:');
+define('_MD_POSTANONLY','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DOSMILEY','Ê¹ï¿½Ã±ï¿½ï¿½ï¿½Í¼');
+define('_MD_DOXCODE','ï¿½ï¿½ï¿½ï¿½Xoopsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DOBR','ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ð·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTMLï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½)');
+define('_MD_DOHTML','Ê¹ï¿½ï¿½HTMLï¿½ï¿½Ç©');
+define('_MD_NEWPOSTNOTIFY','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Í¨Öªï¿½ï¿½');
+define('_MD_ATTACHSIG','Ê¹ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½');
+define('_MD_POST','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_SUBMIT','È·ï¿½ï¿½');
+define('_MD_CANCELPOST','È¡ï¿½ï¿½');
+define('_MD_REMOVE','È¡ï¿½ï¿½');
+define('_MD_UPLOAD','ï¿½Ï´ï¿½');
 
 // forumuserpost.php
-define('_MD_ADD','·¢±íÐÂÌû');
-define('_MD_REPLY','»Ø¸´');
+define('_MD_ADD','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_REPLY','ï¿½Ø¸ï¿½');
 
 // topicmanager.php
-define('_MD_VIEWTHETOPIC','²é¿´¸ÃÖ÷Ìâ');
-define('_MD_RETURNTOTHEFORUM','»Øµ½ÌÖÂÛÇøÁÐ±í');
-define('_MD_RETURNFORUMINDEX','»ØÌÖÂÛÇøÖ÷Ò³');
-define('_MD_ERROR_BACK','´íÎó!ÇëÔÙÊÔÒ»±é.');
-define('_MD_GOTONEWFORUM','²é¿´ÐÞ¸Ä½á¹û');
+define('_MD_VIEWTHETOPIC','ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_RETURNTOTHEFORUM','ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½');
+define('_MD_RETURNFORUMINDEX','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³');
+define('_MD_ERROR_BACK','ï¿½ï¿½ï¿½ï¿½!ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½.');
+define('_MD_GOTONEWFORUM','ï¿½é¿´ï¿½Þ¸Ä½ï¿½ï¿½');
 
-define('_MD_TOPICDELETE','¸ÃÖ÷ÌâÒÑ±»É¾³ý.');
-define('_MD_TOPICMERGE','¸ÃÖ÷ÌâÒÑ±»ºÏ²¢.');
-define('_MD_TOPICMOVE','¸ÃÖ÷ÌâÒÑ¾­±»×ªÒÆµ½ÆäËûÌÖÂÛÇø.');
-define('_MD_TOPICLOCK','¸ÃÖ÷ÌâÒÑ±»Ëø¶¨.');
-define('_MD_TOPICUNLOCK','¸ÃÖ÷ÌâÒÑ½â³ýËø¶¨.');
-define('_MD_TOPICSTICKY','¸ÃÖ÷ÌâÒÑ¾­ÖÃ¶¥.');
-define('_MD_TOPICUNSTICKY','¸ÃÖ÷ÌâÒÑ±»È¡ÏûÖÃ¶¥.');
-define('_MD_TOPICDIGEST','¸ÃÖ÷ÌâÒÑ±»±ê¼ÇÎª¾«»ª.');
-define('_MD_TOPICUNDIGEST','¸ÃÖ÷ÌâÒÑ±»È¡Ïû¾«»ª.');
+define('_MD_TOPICDELETE','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½É¾ï¿½ï¿½.');
+define('_MD_TOPICMERGE','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½Ï²ï¿½.');
+define('_MD_TOPICMOVE','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½×ªï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_TOPICLOCK','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_TOPICUNLOCK','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_TOPICSTICKY','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ã¶ï¿½.');
+define('_MD_TOPICUNSTICKY','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½È¡ï¿½ï¿½ï¿½Ã¶ï¿½.');
+define('_MD_TOPICDIGEST','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½.');
+define('_MD_TOPICUNDIGEST','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ±ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
 
-define('_MD_DELETE','É¾³ý');
-define('_MD_MOVE','ÒÆ¶¯');
-define('_MD_MERGE','ºÏ²¢');
-define('_MD_LOCK','Ëø¶¨');
-define('_MD_UNLOCK','½â³ýËø¶¨');
-define('_MD_STICKY','ÖÃ¶¥');
-define('_MD_UNSTICKY','È¡ÏûÖÃ¶¥');
-define('_MD_DIGEST','¾«»ª');
-define('_MD_UNDIGEST','È¡Ïû¾«»ª');
+define('_MD_DELETE','É¾ï¿½ï¿½');
+define('_MD_MOVE','ï¿½Æ¶ï¿½');
+define('_MD_MERGE','ï¿½Ï²ï¿½');
+define('_MD_LOCK','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_UNLOCK','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_STICKY','ï¿½Ã¶ï¿½');
+define('_MD_UNSTICKY','È¡ï¿½ï¿½ï¿½Ã¶ï¿½');
+define('_MD_DIGEST','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_UNDIGEST','È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
-define('_MD_DESC_DELETE','°´É¾³ý°´Å¥½«<strong>ÓÀ¾Ã</strong>É¾³ý¸ÃÖ÷Ìâ');
-define('_MD_DESC_MOVE','°´ÒÆ¶¯°´Å¥½«×ªÒÆ¸ÃÖ÷Ìâµ½ÄãËùÑ¡µÄ°åÃæ');
-define('_MD_DESC_MERGE','°´ºÏ²¢°´Å¥½«ºÏ²¢¸ÃÖ÷Ìâµ½ËùÑ¡µÄÖ÷Ìâ<br /><strong>ÒªºÏ²¢µ½µÄÖ÷ÌâID±ØÐëÐ¡ÓÚµ±Ç°Ö÷ÌâID.</strong>');
-define('_MD_DESC_LOCK','°´Ëø¶¨°´Å¥½«Ëø¶¨¸ÃÖ÷ÌâµÄËùÓÐÆÕÍ¨ÓÃ»§²Ù×÷¡£³ý·Ç½â³ýËø¶¨²ÅÄÜ»Ö¸´');
-define('_MD_DESC_UNLOCK','°´½â³ýËø¶¨°´Å¥½«ÖØÐÂ¿ª·Å¸ÃÖ÷Ìâ');
-define('_MD_DESC_STICKY','°´ÖÃ¶¥°´Å¥½«¸ÃÖ÷Ìâ¹Ì¶¨ÔÚ¶¥¶Ë');
-define('_MD_DESC_UNSTICKY','°´È¡ÏûÖÃ¶¥°´Å¥½«½â³ýÖÃ¶¥');
-define('_MD_DESC_DIGEST','°´ÉèÖÃ¾«»ª°´Å¥½«¸ÃÖ÷ÌâÉèÎª¾«»ª');
-define('_MD_DESC_UNDIGEST','°´È¡Ïû¾«»ª°´Å¥½«Ö÷ÌâÈ¡Ïû¾«»ª');
+define('_MD_DESC_DELETE','ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½<strong>ï¿½ï¿½ï¿½ï¿½</strong>É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DESC_MOVE','ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Å¥ï¿½ï¿½×ªï¿½Æ¸ï¿½ï¿½ï¿½ï¿½âµ½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ä°ï¿½ï¿½ï¿½');
+define('_MD_DESC_MERGE','ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½âµ½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br /><strong>Òªï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Úµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ID.</strong>');
+define('_MD_DESC_LOCK','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü»Ö¸ï¿½');
+define('_MD_DESC_UNLOCK','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_DESC_STICKY','ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½');
+define('_MD_DESC_UNSTICKY','ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½');
+define('_MD_DESC_DIGEST','ï¿½ï¿½ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½');
+define('_MD_DESC_UNDIGEST','ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
-define('_MD_MERGETOPICTO','ºÏ²¢Ö÷Ìâµ½:');
-define('_MD_MOVETOPICTO','ÒÆ¶¯Ö÷Ìâµ½:');
-define('_MD_NOFORUMINDB','ÎÞÌÖÂÛÇø');
+define('_MD_MERGETOPICTO','ï¿½Ï²ï¿½ï¿½ï¿½ï¿½âµ½:');
+define('_MD_MOVETOPICTO','ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½âµ½:');
+define('_MD_NOFORUMINDB','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 // delete.php
-define('_MD_DELNOTALLOWED','±§Ç¸!ÄúÃ»ÓÐÈ¨ÏÞÉ¾³ý±¾Ìù.');
-define('_MD_AREUSUREDEL','ÄúÈ·¶¨ÒªÉ¾³ý±¾Ìù¼°ÒÔÏÂµÄ»Ø¸´?');
-define('_MD_POSTSDELETED','Ñ¡ÔñµÄÌû×Ó¼°Æä»Ø¸´ÒÑÉ¾³ý.');
-define('_MD_POSTDELETED','Ñ¡ÔñµÄÌû×ÓÒÑÉ¾³ý.');
+define('_MD_DELNOTALLOWED','ï¿½ï¿½Ç¸!ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_AREUSUREDEL','ï¿½ï¿½È·ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ»Ø¸ï¿½?');
+define('_MD_POSTSDELETED','Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½É¾ï¿½ï¿½.');
+define('_MD_POSTDELETED','Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½.');
 
 // definitions moved from global.
-define('_MD_THREAD','Ìû×ÓÄÚÈÝ');
-define('_MD_FROM','À´×Ô');
-define('_MD_JOINED','×¢²áÈÕÆÚ');
-define('_MD_ONLINE','ÔÚÏß');
-define('_MD_OFFLINE','ÀëÏß');
-define('_MD_FLAT', 'È«²¿Õ¹¿ª');
+define('_MD_THREAD','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FROM','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_JOINED','×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_ONLINE','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_OFFLINE','ï¿½ï¿½ï¿½ï¿½');
+define('_MD_FLAT','È«ï¿½ï¿½Õ¹ï¿½ï¿½');
 
 
 // online.php
-define('_MD_USERS_ONLINE', 'ÔÚÏßÓÃ»§:');
-define('_MD_ANONYMOUS_USERS', 'ÃûÓÎ¿Í');
-define('_MD_REGISTERED_USERS', 'Ãû×¢²áÓÃ»§: ');
-define('_MD_BROWSING_FORUM','ÈËÔÚä¯ÀÀÌÖÂÛÇø');
-define('_MD_TOTAL_ONLINE','×Ü¹² %d ¸öÓÃ»§ÔÚÏß.');
-define('_MD_ADMINISTRATOR','¹ÜÀíÔ±');
+define('_MD_USERS_ONLINE','ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½:');
+define('_MD_ANONYMOUS_USERS','ï¿½ï¿½ï¿½Î¿ï¿½');
+define('_MD_REGISTERED_USERS','ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ã»ï¿½: ');
+define('_MD_BROWSING_FORUM','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_TOTAL_ONLINE','ï¿½Ü¹ï¿½ %d ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½.');
+define('_MD_ADMINISTRATOR','ï¿½ï¿½ï¿½ï¿½Ô±');
 
-define('_MD_NO_SUCH_FILE','ÎÄ¼þ²»´æÔÚ!');
-define('_MD_ERROR_UPATEATTACHMENT','¸üÐÂ¸½¼þÊ±·¢Éú´íÎó');
+define('_MD_NO_SUCH_FILE','ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!');
+define('_MD_ERROR_UPATEATTACHMENT','ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 // ratethread.php
-define("_MD_CANTVOTEOWN", "²»ÄÜ¶Ô×Ô¼ºµÄÖ÷ÌâÆÀ·Ö.<br />ËùÓÐÆÀ·ÖÐÅÏ¢½«»á±»¼ÇÂ¼²¢Éó²é.");
-define("_MD_VOTEONCE", "Çë²»Òª¶ÔÍ¬Ò»Ö÷Ìâ¶à´ÎÆÀ·Ö.");
-define("_MD_VOTEAPPRE", "¸ÐÐ»ÄúµÄÆÀ·Ö.");
-define("_MD_THANKYOU", "¸ÐÐ»Äú»¨Ê±¼äÔÚ %s ÆÀ·Ö"); // %s is your site name
-define("_MD_VOTES","ÈË´Î");
-define("_MD_NOVOTERATE","ÄãÃ»ÓÐ¶Ô¸ÃÖ÷ÌâÆÀ·Ö");
+define("_MD_CANTVOTEOWN","ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.<br />ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½á±»ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½.");
+define("_MD_VOTEONCE","ï¿½ë²»Òªï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+define("_MD_VOTEAPPRE","ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+define("_MD_THANKYOU","ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ %s ï¿½ï¿½ï¿½ï¿½"); // %s is your site name
+define("_MD_VOTES","ï¿½Ë´ï¿½");
+define("_MD_NOVOTERATE","ï¿½ï¿½Ã»ï¿½Ð¶Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
 
 // polls.php
-define("_MD_POLL_DBUPDATED","Êý¾Ý¿â¸üÐÂ³É¹¦!");
-define("_MD_POLL_POLLCONF","Í¶Æ±µ÷²éÉèÖÃ");
-define("_MD_POLL_POLLSLIST", "Í¶Æ±µ÷²éÁÐ±í");
-define("_MD_POLL_AUTHOR", "¸ÃÍ¶Æ±µ÷²éµÄ·¢ÆðÈË");
-define("_MD_POLL_DISPLAYBLOCK", "ÔÚÇø¿éÖÐÏÔÊ¾?");
-define("_MD_POLL_POLLQUESTION", "Í¶Æ±µ÷²éÎÊÌâ");
-define("_MD_POLL_VOTERS", "×ÜÍ¶Æ±µ÷²éÈËÊý");
-define("_MD_POLL_VOTES", "×ÜÆ±Êý");
-define("_MD_POLL_EXPIRATION", "¹ýÆÚÈÕÆÚ");
-define("_MD_POLL_EXPIRED", "ÒÑ¹ýÆÚ");
-define("_MD_POLL_VIEWLOG","²é¿´¼ÍÂ¼");
-define("_MD_POLL_CREATNEWPOLL", "·¢ÆðÐÂÍ¶Æ±µ÷²é");
-define("_MD_POLL_POLLDESC", "ÃèÊö");
-define("_MD_POLL_DISPLAYORDER", "Ë³Ðò");
-define("_MD_POLL_ALLOWMULTI", "ÔÊÐí¶àÑ¡?");
-define("_MD_POLL_NOTIFY", "Í¶Æ±µ÷²éµ½ÆÚÊ±Í¨Öª·¢ÆðÈË?");
-define("_MD_POLL_POLLOPTIONS", "Ñ¡Ïî");
-define("_MD_POLL_EDITPOLL", "±à¼­Í¶Æ±µ÷²é");
-define("_MD_POLL_FORMAT", "¸ñÊ½: yyyy-mm-dd hh:mm:ss");
-define("_MD_POLL_CURRENTTIME", "µ±Ç°Ê±¼ä %s");
-define("_MD_POLL_EXPIREDAT", "ÓÐÐ§ÆÚ %s");
-define("_MD_POLL_RESTART", "ÖØÐÂÆô¶¯¸ÃÍ¶Æ±µ÷²é");
-define("_MD_POLL_ADDMORE", "Ìí¼ÓÑ¡Ïî");
-define("_MD_POLL_RUSUREDEL", "È·¶¨ÒªÉ¾³ýÍ¶Æ±µ÷²é¼°ÆÀÂÛ?");
-define("_MD_POLL_RESTARTPOLL", "ÖØÐÂÆô¶¯Í¶Æ±µ÷²é");
-define("_MD_POLL_RESET", "ÖØÉè¸ÃÍ¶Æ±µ÷²éµÄ¼ÍÂ¼?");
-define("_MD_POLL_ADDPOLL","·¢ÆðÍ¶Æ±µ÷²é");
-define("_MD_POLLMODULE_ERROR","umfrage²»ÄÜÕý³£Ê¹ÓÃ");
+define("_MD_POLL_DBUPDATED","ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Â³É¹ï¿½!");
+define("_MD_POLL_POLLCONF","Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_POLLSLIST","Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½");
+define("_MD_POLL_AUTHOR","ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_DISPLAYBLOCK","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾?");
+define("_MD_POLL_POLLQUESTION","Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_VOTERS","ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_VOTES","ï¿½ï¿½Æ±ï¿½ï¿½");
+define("_MD_POLL_EXPIRATION","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_EXPIRED","ï¿½Ñ¹ï¿½ï¿½ï¿½");
+define("_MD_POLL_VIEWLOG","ï¿½é¿´ï¿½ï¿½Â¼");
+define("_MD_POLL_CREATNEWPOLL","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_POLLDESC","ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_DISPLAYORDER","Ë³ï¿½ï¿½");
+define("_MD_POLL_ALLOWMULTI","ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡?");
+define("_MD_POLL_NOTIFY","Í¶Æ±ï¿½ï¿½ï¿½éµ½ï¿½ï¿½Ê±Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?");
+define("_MD_POLL_POLLOPTIONS","Ñ¡ï¿½ï¿½");
+define("_MD_POLL_EDITPOLL","ï¿½à¼­Í¶Æ±ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_FORMAT","ï¿½ï¿½Ê½: yyyy-mm-dd hh:mm:ss");
+define("_MD_POLL_CURRENTTIME","ï¿½ï¿½Ç°Ê±ï¿½ï¿½ %s");
+define("_MD_POLL_EXPIREDAT","ï¿½ï¿½Ð§ï¿½ï¿½ %s");
+define("_MD_POLL_RESTART","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_ADDMORE","ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½");
+define("_MD_POLL_RUSUREDEL","È·ï¿½ï¿½ÒªÉ¾ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½é¼°ï¿½ï¿½ï¿½ï¿½?");
+define("_MD_POLL_RESTARTPOLL","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLL_RESET","ï¿½ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Â¼?");
+define("_MD_POLL_ADDPOLL","ï¿½ï¿½ï¿½ï¿½Í¶Æ±ï¿½ï¿½ï¿½ï¿½");
+define("_MD_POLLMODULE_ERROR","umfrageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½");
 
 //report.php
-define("_MD_REPORTED", "¸ÐÐ»Äú¾Ù±¨! ¹ÜÀíÔ±½«»á¾¡¿ì´¦Àí.");
-define("_MD_REPORT_ERROR", "·¢ËÍ¾Ù±¨Ê±·¢Éú´íÎó.");
-define("_MD_REPORT_TEXT", "¾Ù±¨ÐÅÏ¢:");
+define("_MD_REPORTED","ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Ù±ï¿½! ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½á¾¡ï¿½ì´¦ï¿½ï¿½.");
+define("_MD_REPORT_ERROR","ï¿½ï¿½ï¿½Í¾Ù±ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+define("_MD_REPORT_TEXT","ï¿½Ù±ï¿½ï¿½ï¿½Ï¢:");
 
-define("_MD_PDF","Éú³ÉPDFÎÄ¼þ");
-define("_MD_PDF_PAGE","µÚ %s Ò³");
+define("_MD_PDF","ï¿½ï¿½ï¿½ï¿½PDFï¿½Ä¼ï¿½");
+define("_MD_PDF_PAGE","ï¿½ï¿½ %s Ò³");
 
 //print.php
-define("_MD_COMEFROM","À´×Ô:");
+define("_MD_COMEFROM","ï¿½ï¿½ï¿½ï¿½:");
 
 //viewpost.php
-define("_MD_VIEWALLPOSTS","²é¿´ËùÓÐÌû×Ó");
-define("_MD_VIEWTOPIC","Ö÷Ìâ");
-define("_MD_VIEWFORUM","ÂÛÌ³");
+define("_MD_VIEWALLPOSTS","ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_VIEWTOPIC","ï¿½ï¿½ï¿½ï¿½");
+define("_MD_VIEWFORUM","ï¿½ï¿½Ì³");
 
-define("_MD_COMPACT","¼ò½àÏÔÊ¾");
+define("_MD_COMPACT","ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾");
 
-define("_MD_MENU_SELECT","ÏÂÀ­Ñ¡Ôñ¿ò");
-define("_MD_MENU_HOVER","HOVERÕ¹¿ª");
-define("_MD_MENU_CLICK","µã»÷Õ¹¿ª");
+define("_MD_MENU_SELECT","ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½");
+define("_MD_MENU_HOVER","HOVERÕ¹ï¿½ï¿½");
+define("_MD_MENU_CLICK","ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½");
 
-define("_MD_WELCOME_SUBJECT","ÐÂ»áÔ± %s ±¨µ½");
-define("_MD_WELCOME_MESSAGE","´ó¼ÒºÃ£¬<strong>%s</strong> ³õ´Î¹âÁÙ£¬Çë¶à¶àÖ¸½Ì¡£");
+define("_MD_WELCOME_SUBJECT","ï¿½Â»ï¿½Ô± %s ï¿½ï¿½ï¿½ï¿½");
+define("_MD_WELCOME_MESSAGE","ï¿½ï¿½ÒºÃ£ï¿½<strong>%s</strong> ï¿½ï¿½ï¿½Î¹ï¿½ï¿½Ù£ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½Ì¡ï¿½");
 
-define("_MD_VIEWNEWPOSTS","²é¿´ÐÂÌû×Ó");
+define("_MD_VIEWNEWPOSTS","ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-define("_MD_INVALID_SUBMIT","ÎÞÐ§Ìá½»¡£¿ÉÄÜÏµÍ³sessionÊ§Ð§»òÊÇ³¬¹ýÏµÍ³¹æ¶¨µÄÊ±¼ä¶øÍË³ö, ÇëÖØÐÂÌá½»»ò±£´æÌû×ÓµÄÄÚÈÝ²¢ÖØÐÂµÇÂ½Ìá½»¡£");
+define("_MD_INVALID_SUBMIT","ï¿½ï¿½Ð§ï¿½á½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³sessionÊ§Ð§ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ÏµÍ³ï¿½æ¶¨ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ë³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½ò±£´ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½Âµï¿½Â½ï¿½á½»ï¿½ï¿½");
 
-define("_MD_ACCOUNT","ÕÊºÅ");
-define("_MD_NAME","ÓÃ»§Ãû");
-define("_MD_PASSWORD","ÃÜÂë");
-define("_MD_LOGIN","µÇÂ¼");
+define("_MD_ACCOUNT","ï¿½Êºï¿½");
+define("_MD_NAME","ï¿½Ã»ï¿½ï¿½ï¿½");
+define("_MD_PASSWORD","ï¿½ï¿½ï¿½ï¿½");
+define("_MD_LOGIN","ï¿½ï¿½Â¼");
 
-define("_MD_TRANSFER","¹¤¾ßÏä");
-define("_MD_TRANSFER_DESC","Ó¦ÓÃÀ©Õ¹");
-define("_MD_TRANSFER_DONE","²Ù×÷ÒÑ³É¹¦Ö´ÐÐ: %s");
+define("_MD_TRANSFER","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_TRANSFER_DESC","Ó¦ï¿½ï¿½ï¿½ï¿½Õ¹");
+define("_MD_TRANSFER_DONE","ï¿½ï¿½ï¿½ï¿½ï¿½Ñ³É¹ï¿½Ö´ï¿½ï¿½: %s");
 
-define("_MD_APPROVE","ÉóºË");
-define("_MD_RESTORE","»Ö¸´");
-define("_MD_SPLIT_ONE","·Ö¸î±¾Ìû");
-define("_MD_SPLIT_TREE","·Ö¸îËùÓÐ×ÓÌû");
-define("_MD_SPLIT_ALL","·Ö¸îËùÓÐºóÐøÌû×Ó");
+define("_MD_APPROVE","ï¿½ï¿½ï¿½");
+define("_MD_RESTORE","ï¿½Ö¸ï¿½");
+define("_MD_SPLIT_ONE","ï¿½Ö¸î±¾ï¿½ï¿½");
+define("_MD_SPLIT_TREE","ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_SPLIT_ALL","ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ðºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-define("_MD_TYPE_ADMIN","¹ÜÀí");
-define("_MD_TYPE_VIEW","ä¯ÀÀ");
-define("_MD_TYPE_PENDING","´ýÉóºË");
-define("_MD_TYPE_DELETED","À¬»øÕ¾");
-define("_MD_TYPE_SUSPEND","·â½ûÕÊºÅ");
+define("_MD_TYPE_ADMIN","ï¿½ï¿½ï¿½ï¿½");
+define("_MD_TYPE_VIEW","ï¿½ï¿½ï¿½");
+define("_MD_TYPE_PENDING","ï¿½ï¿½ï¿½ï¿½ï¿½");
+define("_MD_TYPE_DELETED","ï¿½ï¿½ï¿½ï¿½Õ¾");
+define("_MD_TYPE_SUSPEND","ï¿½ï¿½ï¿½ï¿½Êºï¿½");
 
-define("_MD_DBUPDATED","Êý¾ÝÒÑ³É¹¦¸üÐÂ!");
+define("_MD_DBUPDATED","ï¿½ï¿½ï¿½ï¿½ï¿½Ñ³É¹ï¿½ï¿½ï¿½ï¿½ï¿½!");
 
-define("_MD_SUSPEND_SUBJECT", "ÓÃ»§ %s ±»½ûÖ¹·¢ÑÔ %d Ìì");
-define("_MD_SUSPEND_TEXT", "ÓÃ»§ %s ±»½ûÖ¹·¢ÑÔ %d Ìì£¬Ô­Òò:<br />[quote]%s[/quote]<br /><br />·â½ûÆÚ³ÖÐøÖÁ %s");
-define("_MD_SUSPEND_UID", "ÓÃ»§ ID");
-define("_MD_SUSPEND_IP", "IPÇø¶Î");
-define("_MD_SUSPEND_DURATION", "·â½ûÊ±¼ä");
-define("_MD_SUSPEND_DESC", "Ô­Òò");
-define("_MD_SUSPEND_LIST", "·â½ûÁÐ±í");
-define("_MD_SUSPEND_START", "ÆðÊ¼");
-define("_MD_SUSPEND_EXPIRE", "½ØÖ¹");
-define("_MD_SUSPEND_SCOPE", "·¶Î§");
-define("_MD_SUSPEND_MANAGEMENT", "ÓÃ»§¼àÊÓ¹ÜÀí");
-define("_MD_SUSPEND_NOACCESS", "ÄãµÄÕÊºÅ»òIPÒÑ±»½ûÖ¹·¢ÑÔ");
+define("_MD_SUSPEND_SUBJECT","ï¿½Ã»ï¿½ %s ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ %d ï¿½ï¿½");
+define("_MD_SUSPEND_TEXT","ï¿½Ã»ï¿½ %s ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ %d ï¿½ì£¬Ô­ï¿½ï¿½:<br />[quote]%s[/quote]<br /><br />ï¿½ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½ %s");
+define("_MD_SUSPEND_UID","ï¿½Ã»ï¿½ ID");
+define("_MD_SUSPEND_IP","IPï¿½ï¿½ï¿½ï¿½");
+define("_MD_SUSPEND_DURATION","ï¿½ï¿½ï¿½Ê±ï¿½ï¿½");
+define("_MD_SUSPEND_DESC","Ô­ï¿½ï¿½");
+define("_MD_SUSPEND_LIST","ï¿½ï¿½ï¿½ï¿½Ð±ï¿½");
+define("_MD_SUSPEND_START","ï¿½ï¿½Ê¼");
+define("_MD_SUSPEND_EXPIRE","ï¿½ï¿½Ö¹");
+define("_MD_SUSPEND_SCOPE","ï¿½ï¿½Î§");
+define("_MD_SUSPEND_MANAGEMENT","ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½");
+define("_MD_SUSPEND_NOACCESS","ï¿½ï¿½ï¿½ï¿½ÊºÅ»ï¿½IPï¿½Ñ±ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
 
-// !!IMPORTANT!! insert '\' before any char among reserved chars: "a", "A","B","c","d","D","F","g","G","h","H","i","I","j","l","L","m","M","n","O","r","s","S","t","T","U","w","W","Y","y","z","Z"	
-// insert double '\' before 't', 'r', 'n'
-define("_MD_TODAY", "½ñÌì G:i:s");
-define("_MD_YESTERDAY", "×òÌì G:i:s");
-define("_MD_MONTHDAY", "n/j G:i:s");
-define("_MD_YEARMONTHDAY", "Y/n/j G:i");
+// !!IMPORTANT!! insert '\' before any char among reserved chars: "a","A","B","c","d","D","F","g","G","h","H","i","I","j","l","L","m","M","n","O","r","s","S","t","T","U","w","W","Y","y","z","Z"	
+// insert double '\' before 't','r','n'
+define("_MD_TODAY","ï¿½ï¿½ï¿½ï¿½ G:i:s");
+define("_MD_YESTERDAY","ï¿½ï¿½ï¿½ï¿½ G:i:s");
+define("_MD_MONTHDAY","n/j G:i:s");
+define("_MD_YEARMONTHDAY","Y/n/j G:i");
 
 // For user info
 require_once(XOOPS_ROOT_PATH."/modules/newbb/class/user.php");
@@ -484,19 +484,19 @@ class User_language extends User
     	$userbar = array();
         $userbar[] = array("link"=>XOOPS_URL . "/userinfo.php?uid=" . $user->getVar("uid"), "name" =>_PROFILE);
 		if (is_object($xoopsUser))
-        $userbar[]= array("link"=>"javascript:void openWithSelfMain('" . XOOPS_URL . "/pmlite.php?send2=1&amp;to_userid=" . $user->getVar("uid") . "', 'pmlite', 450, 380);", "name"=>_MD_PM);
+        $userbar[]= array("link"=>"javascript:void openWithSelfMain('" . XOOPS_URL . "/pmlite.php?send2=1&amp;to_userid=" . $user->getVar("uid") . "','pmlite', 450, 380);","name"=>_MD_PM);
         if($user->getVar('user_viewemail') || $isadmin)
-        $userbar[]= array("link"=>"javascript:void window.open('mailto:" . $user->getVar('email') . "', 'new');", "name"=>_MD_EMAIL);
+        $userbar[]= array("link"=>"javascript:void window.open('mailto:" . $user->getVar('email') . "','new');","name"=>_MD_EMAIL);
         if($user->getVar('url'))
-        $userbar[]= array("link"=>"javascript:void window.open('" . $user->getVar('url') . "', 'new');", "name"=>_MD_WWW);
+        $userbar[]= array("link"=>"javascript:void window.open('" . $user->getVar('url') . "','new');","name"=>_MD_WWW);
         if($user->getVar('user_icq'))
-        $userbar[]= array("link"=>"javascript:void window.open('http://friend.qq.com/cgi-bin/friend/user_show_info?ln=" . $user->getVar('user_icq')."', 'new');", "name" => _MD_ICQ);
+        $userbar[]= array("link"=>"javascript:void window.open('http://friend.qq.com/cgi-bin/friend/user_show_info?ln=" . $user->getVar('user_icq')."','new');","name" => _MD_ICQ);
         if($user->getVar('user_aim'))
-        $userbar[]= array("link"=>"javascript:void window.open('aim:goim?screenname=" . $user->getVar('user_aim') . "&amp;message=Hi+" . $user->getVar('user_aim') . "+Are+you+there?" . "', 'new');", "name"=>_MD_AIM);
+        $userbar[]= array("link"=>"javascript:void window.open('aim:goim?screenname=" . $user->getVar('user_aim') . "&amp;message=Hi+" . $user->getVar('user_aim') . "+Are+you+there?" . "','new');","name"=>_MD_AIM);
         if($user->getVar('user_yim'))
-        $userbar[]= array("link"=>"javascript:void window.open('http://edit.yahoo.com/config/send_webmesg?.target=" . $user->getVar('user_yim') . "&.src=pg" . "', 'new');", "name"=> _MD_YIM);
+        $userbar[]= array("link"=>"javascript:void window.open('http://edit.yahoo.com/config/send_webmesg?.target=" . $user->getVar('user_yim') . "&.src=pg" . "','new');","name"=> _MD_YIM);
         if($user->getVar('user_msnm'))
-        $userbar[]= array("link"=>"javascript:void window.open('http://members.msn.com?mem=" . $user->getVar('user_msnm') . "', 'new');", "name" => _MD_MSNM);
+        $userbar[]= array("link"=>"javascript:void window.open('http://members.msn.com?mem=" . $user->getVar('user_msnm') . "','new');","name" => _MD_MSNM);
 		return $userbar;
     }
 }

@@ -8,21 +8,21 @@ define("_PL_TOTALVOTERS","Total de votantes: %s");
 //%%%%%%	File Name index.php 	%%%%%
 define("_PL_POLLSLIST","Lista de votaciones");
 define("_PL_LOGINTOVOTE","Debe acceder al sitio como usuario registrado para poder votar.");
-define("_PL_VOTEOVERLIMIT", "Lo sentimos: seleccionó demasiadas opciones. Únicamente puede elegir %s.");
-define("_PL_ALREADYVOTED", "Lo sentimos: ya ha votado y sólo puede hacerse una vez.");
-define('_PL_ALREADYVOTED2', 'Ya ha votado');
+define("_PL_VOTEOVERLIMIT","Lo sentimos: seleccionó demasiadas opciones. Únicamente puede elegir %s.");
+define("_PL_ALREADYVOTED","Lo sentimos: ya ha votado y sólo puede hacerse una vez.");
+define('_PL_ALREADYVOTED2','Ya ha votado');
 define("_PL_THANKSFORVOTE","Gracias por votar");
-define("_PL_SORRYEXPIRED", "Lo sentimos: la votación expiró.");
-define("_PL_YOURPOLLAT", "%s, su voto en %s"); // 1st %s is user name, 2nd %s is site name
-define("_PL_YOURVOTEAT", "%s, su voto en %s"); // 1st %s is user name, 2nd %s is site name
-define("_PL_PREV", "Previo");
-define("_PL_NEXT", "Siguiente");
-define("_PL_POLLQUESTION", "Opción");
-define("_PL_VOTERS", "Total de votantes");
-define("_PL_VOTES", "Total de votos");
-define("_PL_EXPIRATION", "Finaliza el");
-define("_PL_EXPIRED", "Expirada");
-define('_PL_EXPIREDON', 'Votación expirada el');// reivsar si es espira el
+define("_PL_SORRYEXPIRED","Lo sentimos: la votación expiró.");
+define("_PL_YOURPOLLAT","%s, su voto en %s"); // 1st %s is user name, 2nd %s is site name
+define("_PL_YOURVOTEAT","%s, su voto en %s"); // 1st %s is user name, 2nd %s is site name
+define("_PL_PREV","Previo");
+define("_PL_NEXT","Siguiente");
+define("_PL_POLLQUESTION","Opción");
+define("_PL_VOTERS","Total de votantes");
+define("_PL_VOTES","Total de votos");
+define("_PL_EXPIRATION","Finaliza el");
+define("_PL_EXPIRED","Expirada");
+define('_PL_EXPIREDON','Votación expirada el');// reivsar si es espira el
 define('_PL_ONLYREGISTERED','El voto sólo está permitido para los usuarios registrados');
 
 

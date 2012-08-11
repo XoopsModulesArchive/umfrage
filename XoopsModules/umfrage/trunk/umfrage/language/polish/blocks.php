@@ -1,7 +1,7 @@
 <?php
 // $Id$
 // Blocks
-define('_BL_POLL_EDIT_SHOWRESULTS', 'Poka¿ wyniki je¿eli sonda wygas³a lub ju¿ zag³osowano ');
-define('_BL_POLL_EDIT_SHOWPERCENT', 'Poka¿ procenty w wynikach ');
-define('_BL_POLL_EDIT_SHOWBAR', 'Poka¿ paski w wynikach ');
+define('_BL_POLL_EDIT_SHOWRESULTS','PokaÂ¿ wyniki jeÂ¿eli sonda wygasÂ³a lub juÂ¿ zagÂ³osowano ');
+define('_BL_POLL_EDIT_SHOWPERCENT','PokaÂ¿ procenty w wynikach ');
+define('_BL_POLL_EDIT_SHOWBAR','PokaÂ¿ paski w wynikach ');
 ?>

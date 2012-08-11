@@ -50,7 +50,7 @@ define('_MD_SUBJECT','主题');
 define('_MD_INACTIVEFORUM_NEWPOSTS','已关闭（有新贴）');
 define('_MD_INACTIVEFORUM_NONEWPOSTS','已关闭（无新贴）');
 define('_MD_SUBFORUMS','子论坛');
-define('_MD_MAINFORUMOPT', '论坛选项');
+define('_MD_MAINFORUMOPT','论坛选项');
 define("_MD_PENDING_POSTS_FOR_AUTH","等候审核的帖子:");
 
 
@@ -98,34 +98,34 @@ define('_MD_FROMLASTHOURS','%s小时以来');
 define('_MD_FROMLASTDAYS','%s天以来');
 define('_MD_THELASTYEAR','一年以来');
 define('_MD_BEGINNING','全部');
-define('_MD_SEARCHTHISFORUM', '搜索本板');
+define('_MD_SEARCHTHISFORUM','搜索本板');
 define('_MD_TOPIC_SUBJECTC','主题类别:');
 
 
 define('_MD_RATINGS','评分');
-define("_MD_CAN_ACCESS", "您<strong><font color='green'>可以</font></strong>访问该板.<br />");
-define("_MD_CANNOT_ACCESS", "您<strong>不可</strong>访问该板.<br />");
-define("_MD_CAN_POST", "您<strong><font color='green'>可以</font></strong>发帖.<br />");
-define("_MD_CANNOT_POST", "您<strong><font color='red'>不可</font></strong>发帖.<br />");
-define("_MD_CAN_VIEW", "您<strong><font color='green'>可以</font></strong>查看帖子.<br />");
-define("_MD_CANNOT_VIEW", "您<strong><font color='red'>不可</font></strong>查看帖子.<br />");
-define("_MD_CAN_REPLY", "您<strong><font color='green'>可以</font></strong>回复.<br />");
-define("_MD_CANNOT_REPLY", "您<strong><font color='red'>不可</font></strong>回复.<br />");
-define("_MD_CAN_EDIT", "您<strong><font color='green'>可以</font></strong>编辑自己的帖子.<br />");
-define("_MD_CANNOT_EDIT", "您<strong><font color='red'>不可</font></strong>编辑自己的帖子.<br />");
-define("_MD_CAN_DELETE", "您<strong><font color='green'>可以</font></strong>删除自己的帖子.<br />");
-define("_MD_CANNOT_DELETE", "您<strong><font color='red'>不可</font></strong>删除自己的帖子.<br />");
-define("_MD_CAN_ADDPOLL", "您<strong><font color='green'>可以</font></strong>发起投票调查.<br />");
-define("_MD_CANNOT_ADDPOLL", "您<strong><font color='red'>不可</font></strong>发起投票调查.<br />");
-define("_MD_CAN_VOTE", "您<strong><font color='green'>可以</font></strong>在投票调查中投票.<br />");
-define("_MD_CANNOT_VOTE", "您<strong><font color='red'>不可</font></strong>在投票调查中投票.<br />");
-define("_MD_CAN_ATTACH", "您<strong><font color='green'>可以</font></strong>上传附件.<br />");
-define("_MD_CANNOT_ATTACH", "您<strong><font color='red'>不可</font></strong>上传附件.<br />");
-define("_MD_CAN_NOAPPROVE", "您<strong><font color='green'>可以</font></strong>不经审核直接发帖.<br />");
-define("_MD_CANNOT_NOAPPROVE", "您<strong><font color='red'>不可</font></strong>不经审核直接发帖.<br />");
+define("_MD_CAN_ACCESS","您<strong><font color='green'>可以</font></strong>访问该板.<br />");
+define("_MD_CANNOT_ACCESS","您<strong>不可</strong>访问该板.<br />");
+define("_MD_CAN_POST","您<strong><font color='green'>可以</font></strong>发帖.<br />");
+define("_MD_CANNOT_POST","您<strong><font color='red'>不可</font></strong>发帖.<br />");
+define("_MD_CAN_VIEW","您<strong><font color='green'>可以</font></strong>查看帖子.<br />");
+define("_MD_CANNOT_VIEW","您<strong><font color='red'>不可</font></strong>查看帖子.<br />");
+define("_MD_CAN_REPLY","您<strong><font color='green'>可以</font></strong>回复.<br />");
+define("_MD_CANNOT_REPLY","您<strong><font color='red'>不可</font></strong>回复.<br />");
+define("_MD_CAN_EDIT","您<strong><font color='green'>可以</font></strong>编辑自己的帖子.<br />");
+define("_MD_CANNOT_EDIT","您<strong><font color='red'>不可</font></strong>编辑自己的帖子.<br />");
+define("_MD_CAN_DELETE","您<strong><font color='green'>可以</font></strong>删除自己的帖子.<br />");
+define("_MD_CANNOT_DELETE","您<strong><font color='red'>不可</font></strong>删除自己的帖子.<br />");
+define("_MD_CAN_ADDPOLL","您<strong><font color='green'>可以</font></strong>发起投票调查.<br />");
+define("_MD_CANNOT_ADDPOLL","您<strong><font color='red'>不可</font></strong>发起投票调查.<br />");
+define("_MD_CAN_VOTE","您<strong><font color='green'>可以</font></strong>在投票调查中投票.<br />");
+define("_MD_CANNOT_VOTE","您<strong><font color='red'>不可</font></strong>在投票调查中投票.<br />");
+define("_MD_CAN_ATTACH","您<strong><font color='green'>可以</font></strong>上传附件.<br />");
+define("_MD_CANNOT_ATTACH","您<strong><font color='red'>不可</font></strong>上传附件.<br />");
+define("_MD_CAN_NOAPPROVE","您<strong><font color='green'>可以</font></strong>不经审核直接发帖.<br />");
+define("_MD_CANNOT_NOAPPROVE","您<strong><font color='red'>不可</font></strong>不经审核直接发帖.<br />");
 define("_MD_IMTOPICS","重要主题");
 define("_MD_NOTIMTOPICS","普通主题");
-define('_MD_FORUMOPTION', '论坛选项');
+define('_MD_FORUMOPTION','论坛选项');
 
 define('_MD_VAUP','查看所有没有回复的主题');
 define('_MD_VANP','查看含有新帖的主题');
@@ -165,12 +165,12 @@ define('_MD_AIM','AIM');
 define('_MD_YIM','YIM');
 define('_MD_MSNM','MSNM');
 define('_MD_ICQ','OICQ');
-define('_MD_PRINT_TOPIC_LINK', '本贴网址');
+define('_MD_PRINT_TOPIC_LINK','本贴网址');
 define('_MD_ADDTOLIST','加入联系名单');
-define('_MD_TOPICOPT', '主题选项');
-define('_MD_VIEWMODE', '浏览模式');
-define('_MD_NEWEST', '新的在前');
-define('_MD_OLDEST', '旧的在前');
+define('_MD_TOPICOPT','主题选项');
+define('_MD_VIEWMODE','浏览模式');
+define('_MD_NEWEST','新的在前');
+define('_MD_OLDEST','旧的在前');
 
 define('_MD_FORUMSEARCH','论坛搜索');
 
@@ -185,8 +185,8 @@ define('_MD_RATE4','不错');
 define('_MD_RATE5','顶 !');
 
 define('_MD_TOPICOPTION','主题选项');
-define('_MD_KARMA_REQUIREMENT', '你的Karma积分 %s 没有达到帖子要求的标准 %s. <br /> 请修炼几日再来吧.');
-define('_MD_REPLY_REQUIREMENT', '需要回复才能查看内容.');
+define('_MD_KARMA_REQUIREMENT','你的Karma积分 %s 没有达到帖子要求的标准 %s. <br /> 请修炼几日再来吧.');
+define('_MD_REPLY_REQUIREMENT','需要回复才能查看内容.');
 define('_MD_TOPICOPTIONADMIN','主题管理选项');
 define('_MD_POLLOPTIONADMIN','投票调查管理选项');
 
@@ -277,7 +277,7 @@ define('_MD_DOSMILEY','使用表情图');
 define('_MD_DOXCODE','启用Xoops内置码');
 define('_MD_DOBR','启用换行符(如果启用HTML标签，建议关闭)');
 define('_MD_DOHTML','使用HTML标签');
-define('_MD_NEWPOSTNOTIFY', '有新贴时通知我');
+define('_MD_NEWPOSTNOTIFY','有新贴时通知我');
 define('_MD_ATTACHSIG','使用签名档');
 define('_MD_POST','发表');
 define('_MD_SUBMIT','确定');
@@ -342,13 +342,13 @@ define('_MD_FROM','来自');
 define('_MD_JOINED','注册日期');
 define('_MD_ONLINE','在线');
 define('_MD_OFFLINE','离线');
-define('_MD_FLAT', '全部展开');
+define('_MD_FLAT','全部展开');
 
 
 // online.php
-define('_MD_USERS_ONLINE', '在线用户:');
-define('_MD_ANONYMOUS_USERS', '名游客');
-define('_MD_REGISTERED_USERS', '名注册用户: ');
+define('_MD_USERS_ONLINE','在线用户:');
+define('_MD_ANONYMOUS_USERS','名游客');
+define('_MD_REGISTERED_USERS','名注册用户: ');
 define('_MD_BROWSING_FORUM','人在浏览讨论区');
 define('_MD_TOTAL_ONLINE','总共 %d 个用户在线.');
 define('_MD_ADMINISTRATOR','管理员');
@@ -357,10 +357,10 @@ define('_MD_NO_SUCH_FILE','文件不存在!');
 define('_MD_ERROR_UPATEATTACHMENT','更新附件时发生错误');
 
 // ratethread.php
-define("_MD_CANTVOTEOWN", "不能对自己的主题评分.<br />所有评分信息将会被记录并审查.");
-define("_MD_VOTEONCE", "请不要对同一主题多次评分.");
-define("_MD_VOTEAPPRE", "感谢您的评分.");
-define("_MD_THANKYOU", "感谢您花时间在 %s 评分"); // %s is your site name
+define("_MD_CANTVOTEOWN","不能对自己的主题评分.<br />所有评分信息将会被记录并审查.");
+define("_MD_VOTEONCE","请不要对同一主题多次评分.");
+define("_MD_VOTEAPPRE","感谢您的评分.");
+define("_MD_THANKYOU","感谢您花时间在 %s 评分"); // %s is your site name
 define("_MD_VOTES","人次");
 define("_MD_NOVOTERATE","你没有对该主题评分");
 
@@ -368,37 +368,37 @@ define("_MD_NOVOTERATE","你没有对该主题评分");
 // polls.php
 define("_MD_POLL_DBUPDATED","数据库更新成功!");
 define("_MD_POLL_POLLCONF","投票调查设置");
-define("_MD_POLL_POLLSLIST", "投票调查列表");
-define("_MD_POLL_AUTHOR", "该投票调查的发起人");
-define("_MD_POLL_DISPLAYBLOCK", "在区块中显示?");
-define("_MD_POLL_POLLQUESTION", "投票调查问题");
-define("_MD_POLL_VOTERS", "总投票调查人数");
-define("_MD_POLL_VOTES", "总票数");
-define("_MD_POLL_EXPIRATION", "过期日期");
-define("_MD_POLL_EXPIRED", "已过期");
+define("_MD_POLL_POLLSLIST","投票调查列表");
+define("_MD_POLL_AUTHOR","该投票调查的发起人");
+define("_MD_POLL_DISPLAYBLOCK","在区块中显示?");
+define("_MD_POLL_POLLQUESTION","投票调查问题");
+define("_MD_POLL_VOTERS","总投票调查人数");
+define("_MD_POLL_VOTES","总票数");
+define("_MD_POLL_EXPIRATION","过期日期");
+define("_MD_POLL_EXPIRED","已过期");
 define("_MD_POLL_VIEWLOG","查看纪录");
-define("_MD_POLL_CREATNEWPOLL", "发起新投票调查");
-define("_MD_POLL_POLLDESC", "描述");
-define("_MD_POLL_DISPLAYORDER", "顺序");
-define("_MD_POLL_ALLOWMULTI", "允许多选?");
-define("_MD_POLL_NOTIFY", "投票调查到期时通知发起人?");
-define("_MD_POLL_POLLOPTIONS", "选项");
-define("_MD_POLL_EDITPOLL", "编辑投票调查");
-define("_MD_POLL_FORMAT", "格式: yyyy-mm-dd hh:mm:ss");
-define("_MD_POLL_CURRENTTIME", "当前时间 %s");
-define("_MD_POLL_EXPIREDAT", "有效期 %s");
-define("_MD_POLL_RESTART", "重新启动该投票调查");
-define("_MD_POLL_ADDMORE", "添加选项");
-define("_MD_POLL_RUSUREDEL", "确定要删除投票调查及评论?");
-define("_MD_POLL_RESTARTPOLL", "重新启动投票调查");
-define("_MD_POLL_RESET", "重设该投票调查的纪录?");
+define("_MD_POLL_CREATNEWPOLL","发起新投票调查");
+define("_MD_POLL_POLLDESC","描述");
+define("_MD_POLL_DISPLAYORDER","顺序");
+define("_MD_POLL_ALLOWMULTI","允许多选?");
+define("_MD_POLL_NOTIFY","投票调查到期时通知发起人?");
+define("_MD_POLL_POLLOPTIONS","选项");
+define("_MD_POLL_EDITPOLL","编辑投票调查");
+define("_MD_POLL_FORMAT","格式: yyyy-mm-dd hh:mm:ss");
+define("_MD_POLL_CURRENTTIME","当前时间 %s");
+define("_MD_POLL_EXPIREDAT","有效期 %s");
+define("_MD_POLL_RESTART","重新启动该投票调查");
+define("_MD_POLL_ADDMORE","添加选项");
+define("_MD_POLL_RUSUREDEL","确定要删除投票调查及评论?");
+define("_MD_POLL_RESTARTPOLL","重新启动投票调查");
+define("_MD_POLL_RESET","重设该投票调查的纪录?");
 define("_MD_POLL_ADDPOLL","发起投票调查");
 define("_MD_POLLMODULE_ERROR","umfrage不能正常使用");
 
 //report.php
-define("_MD_REPORTED", "感谢您举报! 管理员将会尽快处理.");
-define("_MD_REPORT_ERROR", "发送举报时发生错误.");
-define("_MD_REPORT_TEXT", "举报信息:");
+define("_MD_REPORTED","感谢您举报! 管理员将会尽快处理.");
+define("_MD_REPORT_ERROR","发送举报时发生错误.");
+define("_MD_REPORT_TEXT","举报信息:");
 
 define("_MD_PDF","生成PDF文件");
 define("_MD_PDF_PAGE","第 %s 页");
@@ -447,25 +447,25 @@ define("_MD_TYPE_SUSPEND","封禁账号");
 
 define("_MD_DBUPDATED","数据已成功更新!");
 
-define("_MD_SUSPEND_SUBJECT", "用户 %s 被禁止发言 %d 天");
-define("_MD_SUSPEND_TEXT", "用户 %s 被禁止发言 %d 天，原因:<br />[quote]%s[/quote]<br /><br />封禁期持续至 %s");
-define("_MD_SUSPEND_UID", "用户 ID");
-define("_MD_SUSPEND_IP", "IP区段");
-define("_MD_SUSPEND_DURATION", "封禁时间");
-define("_MD_SUSPEND_DESC", "原因");
-define("_MD_SUSPEND_LIST", "封禁列表");
-define("_MD_SUSPEND_START", "起始");
-define("_MD_SUSPEND_EXPIRE", "截止");
-define("_MD_SUSPEND_SCOPE", "范围");
-define("_MD_SUSPEND_MANAGEMENT", "用户监视管理");
-define("_MD_SUSPEND_NOACCESS", "你的账号或IP已被禁止发言");
+define("_MD_SUSPEND_SUBJECT","用户 %s 被禁止发言 %d 天");
+define("_MD_SUSPEND_TEXT","用户 %s 被禁止发言 %d 天，原因:<br />[quote]%s[/quote]<br /><br />封禁期持续至 %s");
+define("_MD_SUSPEND_UID","用户 ID");
+define("_MD_SUSPEND_IP","IP区段");
+define("_MD_SUSPEND_DURATION","封禁时间");
+define("_MD_SUSPEND_DESC","原因");
+define("_MD_SUSPEND_LIST","封禁列表");
+define("_MD_SUSPEND_START","起始");
+define("_MD_SUSPEND_EXPIRE","截止");
+define("_MD_SUSPEND_SCOPE","范围");
+define("_MD_SUSPEND_MANAGEMENT","用户监视管理");
+define("_MD_SUSPEND_NOACCESS","你的账号或IP已被禁止发言");
 
-// !!IMPORTANT!! insert '\' before any char among reserved chars: "a", "A","B","c","d","D","F","g","G","h","H","i","I","j","l","L","m","M","n","O","r","s","S","t","T","U","w","W","Y","y","z","Z"	
-// insert double '\' before 't', 'r', 'n'
-define("_MD_TODAY", "今天 G:i:s");
-define("_MD_YESTERDAY", "昨天 G:i:s");
-define("_MD_MONTHDAY", "n/j G:i:s");
-define("_MD_YEARMONTHDAY", "Y/n/j G:i");
+// !!IMPORTANT!! insert '\' before any char among reserved chars: "a","A","B","c","d","D","F","g","G","h","H","i","I","j","l","L","m","M","n","O","r","s","S","t","T","U","w","W","Y","y","z","Z"	
+// insert double '\' before 't','r','n'
+define("_MD_TODAY","今天 G:i:s");
+define("_MD_YESTERDAY","昨天 G:i:s");
+define("_MD_MONTHDAY","n/j G:i:s");
+define("_MD_YEARMONTHDAY","Y/n/j G:i");
 
 // For user info
 require_once(XOOPS_ROOT_PATH."/modules/newbb/class/user.php");
@@ -484,19 +484,19 @@ class User_language extends User
     	$userbar = array();
         $userbar[] = array("link"=>XOOPS_URL . "/userinfo.php?uid=" . $user->getVar("uid"), "name" =>_PROFILE);
 		if (is_object($xoopsUser))
-        $userbar[]= array("link"=>"javascript:void openWithSelfMain('" . XOOPS_URL . "/pmlite.php?send2=1&amp;to_userid=" . $user->getVar("uid") . "', 'pmlite', 450, 380);", "name"=>_MD_PM);
+        $userbar[]= array("link"=>"javascript:void openWithSelfMain('" . XOOPS_URL . "/pmlite.php?send2=1&amp;to_userid=" . $user->getVar("uid") . "','pmlite', 450, 380);","name"=>_MD_PM);
         if($user->getVar('user_viewemail') || $isadmin)
-        $userbar[]= array("link"=>"javascript:void window.open('mailto:" . $user->getVar('email') . "', 'new');", "name"=>_MD_EMAIL);
+        $userbar[]= array("link"=>"javascript:void window.open('mailto:" . $user->getVar('email') . "','new');","name"=>_MD_EMAIL);
         if($user->getVar('url'))
-        $userbar[]= array("link"=>"javascript:void window.open('" . $user->getVar('url') . "', 'new');", "name"=>_MD_WWW);
+        $userbar[]= array("link"=>"javascript:void window.open('" . $user->getVar('url') . "','new');","name"=>_MD_WWW);
         if($user->getVar('user_icq'))
-        $userbar[]= array("link"=>"javascript:void window.open('http://friend.qq.com/cgi-bin/friend/user_show_info?ln=" . $user->getVar('user_icq')."', 'new');", "name" => _MD_ICQ);
+        $userbar[]= array("link"=>"javascript:void window.open('http://friend.qq.com/cgi-bin/friend/user_show_info?ln=" . $user->getVar('user_icq')."','new');","name" => _MD_ICQ);
         if($user->getVar('user_aim'))
-        $userbar[]= array("link"=>"javascript:void window.open('aim:goim?screenname=" . $user->getVar('user_aim') . "&amp;message=Hi+" . $user->getVar('user_aim') . "+Are+you+there?" . "', 'new');", "name"=>_MD_AIM);
+        $userbar[]= array("link"=>"javascript:void window.open('aim:goim?screenname=" . $user->getVar('user_aim') . "&amp;message=Hi+" . $user->getVar('user_aim') . "+Are+you+there?" . "','new');","name"=>_MD_AIM);
         if($user->getVar('user_yim'))
-        $userbar[]= array("link"=>"javascript:void window.open('http://edit.yahoo.com/config/send_webmesg?.target=" . $user->getVar('user_yim') . "&.src=pg" . "', 'new');", "name"=> _MD_YIM);
+        $userbar[]= array("link"=>"javascript:void window.open('http://edit.yahoo.com/config/send_webmesg?.target=" . $user->getVar('user_yim') . "&.src=pg" . "','new');","name"=> _MD_YIM);
         if($user->getVar('user_msnm'))
-        $userbar[]= array("link"=>"javascript:void window.open('http://members.msn.com?mem=" . $user->getVar('user_msnm') . "', 'new');", "name" => _MD_MSNM);
+        $userbar[]= array("link"=>"javascript:void window.open('http://members.msn.com?mem=" . $user->getVar('user_msnm') . "','new');","name" => _MD_MSNM);
 		return $userbar;
     }
 }
