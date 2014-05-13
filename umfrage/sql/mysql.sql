@@ -27,7 +27,7 @@ CREATE TABLE umfrage_option (
 CREATE TABLE umfrage_desc (
   poll_id mediumint(8) unsigned NOT NULL auto_increment,
   question varchar(255) NOT NULL default '',
-  description tinytext NOT NULL default '',
+  description tinytext NOT NULL,
   user_id int(5) unsigned NOT NULL default '0',
   start_time int(10) unsigned NOT NULL default '0',
   end_time int(10) unsigned NOT NULL default '0',
