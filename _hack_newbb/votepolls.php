@@ -53,7 +53,7 @@ if (!empty($_POST['forum'])) {
 }
 
 $topicHandler = xoops_getModuleHandler('topic', 'newbb');
-$topic_obj = &$topicHandler->get($topic_id);
+$topic_obj    = $topicHandler->get($topic_id);
 if (!$topicHandler->getPermission($topic_obj->getVar('forum_id'), $topic_obj->getVar('topic_status'), 'vote')) {
     redirect_header('javascript:history.go(-1);', 2, _NOPERM);
 }

@@ -53,14 +53,14 @@ if (!empty($post_id)) {
     $forumtopic = &$topicHandler->getByMove($topic_id, 'prev' == $move ? -1 : 1, $forum_id);
     $topic_id = $forumtopic->getVar('topic_id');
 } else {
-    $forumtopic = &$topicHandler->get($topic_id);
+    $forumtopic = $topicHandler->get($topic_id);
 }
 if (!is_object($forumtopic) || !$topic_id = $forumtopic->getVar('topic_id')) {
     redirect_header('viewforum.php?forum=' . $forum_id, 2, _MD_ERRORTOPIC);
 }
 $forum_id = $forumtopic->getVar('forum_id');
 $forumHandler = xoops_getModuleHandler('forum', 'newbb');
-$viewtopic_forum = &$forumHandler->get($forum_id);
+$viewtopic_forum = $forumHandler->get($forum_id);
 
 $isadmin = newbb_isAdmin($viewtopic_forum);
 
@@ -181,7 +181,7 @@ $xoopsTpl->assign([
     ]);
 
 $categoryHandler = xoops_getModuleHandler('category');
-$category_obj = &$categoryHandler->get($viewtopic_forum->getVar('cat_id'), ['cat_title']);
+$category_obj    = $categoryHandler->get($viewtopic_forum->getVar('cat_id'), ['cat_title']);
 $xoopsTpl->assign('category', ['id' => $viewtopic_forum->getVar('cat_id'), 'title' => $category_obj->getVar('cat_title')]);
 
 $xoopsTpl->assign('folder_topic', newbb_displayImage($forumImage['folder_topic']));
@@ -258,7 +258,7 @@ if (count($userid_array) > 0) {
     $userHandler->setGroups($groups_disp);
     $userHandler->setStatus($online);
     foreach ($userid_array as $userid) {
-        $viewtopic_users[$userid] = &$userHandler->get($userid);
+        $viewtopic_users[$userid] = $userHandler->get($userid);
         if (!$viewtopic_forum->getVar('allow_sig')) {
             $viewtopic_users[$userid]['signature'] = '';
         }
@@ -271,11 +271,11 @@ if ($xoopsModuleConfig['allow_require_reply'] && $require_reply) {
     if (!empty($xoopsModuleConfig['cache_enabled'])) {
         $viewtopic_posters = newbb_getsession('t' . $topic_id, true);
         if (!is_array($viewtopic_posters) || 0 == count($viewtopic_posters)) {
-            $viewtopic_posters = &$topicHandler->getAllPosters($forumtopic);
+            $viewtopic_posters = $topicHandler->getAllPosters($forumtopic);
             newbb_setsession('t' . $topic_id, $viewtopic_posters);
         }
     } else {
-        $viewtopic_posters = &$topicHandler->getAllPosters($forumtopic);
+        $viewtopic_posters = $topicHandler->getAllPosters($forumtopic);
     }
 } else {
     $viewtopic_posters = [];
@@ -619,7 +619,7 @@ if (!empty($xoopsModuleConfig['quickreply_enabled'])
         }
         $editorHandler = new XoopsEditorHandler();
     }
-    $editor_object = &$editorHandler->get($quickform, $editor_configs, '', 1);
+    $editor_object = $editorHandler->get($quickform, $editor_configs, '', 1);
     $forum_form->addElement($editor_object, true);
 
     $forum_form->addElement(new XoopsFormHidden('dohtml', 0));

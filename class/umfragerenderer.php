@@ -82,7 +82,7 @@ class UmfrageRenderer
         return $content;
     }
 
-    public function assignForm(&$tpl)
+    public function assignForm($tpl)
     {
         $options_arr = &UmfrageOption::getAllByPollId($this->poll->getVar('poll_id'));
 
@@ -157,7 +157,7 @@ class UmfrageRenderer
         echo '</td></tr></table></div><br>';
     }
 
-    public function assignResults(&$tpl)
+    public function assignResults($tpl)
     {
         global $xoopsUser;
 

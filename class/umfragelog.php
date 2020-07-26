@@ -40,7 +40,7 @@ class UmfrageLog extends XoopsObject
     // constructor
     public function UmfrageLog($id = null)
     {
-        $this->db = &Database::getInstance();
+        $this->db = Database::getInstance();
 
         $this->initVar('log_id', XOBJ_DTYPE_INT, 0);
 
@@ -114,7 +114,7 @@ class UmfrageLog extends XoopsObject
     // public static
     public function &getAllByPollId($poll_id, $orderby = 'time ASC')
     {
-        $db = &Database::getInstance();
+        $db = Database::getInstance();
 
         $ret = [];
 
@@ -135,7 +135,7 @@ class UmfrageLog extends XoopsObject
     {
         global $xoopsModuleConfig;
 
-        $db = &Database::getInstance();
+        $db = Database::getInstance();
 
         $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id);
 
@@ -156,7 +156,7 @@ class UmfrageLog extends XoopsObject
             return false;
         }
 
-        list($count) = $db->fetchRow($db->query($sql));
+        [$count] = $db->fetchRow($db->query($sql));
 
         if ($count > 0) {
             return true;
@@ -168,7 +168,7 @@ class UmfrageLog extends XoopsObject
     // public static
     public function deleteByPollId($poll_id)
     {
-        $db = &Database::getInstance();
+        $db =Database::getInstance();
 
         $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_log'), intval($poll_id));
 
@@ -182,7 +182,7 @@ class UmfrageLog extends XoopsObject
     // public static
     public function deleteByOptionId($option_id)
     {
-        $db = &Database::getInstance();
+        $db =Database::getInstance();
 
         $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $db->prefix('umfrage_log'), intval($option_id));
 
@@ -196,7 +196,7 @@ class UmfrageLog extends XoopsObject
     // public static
     public function getTotalVotersByPollId($poll_id)
     {
-        $db = &Database::getInstance();
+        $db =Database::getInstance();
 
         $sql = 'SELECT DISTINCT user_id FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . ' AND user_id > 0';
 
@@ -212,11 +212,11 @@ class UmfrageLog extends XoopsObject
     // public static
     public function getTotalVotesByPollId($poll_id)
     {
-        $db = &Database::getInstance();
+        $db =Database::getInstance();
 
         $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id = ' . intval($poll_id);
 
-        list($votes) = $db->fetchRow($db->query($sql));
+        [$votes] = $db->fetchRow($db->query($sql));
 
         return $votes;
     }
@@ -224,11 +224,11 @@ class UmfrageLog extends XoopsObject
     // public static
     public function getTotalVotesByOptionId($option_id)
     {
-        $db = &Database::getInstance();
+        $db =Database::getInstance();
 
         $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE option_id = ' . intval($option_id);
 
-        list($votes) = $db->fetchRow($db->query($sql));
+        [$votes] = $db->fetchRow($db->query($sql));
 
         return $votes;
     }

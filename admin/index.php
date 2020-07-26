@@ -273,9 +273,9 @@ if ($op == "edit") {
 	$polltype_select->addOptionArray($polltype_array);
 	$poll_form->addElement($polltype_select);
 
-	$option_tray = new XoopsFormElementTray(_AM_POLLOPTIONS, "");
-	$barcolor_array = & XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH."/modules/umfrage/images/colorbars/");
-	$i = 0;
+	$option_tray    = new XoopsFormElementTray(_AM_POLLOPTIONS, "");
+	$barcolor_array = XoopsLists:: getImgListAsArray(XOOPS_ROOT_PATH . "/modules/umfrage/images/colorbars/");
+	$i              = 0;
 	foreach ($options_arr as $option) {
 		$option_text = new XoopsFormText("", "option_text[]", 50, 255, $option->getVar("option_text"));
 		$option_tray->addElement($option_text);
@@ -366,8 +366,8 @@ if ($op == "addmore") {
 	$poll_form = new XoopsThemeForm(_AM_ADDMORE, "poll_form", "index.php");
 	$question_label = new XoopsFormLabel(_AM_POLLQUESTION, $poll->getVar("question"));
 	$poll_form->addElement($question_label);
-	$option_tray = new XoopsFormElementTray(_AM_POLLOPTIONS, "");
-	$barcolor_array = & XoopsLists :: getImgListAsArray(XOOPS_ROOT_PATH."/modules/umfrage/images/colorbars/");
+	$option_tray    = new XoopsFormElementTray(_AM_POLLOPTIONS, "");
+	$barcolor_array = XoopsLists:: getImgListAsArray(XOOPS_ROOT_PATH . "/modules/umfrage/images/colorbars/");
 	for ($i = 0; $i < 10; $i ++) {
 		$current_bar = current($barcolor_array) != "blank.gif" ? current($barcolor_array) : next($barcolor_array);
 		$option_text = new XoopsFormText("", "option_text[]", 50, 255);

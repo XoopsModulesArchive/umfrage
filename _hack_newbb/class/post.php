@@ -544,12 +544,12 @@ class NewbbPostHandler extends ArtObjectHandler
         return $ret;
     }
 
-    public function getPostForPDF(&$post)
+    public function getPostForPDF($post)
     {
         return $post->getPostBody(true);
     }
 
-    public function getPostForPrint(&$post)
+    public function getPostForPrint($post)
     {
         return $post->getPostBody();
     }
@@ -569,7 +569,7 @@ class NewbbPostHandler extends ArtObjectHandler
         $post->setVar('approved', 1);
         $this->insert($post, true);
         $topicHandler = xoops_getModuleHandler('topic', 'newbb');
-        $topic_obj = &$topicHandler->get($post->getVar('topic_id'));
+        $topic_obj    = $topicHandler->get($post->getVar('topic_id'));
         if ($topic_obj->getVar('topic_last_post_id') < $post->getVar('post_id')) {
             $topic_obj->setVar('topic_last_post_id', $post->getVar('post_id'));
         }
@@ -580,7 +580,7 @@ class NewbbPostHandler extends ArtObjectHandler
         }
         $topicHandler->insert($topic_obj, true);
         $forumHandler = xoops_getModuleHandler('forum', 'newbb');
-        $forum_obj = &$forumHandler->get($post->getVar('forum_id'));
+        $forum_obj    = $forumHandler->get($post->getVar('forum_id'));
         if ($forum_obj->getVar('forum_last_post_id') < $post->getVar('post_id')) {
             $forum_obj->setVar('forum_last_post_id', $post->getVar('post_id'));
         }
@@ -624,7 +624,7 @@ class NewbbPostHandler extends ArtObjectHandler
         $topicHandler = xoops_getModuleHandler('topic', 'newbb');
         // Verify the topic ID
         if ($topic_id = $post->getVar('topic_id')) {
-            $topic_obj = &$topicHandler->get($topic_id);
+            $topic_obj = $topicHandler->get($topic_id);
             // Invalid topic OR the topic is no approved and the post is not top post
             if (!$topic_obj
             //  || (!$post->isTopic() && $topic_obj->getVar("approved") < 1)
@@ -699,7 +699,7 @@ class NewbbPostHandler extends ArtObjectHandler
                     return false;
                 }
             }
-            $text_obj = &$textHandler->get($post->getVar('post_id'));
+            $text_obj = $textHandler->get($post->getVar('post_id'));
             $text_obj->setDirty();
             foreach ($post_text_vars as $key) {
                 $text_obj->vars[$key] = $post->vars[$key];
@@ -752,7 +752,7 @@ class NewbbPostHandler extends ArtObjectHandler
         return true;
     }
 
-    public function _delete(&$post, $force = false)
+    public function _delete($post, $force = false)
     {
         global $xoopsModule, $xoopsConfig;
         static $forum_lastpost = [];
@@ -788,7 +788,7 @@ class NewbbPostHandler extends ArtObjectHandler
 
         if ($post->isTopic()) {
             $topicHandler = xoops_getModuleHandler('topic', 'newbb');
-            $topic_obj = &$topicHandler->get($post->getVar('topic_id'));
+            $topic_obj    = $topicHandler->get($post->getVar('topic_id'));
             if (is_object($topic_obj) && $topic_obj->getVar('approved') > 0 && empty($force)) {
                 $topiccount_toupdate = 1;
                 $topic_obj->setVar('approved', -1);

@@ -40,7 +40,7 @@ class Umfrage extends XoopsObject
     //constructor
     public function Umfrage($id = null)
     {
-        $this->db = &Database::getInstance();
+        $this->db = Database::getInstance();
 
         $this->initVar('poll_id', XOBJ_DTYPE_INT, null, false);
 
@@ -159,7 +159,7 @@ class Umfrage extends XoopsObject
     // private, static
     public function &getAll($criteria = [], $asobject = true, $orderby = 'end_time DESC', $limit = 0, $start = 0)
     {
-        $db = &Database::getInstance();
+        $db = Database::getInstance();
 
         $ret = [];
 
@@ -273,7 +273,7 @@ class Umfrage extends XoopsObject
 
         // ISegura.es: Send mesage to user if requested.
         if ($user and 1 == $this->getVar('mail_voter')) {
-            $xoopsMailer = &getMailer();
+            $xoopsMailer = getMailer();
 
             $xoopsMailer->useMail();
 

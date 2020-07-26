@@ -105,7 +105,7 @@ if (isset($_POST['submit'])) {
         //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
         $postHandler = xoops_getModuleHandler('post', 'newbb');
 
-        $newtopic_obj = &$topicHandler->get($newtopic);
+        $newtopic_obj = $topicHandler->get($newtopic);
 
         /* return false if destination topic is newer or not existing */
 

@@ -75,11 +75,11 @@ if (!is_object($umfrage) || !$umfrage->getVar('isactive')) {
 
 require XOOPS_ROOT_PATH . '/header.php';
 
-$topicHandler = xoops_getModuleHandler('topic', 'newbb');
-$forumtopic = &$topicHandler->get($topic_id);
-$forum = $forumtopic->getVar('forum_id');
-$forumHandler = xoops_getModuleHandler('forum', 'newbb');
-$viewtopic_forum = &$forumHandler->get($forum);
+$topicHandler    = xoops_getModuleHandler('topic', 'newbb');
+$forumtopic      = $topicHandler->get($topic_id);
+$forum           = $forumtopic->getVar('forum_id');
+$forumHandler    = xoops_getModuleHandler('forum', 'newbb');
+$viewtopic_forum = $forumHandler->get($forum);
 if (!$forumHandler->getPermission($viewtopic_forum)) {
     redirect_header('index.php', 2, _MD_NORIGHTTOACCESS);
 
@@ -357,7 +357,7 @@ if ('edit' == $op) {
 
     $option_tray = new XoopsFormElementTray(_MD_POLL_POLLOPTIONS, '');
 
-    $barcolor_array = &XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
+    $barcolor_array = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
 
     $i = 0;
 
@@ -525,7 +525,7 @@ if ('addmore' == $op) {
 
     $option_tray = new XoopsFormElementTray(_MD_POLL_POLLOPTIONS, '');
 
-    $barcolor_array = &XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
+    $barcolor_array = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
 
     for ($i = 0; $i < 10; $i++) {
         $current_bar = 'blank.gif' != current($barcolor_array) ? current($barcolor_array) : next($barcolor_array);

@@ -126,7 +126,7 @@ if (empty($poll_id)) {
         if ($polls_arr[$i]->hasExpired() && POLL_MAILED != $polls_arr[$i]->getVar('mail_status')) {
             $polls_mail = &Umfrage::getAll(['poll_id=' . $polls['pollId']], true, 'weight ASC, end_time DESC');
 
-            $xoopsMailer = &getMailer();
+            $xoopsMailer = getMailer();
 
             $xoopsMailer->useMail();
 

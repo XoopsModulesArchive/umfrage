@@ -63,7 +63,7 @@ function newbb_message($message)
     }
 }
 
-function &newbb_load_config()
+function newbb_load_config()
 {
     static $moduleConfig;
 

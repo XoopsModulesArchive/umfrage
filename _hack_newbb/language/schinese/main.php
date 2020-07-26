@@ -473,7 +473,7 @@ class User_language extends User
         $this->User($user);
     }
 
-    public function &getUserbar()
+    public function getUserbar()
     {
         global $xoopsModuleConfig, $xoopsUser, $isadmin;
 
