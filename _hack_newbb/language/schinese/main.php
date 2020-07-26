@@ -470,13 +470,13 @@ require_once XOOPS_ROOT_PATH . '/modules/newbb/class/user.php';
 /**
  * Class User_language
  */
-class User_language extends User
+class User_language extends \User
 {
     /**
      * User_language constructor.
      * @param $user
      */
-    public function __construct(&$user)
+    public function __construct($user)
     {
         parent::__construct($user);
     }
