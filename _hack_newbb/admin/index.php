@@ -62,7 +62,7 @@ function newbb_admin_getPathStatus($path)
 function newbb_admin_mkdir($target, $mode = 0777)
 {
     // http://www.php.net/manual/en/function.mkdir.php
-    return is_dir($target) or (newbb_admin_mkdir(dirname($target), $mode) and mkdir($target, $mode));
+    return is_dir($target) or (newbb_admin_mkdir(dirname($target), $mode) && !mkdir($target, $mode) && !is_dir($target));
 }
 
 /**
