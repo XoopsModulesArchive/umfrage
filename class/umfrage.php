@@ -39,7 +39,6 @@ require_once XOOPS_ROOT_PATH . '/kernel/object.php';
 class Umfrage extends \XoopsObject
 {
     public $db;
-
     //constructor
 
     /**
@@ -48,7 +47,7 @@ class Umfrage extends \XoopsObject
      */
     public function __construct($id = null)
     {
-        $this->db = Database::getInstance();
+        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
 
         $this->initVar('poll_id', XOBJ_DTYPE_INT, null, false);
 
@@ -117,9 +116,21 @@ class Umfrage extends \XoopsObject
         if (empty($poll_id)) {
             $poll_id = $this->db->genId($this->db->prefix('umfrage_desc') . '_poll_id_seq');
 
-            $sql = 'INSERT INTO ' . $this->db->prefix('umfrage_desc') . " (poll_id, question, description, user_id, start_time, end_time, votes, voters, display, weight, multiple, multilimit, mail_status, mail_voter, polltype, autoblockremove) VALUES ($poll_id, " . $this->db->quoteString($question) . ', ' . $this->db->quoteString($description) . ", $user_id, $start_time, $end_time, 0, 0, $display, $weight, $multiple, $multilimit, $mail_status, $mail_voter, $polltype, $autoblockremove)";
+            $sql = 'INSERT INTO '
+                   . $this->db->prefix('umfrage_desc')
+                   . " (poll_id, question, description, user_id, start_time, end_time, votes, voters, display, weight, multiple, multilimit, mail_status, mail_voter, polltype, autoblockremove) VALUES ($poll_id, "
+                   . $this->db->quoteString($question)
+                   . ', '
+                   . $this->db->quoteString($description)
+                   . ", $user_id, $start_time, $end_time, 0, 0, $display, $weight, $multiple, $multilimit, $mail_status, $mail_voter, $polltype, $autoblockremove)";
         } else {
-            $sql = 'UPDATE ' . $this->db->prefix('umfrage_desc') . ' SET question=' . $this->db->quoteString($question) . ', description=' . $this->db->quoteString($description) . ", start_time=$start_time, end_time=$end_time, display=$display, weight=$weight, multiple=$multiple, multilimit=$multilimit, mail_status=$mail_status, mail_voter=$mail_voter, polltype=$polltype, autoblockremove=$autoblockremove WHERE poll_id=$poll_id";
+            $sql = 'UPDATE '
+                   . $this->db->prefix('umfrage_desc')
+                   . ' SET question='
+                   . $this->db->quoteString($question)
+                   . ', description='
+                   . $this->db->quoteString($description)
+                   . ", start_time=$start_time, end_time=$end_time, display=$display, weight=$weight, multiple=$multiple, multilimit=$multilimit, mail_status=$mail_status, mail_voter=$mail_voter, polltype=$polltype, autoblockremove=$autoblockremove WHERE poll_id=$poll_id";
         }
 
         //echo "<br>$sql<br>";
@@ -192,7 +203,7 @@ class Umfrage extends \XoopsObject
      */
     public static function &getAll($criteria = [], $asobject = true, $orderby = 'end_time DESC', $limit = 0, $start = 0)
     {
-        $db = Database::getInstance();
+        $db = XoopsDatabaseFactory::getDatabaseConnection();
 
         $ret = [];
 

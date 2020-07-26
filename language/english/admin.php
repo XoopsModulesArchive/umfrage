@@ -41,11 +41,14 @@ define('_AM_POLLTYPE', 'Polltype');
 define('_AM_POLLTYPE1', 'Normal poll');
 define('_AM_POLLTYPE2', 'Blind poll, result hidden');
 define('_AM_POLLTYPE3', 'Blind poll, result visible');
-define('_AM_POLLINFO', '<table>
+define(
+    '_AM_POLLINFO',
+    '<table>
    <tr><td>Project site:</td><td><a href="http://sourceforge.net/projects/umfrage">http://sourceforge.net/projects/umfrage</a></td></tr>
    <tr><td>Bug reporting:</td><td><a href="http://sourceforge.net/tracker/?group_id=208418&atid=1005616">http://sourceforge.net/tracker/?group_id=208418&atid=1005616</a><br></td></tr>
    <tr><td>Feature Requests:</td><td><a href="http://sourceforge.net/tracker/?group_id=208418&atid=1005619">http://sourceforge.net/tracker/?group_id=208418&atid=1005619</a><br></td></tr>
-</table>');
+</table>'
+);
 
 // wellwine
 define('_AM_LOGID', 'Log ID');

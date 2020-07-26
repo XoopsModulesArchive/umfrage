@@ -37,7 +37,8 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 if (defined('NEWBB_FUNCTIONS_INI')) {
     return;
-} define('NEWBB_FUNCTIONS_INI', 1);
+}
+define('NEWBB_FUNCTIONS_INI', 1);
 
 require_once XOOPS_ROOT_PATH . '/Frameworks/art/functions.php';
 
@@ -226,42 +227,42 @@ function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
     $usertimestamp = xoops_getUserTimestamp($time, $timeoffset);
 
     switch (mb_strtolower($format)) {
-    case 's':
+        case 's':
             $datestring = _SHORTDATESTRING;
 
-           break;
-    case 'm':
+            break;
+        case 'm':
             $datestring = _MEDIUMDATESTRING;
 
-           break;
-    case 'mysql':
+            break;
+        case 'mysql':
             $datestring = 'Y-m-d H:i:s';
 
-           break;
-    case 'rss':
+            break;
+        case 'rss':
             $datestring = 'r';
 
-           break;
-    case 'l':
+            break;
+        case 'l':
             $datestring = _DATESTRING;
 
-           break;
-    case 'c':
-            case 'custom':
-            default:
+            break;
+        case 'c':
+        case 'custom':
+        default:
             newbb_load_lang_file('main', 'newbb');
-        $current_timestamp = xoops_getUserTimestamp(time(), $timeoffset);
-        if (date('Ymd', $usertimestamp) == date('Ymd', $current_timestamp)) {
-            $datestring = _MD_TODAY;
-        } elseif (date('Ymd', $usertimestamp + 24 * 60 * 60) == date('Ymd', $current_timestamp)) {
-            $datestring = _MD_YESTERDAY;
-        } elseif (date('Y', $usertimestamp) == date('Y', $current_timestamp)) {
-            $datestring = _MD_MONTHDAY;
-        } else {
-            $datestring = _MD_YEARMONTHDAY;
-        }
+            $current_timestamp = xoops_getUserTimestamp(time(), $timeoffset);
+            if (date('Ymd', $usertimestamp) == date('Ymd', $current_timestamp)) {
+                $datestring = _MD_TODAY;
+            } elseif (date('Ymd', $usertimestamp + 24 * 60 * 60) == date('Ymd', $current_timestamp)) {
+                $datestring = _MD_YESTERDAY;
+            } elseif (date('Y', $usertimestamp) == date('Y', $current_timestamp)) {
+                $datestring = _MD_MONTHDAY;
+            } else {
+                $datestring = _MD_YEARMONTHDAY;
+            }
 
-           break;
+            break;
     }
 
     return date($datestring, $usertimestamp);

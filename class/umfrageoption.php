@@ -39,7 +39,6 @@ require_once XOOPS_ROOT_PATH . '/kernel/object.php';
 class UmfrageOption extends \XoopsObject
 {
     public $db;
-
     // constructor
 
     /**
@@ -48,7 +47,7 @@ class UmfrageOption extends \XoopsObject
      */
     public function __construct($id = null)
     {
-        $this->db = Database::getInstance();
+        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
 
         $this->initVar('option_id', XOBJ_DTYPE_INT, null, false);
 
@@ -154,7 +153,7 @@ class UmfrageOption extends \XoopsObject
      */
     public static function &getAllByPollId($poll_id)
     {
-        $db = Database::getInstance();
+        $db = XoopsDatabaseFactory::getDatabaseConnection();
 
         $ret = [];
 
@@ -178,7 +177,7 @@ class UmfrageOption extends \XoopsObject
      */
     public static function deleteByPollId($poll_id)
     {
-        $db = Database::getInstance();
+        $db = XoopsDatabaseFactory::getDatabaseConnection();
 
         $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_option'), (int)$poll_id);
 
@@ -197,7 +196,7 @@ class UmfrageOption extends \XoopsObject
      */
     public static function resetCountByPollId($poll_id)
     {
-        $db = Database::getInstance();
+        $db = XoopsDatabaseFactory::getDatabaseConnection();
 
         $sql = 'UPDATE ' . $db->prefix('umfrage_option') . ' SET option_count=0 WHERE poll_id=' . (int)$poll_id;
 

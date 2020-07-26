@@ -52,7 +52,7 @@ function hasVoted($poll_id)
             $uid = null;
         }
 
-        if (UmfrageLog :: hasVoted($poll_id, xoops_getenv('REMOTE_ADDR'), $uid)) {
+        if (UmfrageLog:: hasVoted($poll_id, xoops_getenv('REMOTE_ADDR'), $uid)) {
             if (!headers_sent()) {
                 setcookie("voted_polls[$poll_id]", 1, 0);
             }
@@ -108,7 +108,7 @@ function b_umfrage_show($opts)
 
     $block = [];
 
-    $polls = &Umfrage :: getAll(['display=1'], true, 'weight ASC, end_time DESC');
+    $polls = &Umfrage:: getAll(['display=1'], true, 'weight ASC, end_time DESC');
 
     $count = count($polls);
 
@@ -132,7 +132,7 @@ function b_umfrage_show($opts)
     $block['csspath'] = XOOPS_URL . '/modules/umfrage/templates';
 
     for ($i = 0; $i < $count; $i++) {
-        $options_arr = &UmfrageOption :: getAllByPollId($polls[$i]->getVar('poll_id'));
+        $options_arr = &UmfrageOption:: getAllByPollId($polls[$i]->getVar('poll_id'));
 
         $expired = $polls[$i]->hasExpired() ? 1 : 0;
 
@@ -172,15 +172,15 @@ function b_umfrage_show($opts)
             }
 
             $poll = [
-'expired' => $expired,
-                'id' => $polls[$i]->getVar('poll_id'),
-                'question' => $polls[$i]->getVar('question'),
-                'options' => $options,
-                'hasVoted' => hasVoted($polls[$i]->getVar('poll_id')) ? 1 : 0,
-                'poll_end' => $poll_end,
-                'polltype' => $polls[$i]->getVar('polltype'),
+                'expired'     => $expired,
+                'id'          => $polls[$i]->getVar('poll_id'),
+                'question'    => $polls[$i]->getVar('question'),
+                'options'     => $options,
+                'hasVoted'    => hasVoted($polls[$i]->getVar('poll_id')) ? 1 : 0,
+                'poll_end'    => $poll_end,
+                'polltype'    => $polls[$i]->getVar('polltype'),
                 'lang_result' => $lang_results,
-];
+            ];
         } else {
             $option_type = 'radio';
 
@@ -197,17 +197,17 @@ function b_umfrage_show($opts)
             }
 
             $poll = [
-'expired' => $expired,
-                'id' => $polls[$i]->getVar('poll_id'),
-                'question' => $polls[$i]->getVar('question'),
+                'expired'     => $expired,
+                'id'          => $polls[$i]->getVar('poll_id'),
+                'question'    => $polls[$i]->getVar('question'),
                 'option_type' => $option_type,
                 'option_name' => $option_name,
-                'options' => $options,
-                'hasVoted' => hasVoted($polls[$i]->getVar('poll_id')) ? 1 : 0,
-                'poll_end' => $poll_end,
-                'polltype' => $polls[$i]->getVar('polltype'),
+                'options'     => $options,
+                'hasVoted'    => hasVoted($polls[$i]->getVar('poll_id')) ? 1 : 0,
+                'poll_end'    => $poll_end,
+                'polltype'    => $polls[$i]->getVar('polltype'),
                 'lang_result' => $lang_results,
-];
+            ];
         }
 
         $block['polls'][] = &$poll;

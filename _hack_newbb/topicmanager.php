@@ -50,8 +50,8 @@ if (!$topic_id) {
 }
 
 $topicHandler = xoops_getModuleHandler('topic', 'newbb');
-$forum = $topicHandler->get($topic_id, 'forum_id');
-$forum_new = !empty($newtopic) ? $topicHandler->get($newtopic, 'forum_id') : 0;
+$forum        = $topicHandler->get($topic_id, 'forum_id');
+$forum_new    = !empty($newtopic) ? $topicHandler->get($newtopic, 'forum_id') : 0;
 
 $forumHandler = xoops_getModuleHandler('forum', 'newbb');
 if (!$forumHandler->getPermission($forum, 'moderate')
@@ -72,18 +72,18 @@ if ($xoopsModuleConfig['wol_enabled']) {
 $action_array = ['merge', 'delete', 'move', 'lock', 'unlock', 'sticky', 'unsticky', 'digest', 'undigest'];
 foreach ($action_array as $_action) {
     $action[$_action] = [
-        'name' => $_action,
-        'desc' => constant(mb_strtoupper('_MD_DESC_' . $_action)),
+        'name'   => $_action,
+        'desc'   => constant(mb_strtoupper('_MD_DESC_' . $_action)),
         'submit' => constant(mb_strtoupper('_MD_' . $_action)),
-        'sql' => 'topic_' . $_action . '=1',
-        'msg' => constant(mb_strtoupper('_MD_TOPIC' . $_action)),
+        'sql'    => 'topic_' . $_action . '=1',
+        'msg'    => constant(mb_strtoupper('_MD_TOPIC' . $_action)),
     ];
 }
-$action['lock']['sql'] = 'topic_status = 1';
-$action['unlock']['sql'] = 'topic_status = 0';
+$action['lock']['sql']     = 'topic_status = 1';
+$action['unlock']['sql']   = 'topic_status = 0';
 $action['unsticky']['sql'] = 'topic_sticky = 0';
 $action['undigest']['sql'] = 'topic_digest = 0';
-$action['digest']['sql'] = 'topic_digest = 1, digest_time = ' . time();
+$action['digest']['sql']   = 'topic_digest = 1, digest_time = ' . time();
 
 // Disable cache
 $xoopsConfig['module_cache'][$xoopsModule->getVar('mid')] = 0;
@@ -169,10 +169,7 @@ if (isset($_POST['submit'])) {
 
         $result = $xoopsDB->queryF($sql);
 
-        echo $action[$mode]['msg'] .
-                "<p><a href='viewtopic.php?topic_id=$newtopic'>" . _MD_VIEWTHETOPIC . '</a></p>' .
-                "<p><a href='viewforum.php?forum=$forum'>" . _MD_RETURNTOTHEFORUM . '</a></p>' .
-                "<p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
+        echo $action[$mode]['msg'] . "<p><a href='viewtopic.php?topic_id=$newtopic'>" . _MD_VIEWTHETOPIC . '</a></p>' . "<p><a href='viewforum.php?forum=$forum'>" . _MD_RETURNTOTHEFORUM . '</a></p>' . "<p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
     } elseif ($mode == 'move') {
         if ($newforum > 0) {
             $sql = sprintf('UPDATE %s SET forum_id = %u WHERE topic_id = %u', $xoopsDB->prefix('bb_topics'), $newforum, $topic_id);

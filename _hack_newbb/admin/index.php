@@ -152,7 +152,7 @@ switch ($op) {
         $msg = $res ? _AM_NEWBB_DIRCREATED : _AM_NEWBB_DIRNOTCREATED;
         redirect_header('index.php', 2, $msg . ': ' . $path);
 
-       exit();
+        exit();
         break;
     case 'setperm':
         if (isset($_GET['path'])) {
@@ -162,18 +162,18 @@ switch ($op) {
         $msg = $res ? _AM_NEWBB_PERMSET : _AM_NEWBB_PERMNOTSET;
         redirect_header('index.php', 2, $msg . ': ' . $path);
 
-       exit();
+        exit();
         break;
     case 'senddigest':
         $digestHandler = xoops_getModuleHandler('digest', 'newbb');
-        $res = $digestHandler->process(true);
-        $msg = $res ? _AM_NEWBB_DIGEST_FAILED : _AM_NEWBB_DIGEST_SENT;
+        $res           = $digestHandler->process(true);
+        $msg           = $res ? _AM_NEWBB_DIGEST_FAILED : _AM_NEWBB_DIGEST_SENT;
         redirect_header('index.php', 2, $msg);
 
-       exit();
+        exit();
         break;
     case 'default':
-        default:
+    default:
         xoops_cp_header();
 
         loadModuleAdminMenu(0, 'Index');
@@ -183,7 +183,7 @@ switch ($op) {
 
         echo "<div style='padding: 12px;'>" . _AM_NEWBB_POLLMODULE . ': ';
         $moduleHandler = xoops_getHandler('module');
-        $umfrage = $moduleHandler->getByDirname('umfrage');
+        $umfrage       = $moduleHandler->getByDirname('umfrage');
         if (is_object($umfrage)) {
             $isOK = $umfrage->getVar('isactive');
         } else {
@@ -228,7 +228,7 @@ switch ($op) {
         echo $attach_path . ' ( ' . $path_status . ' )';
 
         echo '<br>' . _AM_NEWBB_THUMBPATH . ': ';
-        $thumb_path = $attach_path . 'thumbs/'; // be careful
+        $thumb_path  = $attach_path . 'thumbs/'; // be careful
         $path_status = newbb_admin_getPathStatus($thumb_path);
         echo $thumb_path . ' ( ' . $path_status . ' )';
 
@@ -255,7 +255,7 @@ switch ($op) {
 
             echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_DIGEST . '</legend>';
 
-            $due = $digestHandler->checkStatus() / 60; // minutes
+            $due    = $digestHandler->checkStatus() / 60; // minutes
             $prompt = $due > 0 ? sprintf(_AM_NEWBB_DIGEST_PAST, $due) : sprintf(_AM_NEWBB_DIGEST_NEXT, abs($due));
 
             echo "<div style='padding: 12px;'><a href='index.php?op=senddigest'>" . $prompt . '</a> | ';
@@ -280,5 +280,5 @@ switch ($op) {
 
         xoops_cp_footer();
 
-       break;
+        break;
 }

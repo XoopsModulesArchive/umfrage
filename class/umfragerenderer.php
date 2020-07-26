@@ -42,7 +42,6 @@ class UmfrageRenderer
     // private
     // Umfrage class object
     public $poll;
-
     // constructor
 
     /**
@@ -123,7 +122,17 @@ class UmfrageRenderer
 
         //$tpl->assign('poll', array('question' => $this->poll->getVar("question"), 'pollId' => $this->poll->getVar("poll_id"), 'viewresults' => XOOPS_URL."/modules/umfrage/pollresults.php?poll_id=".$this->poll->getVar("poll_id"), 'action' => XOOPS_URL."/modules/umfrage/index.php", 'options' => $options));
         // wellwine
-        $tpl->assign('poll', ['description' => $this->poll->getVar('description'), 'question' => $this->poll->getVar('question'), 'pollId' => $this->poll->getVar('poll_id'), 'viewresults' => XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id'), 'action' => XOOPS_URL . '/modules/umfrage/index.php', 'options' => $options, 'polltype' => $this->poll->getVar('polltype')]);
+        $tpl->assign('poll',
+                     [
+                         'description' => $this->poll->getVar('description'),
+                         'question'    => $this->poll->getVar('question'),
+                         'pollId'      => $this->poll->getVar('poll_id'),
+                         'viewresults' => XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id'),
+                         'action'      => XOOPS_URL . '/modules/umfrage/index.php',
+                         'options'     => $options,
+                         'polltype'    => $this->poll->getVar('polltype'),
+                     ]
+        );
     }
 
     // public
@@ -222,6 +231,16 @@ class UmfrageRenderer
 
         //$tpl->assign('poll', array('question' => $this->poll->getVar("question"),'end_text' => $end_text,'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar("voters")),'vote' => $vote, 'options' => $options));
         // wellwine
-        $tpl->assign('poll', ['description' => $this->poll->getVar('description'), 'question' => $this->poll->getVar('question'), 'end_text' => $end_text, 'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')), 'vote' => $vote, 'options' => $options]);
+        $tpl->assign('poll',
+                     [
+                         'description' => $this->poll->getVar('description'),
+                         'question'    => $this->poll->getVar('question'),
+                         'end_text'    => $end_text,
+                         'totalVotes'  => sprintf(_PL_TOTALVOTES, $total),
+                         'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')),
+                         'vote'        => $vote,
+                         'options'     => $options,
+                     ]
+        );
     }
 }

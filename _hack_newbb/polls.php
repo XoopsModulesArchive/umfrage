@@ -89,16 +89,15 @@ if (!$topicHandler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_s
 }
 
 $isadmin = newbb_isAdmin($viewtopic_forum);
-$perm = false;
+$perm    = false;
 if ($isadmin) {
     $perm = true;
 } elseif ($topicHandler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), 'addpoll')
-    && $viewtopic_forum->getVar('allow_polls') == 1
-) {
-    if (($op == 'add' || $op == 'save') &&
-        !$forumtopic->getVar('topic_haspoll') &&
-        is_object($xoopsUser) && $xoopsUser->getVar('uid') == $forumtopic->getVar('topic_poster')
-    ) {
+          && $viewtopic_forum->getVar('allow_polls') == 1) {
+    if (($op == 'add' || $op == 'save')
+        && !$forumtopic->getVar('topic_haspoll')
+        && is_object($xoopsUser)
+        && $xoopsUser->getVar('uid') == $forumtopic->getVar('topic_poster')) {
         $perm = true;
     } elseif (!empty($poll_id)) {
         $poll = new Umfrage($poll_id);
@@ -294,12 +293,10 @@ if ($op == 'save') {
         xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
     } else {
         newbb_message($poll->getHtmlErrors());
-
         //exit();
     }
 
     redirect_header("viewtopic.php?topic_id=$topic_id", 1, _MD_POLL_DBUPDATED);
-
     //exit();
 }
 
@@ -507,7 +504,6 @@ if ($op == 'update') {
     xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
     redirect_header("viewtopic.php?topic_id=$topic_id", 1, _MD_POLL_DBUPDATED);
-
     //exit();
 }
 
@@ -627,7 +623,6 @@ if ($op == 'savemore') {
     xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
     redirect_header('polls.php?op=edit&amp;poll_id=' . $poll->getVar('poll_id') . '&amp;topic_id=' . $topic_id, 1, _MD_POLL_DBUPDATED);
-
     //exit();
 }
 
@@ -666,7 +661,6 @@ if ($op == 'delete_ok') {
     }
 
     redirect_header("viewtopic.php?topic_id=$topic_id", 1, _MD_POLL_DBUPDATED);
-
     //exit();
 }
 
@@ -753,7 +747,6 @@ if ($op == 'restart_ok') {
     xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
     redirect_header("viewtopic.php?topic_id=$topic_id", 1, _MD_POLL_DBUPDATED);
-
     //exit();
 }
 
