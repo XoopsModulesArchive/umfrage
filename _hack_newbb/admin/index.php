@@ -194,21 +194,21 @@ switch ($op) {
         echo "<div style='padding: 8px;'>";
         echo "<a href='http://www.imagemagick.org' target='_blank'>" . _AM_NEWBB_IMAGEMAGICK . '&nbsp;</a>';
         if (array_key_exists('imagemagick', $imageLibs)) {
-            echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['imagemagick'] . '</font></strong>';
+            echo "<strong><span style=\"color: green; \">" . _AM_NEWBB_AUTODETECTED . $imageLibs['imagemagick'] . '</span></strong>';
         } else {
             echo _AM_NEWBB_NOTAVAILABLE;
         }
         echo '<br>';
         echo "<a href='http://sourceforge.net/projects/netpbm' target='_blank'>NetPBM:&nbsp;</a>";
         if (array_key_exists('netpbm', $imageLibs)) {
-            echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['netpbm'] . '</font></strong>';
+            echo "<strong><span style=\"color: green; \">" . _AM_NEWBB_AUTODETECTED . $imageLibs['netpbm'] . '</span></strong>';
         } else {
             echo _AM_NEWBB_NOTAVAILABLE;
         }
         echo '<br>';
         echo _AM_NEWBB_GDLIB1 . '&nbsp;';
         if (array_key_exists('gd1', $imageLibs)) {
-            echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['gd1'] . '</font></strong>';
+            echo "<strong><span style=\"color: green; \">" . _AM_NEWBB_AUTODETECTED . $imageLibs['gd1'] . '</span></strong>';
         } else {
             echo _AM_NEWBB_NOTAVAILABLE;
         }
@@ -216,7 +216,7 @@ switch ($op) {
         echo '<br>';
         echo _AM_NEWBB_GDLIB2 . '&nbsp;';
         if (array_key_exists('gd2', $imageLibs)) {
-            echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['gd2'] . '</font></strong>';
+            echo "<strong><span style=\"color: green; \">" . _AM_NEWBB_AUTODETECTED . $imageLibs['gd2'] . '</span></strong>';
         } else {
             echo _AM_NEWBB_NOTAVAILABLE;
         }

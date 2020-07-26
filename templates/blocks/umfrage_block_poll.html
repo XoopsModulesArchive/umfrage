@@ -37,7 +37,9 @@
     <{foreach item=option from=$poll.options}>
     <tr class="<{cycle values="polleven,pollodd"}>">
 	<{if ! $poll.hasVoted && ! $block.notregistered}>
-	      <td align="center"><input type="<{$poll.option_type}>" name="<{$poll.option_name}>" value="<{$option.id}>"></td>
+	      <td align="center"><label>
+              <input type="<{$poll.option_type}>" name="<{$poll.option_name}>" value="<{$option.id}>">
+          </label></td>
 	<{else}>
 		<td align="left">*&nbsp;</td>
 	<{/if}>
