@@ -112,7 +112,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function &getAllByPollId($poll_id, $orderby = 'time ASC')
+    public static function &getAllByPollId($poll_id, $orderby = 'time ASC')
     {
         $db = Database::getInstance();
 
@@ -131,7 +131,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function hasVoted($poll_id, $ip, $user_id = null)
+    public static function hasVoted($poll_id, $ip, $user_id = null)
     {
         global $xoopsModuleConfig;
 
@@ -166,7 +166,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function deleteByPollId($poll_id)
+    public static function deleteByPollId($poll_id)
     {
         $db =Database::getInstance();
 
@@ -180,7 +180,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function deleteByOptionId($option_id)
+    public static function deleteByOptionId($option_id)
     {
         $db =Database::getInstance();
 
@@ -194,7 +194,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function getTotalVotersByPollId($poll_id)
+    public static function getTotalVotersByPollId($poll_id)
     {
         $db =Database::getInstance();
 
@@ -210,7 +210,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function getTotalVotesByPollId($poll_id)
+    public static function getTotalVotesByPollId($poll_id)
     {
         $db =Database::getInstance();
 
@@ -222,7 +222,7 @@ class UmfrageLog extends XoopsObject
     }
 
     // public static
-    public function getTotalVotesByOptionId($option_id)
+    public static function getTotalVotesByOptionId($option_id)
     {
         $db =Database::getInstance();
 

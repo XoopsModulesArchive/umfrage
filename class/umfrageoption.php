@@ -127,7 +127,7 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
-    public function &getAllByPollId($poll_id)
+    public static function &getAllByPollId($poll_id)
     {
         $db = Database::getInstance();
 
@@ -146,7 +146,7 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
-    public function deleteByPollId($poll_id)
+    public static function deleteByPollId($poll_id)
     {
         $db = Database::getInstance();
 
@@ -160,7 +160,7 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
-    public function resetCountByPollId($poll_id)
+    public static function resetCountByPollId($poll_id)
     {
         $db = Database::getInstance();
 

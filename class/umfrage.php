@@ -157,7 +157,7 @@ class Umfrage extends XoopsObject
     }
 
     // private, static
-    public function &getAll($criteria = [], $asobject = true, $orderby = 'end_time DESC', $limit = 0, $start = 0)
+    public static function &getAll($criteria = [], $asobject = true, $orderby = 'end_time DESC', $limit = 0, $start = 0)
     {
         $db = Database::getInstance();
 
