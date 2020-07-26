@@ -842,7 +842,7 @@ class NewbbPostHandler extends ArtObjectHandler
         require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
         $mytree = new XoopsTree($this->db->prefix('bb_posts'), 'post_id', 'pid');
         $arr = $mytree->getAllChild($post->getVar('post_id'));
-        for ($i = 0; $i < count($arr); $i++) {
+        for ($i = 0, $iMax = count($arr); $i < $iMax; $i++) {
             $childpost = $this->create(false);
             $childpost->assignVars($arr[$i]);
             $this->_delete($childpost, $force);
