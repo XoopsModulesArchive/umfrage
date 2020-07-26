@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,13 +25,13 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-include('header.php');
+require __DIR__ . '/header.php';
 
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 if (!empty($_POST['poll_id'])) {
     $poll_id = intval($_POST['poll_id']);
@@ -49,9 +49,9 @@ if (!empty($_POST['forum'])) {
     $forum = intval($_GET['forum']);
 }
 
-$topic_handler = &xoops_getmodulehandler('topic', 'newbb');
-$topic_obj = &$topic_handler->get($topic_id);
-if (!$topic_handler->getPermission($topic_obj->getVar('forum_id'), $topic_obj->getVar('topic_status'), 'vote')) {
+$topicHandler =  xoops_getModuleHandler('topic', 'newbb');
+$topic_obj = &$topicHandler->get($topic_id);
+if (!$topicHandler->getPermission($topic_obj->getVar('forum_id'), $topic_obj->getVar('topic_status'), 'vote')) {
     redirect_header('javascript:history.go(-1);', 2, _NOPERM);
 }
 

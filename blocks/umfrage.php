@@ -4,7 +4,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -26,10 +26,10 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 global $xoopsConfig;
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
 
 function hasVoted($poll_id)
 {
@@ -122,7 +122,7 @@ function b_umfrage_show($opts)
 
     $block['lang_onlyregistered'] = _PL_ONLYREGISTERED;
 
-    $block['notregistered'] = (null == $uid) ? 1 : 0;
+    $block['notregistered'] = (null === $uid) ? 1 : 0;
 
     $block['csspath'] = XOOPS_URL . '/modules/umfrage/templates';
 
@@ -152,7 +152,7 @@ function b_umfrage_show($opts)
                 if (intval($percent) > 0 && $show_bar) {
                     $width = intval($percent);
 
-                    $img = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "%' align='middle' alt='" . intval($percent) . " %' />";
+                    $img = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "%' align='middle' alt='" . intval($percent) . " %'>";
                 } else {
                     $img = '';
                 }
@@ -203,7 +203,7 @@ function b_umfrage_show($opts)
 
         $block['polls'][] = &$poll;
 
-        $block['election'] = false == $show_result ? 1 : 0;
+        $block['election'] = false === $show_result ? 1 : 0;
 
         unset($options);
 

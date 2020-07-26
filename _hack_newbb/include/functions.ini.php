@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -36,7 +36,7 @@ if (defined('NEWBB_FUNCTIONS_INI')) {
     return;
 } define('NEWBB_FUNCTIONS_INI', 1);
 
-include_once(XOOPS_ROOT_PATH . '/Frameworks/art/functions.php');
+require_once XOOPS_ROOT_PATH . '/Frameworks/art/functions.php';
 
 function newbb_load_object()
 {
@@ -75,15 +75,15 @@ function &newbb_load_config()
             return null;
         }
     } else {
-        $module_handler = &xoops_gethandler('module');
+        $moduleHandler =  xoops_getHandler('module');
 
-        $module = $module_handler->getByDirname('newbb');
+        $module = $moduleHandler->getByDirname('newbb');
 
-        $config_handler = &xoops_gethandler('config');
+        $configHandler =  xoops_getHandler('config');
 
         $criteria = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
 
-        $configs = &$config_handler->getConfigs($criteria);
+        $configs = &$configHandler->getConfigs($criteria);
 
         foreach (array_keys($configs) as $i) {
             $moduleConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
@@ -111,17 +111,17 @@ function getConfigForBlock()
     if (is_object($GLOBALS['xoopsModule']) && 'newbb' == $GLOBALS['xoopsModule']->getVar('dirname')) {
         $newbbConfig = &$GLOBALS['xoopsModuleConfig'];
     } else {
-        $module_handler = &xoops_gethandler('module');
+        $moduleHandler =  xoops_getHandler('module');
 
-        $newbb = $module_handler->getByDirname('newbb');
+        $newbb = $moduleHandler->getByDirname('newbb');
 
-        $config_handler = &xoops_gethandler('config');
+        $configHandler =  xoops_getHandler('config');
 
         $criteria = new CriteriaCompo(new Criteria('conf_modid', $newbb->getVar('mid')));
 
         $criteria->add(new Criteria('conf_name', "('show_realname', 'subject_prefix', 'allow_require_reply')", 'IN'));
 
-        $configs = &$config_handler->getConfigs($criteria);
+        $configs = &$configHandler->getConfigs($criteria);
 
         foreach (array_keys($configs) as $i) {
             $newbbConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
@@ -145,7 +145,7 @@ function newbb_load_lang_file($filename, $module = '', $default = 'english')
     $path = XOOPS_ROOT_PATH . (empty($module) ? '/' : "/modules/$module/") . 'language';
 
     if (!($ret = @include_once("$path/$lang/$filename.php"))) {
-        $ret = @include_once("$path/$default/$filename.php");
+        $ret = @require_once "$path/$default/$filename.php";
     }
 
     return $ret;

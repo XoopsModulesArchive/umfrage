@@ -4,7 +4,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -26,12 +26,12 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-include '../../mainfile.php';
-include XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
+require XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 $poll_id = $_GET['poll_id'];
 
@@ -50,12 +50,12 @@ if (2 == $poll->getVar('polltype') || 3 == $poll->getVar('polltype') && $poll->g
     exit();
 }
 
-$xoopsOption['template_main'] = 'umfrage_results.html';
-include XOOPS_ROOT_PATH . '/header.php';
+$GLOBALS['xoopsOption']['template_main'] = 'umfrage_results.html';
+require XOOPS_ROOT_PATH . '/header.php';
 
 $renderer = new UmfrageRenderer($poll);
 $renderer->assignResults($xoopsTpl);
 
-include XOOPS_ROOT_PATH . '/include/comment_view.php';
+require XOOPS_ROOT_PATH . '/include/comment_view.php';
 
-include XOOPS_ROOT_PATH . '/footer.php';
+require XOOPS_ROOT_PATH . '/footer.php';

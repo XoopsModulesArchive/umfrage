@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------ //
 // XOOPS - PHP Content Management System                      //
 // Copyright (c) 2000 XOOPS.org                           //
-// <http://www.xoops.org/>                             //
+// <https://www.xoops.org>                             //
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,10 +25,10 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: Kazumi Ono (AKA onokazu)                                          //
-// URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
+// URL: http://www.myweb.ne.jp/, https://www.xoops.org/, http://jp.xoops.org/ //
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
-include('admin_header.php');
+require __DIR__ . '/admin_header.php';
 
 function newbb_admin_getPathStatus($path)
 {
@@ -144,8 +144,8 @@ switch ($op) {
         exit();
         break;
     case 'senddigest':
-        $digest_handler = &xoops_getmodulehandler('digest', 'newbb');
-        $res = $digest_handler->process(true);
+        $digestHandler =  xoops_getModuleHandler('digest', 'newbb');
+        $res = $digestHandler->process(true);
         $msg = ($res) ? _AM_NEWBB_DIGEST_FAILED : _AM_NEWBB_DIGEST_SENT;
         redirect_header('index.php', 2, $msg);
         exit();
@@ -161,8 +161,8 @@ switch ($op) {
         echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_PREFERENCES . '</legend>';
 
         echo "<div style='padding: 12px;'>" . _AM_NEWBB_POLLMODULE . ': ';
-        $module_handler = &xoops_gethandler('module');
-        $umfrage = &$module_handler->getByDirname('umfrage');
+        $moduleHandler =  xoops_getHandler('module');
+        $umfrage =  $moduleHandler->getByDirname('umfrage');
         if (is_object($umfrage)) {
             $isOK = $umfrage->getVar('isactive');
         } else {
@@ -177,14 +177,14 @@ switch ($op) {
         } else {
             echo _AM_NEWBB_NOTAVAILABLE;
         }
-        echo '<br />';
+        echo '<br>';
         echo "<a href='http://sourceforge.net/projects/netpbm' target='_blank'>NetPBM:&nbsp;</a>";
         if (array_key_exists('netpbm', $imageLibs)) {
             echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['netpbm'] . '</font></strong>';
         } else {
             echo _AM_NEWBB_NOTAVAILABLE;
         }
-        echo '<br />';
+        echo '<br>';
         echo _AM_NEWBB_GDLIB1 . '&nbsp;';
         if (array_key_exists('gd1', $imageLibs)) {
             echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['gd1'] . '</font></strong>';
@@ -192,7 +192,7 @@ switch ($op) {
             echo _AM_NEWBB_NOTAVAILABLE;
         }
 
-        echo '<br />';
+        echo '<br>';
         echo _AM_NEWBB_GDLIB2 . '&nbsp;';
         if (array_key_exists('gd2', $imageLibs)) {
             echo "<strong><font color='green'>" . _AM_NEWBB_AUTODETECTED . $imageLibs['gd2'] . '</font></strong>';
@@ -206,56 +206,56 @@ switch ($op) {
         $path_status = newbb_admin_getPathStatus($attach_path);
         echo $attach_path . ' ( ' . $path_status . ' )';
 
-        echo '<br />' . _AM_NEWBB_THUMBPATH . ': ';
+        echo '<br>' . _AM_NEWBB_THUMBPATH . ': ';
         $thumb_path = $attach_path . 'thumbs/'; // be careful
         $path_status = newbb_admin_getPathStatus($thumb_path);
         echo $thumb_path . ' ( ' . $path_status . ' )';
 
         echo '</div>';
 
-        echo '</fieldset><br />';
+        echo '</fieldset><br>';
 
         echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_BOARDSUMMARY . '</legend>';
         echo "<div style='padding: 12px;'>";
         echo _AM_NEWBB_TOTALTOPICS . ' <strong>' . get_total_topics() . '</strong> | ';
         echo _AM_NEWBB_TOTALPOSTS . ' <strong>' . get_total_posts() . '</strong> | ';
         echo _AM_NEWBB_TOTALVIEWS . ' <strong>' . get_total_views() . '</strong></div>';
-        echo '</fieldset><br />';
+        echo '</fieldset><br>';
 
-        $report_handler = &xoops_getmodulehandler('report', 'newbb');
+        $reportHandler =  xoops_getModuleHandler('report', 'newbb');
         echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_REPORT . '</legend>';
-        echo "<div style='padding: 12px;'><a href='admin_report.php'>" . _AM_NEWBB_REPORT_PENDING . '</a> <strong>' . $report_handler->getCount(new Criteria('report_result', 0)) . '</strong> | ';
-        echo _AM_NEWBB_REPORT_PROCESSED . ' <strong>' . $report_handler->getCount(new Criteria('report_result', 1)) . '</strong>';
+        echo "<div style='padding: 12px;'><a href='admin_report.php'>" . _AM_NEWBB_REPORT_PENDING . '</a> <strong>' . $reportHandler->getCount(new Criteria('report_result', 0)) . '</strong> | ';
+        echo _AM_NEWBB_REPORT_PROCESSED . ' <strong>' . $reportHandler->getCount(new Criteria('report_result', 1)) . '</strong>';
         echo '</div>';
-        echo '</fieldset><br />';
+        echo '</fieldset><br>';
 
         if ($xoopsModuleConfig['email_digest'] > 0) {
-            $digest_handler = &xoops_getmodulehandler('digest', 'newbb');
+            $digestHandler =  xoops_getModuleHandler('digest', 'newbb');
 
             echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_DIGEST . '</legend>';
 
-            $due = ($digest_handler->checkStatus()) / 60; // minutes
+            $due = ($digestHandler->checkStatus()) / 60; // minutes
 
             $prompt = ($due > 0) ? sprintf(_AM_NEWBB_DIGEST_PAST, $due) : sprintf(_AM_NEWBB_DIGEST_NEXT, abs($due));
 
             echo "<div style='padding: 12px;'><a href='index.php?op=senddigest'>" . $prompt . '</a> | ';
 
-            echo "<a href='admin_digest.php'>" . _AM_NEWBB_DIGEST_ARCHIVE . '</a> <strong>' . $digest_handler->getDigestCount() . '</strong>';
+            echo "<a href='admin_digest.php'>" . _AM_NEWBB_DIGEST_ARCHIVE . '</a> <strong>' . $digestHandler->getDigestCount() . '</strong>';
 
             echo '</div>';
 
-            echo '</fieldset><br />';
+            echo '</fieldset><br>';
         }
 
-        echo '<br /><br />';
+        echo '<br><br>';
 
         /* A trick to clear garbage for suspension management
          * Not good but works
          */
         if (!empty($xoopsModuleConfig['enable_usermoderate'])) {
-            $moderate_handler = &xoops_getmodulehandler('moderate', 'newbb');
+            $moderateHandler =  xoops_getModuleHandler('moderate', 'newbb');
 
-            $moderate_handler->clearGarbage();
+            $moderateHandler->clearGarbage();
         }
 
         xoops_cp_footer();

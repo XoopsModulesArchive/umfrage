@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 // ------------------------------------------------------------------------- //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,12 +24,12 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
-include '../../mainfile.php';
-include XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
+require XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 // ISegura.es: HTTP_POST_VARS is from Stone age. Replacing.
 if (!empty($_POST['poll_id'])) {
@@ -40,9 +40,9 @@ if (!empty($_POST['poll_id'])) {
 global $xoopsModuleConfig, $xoopsConfig;
 
 if (empty($poll_id)) {
-    $xoopsOption['template_main'] = 'umfrage_index.html';
+    $GLOBALS['xoopsOption']['template_main'] = 'umfrage_index.html';
 
-    include XOOPS_ROOT_PATH . '/header.php';
+    require XOOPS_ROOT_PATH . '/header.php';
 
     $limit = (!empty($_GET['limit'])) ? intval($_GET['limit']) : 50;
 
@@ -198,7 +198,7 @@ if (empty($poll_id)) {
 
                 $xoopsMailer->assign('MAILBODY', $mailbody);
 
-                if (false != $xoopsMailer->send()) {
+                if (false !== $xoopsMailer->send()) {
                     $polls_arr[$i]->setVar('mail_status', POLL_MAILED);
 
                     $polls_arr[$i]->store();
@@ -209,7 +209,7 @@ if (empty($poll_id)) {
         unset($polls);
     }
 
-    include XOOPS_ROOT_PATH . '/footer.php';
+    require XOOPS_ROOT_PATH . '/footer.php';
 } elseif (!empty($_POST['option_id'])) {
     $voted_polls = (!empty($_COOKIE['voted_polls'])) ? $_COOKIE['voted_polls'] : [];
 
@@ -277,9 +277,9 @@ if (empty($poll_id)) {
 
     exit();
 } elseif (!empty($poll_id)) {
-    $xoopsOption['template_main'] = 'umfrage_view.html';
+    $GLOBALS['xoopsOption']['template_main'] = 'umfrage_view.html';
 
-    include XOOPS_ROOT_PATH . '/header.php';
+    require XOOPS_ROOT_PATH . '/header.php';
 
     $poll = new Umfrage($poll_id);
 
@@ -307,5 +307,5 @@ if (empty($poll_id)) {
 
     $xoopsTpl->assign('lang_alreadyvoted2', _PL_ALREADYVOTED2);
 
-    include XOOPS_ROOT_PATH . '/footer.php';
+    require XOOPS_ROOT_PATH . '/footer.php';
 }

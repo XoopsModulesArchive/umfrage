@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -30,7 +30,7 @@ $modversion['release_date'] = '2020/07/07';
 $modversion['module_status'] = 'Beta 1';
 $modversion['name'] = _MI_POLLS_NAME;
 $modversion['description'] = _MI_POLLS_DESC;
-$modversion['author'] = 'LupusC and changes by Nachenko, Debianus and JoAT<br/> based on the module xoopspoll of Kazumi Ono and wellwine';
+$modversion['author'] = 'LupusC and changes by Nachenko, Debianus and JoAT<br> based on the module xoopspoll of Kazumi Ono and wellwine';
 $modversion['credits'] = 'The XOOPS Project';
 $modversion['help'] = 'umfrage.html';
 $modversion['license'] = 'GPL see LICENSE';

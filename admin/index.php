@@ -4,7 +4,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,15 +25,15 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
-include '../../../include/cp_header.php';
-include XOOPS_ROOT_PATH."/modules/umfrage/include/constants.php";
-include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
-include_once XOOPS_ROOT_PATH."/class/xoopslists.php";
-include_once XOOPS_ROOT_PATH."/class/xoopsblock.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrage.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrageoption.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragelog.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragerenderer.php";
+require dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require XOOPS_ROOT_PATH."/modules/umfrage/include/constants.php";
+require_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
+require_once XOOPS_ROOT_PATH."/class/xoopslists.php";
+require_once XOOPS_ROOT_PATH."/class/xoopsblock.php";
+require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrage.php";
+require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrageoption.php";
+require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragelog.php";
+require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragerenderer.php";
 
 function gethostbyaddr_with_cache($a) {
 	global $dns_cache;
@@ -76,16 +76,16 @@ if ($op == "list") {
 		for ($i = 0; $i < $max; $i ++) {
 			$checked = "";
 			if (1 == $polls_arr[$i]->getVar("display")) {
-				$checked = " checked='checked'";
+				$checked = " checked";
 			}
 			if ($polls_arr[$i]->getVar("end_time") > time()) {
 				$end = formatTimestamp($polls_arr[$i]->getVar("end_time"), "m");
 			} else {
-				$end = "<span style='color:#ff0000;'>"._AM_EXPIRED."</span><br /><a href='index.php?op=restart&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._AM_RESTART."</a>";
+				$end = "<span style='color:#ff0000;'>"._AM_EXPIRED."</span><br><a href='index.php?op=restart&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._AM_RESTART."</a>";
 			}
-			echo "<tr class='bg1'><td align='center'><input type='hidden' name='poll_id[$i]' value='".$polls_arr[$i]->getVar("poll_id")."' /><input type='hidden' name='old_display[$i]' value='".$polls_arr[$i]->getVar("display")."' /><input type='checkbox' name='display[$i]' value='1'".$checked." /></td><td><input type='hidden' name='old_weight[$i]' value='".$polls_arr[$i]->getVar("weight")."' /><input type='text' name='weight[$i]' value='".$polls_arr[$i]->getVar("weight")."' size='6' maxlength='5' /></td><td>".$polls_arr[$i]->getVar("question")."</td><td align='center'>".$polls_arr[$i]->getVar("voters")."</td><td align='center'>".$polls_arr[$i]->getVar("votes")."</td><td>".$end."</td><td align='right'><a href='index.php?op=edit&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._EDIT."</a><br /><a href='index.php?op=delete&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._DELETE."</a><br /><a href='index.php?op=log&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._AM_VIEWLOG."</a></td></tr>";
+			echo "<tr class='bg1'><td align='center'><input type='hidden' name='poll_id[$i]' value='".$polls_arr[$i]->getVar("poll_id")."'><input type='hidden' name='old_display[$i]' value='".$polls_arr[$i]->getVar("display")."'><input type='checkbox' name='display[$i]' value='1'".$checked."></td><td><input type='hidden' name='old_weight[$i]' value='".$polls_arr[$i]->getVar("weight")."'><input type='text' name='weight[$i]' value='".$polls_arr[$i]->getVar("weight")."' size='6' maxlength='5'></td><td>".$polls_arr[$i]->getVar("question")."</td><td align='center'>".$polls_arr[$i]->getVar("voters")."</td><td align='center'>".$polls_arr[$i]->getVar("votes")."</td><td>".$end."</td><td align='right'><a href='index.php?op=edit&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._EDIT."</a><br><a href='index.php?op=delete&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._DELETE."</a><br><a href='index.php?op=log&amp;poll_id=".$polls_arr[$i]->getVar("poll_id")."'>"._AM_VIEWLOG."</a></td></tr>";
 		}
-		echo "<tr align='right' class='bg3'><td colspan='7'><input type='button' name='button' onclick=\"location='index.php?op=add'\" value='"._AM_ADDPOLL."' /> <input type='submit' value='"._SUBMIT."' /><input type='hidden' name='op' value='quickupdate' /></td></tr></table></td></tr></table></form>";
+		echo "<tr align='right' class='bg3'><td colspan='7'><input type='button' name='button' onclick=\"location='index.php?op=add'\" value='"._AM_ADDPOLL."'> <input type='submit' value='"._SUBMIT."'><input type='hidden' name='op' value='quickupdate'></td></tr></table></td></tr></table></form>";
 		echo "<table width='100%'><tr><td align='left'>";
 		if ($start > 0) {
 			$prev_start = ($start - $limit > 0) ? $start - $limit : 0;
@@ -113,7 +113,7 @@ if ($op == "add") {
 	$poll_form->addElement($desc_tarea);
 	$currenttime = formatTimestamp(time(), "Y-m-d H:i:s");
 	$endtime = formatTimestamp(time() + 604800, "Y-m-d H:i:s");
-	$expire_text = new XoopsFormText(_AM_EXPIRATION."<br /><small>"._AM_FORMAT."<br />".sprintf(_AM_CURRENTTIME, $currenttime)."</small>", "end_time", 30, 19, $endtime);
+	$expire_text = new XoopsFormText(_AM_EXPIRATION."<br><small>"._AM_FORMAT."<br>".sprintf(_AM_CURRENTTIME, $currenttime)."</small>", "end_time", 30, 19, $endtime);
 	$poll_form->addElement($expire_text);
 	$disp_yn = new XoopsFormRadioYN(_AM_DISPLAYBLOCK, "display", 1);
 	$poll_form->addElement($disp_yn);
@@ -123,7 +123,7 @@ if ($op == "add") {
 	$poll_form->addElement($multi_yn);
 	
 	// Isegura.es: Adding "multiple selection limit" to multiple selection votes
-	$multi_limit = new XoopsFormText(_AM_MULTI_LIMIT . '<br/><small>' ._AM_MULTI_LIMIT_HELP . '</small>', "multilimit", 6, 5, 0);
+	$multi_limit = new XoopsFormText(_AM_MULTI_LIMIT . '<br><small>' ._AM_MULTI_LIMIT_HELP . '</small>', "multilimit", 6, 5, 0);
 	$poll_form->addElement($multi_limit);
 	
 	$notify_yn = new XoopsFormRadioYN(_AM_NOTIFY, "notify", 1);
@@ -149,7 +149,7 @@ if ($op == "add") {
 		$color_select = new XoopsFormSelect("", "option_color[".$i."]", $current_bar);
 		$color_select->addOptionArray($barcolor_array);
 		$color_select->setExtra("onchange='showImgSelected(\"option_color_image[".$i."]\", \"option_color[".$i."]\", \"modules/umfrage/images/colorbars\")'");
-		$color_label = new XoopsFormLabel("", "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$current_bar."' name='option_color_image[".$i."]' id='option_color_image[".$i."]' width='30' align='bottom' height='15' alt='' /><br />");
+		$color_label = new XoopsFormLabel("", "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$current_bar."' name='option_color_image[".$i."]' id='option_color_image[".$i."]' width='30' align='bottom' height='15' alt=''><br>");
 		$option_tray->addElement($color_select);
 		$option_tray->addElement($color_label);
 		if (!next($barcolor_array)) {
@@ -212,7 +212,7 @@ if ($op == "save") {
 			}
 			$i ++;
 		}
-		include_once XOOPS_ROOT_PATH.'/class/template.php';
+		require_once XOOPS_ROOT_PATH.'/class/template.php';
 		xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 	} else {
 		echo $poll->getHtmlErrors();
@@ -234,10 +234,10 @@ if ($op == "edit") {
 	$poll_form->addElement($desc_tarea);
 	$date = formatTimestamp($poll->getVar("end_time"), "Y-m-d H:i:s");
 	if (!$poll->hasExpired()) {
-		$expire_text = new XoopsFormText(_AM_EXPIRATION."<br /><small>"._AM_FORMAT."<br />".sprintf(_AM_CURRENTTIME, formatTimestamp(time(), "Y-m-d H:i:s"))."</small>", "end_time", 20, 19, $date);
+		$expire_text = new XoopsFormText(_AM_EXPIRATION."<br><small>"._AM_FORMAT."<br>".sprintf(_AM_CURRENTTIME, formatTimestamp(time(), "Y-m-d H:i:s"))."</small>", "end_time", 20, 19, $date);
 		$poll_form->addElement($expire_text);
 	} else {
-		$restart_label = new XoopsFormLabel(_AM_EXPIRATION, sprintf(_AM_EXPIREDAT, $date)."<br /><a href='index.php?op=restart&amp;poll_id=".$poll->getVar("poll_id")."'>"._AM_RESTART."</a>");
+		$restart_label = new XoopsFormLabel(_AM_EXPIRATION, sprintf(_AM_EXPIREDAT, $date)."<br><a href='index.php?op=restart&amp;poll_id=".$poll->getVar("poll_id")."'>"._AM_RESTART."</a>");
 		$poll_form->addElement($restart_label);
 	}
 	$disp_yn = new XoopsFormRadioYN(_AM_DISPLAYBLOCK, "display", $poll->getVar("display"));
@@ -248,7 +248,7 @@ if ($op == "edit") {
 	$poll_form->addElement($multi_yn);
 	
 	// Isegura.es: Adding "multiple selection limit" to multiple selection votes
-	$multi_limit = new XoopsFormText(_AM_MULTI_LIMIT . '<br/><small>' ._AM_MULTI_LIMIT_HELP . '</small>', "multilimit", 6, 5, $poll->getVar("multilimit"));
+	$multi_limit = new XoopsFormText(_AM_MULTI_LIMIT . '<br><small>' ._AM_MULTI_LIMIT_HELP . '</small>', "multilimit", 6, 5, $poll->getVar("multilimit"));
 	$poll_form->addElement($multi_limit);
 	
 	
@@ -283,13 +283,13 @@ if ($op == "edit") {
 		$color_select = new XoopsFormSelect("", "option_color[".$i."]", $option->getVar("option_color"));
 		$color_select->addOptionArray($barcolor_array);
 		$color_select->setExtra("onchange='showImgSelected(\"option_color_image[".$i."]\", \"option_color[".$i."]\", \"modules/umfrage/images/colorbars\")'");
-		$color_label = new XoopsFormLabel("", "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$option->getVar("option_color", "E")."' name='option_color_image[".$i."]' id='option_color_image[".$i."]' width='30' align='bottom' height='15' alt='' /><br />");
+		$color_label = new XoopsFormLabel("", "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$option->getVar("option_color", "E")."' name='option_color_image[".$i."]' id='option_color_image[".$i."]' width='30' align='bottom' height='15' alt=''><br>");
 		$option_tray->addElement($color_select);
 		$option_tray->addElement($color_label);
 		unset ($color_select, $color_label, $option_text, $option_id_hidden);
 		$i ++;
 	}
-	$more_label = new XoopsFormLabel("", "<br /><a href='index.php?op=addmore&amp;poll_id=".$poll->getVar("poll_id")."'>"._AM_ADDMORE."</a>");
+	$more_label = new XoopsFormLabel("", "<br><a href='index.php?op=addmore&amp;poll_id=".$poll->getVar("poll_id")."'>"._AM_ADDMORE."</a>");
 	$option_tray->addElement($more_label);
 	$poll_form->addElement($option_tray);
 	$op_hidden = new XoopsFormHidden("op", "update");
@@ -347,14 +347,14 @@ if ($op == "update") {
 			$option->setVar("option_color", $option_color[$i]);
 			$option->store();
 		} else {
-			if ($option->delete() != false) {
+			if ($option->delete() !== false) {
 				UmfrageLog :: deleteByOptionId($option->getVar("option_id"));
 			}
 		}
 		$i ++;
 	}
 	$poll->updateCount();
-	include_once XOOPS_ROOT_PATH.'/class/template.php';
+	require_once XOOPS_ROOT_PATH.'/class/template.php';
 	xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 	redirect_header("index.php", 1, _AM_DBUPDATED);
 	exit ();
@@ -374,7 +374,7 @@ if ($op == "addmore") {
 		$color_select = new XoopsFormSelect("", "option_color[".$i."]", $current_bar);
 		$color_select->addOptionArray($barcolor_array);
 		$color_select->setExtra("onchange='showImgSelected(\"option_color_image[".$i."]\", \"option_color[".$i."]\", \"modules/umfrage/images/colorbars\")'");
-		$color_label = new XoopsFormLabel("", "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$current_bar."' name='option_color_image[".$i."]' id='option_color_image[".$i."]' width='30' align='bottom' height='15' alt='' /><br />");
+		$color_label = new XoopsFormLabel("", "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$current_bar."' name='option_color_image[".$i."]' id='option_color_image[".$i."]' width='30' align='bottom' height='15' alt=''><br>");
 		$option_tray->addElement($color_select);
 		$option_tray->addElement($color_label);
 		if (!next($barcolor_array)) {
@@ -409,7 +409,7 @@ if ($op == "savemore") {
 		}
 		$i ++;
 	}
-	include_once XOOPS_ROOT_PATH.'/class/template.php';
+	require_once XOOPS_ROOT_PATH.'/class/template.php';
 	xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 	redirect_header("index.php", 1, _AM_DBUPDATED);
 	exit ();
@@ -426,10 +426,10 @@ if ($op == "delete") {
 
 if ($op == "delete_ok") {
 	$poll = new Umfrage($poll_id);
-	if ($poll->delete() != false) {
+	if ($poll->delete() !== false) {
 		UmfrageOption :: deleteByPollId($poll->getVar("poll_id"));
 		UmfrageLog :: deleteByPollId($poll->getVar("poll_id"));
-		include_once XOOPS_ROOT_PATH.'/class/template.php';
+		require_once XOOPS_ROOT_PATH.'/class/template.php';
 		xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 		// delete comments for this poll
 		xoops_comment_delete($xoopsModule->getVar('mid'), $poll->getVar('poll_id'));
@@ -442,7 +442,7 @@ if ($op == "delete_ok") {
 if ($op == "restart") {
 	$poll = new Umfrage($_GET['poll_id']);
 	$poll_form = new XoopsThemeForm(_AM_RESTARTPOLL, "poll_form", "index.php");
-	$expire_text = new XoopsFormText(_AM_EXPIRATION."<br /><small>"._AM_FORMAT."<br />".sprintf(_AM_CURRENTTIME, formatTimestamp(time(), "Y-m-d H:i:s"))."</small>", "end_time", 20, 19, formatTimestamp(time() + 604800, "Y-m-d H:i:s"));
+	$expire_text = new XoopsFormText(_AM_EXPIRATION."<br><small>"._AM_FORMAT."<br>".sprintf(_AM_CURRENTTIME, formatTimestamp(time(), "Y-m-d H:i:s"))."</small>", "end_time", 20, 19, formatTimestamp(time() + 604800, "Y-m-d H:i:s"));
 	$poll_form->addElement($expire_text);
 	$notify_yn = new XoopsFormRadioYN(_AM_NOTIFY, "notify", 1);
 	$poll_form->addElement($notify_yn);
@@ -490,7 +490,7 @@ if ($op == "restart_ok") {
 		exit ();
 	}
 	$poll->updateCount();
-	include_once XOOPS_ROOT_PATH.'/class/template.php';
+	require_once XOOPS_ROOT_PATH.'/class/template.php';
 	xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 	redirect_header("index.php", 1, _AM_DBUPDATED);
 	exit ();
@@ -618,7 +618,7 @@ if ($op == "quickupdate") {
 			$poll->store();
 		}
 	}
-	include_once XOOPS_ROOT_PATH.'/class/template.php';
+	require_once XOOPS_ROOT_PATH.'/class/template.php';
 	xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 	redirect_header("index.php", 1, _AM_DBUPDATED);
 	exit ();

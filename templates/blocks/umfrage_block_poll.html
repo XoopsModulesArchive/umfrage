@@ -1,10 +1,10 @@
-<link rel="stylesheet" type="text/css" href="<{$block.csspath}>/umfrage.css" />
+<link rel="stylesheet" type="text/css" href="<{$block.csspath}>/umfrage.css">
 
 <{foreach item=poll from=$block.polls}>
 <{if $poll.expired eq 1}>
   <table class="outer" cellspacing="1">
     <tr>
-      <td align="center" colspan="3"><input type="hidden" name="poll_id" value="<{$poll.id}>" /><div id="pollheader"><{$poll.question}></div></td>
+      <td align="center" colspan="3"><input type="hidden" name="poll_id" value="<{$poll.id}>"><div id="pollheader"><{$poll.question}></div></td>
     </tr>
 
     <{foreach item=option from=$poll.options}>
@@ -19,7 +19,7 @@
 
 	<{if $poll.polltype ne 2}>
     <tr>
-      <td class="pollfooter" align="center" colspan="2"><input type="button" value="<{$poll.lang_result}>" onclick="location='<{$xoops_url}>/modules/umfrage/pollresults.php?poll_id=<{$poll.id}>'" /></td>
+      <td class="pollfooter" align="center" colspan="2"><input type="button" value="<{$poll.lang_result}>" onclick="location='<{$xoops_url}>/modules/umfrage/pollresults.php?poll_id=<{$poll.id}>'"></td>
     </tr>
 	<{/if}>
     <tr>
@@ -31,13 +31,13 @@
   <form style="margin-top: 1px;" action="<{$xoops_url}>/modules/umfrage/index.php" method="post">
   <table class="outer" cellspacing="1">
     <tr>
-      <td align="center" colspan="2"><input type="hidden" name="poll_id" value="<{$poll.id}>" /><div id="pollheader"><{$poll.question}></div></td>
+      <td align="center" colspan="2"><input type="hidden" name="poll_id" value="<{$poll.id}>"><div id="pollheader"><{$poll.question}></div></td>
     </tr>
 
     <{foreach item=option from=$poll.options}>
     <tr class="<{cycle values="polleven,pollodd"}>">
 	<{if ! $poll.hasVoted && ! $block.notregistered}>
-	      <td align="center"><input type="<{$poll.option_type}>" name="<{$poll.option_name}>" value="<{$option.id}>" /></td>
+	      <td align="center"><input type="<{$poll.option_type}>" name="<{$poll.option_name}>" value="<{$option.id}>"></td>
 	<{else}>
 		<td align="left">*&nbsp;</td>
 	<{/if}>
@@ -51,13 +51,13 @@
 <{$block.lang_onlyregistered}>
 <{else}>
 <{if $poll.hasVoted eq 0}>
-	   <input type="submit" value="<{$block.lang_vote}>" />
+	   <input type="submit" value="<{$block.lang_vote}>">
  <{else}>
 <{$block.lang_alreadyvoted}>
 <{/if}>
 <{/if}>
    <{if $poll.polltype eq 1}>
-      <br><input type="button" value="<{$poll.lang_result}>" onclick="location='<{$xoops_url}>/modules/umfrage/pollresults.php?poll_id=<{$poll.id}>'" />
+      <br><input type="button" value="<{$poll.lang_result}>" onclick="location='<{$xoops_url}>/modules/umfrage/pollresults.php?poll_id=<{$poll.id}>'">
    <{/if}>
 </td>
     </tr>

@@ -4,7 +4,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -26,11 +26,11 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 // Author: Kazumi Ono (AKA onokazu)                                          //
-// URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
+// URL: http://www.myweb.ne.jp/, https://www.xoops.org/, http://jp.xoops.org/ //
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
 
 class UmfrageRenderer
 {
@@ -55,7 +55,7 @@ class UmfrageRenderer
 
         $content .= "<table width='100%' border='0' cellpadding='4' cellspacing='1'>\n";
 
-        $content .= "<tr class='bg3'><td align='center' colspan='2'><input type='hidden' name='poll_id' value='" . $this->poll->getVar('poll_id') . "' />\n";
+        $content .= "<tr class='bg3'><td align='center' colspan='2'><input type='hidden' name='poll_id' value='" . $this->poll->getVar('poll_id') . "'>\n";
 
         $content .= '<b>' . $this->poll->getVar('question') . "</b></td></tr>\n";
 
@@ -72,12 +72,12 @@ class UmfrageRenderer
         }
 
         foreach ($options_arr as $option) {
-            $content .= "<tr class='bg1'><td align='center'><input type='$option_type' name='$option_name' value='" . $option->getVar('option_id') . "' /></td><td align='left'>" . $option->getVar('option_text') . "</td></tr>\n";
+            $content .= "<tr class='bg1'><td align='center'><input type='$option_type' name='$option_name' value='" . $option->getVar('option_id') . "'></td><td align='left'>" . $option->getVar('option_text') . "</td></tr>\n";
         }
 
-        $content .= "<tr class='bg3'><td align='center' colspan='2'><input type='submit' value='" . _PL_VOTE . "' />&nbsp;";
+        $content .= "<tr class='bg3'><td align='center' colspan='2'><input type='submit' value='" . _PL_VOTE . "'>&nbsp;";
 
-        $content .= "<input type='button' value='" . _PL_RESULTS . "' class='button' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id') . "\"' />";
+        $content .= "<input type='button' value='" . _PL_RESULTS . "' class='button' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id') . "\"'>";
 
         $content .= "</td></tr></table></form>\n";
 
@@ -101,7 +101,7 @@ class UmfrageRenderer
         $i = 0;
 
         foreach ($options_arr as $option) {
-            $options[$i]['input'] = "<input type='$option_type' name='$option_name' value='" . $option->getVar('option_id') . "' />";
+            $options[$i]['input'] = "<input type='$option_type' name='$option_name' value='" . $option->getVar('option_id') . "'>";
 
             $options[$i]['text'] = $option->getVar('option_text');
 
@@ -145,7 +145,7 @@ class UmfrageRenderer
             if ($percent > 0) {
                 $width = intval($percent) * 2;
 
-                echo "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %' />";
+                echo "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %'>";
             }
 
             printf(' %d %% (%d)', $percent, $option->getVar('option_count'));
@@ -153,13 +153,13 @@ class UmfrageRenderer
             echo '</td></tr>';
         }
 
-        echo "<tr class='bg1'><td colspan='2' align='center'><br /><b>" . sprintf(_PL_TOTALVOTES, $total) . '<br />' . sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')) . '</b>';
+        echo "<tr class='bg1'><td colspan='2' align='center'><br><b>" . sprintf(_PL_TOTALVOTES, $total) . '<br>' . sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')) . '</b>';
 
         if (!$this->poll->hasExpired()) {
-            echo "<br />[<a href='" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "'>" . _PL_VOTE . '</a>]';
+            echo "<br>[<a href='" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "'>" . _PL_VOTE . '</a>]';
         }
 
-        echo '</td></tr></table></div><br />';
+        echo '</td></tr></table></div><br>';
     }
 
     public function assignResults(&$tpl)
@@ -190,7 +190,7 @@ class UmfrageRenderer
             if ($percent > 0) {
                 $width = intval($percent) * 2;
 
-                $options[$i]['image'] = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %' />";
+                $options[$i]['image'] = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %'>";
             }
 
             $options[$i]['percent'] = sprintf(' %d %% (%d)', $percent, $option->getVar('option_count'));
@@ -203,7 +203,7 @@ class UmfrageRenderer
         if (!$this->poll->hasExpired() && $xoopsUser && !(UmfrageLog :: hasVoted($this->poll->getVar('poll_id'), xoops_getenv('REMOTE_ADDR'), $uid))) {
             //			$vote = "<a href='".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."'>"._PL_VOTE."</a>";
 
-            $vote = "<input type='button' value='" . _PL_VOTE . "' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "\"' />";
+            $vote = "<input type='button' value='" . _PL_VOTE . "' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "\"'>";
         } else {
             $vote = '';
         }

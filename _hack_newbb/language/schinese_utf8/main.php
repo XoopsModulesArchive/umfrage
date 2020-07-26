@@ -101,26 +101,26 @@ define('_MD_SEARCHTHISFORUM', '搜索本板');
 define('_MD_TOPIC_SUBJECTC', '主题类别:');
 
 define('_MD_RATINGS', '评分');
-define('_MD_CAN_ACCESS', "您<strong><font color='green'>可以</font></strong>访问该板.<br />");
-define('_MD_CANNOT_ACCESS', '您<strong>不可</strong>访问该板.<br />');
-define('_MD_CAN_POST', "您<strong><font color='green'>可以</font></strong>发帖.<br />");
-define('_MD_CANNOT_POST', "您<strong><font color='red'>不可</font></strong>发帖.<br />");
-define('_MD_CAN_VIEW', "您<strong><font color='green'>可以</font></strong>查看帖子.<br />");
-define('_MD_CANNOT_VIEW', "您<strong><font color='red'>不可</font></strong>查看帖子.<br />");
-define('_MD_CAN_REPLY', "您<strong><font color='green'>可以</font></strong>回复.<br />");
-define('_MD_CANNOT_REPLY', "您<strong><font color='red'>不可</font></strong>回复.<br />");
-define('_MD_CAN_EDIT', "您<strong><font color='green'>可以</font></strong>编辑自己的帖子.<br />");
-define('_MD_CANNOT_EDIT', "您<strong><font color='red'>不可</font></strong>编辑自己的帖子.<br />");
-define('_MD_CAN_DELETE', "您<strong><font color='green'>可以</font></strong>删除自己的帖子.<br />");
-define('_MD_CANNOT_DELETE', "您<strong><font color='red'>不可</font></strong>删除自己的帖子.<br />");
-define('_MD_CAN_ADDPOLL', "您<strong><font color='green'>可以</font></strong>发起投票调查.<br />");
-define('_MD_CANNOT_ADDPOLL', "您<strong><font color='red'>不可</font></strong>发起投票调查.<br />");
-define('_MD_CAN_VOTE', "您<strong><font color='green'>可以</font></strong>在投票调查中投票.<br />");
-define('_MD_CANNOT_VOTE', "您<strong><font color='red'>不可</font></strong>在投票调查中投票.<br />");
-define('_MD_CAN_ATTACH', "您<strong><font color='green'>可以</font></strong>上传附件.<br />");
-define('_MD_CANNOT_ATTACH', "您<strong><font color='red'>不可</font></strong>上传附件.<br />");
-define('_MD_CAN_NOAPPROVE', "您<strong><font color='green'>可以</font></strong>不经审核直接发帖.<br />");
-define('_MD_CANNOT_NOAPPROVE', "您<strong><font color='red'>不可</font></strong>不经审核直接发帖.<br />");
+define('_MD_CAN_ACCESS', "您<strong><font color='green'>可以</font></strong>访问该板.<br>");
+define('_MD_CANNOT_ACCESS', '您<strong>不可</strong>访问该板.<br>');
+define('_MD_CAN_POST', "您<strong><font color='green'>可以</font></strong>发帖.<br>");
+define('_MD_CANNOT_POST', "您<strong><font color='red'>不可</font></strong>发帖.<br>");
+define('_MD_CAN_VIEW', "您<strong><font color='green'>可以</font></strong>查看帖子.<br>");
+define('_MD_CANNOT_VIEW', "您<strong><font color='red'>不可</font></strong>查看帖子.<br>");
+define('_MD_CAN_REPLY', "您<strong><font color='green'>可以</font></strong>回复.<br>");
+define('_MD_CANNOT_REPLY', "您<strong><font color='red'>不可</font></strong>回复.<br>");
+define('_MD_CAN_EDIT', "您<strong><font color='green'>可以</font></strong>编辑自己的帖子.<br>");
+define('_MD_CANNOT_EDIT', "您<strong><font color='red'>不可</font></strong>编辑自己的帖子.<br>");
+define('_MD_CAN_DELETE', "您<strong><font color='green'>可以</font></strong>删除自己的帖子.<br>");
+define('_MD_CANNOT_DELETE', "您<strong><font color='red'>不可</font></strong>删除自己的帖子.<br>");
+define('_MD_CAN_ADDPOLL', "您<strong><font color='green'>可以</font></strong>发起投票调查.<br>");
+define('_MD_CANNOT_ADDPOLL', "您<strong><font color='red'>不可</font></strong>发起投票调查.<br>");
+define('_MD_CAN_VOTE', "您<strong><font color='green'>可以</font></strong>在投票调查中投票.<br>");
+define('_MD_CANNOT_VOTE', "您<strong><font color='red'>不可</font></strong>在投票调查中投票.<br>");
+define('_MD_CAN_ATTACH', "您<strong><font color='green'>可以</font></strong>上传附件.<br>");
+define('_MD_CANNOT_ATTACH', "您<strong><font color='red'>不可</font></strong>上传附件.<br>");
+define('_MD_CAN_NOAPPROVE', "您<strong><font color='green'>可以</font></strong>不经审核直接发帖.<br>");
+define('_MD_CANNOT_NOAPPROVE', "您<strong><font color='red'>不可</font></strong>不经审核直接发帖.<br>");
 define('_MD_IMTOPICS', '重要主题');
 define('_MD_NOTIMTOPICS', '普通主题');
 define('_MD_FORUMOPTION', '论坛选项');
@@ -182,7 +182,7 @@ define('_MD_RATE4', '不错');
 define('_MD_RATE5', '顶 !');
 
 define('_MD_TOPICOPTION', '主题选项');
-define('_MD_KARMA_REQUIREMENT', '你的Karma积分 %s 没有达到帖子要求的标准 %s. <br /> 请修炼几日再来吧.');
+define('_MD_KARMA_REQUIREMENT', '你的Karma积分 %s 没有达到帖子要求的标准 %s. <br> 请修炼几日再来吧.');
 define('_MD_REPLY_REQUIREMENT', '需要回复才能查看内容.');
 define('_MD_TOPICOPTIONADMIN', '主题管理选项');
 define('_MD_POLLOPTIONADMIN', '投票调查管理选项');
@@ -202,10 +202,10 @@ define('_MD_EXP', 'EXP:');
 define('_MD_BROWSING', '正在浏览:');
 define('_MD_POSTTONEWS', '发布到新闻区');
 
-define('_MD_EXCEEDTHREADVIEW', '回帖数目超过树状显示所允许的上限<br />转为展开模式');
+define('_MD_EXCEEDTHREADVIEW', '回帖数目超过树状显示所允许的上限<br>转为展开模式');
 
 //forumform.inc
-define('_MD_PRIVATE', '这是一个<strong>内部</strong>讨论区.<br />只有授权用户才能发表');
+define('_MD_PRIVATE', '这是一个<strong>内部</strong>讨论区.<br>只有授权用户才能发表');
 define('_MD_QUOTE', '引用');
 define('_MD_VIEW_REQUIRE', '查看要求');
 define('_MD_REQUIRE_KARMA', 'Karma积分');
@@ -250,7 +250,7 @@ define('_MD_RE', '回复');
 //post.php
 define('_MD_EDITNOTALLOWED', '没有权限修改帖子!');
 define('_MD_EDITEDBY', '');
-define('_MD_ANONNOTALLOWED', '游客没有发帖权.<br />请先注册.');
+define('_MD_ANONNOTALLOWED', '游客没有发帖权.<br>请先注册.');
 define('_MD_THANKSSUBMIT', '感谢您的发帖!');
 define('_MD_REPLYPOSTED', '您的帖子有人回复.');
 define('_MD_HELLO', '您好 %s,');
@@ -314,7 +314,7 @@ define('_MD_UNDIGEST', '取消精华');
 
 define('_MD_DESC_DELETE', '按删除按钮将<strong>永久</strong>删除该主题');
 define('_MD_DESC_MOVE', '按移动按钮将转移该主题到你所选的板面');
-define('_MD_DESC_MERGE', '按合并按钮将合并该主题到所选的主题<br /><strong>要合并到的主题ID必须小于当前主题ID.</strong>');
+define('_MD_DESC_MERGE', '按合并按钮将合并该主题到所选的主题<br><strong>要合并到的主题ID必须小于当前主题ID.</strong>');
 define('_MD_DESC_LOCK', '按锁定按钮将锁定该主题的所有普通用户操作。除非解除锁定才能恢复');
 define('_MD_DESC_UNLOCK', '按解除锁定按钮将重新开放该主题');
 define('_MD_DESC_STICKY', '按置顶按钮将该主题固定在顶端');
@@ -352,7 +352,7 @@ define('_MD_NO_SUCH_FILE', '文件不存在!');
 define('_MD_ERROR_UPATEATTACHMENT', '更新附件时发生错误');
 
 // ratethread.php
-define('_MD_CANTVOTEOWN', '不能对自己的主题评分.<br />所有评分信息将会被记录并审查.');
+define('_MD_CANTVOTEOWN', '不能对自己的主题评分.<br>所有评分信息将会被记录并审查.');
 define('_MD_VOTEONCE', '请不要对同一主题多次评分.');
 define('_MD_VOTEAPPRE', '感谢您的评分.');
 define('_MD_THANKYOU', '感谢您花时间在 %s 评分'); // %s is your site name
@@ -442,7 +442,7 @@ define('_MD_TYPE_SUSPEND', '封禁账号');
 define('_MD_DBUPDATED', '数据已成功更新!');
 
 define('_MD_SUSPEND_SUBJECT', '用户 %s 被禁止发言 %d 天');
-define('_MD_SUSPEND_TEXT', '用户 %s 被禁止发言 %d 天，原因:<br />[quote]%s[/quote]<br /><br />封禁期持续至 %s');
+define('_MD_SUSPEND_TEXT', '用户 %s 被禁止发言 %d 天，原因:<br>[quote]%s[/quote]<br><br>封禁期持续至 %s');
 define('_MD_SUSPEND_UID', '用户 ID');
 define('_MD_SUSPEND_IP', 'IP区段');
 define('_MD_SUSPEND_DURATION', '封禁时间');
@@ -462,7 +462,7 @@ define('_MD_MONTHDAY', 'n/j G:i:s');
 define('_MD_YEARMONTHDAY', 'Y/n/j G:i');
 
 // For user info
-require_once(XOOPS_ROOT_PATH . '/modules/newbb/class/user.php');
+require_once XOOPS_ROOT_PATH . '/modules/newbb/class/user.php';
 class User_language extends User
 {
     public function User_language(&$user)

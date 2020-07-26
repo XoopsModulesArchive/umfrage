@@ -1,7 +1,7 @@
 <form action="<{$poll.action}>" method="post">
   <table width="100%" class="outer" cellspacing="1">
     <tr>
-      <th align="center" colspan="2"><input type="hidden" name="poll_id" value="<{$poll.pollId}>" /><{$poll.question}></th>
+      <th align="center" colspan="2"><input type="hidden" name="poll_id" value="<{$poll.pollId}>"><{$poll.question}></th>
     </tr>
 
     <tr>
@@ -22,10 +22,10 @@
 <{if $hasVoted}>
 <{$lang_alreadyvoted2}>
 <{else}>
-<input type="submit" value="<{$lang_vote}>" />
+<input type="submit" value="<{$lang_vote}>">
 <{/if}>
 
-<{if $poll.polltype==1 || $poll.polltype == 3 && $hasEnded }>&nbsp;<input type="button" value="<{$lang_results}>" onclick="location='<{$poll.viewresults}>'" />
+<{if $poll.polltype==1 || $poll.polltype == 3 && $hasEnded }>&nbsp;<input type="button" value="<{$lang_results}>" onclick="location='<{$poll.viewresults}>'">
 
 <{/if}>
 

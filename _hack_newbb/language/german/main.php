@@ -101,26 +101,26 @@ define('_MD_SEARCHTHISFORUM', 'Durchsuche dieses Forum');
 define('_MD_TOPIC_SUBJECTC', 'Themenpr&auml;fix:');
 
 define('_MD_RATINGS', 'Bewertungen');
-define('_MD_CAN_ACCESS', '<b>Erlaubt</b>, dieses Forum zu betreten.<br />');
-define('_MD_CANNOT_ACCESS', '<b>Nicht erlaubt</b>, dieses Forum zu betreten.<br />');
-define('_MD_CAN_POST', '<b>Erlaubt</b>, ein neues Thema zu erstellen.<br />');
-define('_MD_CANNOT_POST', '<b>Nicht erlaubt</b>, ein neues Thema zu erstellen.<br />');
-define('_MD_CAN_VIEW', '<b>Erlaubt</b>, Themen anzuschauen.<br />');
-define('_MD_CANNOT_VIEW', '<b>Nicht erlaubt</b>, Themen anzuschauen.<br />');
-define('_MD_CAN_REPLY', '<b>Erlaubt</b>, auf Beitr&auml;ge zu antworten.<br />');
-define('_MD_CANNOT_REPLY', '<b>Nicht erlaubt</b>, auf Beitr&auml;ge zu antworten.<br />');
-define('_MD_CAN_EDIT', '<b>Erlaubt</b>, Beitr&auml;ge zu editieren.<br />');
-define('_MD_CANNOT_EDIT', '<b>Nicht erlaubt</b>, Beitr&auml;ge zu editieren.<br />');
-define('_MD_CAN_DELETE', '<b>Erlaubt</b>, Beitr&auml;ge zu l&ouml;schen.<br />');
-define('_MD_CANNOT_DELETE', '<b>Nicht erlaubt</b>, Beitr&auml;ge zu l&ouml;schen.<br />');
-define('_MD_CAN_ADDPOLL', '<b>Erlaubt</b>, neue Umfragen zu erstellen.<br />');
-define('_MD_CANNOT_ADDPOLL', '<b>Nicht erlaubt</b>, Umfragen zu erstellen.<br />');
-define('_MD_CAN_VOTE', '<b>Erlaubt</b>, in Umfragen abzustimmen.<br />');
-define('_MD_CANNOT_VOTE', '<b>Nicht erlaubt</b>, in Umfragen abzustimmen.<br />');
-define('_MD_CAN_ATTACH', '<b>Erlaubt</b>, Dateien hoch zu laden.<br />');
-define('_MD_CANNOT_ATTACH', '<b>Nicht erlaubt</b>, Dateien hoch zu laden.<br />');
-define('_MD_CAN_NOAPPROVE', '<b>Erlaubt</b>, Beitr&auml;ge ohne Pr&uuml;fung zu schreiben.<br />');
-define('_MD_CANNOT_NOAPPROVE', '<b>Nicht erlaubt</b>, Beitr&auml;ge ohne Pr&uuml;fung zu schreiben.<br />');
+define('_MD_CAN_ACCESS', '<b>Erlaubt</b>, dieses Forum zu betreten.<br>');
+define('_MD_CANNOT_ACCESS', '<b>Nicht erlaubt</b>, dieses Forum zu betreten.<br>');
+define('_MD_CAN_POST', '<b>Erlaubt</b>, ein neues Thema zu erstellen.<br>');
+define('_MD_CANNOT_POST', '<b>Nicht erlaubt</b>, ein neues Thema zu erstellen.<br>');
+define('_MD_CAN_VIEW', '<b>Erlaubt</b>, Themen anzuschauen.<br>');
+define('_MD_CANNOT_VIEW', '<b>Nicht erlaubt</b>, Themen anzuschauen.<br>');
+define('_MD_CAN_REPLY', '<b>Erlaubt</b>, auf Beitr&auml;ge zu antworten.<br>');
+define('_MD_CANNOT_REPLY', '<b>Nicht erlaubt</b>, auf Beitr&auml;ge zu antworten.<br>');
+define('_MD_CAN_EDIT', '<b>Erlaubt</b>, Beitr&auml;ge zu editieren.<br>');
+define('_MD_CANNOT_EDIT', '<b>Nicht erlaubt</b>, Beitr&auml;ge zu editieren.<br>');
+define('_MD_CAN_DELETE', '<b>Erlaubt</b>, Beitr&auml;ge zu l&ouml;schen.<br>');
+define('_MD_CANNOT_DELETE', '<b>Nicht erlaubt</b>, Beitr&auml;ge zu l&ouml;schen.<br>');
+define('_MD_CAN_ADDPOLL', '<b>Erlaubt</b>, neue Umfragen zu erstellen.<br>');
+define('_MD_CANNOT_ADDPOLL', '<b>Nicht erlaubt</b>, Umfragen zu erstellen.<br>');
+define('_MD_CAN_VOTE', '<b>Erlaubt</b>, in Umfragen abzustimmen.<br>');
+define('_MD_CANNOT_VOTE', '<b>Nicht erlaubt</b>, in Umfragen abzustimmen.<br>');
+define('_MD_CAN_ATTACH', '<b>Erlaubt</b>, Dateien hoch zu laden.<br>');
+define('_MD_CANNOT_ATTACH', '<b>Nicht erlaubt</b>, Dateien hoch zu laden.<br>');
+define('_MD_CAN_NOAPPROVE', '<b>Erlaubt</b>, Beitr&auml;ge ohne Pr&uuml;fung zu schreiben.<br>');
+define('_MD_CANNOT_NOAPPROVE', '<b>Nicht erlaubt</b>, Beitr&auml;ge ohne Pr&uuml;fung zu schreiben.<br>');
 define('_MD_IMTOPICS', 'Wichtige Themen');
 define('_MD_NOTIMTOPICS', 'Forumthemen');
 define('_MD_FORUMOPTION', 'Forumoptionen');
@@ -182,7 +182,7 @@ define('_MD_RATE4', 'Gut');
 define('_MD_RATE5', 'Sehr gut');
 
 define('_MD_TOPICOPTION', 'Themenoptionen');
-define('_MD_KARMA_REQUIREMENT', 'Das pers&ouml;nliche Karma %s ist nicht ausreichend f&uuml;r das ben&ouml;tigte Karma von %s. <br /> Bitte sp&auml;ter nochmals versuchen.');
+define('_MD_KARMA_REQUIREMENT', 'Das pers&ouml;nliche Karma %s ist nicht ausreichend f&uuml;r das ben&ouml;tigte Karma von %s. <br> Bitte sp&auml;ter nochmals versuchen.');
 define('_MD_REPLY_REQUIREMENT', 'Um diesen Beitrag lesen zu k&ouml;nnen, bitte einloggen und eine Antwort erstellen.');
 define('_MD_TOPICOPTIONADMIN', 'Thema Admin Optionen');
 define('_MD_POLLOPTIONADMIN', 'Umfrage Admin Optionen');
@@ -202,7 +202,7 @@ define('_MD_EXP', 'EXP:');
 define('_MD_BROWSING', 'Leser in diesem Thema:');
 define('_MD_POSTTONEWS', 'Diesen Beitrag als News ver&ouml;ffentlichen');
 
-define('_MD_EXCEEDTHREADVIEW', 'Anzahl der Beitr&auml;ge &uuml;bersteigt das Maximum f&uuml;r diese Ansicht, <br />bitte zur flachen Ansicht wechseln.');
+define('_MD_EXCEEDTHREADVIEW', 'Anzahl der Beitr&auml;ge &uuml;bersteigt das Maximum f&uuml;r diese Ansicht, <br>bitte zur flachen Ansicht wechseln.');
 
 //forumform.inc
 define('_MD_PRIVATE', 'Dies ist ein <b>privates</b> Forum. Nur Mitglieder mit besonderen Rechten k&ouml;nnen in diesem Forum Themen starten und Antworten schreiben');
@@ -314,7 +314,7 @@ define('_MD_UNDIGEST', 'Digest aufheben');
 
 define('_MD_DESC_DELETE', 'Wirklich das Thema und alle damit verbundenen Beitr&auml;ge <b>endg&uuml;ltig l&ouml;schen?</b>');
 define('_MD_DESC_MOVE', 'Sicher, das Thema und alle damit verbundenen Beitr&auml;ge in das ausgew&auml;hlte Forum zu verschieben.');
-define('_MD_DESC_MERGE', 'Sicher, das Thema und alle damit verbundenen Beitr&auml;ge mit dem ausgew&auml;hlten Thema zu verbinden.<br /><strong>Die ID des Zielthemas muss kleiner sein, als die des zu verbindenden Themas</strong>.');
+define('_MD_DESC_MERGE', 'Sicher, das Thema und alle damit verbundenen Beitr&auml;ge mit dem ausgew&auml;hlten Thema zu verbinden.<br><strong>Die ID des Zielthemas muss kleiner sein, als die des zu verbindenden Themas</strong>.');
 define('_MD_DESC_LOCK', 'Sicher, das ausgew&auml;hlte Thema zu sperren? Es kann es zu einem sp&auml;teren Zeitpunkt wieder entsperrt werden.');
 define('_MD_DESC_UNLOCK', 'Sicher, das ausgew&auml;hlte Thema zu entsperren? Es kann zu einem sp&auml;teren Zeitpunkt wieder gesperrt werden.');
 define('_MD_DESC_STICKY', 'Sicher, das ausgew&auml;hlte Thema zu pinnen? Dies kann zu einem sp&auml;teren Zeitpunkt wieder aufgehoben werden.');
@@ -352,7 +352,7 @@ define('_MD_NO_SUCH_FILE', 'Datei existiert nicht!');
 define('_MD_ERROR_UPATEATTACHMENT', 'Ein Fehler ist beim Aktualisieren der Dateianh&auml;nge aufgetreten');
 
 // ratethread.php
-define('_MD_CANTVOTEOWN', 'Es darf nicht f&uuml;r die eigenen Themen abgestimmt werden..<br />Alle Stimmen werden aufgezeichnet und &uuml;berpr&uuml;ft.');
+define('_MD_CANTVOTEOWN', 'Es darf nicht f&uuml;r die eigenen Themen abgestimmt werden..<br>Alle Stimmen werden aufgezeichnet und &uuml;berpr&uuml;ft.');
 define('_MD_VOTEONCE', 'Bitte nicht mehrfach für das gleiche Thema abstimmen.');
 define('_MD_VOTEAPPRE', 'Ihre Bewertung ist willkommen.');
 define('_MD_THANKYOU', 'Danke, f&uuml;r den Zeitaufwand auf %s abzustimmen.'); // %s is your site name
@@ -412,7 +412,7 @@ define('_MD_MENU_HOVER', 'Men&uuml;anzeige = hover');
 define('_MD_MENU_CLICK', 'Men&uuml;anzeige = klick');
 
 define('_MD_WELCOME_SUBJECT', '%s hat das Forum zum ersten mal betreten');
-define('_MD_WELCOME_MESSAGE', 'Hallo %s,<br />herzlich willkommen im Forum. An dieser Stelle nur eine kleine Anmerkung: Um die Anzahl der doppelten Eintr&auml;ge gering zu halten, ist es w&uuml;nschenswert das vorher die Forumsuche verwendet wird, bevor eine Frage gestellt wird.<br /><br />');
+define('_MD_WELCOME_MESSAGE', 'Hallo %s,<br>herzlich willkommen im Forum. An dieser Stelle nur eine kleine Anmerkung: Um die Anzahl der doppelten Eintr&auml;ge gering zu halten, ist es w&uuml;nschenswert das vorher die Forumsuche verwendet wird, bevor eine Frage gestellt wird.<br><br>');
 
 define('_MD_VIEWNEWPOSTS', 'Neue Beitr&auml;ge zeigen');
 
@@ -442,7 +442,7 @@ define('_MD_TYPE_SUSPEND', 'Gesperrt');
 define('_MD_DBUPDATED', 'Datenbank Update war erfolgreich!');
 
 define('_MD_SUSPEND_SUBJECT', 'Benutzer %s ist für %d Tage gesperrt');
-define('_MD_SUSPEND_TEXT', 'Benutzer %s ist für %d Tage gesperrt. Grund:<br />[quote]%s[/quote]<br /><br />Die Sperrung ist bis %s gültig');
+define('_MD_SUSPEND_TEXT', 'Benutzer %s ist für %d Tage gesperrt. Grund:<br>[quote]%s[/quote]<br><br>Die Sperrung ist bis %s gültig');
 define('_MD_SUSPEND_UID', 'Benutzer ID');
 define('_MD_SUSPEND_IP', 'IP Segmente (voll oder nur Segmente)');
 define('_MD_SUSPEND_DURATION', 'Dauer der Sperrung (Tage)');
@@ -466,7 +466,7 @@ define('_NEWBB_SECURITY_CODE_FAILED', 'Sicherheitscode falsch');
 
 // For user info
 // If you have customized userbar, define here.
-require_once(XOOPS_ROOT_PATH . '/modules/newbb/class/user.php');
+require_once XOOPS_ROOT_PATH . '/modules/newbb/class/user.php';
 class User_language extends User
 {
     public function User_language(&$user)

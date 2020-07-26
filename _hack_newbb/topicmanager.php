@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -28,7 +28,7 @@
 //  URL: http://xoopsforge.com, http://xoops.org.cn                          //
 //  Project: Article Project                                                 //
 //  ------------------------------------------------------------------------ //
-include 'header.php';
+require __DIR__ . '/header.php';
 
 if (isset($_POST['submit'])) {
     foreach (['forum', 'topic_id', 'newforum', 'newtopic'] as $getint) {
@@ -46,14 +46,14 @@ if (!$topic_id) {
     redirect_header($redirect, 2, _MD_ERRORTOPIC);
 }
 
-$topic_handler = &xoops_getmodulehandler('topic', 'newbb');
-$forum = $topic_handler->get($topic_id, 'forum_id');
-$forum_new = !empty($newtopic) ? $topic_handler->get($newtopic, 'forum_id') : 0;
+$topicHandler =  xoops_getModuleHandler('topic', 'newbb');
+$forum = $topicHandler->get($topic_id, 'forum_id');
+$forum_new = !empty($newtopic) ? $topicHandler->get($newtopic, 'forum_id') : 0;
 
-$forum_handler = &xoops_getmodulehandler('forum', 'newbb');
-if (!$forum_handler->getPermission($forum, 'moderate')
-    || (!empty($forum_new) && !$forum_handler->getPermission($forum_new, 'reply')) // The forum for the topic to be merged to
-    || (!empty($newforum) && !$forum_handler->getPermission($newforum, 'post')) // The forum to be moved to
+$forumHandler =  xoops_getModuleHandler('forum', 'newbb');
+if (!$forumHandler->getPermission($forum, 'moderate')
+    || (!empty($forum_new) && !$forumHandler->getPermission($forum_new, 'reply')) // The forum for the topic to be merged to
+    || (!empty($newforum) && !$forumHandler->getPermission($newforum, 'post')) // The forum to be moved to
 ) {
     redirect_header("viewtopic.php?forum=$forum&amp;topic_id=$topic_id", 2, _NOPERM);
 
@@ -61,9 +61,9 @@ if (!$forum_handler->getPermission($forum, 'moderate')
 }
 
 if ($xoopsModuleConfig['wol_enabled']) {
-    $online_handler = &xoops_getmodulehandler('online', 'newbb');
+    $onlineHandler =  xoops_getModuleHandler('online', 'newbb');
 
-    $online_handler->init($forum);
+    $onlineHandler->init($forum);
 }
 
 $action_array = ['merge', 'delete', 'move', 'lock', 'unlock', 'sticky', 'unsticky', 'digest', 'undigest'];
@@ -84,17 +84,17 @@ $action['digest']['sql'] = 'topic_digest = 1, digest_time = ' . time();
 
 // Disable cache
 $xoopsConfig['module_cache'][$xoopsModule->getVar('mid')] = 0;
-include XOOPS_ROOT_PATH . '/header.php';
+require XOOPS_ROOT_PATH . '/header.php';
 
 if (isset($_POST['submit'])) {
     $mode = $_POST['mode'];
 
     if ('delete' == $mode) {
-        //$topic_handler =& xoops_getmodulehandler('topic', 'newbb');
+        //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
 
-        $topic_handler->delete($topic_id);
+        $topicHandler->delete($topic_id);
 
-        $forum_handler->synchronization($forum);
+        $forumHandler->synchronization($forum);
 
         //sync($topic_id, "topic");
 
@@ -102,11 +102,11 @@ if (isset($_POST['submit'])) {
 
         echo $action[$mode]['msg'] . "<p><a href='viewforum.php?forum=$forum'>" . _MD_RETURNTOTHEFORUM . "</a></p><p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
     } elseif ('merge' == $mode) {
-        //$topic_handler =& xoops_getmodulehandler('topic', 'newbb');
+        //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
 
-        $post_handler = &xoops_getmodulehandler('post', 'newbb');
+        $postHandler =  xoops_getModuleHandler('post', 'newbb');
 
-        $newtopic_obj = &$topic_handler->get($newtopic);
+        $newtopic_obj = &$topicHandler->get($newtopic);
 
         /* return false if destination topic is newer or not existing */
 
@@ -122,33 +122,33 @@ if (isset($_POST['submit'])) {
 
         $criteria->add(new Criteria('pid', 0));
 
-        $post_handler->updateAll('pid', $topic_handler->getTopPostId($newtopic), $criteria, true);
+        $postHandler->updateAll('pid', $topicHandler->getTopPostId($newtopic), $criteria, true);
 
-        $post_handler->updateAll('topic_id', $newtopic, $criteria_topic, true);
+        $postHandler->updateAll('topic_id', $newtopic, $criteria_topic, true);
 
-        $topic_views = $topic_handler->get($topic_id, 'topic_views') + $newtopic_obj->getVar('topic_views');
+        $topic_views = $topicHandler->get($topic_id, 'topic_views') + $newtopic_obj->getVar('topic_views');
 
         $criteria_newtopic = new Criteria('topic_id', $newtopic);
 
-        $topic_handler->updateAll('topic_views', $topic_views, $criteria_newtopic, true);
+        $topicHandler->updateAll('topic_views', $topic_views, $criteria_newtopic, true);
 
-        $topic_handler->synchronization($newtopic);
+        $topicHandler->synchronization($newtopic);
 
-        $poll_id = $topic_handler->get($topic_id, 'poll_id');
+        $poll_id = $topicHandler->get($topic_id, 'poll_id');
 
         if ($poll_id > 0) {
             if (is_dir(XOOPS_ROOT_PATH . '/modules/umfrage/')) {
-                include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+                require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
 
-                include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+                require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
 
-                include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+                require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
 
-                include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
+                require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
                 $poll = new Umfrage($poll_id);
 
-                if (false != $poll->delete()) {
+                if (false !== $poll->delete()) {
                     UmfrageOption::deleteByPollId($poll->getVar('poll_id'));
 
                     UmfrageLog::deleteByPollId($poll->getVar('poll_id'));
@@ -188,9 +188,9 @@ if (isset($_POST['submit'])) {
                 return false;
             }
 
-            $forum_handler->synchronization($newforum);
+            $forumHandler->synchronization($newforum);
 
-            $forum_handler->synchronization($forum);
+            $forumHandler->synchronization($forum);
 
             echo $action[$mode]['msg'] . "<p><a href='viewtopic.php?topic_id=$topic_id&amp;forum=$newforum'>" . _MD_GOTONEWFORUM . "</a></p><p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
         } else {
@@ -200,7 +200,7 @@ if (isset($_POST['submit'])) {
         $sql = sprintf('UPDATE %s SET ' . $action[$mode]['sql'] . ' WHERE topic_id = %u', $xoopsDB->prefix('bb_topics'), $topic_id);
 
         if (!$r = $xoopsDB->query($sql)) {
-            redirect_header("viewtopic.php?forum=$forum&amp;topic_id=$topic_id&amp;order=$order&amp;viewmode=$viewmode", 2, _MD_ERROR_BACK . '<br />sql:' . $sql);
+            redirect_header("viewtopic.php?forum=$forum&amp;topic_id=$topic_id&amp;order=$order&amp;viewmode=$viewmode", 2, _MD_ERROR_BACK . '<br>sql:' . $sql);
 
             exit();
         }
@@ -227,11 +227,11 @@ if (isset($_POST['submit'])) {
 
         $box = '<select name="newforum" size="1">';
 
-        $category_handler = &xoops_getmodulehandler('category', 'newbb');
+        $categoryHandler =  xoops_getModuleHandler('category', 'newbb');
 
-        $categories = $category_handler->getAllCats('access', true);
+        $categories = $categoryHandler->getAllCats('access', true);
 
-        $forums = $forum_handler->getForumsByCategory(array_keys($categories), 'post', false);
+        $forums = $forumHandler->getForumsByCategory(array_keys($categories), 'post', false);
 
         if (count($categories) > 0 && count($forums) > 0) {
             foreach (array_keys($forums) as $key) {
@@ -263,21 +263,21 @@ if (isset($_POST['submit'])) {
     if ('merge' == $mode) {
         echo '<tr><td class="bg3">' . _MD_MERGETOPICTO . '</td><td class="bg1">';
 
-        echo _MD_TOPIC . "ID-$topic_id -> ID: <input name='newtopic' value='' />";
+        echo _MD_TOPIC . "ID-$topic_id -> ID: <input name='newtopic' value=''>";
 
         echo '</td></tr>';
     }
 
     echo '<tr class="bg3"><td colspan="2" align="center">';
 
-    echo "<input type='hidden' name='mode' value='" . $action[$mode]['name'] . "' />";
+    echo "<input type='hidden' name='mode' value='" . $action[$mode]['name'] . "'>";
 
-    echo "<input type='hidden' name='topic_id' value='" . $topic_id . "' />";
+    echo "<input type='hidden' name='topic_id' value='" . $topic_id . "'>";
 
-    echo "<input type='hidden' name='forum' value='" . $forum . "' />";
+    echo "<input type='hidden' name='forum' value='" . $forum . "'>";
 
-    echo "<input type='submit' name='submit' value='" . $action[$mode]['submit'] . "' />";
+    echo "<input type='submit' name='submit' value='" . $action[$mode]['submit'] . "'>";
 
     echo '</td></tr></form></table></td></tr></table>';
 }
-include XOOPS_ROOT_PATH . '/footer.php';
+require XOOPS_ROOT_PATH . '/footer.php';

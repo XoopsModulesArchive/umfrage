@@ -3,7 +3,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://www.xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,20 +25,20 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 // Author: Kazumi Ono (AKA onokazu)                                          //
-// URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
+// URL: http://www.myweb.ne.jp/, https://www.xoops.org/, http://jp.xoops.org/ //
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 
-include_once('header.php');
+require_once __DIR__ . '/header.php';
 
-include XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
-include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
+require XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 $op = 'add';
 if (isset($_GET['op'])) {
@@ -60,29 +60,29 @@ if (isset($_POST['topic_id'])) {
     $topic_id = intval($_POST['topic_id']);
 }
 
-if (!isset($module_handler)) {
-    $module_handler = &xoops_gethandler('module');
+if (!isset($moduleHandler)) {
+    $moduleHandler =  xoops_getHandler('module');
 }
-$umfrage = &$module_handler->getByDirname('umfrage');
+$umfrage =  $moduleHandler->getByDirname('umfrage');
 if (!is_object($umfrage) || !$umfrage->getVar('isactive')) {
     redirect_header('javascript:history.go(-1);', 2, _MD_POLLMODULE_ERROR);
 
     exit();
 }
 
-include XOOPS_ROOT_PATH . '/header.php';
+require XOOPS_ROOT_PATH . '/header.php';
 
-$topic_handler = &xoops_getmodulehandler('topic', 'newbb');
-$forumtopic = &$topic_handler->get($topic_id);
+$topicHandler =  xoops_getModuleHandler('topic', 'newbb');
+$forumtopic = &$topicHandler->get($topic_id);
 $forum = $forumtopic->getVar('forum_id');
-$forum_handler = &xoops_getmodulehandler('forum', 'newbb');
-$viewtopic_forum = &$forum_handler->get($forum);
-if (!$forum_handler->getPermission($viewtopic_forum)) {
+$forumHandler =  xoops_getModuleHandler('forum', 'newbb');
+$viewtopic_forum = &$forumHandler->get($forum);
+if (!$forumHandler->getPermission($viewtopic_forum)) {
     redirect_header('index.php', 2, _MD_NORIGHTTOACCESS);
 
     exit();
 }
-if (!$topic_handler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), 'view')) {
+if (!$topicHandler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), 'view')) {
     redirect_header('viewforum.php?forum=' . $viewtopic_forum->getVar('forum_id'), 2, _MD_NORIGHTTOVIEW);
 
     exit();
@@ -92,7 +92,7 @@ $isadmin = newbb_isAdmin($viewtopic_forum);
 $perm = false;
 if ($isadmin) {
     $perm = true;
-} elseif ($topic_handler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), 'addpoll')
+} elseif ($topicHandler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), 'addpoll')
     && 1 == $viewtopic_forum->getVar('allow_polls')
 ) {
     if (('add' == $op || 'save' == $op) &&
@@ -127,7 +127,7 @@ if ('add' == $op) {
 
     $endtime = formatTimestamp(time() + 604800, 'Y-m-d H:i:s');
 
-    $expire_text = new XoopsFormText(_MD_POLL_EXPIRATION . '<br /><small>' . _MD_POLL_FORMAT . '<br />' . sprintf(_MD_POLL_CURRENTTIME, $currenttime) . '</small>', 'end_time', 30, 19, $endtime);
+    $expire_text = new XoopsFormText(_MD_POLL_EXPIRATION . '<br><small>' . _MD_POLL_FORMAT . '<br>' . sprintf(_MD_POLL_CURRENTTIME, $currenttime) . '</small>', 'end_time', 30, 19, $endtime);
 
     $poll_form->addElement($expire_text);
 
@@ -160,7 +160,7 @@ if ('add' == $op) {
 
         $color_select->setExtra("onchange='showImgSelected(\"option_color_image[" . $i . ']", "option_color[' . $i . ']", "modules/umfrage/images/colorbars", "", "' . XOOPS_URL . "\")'");
 
-        $color_label = new XoopsFormLabel('', "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $current_bar . "' name='option_color_image[" . $i . "]' id='option_color_image[" . $i . "]' width='30' align='bottom' height='15' alt='' /><br />");
+        $color_label = new XoopsFormLabel('', "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $current_bar . "' name='option_color_image[" . $i . "]' id='option_color_image[" . $i . "]' width='30' align='bottom' height='15' alt=''><br>");
 
         $option_tray->addElement($color_select);
 
@@ -187,13 +187,13 @@ if ('add' == $op) {
 
     $poll_form->addElement($poll_topic_id_hidden);
 
-    //include XOOPS_ROOT_PATH."/header.php";
+    //require XOOPS_ROOT_PATH."/header.php";
 
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
 
-    //include XOOPS_ROOT_PATH."/footer.php";
+    //require XOOPS_ROOT_PATH."/footer.php";
     //exit();
 }
 
@@ -297,7 +297,7 @@ if ('save' == $op) {
             newbb_message('poll adding to topic error: ' . $sql);
         }
 
-        include_once XOOPS_ROOT_PATH . '/class/template.php';
+        require_once XOOPS_ROOT_PATH . '/class/template.php';
 
         xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
     } else {
@@ -331,11 +331,11 @@ if ('edit' == $op) {
     $date = formatTimestamp($poll->getVar('end_time'), 'Y-m-d H:i:s');
 
     if (!$poll->hasExpired()) {
-        $expire_text = new XoopsFormText(_MD_POLL_EXPIRATION . '<br /><small>' . _MD_POLL_FORMAT . '<br />' . sprintf(_MD_POLL_CURRENTTIME, formatTimestamp(time(), 'Y-m-d H:i:s')) . '</small>', 'end_time', 20, 19, $date);
+        $expire_text = new XoopsFormText(_MD_POLL_EXPIRATION . '<br><small>' . _MD_POLL_FORMAT . '<br>' . sprintf(_MD_POLL_CURRENTTIME, formatTimestamp(time(), 'Y-m-d H:i:s')) . '</small>', 'end_time', 20, 19, $date);
 
         $poll_form->addElement($expire_text);
     } else {
-        $restart_label = new XoopsFormLabel(_MD_POLL_EXPIRATION, sprintf(_MD_POLL_EXPIREDAT, $date) . "<br /><a href='polls.php?op=restart&amp;poll_id=" . $poll->getVar('poll_id') . "'>" . _MD_POLL_RESTART . '</a>');
+        $restart_label = new XoopsFormLabel(_MD_POLL_EXPIRATION, sprintf(_MD_POLL_EXPIREDAT, $date) . "<br><a href='polls.php?op=restart&amp;poll_id=" . $poll->getVar('poll_id') . "'>" . _MD_POLL_RESTART . '</a>');
 
         $poll_form->addElement($restart_label);
     }
@@ -381,7 +381,7 @@ if ('edit' == $op) {
 
         $color_select->setExtra("onchange='showImgSelected(\"option_color_image[" . $i . ']", "option_color[' . $i . ']", "modules/umfrage/images/colorbars", "", "' . XOOPS_URL . "\")'");
 
-        $color_label = new XoopsFormLabel('', "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' name='option_color_image[" . $i . "]' id='option_color_image[" . $i . "]' width='30' align='bottom' height='15' alt='' /><br />");
+        $color_label = new XoopsFormLabel('', "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' name='option_color_image[" . $i . "]' id='option_color_image[" . $i . "]' width='30' align='bottom' height='15' alt=''><br>");
 
         $option_tray->addElement($color_select);
 
@@ -392,7 +392,7 @@ if ('edit' == $op) {
         $i++;
     }
 
-    $more_label = new XoopsFormLabel('', "<br /><a href='polls.php?op=addmore&amp;poll_id=" . $poll->getVar('poll_id') . '&amp;topic_id=' . $topic_id . "'>" . _MD_POLL_ADDMORE . '</a>');
+    $more_label = new XoopsFormLabel('', "<br><a href='polls.php?op=addmore&amp;poll_id=" . $poll->getVar('poll_id') . '&amp;topic_id=' . $topic_id . "'>" . _MD_POLL_ADDMORE . '</a>');
 
     $option_tray->addElement($more_label);
 
@@ -414,13 +414,13 @@ if ('edit' == $op) {
 
     $poll_form->addElement($submit_button);
 
-    //include XOOPS_ROOT_PATH."/header.php";
+    //require XOOPS_ROOT_PATH."/header.php";
 
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
 
-    //include XOOPS_ROOT_PATH."/footer.php";
+    //require XOOPS_ROOT_PATH."/footer.php";
     //exit();
 }
 
@@ -507,7 +507,7 @@ if ('update' == $op) {
 
             $option->store();
         } else {
-            if (false != $option->delete()) {
+            if (false !== $option->delete()) {
                 UmfrageLog::deleteByOptionId($option->getVar('option_id'));
             }
         }
@@ -517,7 +517,7 @@ if ('update' == $op) {
 
     $poll->updateCount();
 
-    include_once XOOPS_ROOT_PATH . '/class/template.php';
+    require_once XOOPS_ROOT_PATH . '/class/template.php';
 
     xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
@@ -552,7 +552,7 @@ if ('addmore' == $op) {
 
         $color_select->setExtra("onchange='showImgSelected(\"option_color_image[" . $i . ']", "option_color[' . $i . ']", "modules/umfrage/images/colorbars", "", "' . XOOPS_URL . "\")'");
 
-        $color_label = new XoopsFormLabel('', "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $current_bar . "' name='option_color_image[" . $i . "]' id='option_color_image[" . $i . "]' width='30' align='bottom' height='15' alt='' /><br />");
+        $color_label = new XoopsFormLabel('', "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $current_bar . "' name='option_color_image[" . $i . "]' id='option_color_image[" . $i . "]' width='30' align='bottom' height='15' alt=''><br>");
 
         $option_tray->addElement($color_select);
 
@@ -583,13 +583,13 @@ if ('addmore' == $op) {
 
     $poll_form->addElement($poll_id_hidden);
 
-    //include XOOPS_ROOT_PATH."/header.php";
+    //require XOOPS_ROOT_PATH."/header.php";
 
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
 
-    //include XOOPS_ROOT_PATH."/footer.php";
+    //require XOOPS_ROOT_PATH."/footer.php";
     //exit();
 }
 
@@ -638,7 +638,7 @@ if ('savemore' == $op) {
         $i++;
     }
 
-    include_once XOOPS_ROOT_PATH . '/class/template.php';
+    require_once XOOPS_ROOT_PATH . '/class/template.php';
 
     xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
@@ -648,7 +648,7 @@ if ('savemore' == $op) {
 }
 
 if ('delete' == $op) {
-    //include XOOPS_ROOT_PATH."/header.php";
+    //require XOOPS_ROOT_PATH."/header.php";
 
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
@@ -656,19 +656,19 @@ if ('delete' == $op) {
 
     xoops_confirm(['op' => 'delete_ok', 'topic_id' => $topic_id, 'poll_id' => $poll->getVar('poll_id')], 'polls.php', sprintf(_MD_POLL_RUSUREDEL, $poll->getVar('question')));
 
-    //include XOOPS_ROOT_PATH."/footer.php";
+    //require XOOPS_ROOT_PATH."/footer.php";
     //exit();
 }
 
 if ('delete_ok' == $op) {
     $poll = new Umfrage($poll_id);
 
-    if (false != $poll->delete()) {
+    if (false !== $poll->delete()) {
         UmfrageOption::deleteByPollId($poll->getVar('poll_id'));
 
         UmfrageLog::deleteByPollId($poll->getVar('poll_id'));
 
-        include_once XOOPS_ROOT_PATH . '/class/template.php';
+        require_once XOOPS_ROOT_PATH . '/class/template.php';
 
         xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
@@ -693,7 +693,7 @@ if ('restart' == $op) {
 
     $poll_form = new XoopsThemeForm(_MD_POLL_RESTARTPOLL, 'poll_form', 'polls.php');
 
-    $expire_text = new XoopsFormText(_MD_POLL_EXPIRATION . '<br /><small>' . _MD_POLL_FORMAT . '<br />' . sprintf(_MD_POLL_CURRENTTIME, formatTimestamp(time(), 'Y-m-d H:i:s')) . '</small>', 'end_time', 20, 19, formatTimestamp(time() + 604800, 'Y-m-d H:i:s'));
+    $expire_text = new XoopsFormText(_MD_POLL_EXPIRATION . '<br><small>' . _MD_POLL_FORMAT . '<br>' . sprintf(_MD_POLL_CURRENTTIME, formatTimestamp(time(), 'Y-m-d H:i:s')) . '</small>', 'end_time', 20, 19, formatTimestamp(time() + 604800, 'Y-m-d H:i:s'));
 
     $poll_form->addElement($expire_text);
 
@@ -721,13 +721,13 @@ if ('restart' == $op) {
 
     $poll_form->addElement($submit_button);
 
-    //include XOOPS_ROOT_PATH."/header.php";
+    //require XOOPS_ROOT_PATH."/header.php";
 
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
 
-    //include XOOPS_ROOT_PATH."/footer.php";
+    //require XOOPS_ROOT_PATH."/footer.php";
     //exit();
 }
 
@@ -770,7 +770,7 @@ if ('restart_ok' == $op) {
 
     $poll->updateCount();
 
-    include_once XOOPS_ROOT_PATH . '/class/template.php';
+    require_once XOOPS_ROOT_PATH . '/class/template.php';
 
     xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
@@ -780,14 +780,14 @@ if ('restart_ok' == $op) {
 }
 
 if ('log' == $op) {
-    //include XOOPS_ROOT_PATH."/header.php";
+    //require XOOPS_ROOT_PATH."/header.php";
 
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
-    echo '<br />View Log<br /> Sorry, not yet. ;-)';
+    echo '<br>View Log<br> Sorry, not yet. ;-)';
 
-    //include XOOPS_ROOT_PATH."/footer.php";
+    //require XOOPS_ROOT_PATH."/footer.php";
     //exit();
 }
 
-include XOOPS_ROOT_PATH . '/footer.php';
+require XOOPS_ROOT_PATH . '/footer.php';
