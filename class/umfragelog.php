@@ -148,7 +148,7 @@ class UmfrageLog extends XoopsObject
 
         $result = $db->query($sql);
 
-        while (false !== ($myrow = $db->fetchArray($result))) {
+        while (($myrow = $db->fetchArray($result)) !== false) {
             $ret[] = new self($myrow);
         }
 
@@ -173,7 +173,7 @@ class UmfrageLog extends XoopsObject
         $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id);
 
         // If Cookie exists, the user has already voted using this browser, although it could be using a different login
-        if (1 == $xoopsModuleConfig['controlbycookie'] and $_COOKIE['voted_polls[' . $poll_id . ']']) {
+        if ($xoopsModuleConfig['controlbycookie'] == 1 and $_COOKIE['voted_polls[' . $poll_id . ']']) {
             return true;
         }
 
@@ -183,7 +183,7 @@ class UmfrageLog extends XoopsObject
         }
 
         // ISegura.es: Can the user vote? Apply IP and Cookie controls if available.
-        if (1 == $xoopsModuleConfig['controlbyip']) { // ISegura.es: We check if IP control is activated.
+        if ($xoopsModuleConfig['controlbyip'] == 1) { // ISegura.es: We check if IP control is activated.
             $sql .= " AND ip='" . $ip . "'";
         } elseif (!$user_id) { // If is anonymous, but IP is not activated, we have no other way to control he has already voted.
             return false;

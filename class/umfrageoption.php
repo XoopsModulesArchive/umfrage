@@ -162,7 +162,7 @@ class UmfrageOption extends XoopsObject
 
         $result = $db->query($sql);
 
-        while (false !== ($myrow = $db->fetchArray($result))) {
+        while (($myrow = $db->fetchArray($result)) !== false) {
             $ret[] = new self($myrow);
         }
 

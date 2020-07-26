@@ -80,7 +80,7 @@ function newbb_load_config()
         return $moduleConfig;
     }
 
-    if (isset($GLOBALS['xoopsModule']) && is_object($GLOBALS['xoopsModule']) && 'newbb' == $GLOBALS['xoopsModule']->getVar('dirname', 'n')) {
+    if (isset($GLOBALS['xoopsModule']) && is_object($GLOBALS['xoopsModule']) && $GLOBALS['xoopsModule']->getVar('dirname', 'n') == 'newbb') {
         if (!empty($GLOBALS['xoopsModuleConfig'])) {
             $moduleConfig = &$GLOBALS['xoopsModuleConfig'];
         } else {
@@ -123,7 +123,7 @@ function getConfigForBlock()
         return $newbbConfig;
     }
 
-    if (is_object($GLOBALS['xoopsModule']) && 'newbb' == $GLOBALS['xoopsModule']->getVar('dirname')) {
+    if (is_object($GLOBALS['xoopsModule']) && $GLOBALS['xoopsModule']->getVar('dirname') == 'newbb') {
         $newbbConfig = &$GLOBALS['xoopsModuleConfig'];
     } else {
         $moduleHandler = xoops_getHandler('module');
@@ -209,7 +209,7 @@ function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
 
     global $xoopsConfig, $xoopsUser;
 
-    if ('rss' == mb_strtolower($format) || 'r' == mb_strtolower($format)) {
+    if (mb_strtolower($format) == 'rss' || mb_strtolower($format) == 'r') {
         $TIME_ZONE = '';
 
         if (!empty($GLOBALS['xoopsConfig']['server_TZ'])) {

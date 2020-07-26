@@ -80,7 +80,7 @@ if ($op == 'list') {
 		$max = $polls_count > $limit ? $limit : $polls_count;
 		for ($i = 0; $i < $max; $i ++) {
 			$checked = '';
-			if (1 == $polls_arr[$i]->getVar('display')) {
+			if ($polls_arr[$i]->getVar('display') == 1) {
 				$checked = ' checked';
 			}
 			if ($polls_arr[$i]->getVar('end_time') > time()) {

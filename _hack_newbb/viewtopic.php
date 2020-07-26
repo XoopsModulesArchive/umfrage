@@ -50,7 +50,7 @@ $topicHandler = xoops_getModuleHandler('topic', 'newbb');
 if (!empty($post_id)) {
     $forumtopic = &$topicHandler->getByPost($post_id);
 } elseif (!empty($move)) {
-    $forumtopic = &$topicHandler->getByMove($topic_id, 'prev' == $move ? -1 : 1, $forum_id);
+    $forumtopic = &$topicHandler->getByMove($topic_id, $move == 'prev' ? -1 : 1, $forum_id);
     $topic_id = $forumtopic->getVar('topic_id');
 } else {
     $forumtopic = $topicHandler->get($topic_id);
@@ -114,7 +114,7 @@ $order = isset($_GET['order']) && in_array(mb_strtoupper($_GET['order']), ['DESC
 
 $total_posts = $topicHandler->getPostCount($forumtopic, $type);
 
-if ('thread' == $viewmode) {
+if ($viewmode == 'thread') {
     $GLOBALS['xoopsOption']['template_main'] = 'newbb_viewtopic_thread.html';
     if (!empty($xoopsModuleConfig['posts_for_thread']) && $total_posts > $xoopsModuleConfig['posts_for_thread']) {
         redirect_header("viewtopic.php?topic_id=$topic_id&amp;viewmode=flat", 2, _MD_EXCEEDTHREADVIEW);
@@ -189,7 +189,7 @@ $xoopsTpl->assign('folder_topic', newbb_displayImage($forumImage['folder_topic']
 $xoopsTpl->assign('topic_id', $topic_id);
 $xoopsTpl->assign('forum_id', $forum_id);
 
-if ('DESC' == $order) {
+if ($order == 'DESC') {
     $order_current = 'DESC';
     $xoopsTpl->assign(['order_current' => 'DESC']);
 } else {
@@ -270,7 +270,7 @@ unset($groups_disp);
 if ($xoopsModuleConfig['allow_require_reply'] && $require_reply) {
     if (!empty($xoopsModuleConfig['cache_enabled'])) {
         $viewtopic_posters = newbb_getsession('t' . $topic_id, true);
-        if (!is_array($viewtopic_posters) || 0 == count($viewtopic_posters)) {
+        if (!is_array($viewtopic_posters) || count($viewtopic_posters) == 0) {
             $viewtopic_posters = $topicHandler->getAllPosters($forumtopic);
             newbb_setsession('t' . $topic_id, $viewtopic_posters);
         }
@@ -281,7 +281,7 @@ if ($xoopsModuleConfig['allow_require_reply'] && $require_reply) {
     $viewtopic_posters = [];
 }
 
-if ('thread' == $viewmode) {
+if ($viewmode == 'thread') {
     if (!empty($post_id)) {
         $postHandler = xoops_getModuleHandler('post', 'newbb');
         $currentPost = $postHandler->get($post_id);
@@ -545,13 +545,13 @@ if (!empty($xoopsModuleConfig['show_jump'])) {
 $xoopsTpl->assign(['lang_forum_index' => sprintf(_MD_FORUMINDEX, htmlspecialchars($xoopsConfig['sitename'], ENT_QUOTES)), 'lang_from' => _MD_FROM, 'lang_joined' => _MD_JOINED, 'lang_posts' => _MD_POSTS, 'lang_poster' => _MD_POSTER, 'lang_thread' => _MD_THREAD, 'lang_edit' => _EDIT, 'lang_delete' => _DELETE, 'lang_reply' => _REPLY, 'lang_postedon' => _MD_POSTEDON, 'lang_groups' => _MD_GROUPS]);
 
 $viewmode_options = [];
-if ('thread' == $viewmode) {
+if ($viewmode == 'thread') {
     $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=flat&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id, 'title' => _FLAT];
     $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=compact&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id,	'title' => _MD_COMPACT];
-} elseif ('compact' == $viewmode) {
+} elseif ($viewmode == 'compact') {
     $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=thread&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id, 'title' => _THREADED];
     $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=flat&amp;order=' . $order_current . '&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id,	'title' => _FLAT];
-    if ('DESC' == $order) {
+    if ($order == 'DESC') {
         $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=compact&amp;order=ASC&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id, 'title' => _OLDESTFIRST];
     } else {
         $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=compact&amp;order=DESC&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id, 'title' => _NEWESTFIRST];
@@ -559,7 +559,7 @@ if ('thread' == $viewmode) {
 } else {
     $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=thread&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id, 'title' => _THREADED];
     $viewmode_options[] = ['link' => $forumUrl['root'] . '/viewtopic.php?viewmode=compact&amp;order=' . $order_current . '&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id, 'title' => _MD_COMPACT];
-    if ('DESC' == $order) {
+    if ($order == 'DESC') {
         $viewmode_options[] = ['link' => $forumUrl['root'] . "/viewtopic.php?viewmode=flat&amp;order=ASC&amp;type=$type&amp;topic_id=" . $topic_id . '&amp;forum=' . $forum_id, 'title' => _OLDESTFIRST];
     } else {
         $viewmode_options[] = ['link' => $forumUrl['root'] . "/viewtopic.php?viewmode=flat&amp;order=DESC&amp;type=$type&amp;topic_id=" . $topic_id . '&amp;forum=' . $forum_id, 'title' => _NEWESTFIRST];
@@ -583,7 +583,7 @@ $xoopsTpl->assign('topictype', $current_type);
 
 $xoopsTpl->assign('mode', $mode);
 $xoopsTpl->assign('type', $type);
-$xoopsTpl->assign('viewmode_compact', 'compact' == $viewmode ? 1 : 0);
+$xoopsTpl->assign('viewmode_compact', $viewmode == 'compact' ? 1 : 0);
 $xoopsTpl->assign_by_ref('viewmode_options', $viewmode_options);
 unset($viewmode_options);
 $xoopsTpl->assign('menumode', $menumode);

@@ -45,7 +45,7 @@ function hasVoted($poll_id)
 
     $voted_polls = !empty($_COOKIE['voted_polls']) ? $_COOKIE['voted_polls'] : [];
 
-    if (empty($voted_polls[$poll_id]) or 0 == $xoopsModuleConfig['controlbycookie']) {
+    if (empty($voted_polls[$poll_id]) or $xoopsModuleConfig['controlbycookie'] == 0) {
         if (is_object($xoopsUser)) {
             $uid = $xoopsUser->getVar('uid');
         } else {
@@ -90,10 +90,10 @@ function b_umfrage_show($opts)
         $poll_sicht = intval($poll_sicht);
     }
 
-    if (1 == $poll_sicht) {
+    if ($poll_sicht == 1) {
         $show_result = false;
     } else {
-        $show_result = 1 == $opts[0] ? true : false;
+        $show_result = $opts[0] == 1 ? true : false;
     }
 
     if (is_object($xoopsUser)) {
@@ -102,9 +102,9 @@ function b_umfrage_show($opts)
         $uid = null;
     }
 
-    $show_percent = 1 == $opts[1] ? true : false;
+    $show_percent = $opts[1] == 1 ? true : false;
 
-    $show_bar = 1 == $opts[2] ? true : false;
+    $show_bar = $opts[2] == 1 ? true : false;
 
     $block = [];
 
@@ -127,7 +127,7 @@ function b_umfrage_show($opts)
 
     $block['lang_onlyregistered'] = _PL_ONLYREGISTERED;
 
-    $block['notregistered'] = null === $uid ? 1 : 0;
+    $block['notregistered'] = $uid === null ? 1 : 0;
 
     $block['csspath'] = XOOPS_URL . '/modules/umfrage/templates';
 
@@ -186,7 +186,7 @@ function b_umfrage_show($opts)
 
             $option_name = 'option_id';
 
-            if (1 == $polls[$i]->getVar('multiple')) {
+            if ($polls[$i]->getVar('multiple') == 1) {
                 $option_type = 'checkbox';
 
                 $option_name .= '[]';
@@ -212,7 +212,7 @@ function b_umfrage_show($opts)
 
         $block['polls'][] = &$poll;
 
-        $block['election'] = false === $show_result ? 1 : 0;
+        $block['election'] = $show_result === false ? 1 : 0;
 
         unset($options);
 
@@ -242,7 +242,7 @@ function b_umfrage_edit($options)
 
     $form .= '<option value="0"';
 
-    if (0 == $options[0]) {
+    if ($options[0] == 0) {
         $form .= ' selected="selected"';
     }
 
@@ -250,7 +250,7 @@ function b_umfrage_edit($options)
 
     $form .= '<option value="1"';
 
-    if (1 == $options[0]) {
+    if ($options[0] == 1) {
         $form .= ' selected="selected"';
     }
 
@@ -264,7 +264,7 @@ function b_umfrage_edit($options)
 
     $form .= '<option value="0"';
 
-    if (0 == $options[1]) {
+    if ($options[1] == 0) {
         $form .= ' selected="selected"';
     }
 
@@ -272,7 +272,7 @@ function b_umfrage_edit($options)
 
     $form .= '<option value="1"';
 
-    if (1 == $options[1]) {
+    if ($options[1] == 1) {
         $form .= ' selected="selected"';
     }
 
@@ -286,7 +286,7 @@ function b_umfrage_edit($options)
 
     $form .= '<option value="0"';
 
-    if (0 == $options[2]) {
+    if ($options[2] == 0) {
         $form .= ' selected="selected"';
     }
 
@@ -294,7 +294,7 @@ function b_umfrage_edit($options)
 
     $form .= '<option value="1"';
 
-    if (1 == $options[2]) {
+    if ($options[2] == 1) {
         $form .= ' selected="selected"';
     }
 

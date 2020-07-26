@@ -86,7 +86,7 @@ function newbb_getImageLibs()
 
     unset($output, $status);
 
-    if (1 == $xoopsModuleConfig['image_lib'] or 0 == $xoopsModuleConfig['image_lib']) {
+    if ($xoopsModuleConfig['image_lib'] == 1 or $xoopsModuleConfig['image_lib'] == 0) {
         $path = empty($xoopsModuleConfig['path_magick']) ? '' : $xoopsModuleConfig['path_magick'] . '/';
 
         @exec($path . 'convert -version', $output, $status);
@@ -100,7 +100,7 @@ function newbb_getImageLibs()
         unset($output, $status);
     }
 
-    if (2 == $xoopsModuleConfig['image_lib'] or 0 == $xoopsModuleConfig['image_lib']) {
+    if ($xoopsModuleConfig['image_lib'] == 2 or $xoopsModuleConfig['image_lib'] == 0) {
         $path = empty($xoopsModuleConfig['path_netpbm']) ? '' : $xoopsModuleConfig['path_netpbm'] . '/';
 
         @exec($path . 'jpegtopnm -version 2>&1', $output, $status);

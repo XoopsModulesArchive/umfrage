@@ -102,7 +102,7 @@ if (empty($poll_id)) {
             $polls['pollQuestion'] = $polls_arr[$i]->getVar('question');
         }
 
-        if (2 != $polls_arr[$i]->getVar('polltype')) {
+        if ($polls_arr[$i]->getVar('polltype') != 2) {
             $showlastcol = 1;
         }
 
@@ -123,7 +123,7 @@ if (empty($poll_id)) {
             $polls_arr[$i]->store();
         }
 
-        if ($polls_arr[$i]->hasExpired() && POLL_MAILED != $polls_arr[$i]->getVar('mail_status')) {
+        if ($polls_arr[$i]->hasExpired() && $polls_arr[$i]->getVar('mail_status') != POLL_MAILED) {
             $polls_mail = &Umfrage::getAll(['poll_id=' . $polls['pollId']], true, 'weight ASC, end_time DESC');
 
             $xoopsMailer = getMailer();
@@ -170,7 +170,7 @@ if (empty($poll_id)) {
                 $total = $polls_arr[$i]->getVar('votes');
 
                 // Number of digits for Formatting
-                if (0 != $total) {
+                if ($total != 0) {
                     $digits = 1 + floor(log10($total));
                 } else {
                     $digits = 1;
@@ -197,7 +197,7 @@ if (empty($poll_id)) {
 
                 $xoopsMailer->assign('MAILBODY', $mailbody);
 
-                if (false !== $xoopsMailer->send()) {
+                if ($xoopsMailer->send() !== false) {
                     $polls_arr[$i]->setVar('mail_status', POLL_MAILED);
 
                     $polls_arr[$i]->store();
@@ -217,11 +217,11 @@ if (empty($poll_id)) {
     $poll = new Umfrage($poll_id);
 
     if (!$poll->hasExpired()) {
-        if (empty($voted_polls[$poll_id]) or 0 == $xoopsModuleConfig['controlbycookie']) {
+        if (empty($voted_polls[$poll_id]) or $xoopsModuleConfig['controlbycookie'] == 0) {
             // ISegura.es: Check poll response limit if Multiple
             $multilimit = $poll->getVar('multilimit');
 
-            if ($multilimit > 0 and 1 == $poll->getVar('multiple') and (count($_POST['option_id']) > $multilimit)) {
+            if ($multilimit > 0 and $poll->getVar('multiple') == 1 and (count($_POST['option_id']) > $multilimit)) {
                 $msg = sprintf(_PL_VOTEOVERLIMIT, $multilimit);
 
                 redirect_header(XOOPS_URL . "/modules/umfrage/index.php?poll_id=$poll_id", 2, $msg);
@@ -242,7 +242,7 @@ if (empty($poll_id)) {
                     $msg = _PL_THANKSFORVOTE;
                 }
             } else {
-                if (1 == $poll->getVars('polltype')) {
+                if ($poll->getVars('polltype') == 1) {
                     if (UmfrageLog::hasVoted($poll_id, xoops_getenv('REMOTE_ADDR'))) {
                         setcookie("voted_polls[$poll_id]", 1, 0);
 
@@ -266,7 +266,7 @@ if (empty($poll_id)) {
     }
 
     //election mode
-    if (1 != $poll->getVars('polltype')) {
+    if ($poll->getVars('polltype') != 1) {
         redirect_header(XOOPS_URL . '/modules/umfrage/index.php', 2, $msg);
     } else {
         redirect_header(XOOPS_URL . "/modules/umfrage/pollresults.php?poll_id=$poll_id", 2, $msg);

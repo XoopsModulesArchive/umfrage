@@ -213,7 +213,7 @@ class Umfrage extends XoopsObject
 
             $result = $db->query($sql, intval($limit), intval($start));
 
-            while (false !== ($myrow = $db->fetchArray($result))) {
+            while (($myrow = $db->fetchArray($result)) !== false) {
                 $ret[] = $myrow['poll_id'];
             }
         } else {
@@ -221,7 +221,7 @@ class Umfrage extends XoopsObject
 
             $result = $db->query($sql, $limit, $start);
 
-            while (false !== ($myrow = $db->fetchArray($result))) {
+            while (($myrow = $db->fetchArray($result)) !== false) {
                 $ret[] = new self($myrow);
             }
         }
@@ -318,7 +318,7 @@ class Umfrage extends XoopsObject
         global $xoopsConfig;
 
         // ISegura.es: Send mesage to user if requested.
-        if ($user and 1 == $this->getVar('mail_voter')) {
+        if ($user and $this->getVar('mail_voter') == 1) {
             $xoopsMailer = getMailer();
 
             $xoopsMailer->useMail();
@@ -347,7 +347,7 @@ class Umfrage extends XoopsObject
 
             $xoopsMailer->setSubject(sprintf(_PL_YOURVOTEAT, $user->uname(), $xoopsConfig['sitename']));
 
-            if (false !== $xoopsMailer->send()) {
+            if ($xoopsMailer->send() !== false) {
                 $this->setVar('mail_status', POLL_MAILED);
             }
 

@@ -75,7 +75,7 @@ class UmfrageRenderer
 
         $option_name = 'option_id';
 
-        if (1 == $this->poll->getVar('multiple')) {
+        if ($this->poll->getVar('multiple') == 1) {
             $option_type = 'checkbox';
 
             $option_name .= '[]';
@@ -105,7 +105,7 @@ class UmfrageRenderer
 
         $option_name = 'option_id';
 
-        if (1 == $this->poll->getVar('multiple')) {
+        if ($this->poll->getVar('multiple') == 1) {
             $option_type = 'checkbox';
 
             $option_name .= '[]';

@@ -92,7 +92,7 @@ require XOOPS_ROOT_PATH . '/header.php';
 if (isset($_POST['submit'])) {
     $mode = $_POST['mode'];
 
-    if ('delete' == $mode) {
+    if ($mode == 'delete') {
         //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
         $topicHandler->delete($topic_id);
 
@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
         //sync($topic_id, "topic");
         //xoops_notification_deletebyitem ($xoopsModule->getVar('mid'), 'thread', $topic_id);
         echo $action[$mode]['msg'] . "<p><a href='viewforum.php?forum=$forum'>" . _MD_RETURNTOTHEFORUM . "</a></p><p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
-    } elseif ('merge' == $mode) {
+    } elseif ($mode == 'merge') {
         //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
         $postHandler = xoops_getModuleHandler('post', 'newbb');
 
@@ -147,7 +147,7 @@ if (isset($_POST['submit'])) {
 
                 $poll = new Umfrage($poll_id);
 
-                if (false !== $poll->delete()) {
+                if ($poll->delete() !== false) {
                     UmfrageOption::deleteByPollId($poll->getVar('poll_id'));
 
                     UmfrageLog::deleteByPollId($poll->getVar('poll_id'));
@@ -173,7 +173,7 @@ if (isset($_POST['submit'])) {
                 "<p><a href='viewtopic.php?topic_id=$newtopic'>" . _MD_VIEWTHETOPIC . '</a></p>' .
                 "<p><a href='viewforum.php?forum=$forum'>" . _MD_RETURNTOTHEFORUM . '</a></p>' .
                 "<p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
-    } elseif ('move' == $mode) {
+    } elseif ($mode == 'move') {
         if ($newforum > 0) {
             $sql = sprintf('UPDATE %s SET forum_id = %u WHERE topic_id = %u', $xoopsDB->prefix('bb_topics'), $newforum, $topic_id);
 
@@ -221,7 +221,7 @@ if (isset($_POST['submit'])) {
 
     echo "<td colspan='2' align='center'>" . $action[$mode]['desc'] . '</td></tr>';
 
-    if ('move' == $mode) {
+    if ($mode == 'move') {
         echo '<tr><td class="bg3">' . _MD_MOVETOPICTO . '</td><td class="bg1">';
 
         $box = '<select name="newforum" size="1">';
@@ -259,7 +259,7 @@ if (isset($_POST['submit'])) {
         echo '</select></td></tr>';
     }
 
-    if ('merge' == $mode) {
+    if ($mode == 'merge') {
         echo '<tr><td class="bg3">' . _MD_MERGETOPICTO . '</td><td class="bg1">';
 
         echo _MD_TOPIC . "ID-$topic_id -> ID: <input name='newtopic' value=''>";

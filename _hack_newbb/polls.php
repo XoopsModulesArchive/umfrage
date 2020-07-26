@@ -96,9 +96,9 @@ $perm = false;
 if ($isadmin) {
     $perm = true;
 } elseif ($topicHandler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), 'addpoll')
-    && 1 == $viewtopic_forum->getVar('allow_polls')
+    && $viewtopic_forum->getVar('allow_polls') == 1
 ) {
-    if (('add' == $op || 'save' == $op) &&
+    if (($op == 'add' || $op == 'save') &&
         !$forumtopic->getVar('topic_haspoll') &&
         is_object($xoopsUser) && $xoopsUser->getVar('uid') == $forumtopic->getVar('topic_poster')
     ) {
@@ -115,7 +115,7 @@ if (!$perm) {
     redirect_header('viewtopic.php?topic_id=' . $topic_id, 2, _MD_NORIGHTTOACCESS);
 }
 
-if ('add' == $op) {
+if ($op == 'add') {
     $poll_form = new XoopsThemeForm(_MD_POLL_CREATNEWPOLL, 'poll_form', 'polls.php');
 
     $question_text = new XoopsFormText(_MD_POLL_POLLQUESTION, 'question', 50, 255);
@@ -151,7 +151,7 @@ if ('add' == $op) {
     $barcolor_array = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
 
     for ($i = 0; $i < 10; $i++) {
-        $current_bar = 'blank.gif' != current($barcolor_array) ? current($barcolor_array) : next($barcolor_array);
+        $current_bar = current($barcolor_array) != 'blank.gif' ? current($barcolor_array) : next($barcolor_array);
 
         $option_text = new XoopsFormText('', 'option_text[]', 50, 255);
 
@@ -199,7 +199,7 @@ if ('add' == $op) {
     //exit();
 }
 
-if ('save' == $op) {
+if ($op == 'save') {
     /*
      * The option check should be done before submitting
      */
@@ -213,7 +213,7 @@ if ('save' == $op) {
     $option_text = $_POST['option_text'];
 
     foreach ($option_text as $optxt) {
-        if ('' != trim($optxt)) {
+        if (trim($optxt) != '') {
             $option_empty = false;
 
             break;
@@ -271,7 +271,7 @@ if ('save' == $op) {
         foreach ($option_text as $optxt) {
             $optxt = trim($optxt);
 
-            if ('' != $optxt) {
+            if ($optxt != '') {
                 $option = new UmfrageOption();
 
                 $option->setVar('option_text', $optxt);
@@ -306,7 +306,7 @@ if ('save' == $op) {
     //exit();
 }
 
-if ('edit' == $op) {
+if ($op == 'edit') {
     $poll = new Umfrage($_GET['poll_id']);
 
     $poll_form = new XoopsThemeForm(_MD_POLL_EDITPOLL, 'poll_form', 'polls.php');
@@ -347,7 +347,7 @@ if ('edit' == $op) {
 
     $notify_value = 1;
 
-    if (0 != $poll->getVar('mail_status')) {
+    if ($poll->getVar('mail_status') != 0) {
         $notify_value = 0;
     }
 
@@ -418,7 +418,7 @@ if ('edit' == $op) {
     //exit();
 }
 
-if ('update' == $op) {
+if ($op == 'update') {
     $option_empty = true;
 
     if (empty($_POST['option_text'])) {
@@ -428,7 +428,7 @@ if ('update' == $op) {
     $option_text = $_POST['option_text'];
 
     foreach ($option_text as $optxt) {
-        if ('' != trim($optxt)) {
+        if (trim($optxt) != '') {
             $option_empty = false;
 
             break;
@@ -488,14 +488,14 @@ if ('update' == $op) {
 
         $option_text[$i] = trim($option_text[$i]);
 
-        if ('' != $option_text[$i]) {
+        if ($option_text[$i] != '') {
             $option->setVar('option_text', $option_text[$i]);
 
             $option->setVar('option_color', $option_color[$i]);
 
             $option->store();
         } else {
-            if (false !== $option->delete()) {
+            if ($option->delete() !== false) {
                 UmfrageLog::deleteByOptionId($option->getVar('option_id'));
             }
         }
@@ -514,7 +514,7 @@ if ('update' == $op) {
     //exit();
 }
 
-if ('addmore' == $op) {
+if ($op == 'addmore') {
     $poll = new Umfrage($_GET['poll_id']);
 
     $poll_form = new XoopsThemeForm(_MD_POLL_ADDMORE, 'poll_form', 'polls.php');
@@ -528,7 +528,7 @@ if ('addmore' == $op) {
     $barcolor_array = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
 
     for ($i = 0; $i < 10; $i++) {
-        $current_bar = 'blank.gif' != current($barcolor_array) ? current($barcolor_array) : next($barcolor_array);
+        $current_bar = current($barcolor_array) != 'blank.gif' ? current($barcolor_array) : next($barcolor_array);
 
         $option_text = new XoopsFormText('', 'option_text[]', 50, 255);
 
@@ -580,7 +580,7 @@ if ('addmore' == $op) {
     //exit();
 }
 
-if ('savemore' == $op) {
+if ($op == 'savemore') {
     $option_empty = true;
 
     if (empty($_POST['option_text'])) {
@@ -590,7 +590,7 @@ if ('savemore' == $op) {
     $option_text = $_POST['option_text'];
 
     foreach ($option_text as $optxt) {
-        if ('' != trim($optxt)) {
+        if (trim($optxt) != '') {
             $option_empty = false;
 
             break;
@@ -610,7 +610,7 @@ if ('savemore' == $op) {
     foreach ($option_text as $optxt) {
         $optxt = trim($optxt);
 
-        if ('' != $optxt) {
+        if ($optxt != '') {
             $option = new UmfrageOption();
 
             $option->setVar('option_text', $optxt);
@@ -634,7 +634,7 @@ if ('savemore' == $op) {
     //exit();
 }
 
-if ('delete' == $op) {
+if ($op == 'delete') {
     //require XOOPS_ROOT_PATH."/header.php";
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
@@ -646,10 +646,10 @@ if ('delete' == $op) {
     //exit();
 }
 
-if ('delete_ok' == $op) {
+if ($op == 'delete_ok') {
     $poll = new Umfrage($poll_id);
 
-    if (false !== $poll->delete()) {
+    if ($poll->delete() !== false) {
         UmfrageOption::deleteByPollId($poll->getVar('poll_id'));
 
         UmfrageLog::deleteByPollId($poll->getVar('poll_id'));
@@ -673,7 +673,7 @@ if ('delete_ok' == $op) {
     //exit();
 }
 
-if ('restart' == $op) {
+if ($op == 'restart') {
     $poll = new Umfrage($_GET['poll_id']);
 
     $poll_form = new XoopsThemeForm(_MD_POLL_RESTARTPOLL, 'poll_form', 'polls.php');
@@ -715,7 +715,7 @@ if ('restart' == $op) {
     //exit();
 }
 
-if ('restart_ok' == $op) {
+if ($op == 'restart_ok') {
     $poll = new Umfrage($poll_id);
 
     $end_time = empty($_POST['end_time']) ? '' : $_POST['end_time'];
@@ -760,7 +760,7 @@ if ('restart_ok' == $op) {
     //exit();
 }
 
-if ('log' == $op) {
+if ($op == 'log') {
     //require XOOPS_ROOT_PATH."/header.php";
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 

@@ -46,7 +46,7 @@ if (empty($poll_id)) {
 
 $poll = new Umfrage($poll_id);
 
-if (2 == $poll->getVar('polltype') || 3 == $poll->getVar('polltype') && $poll->getVar(end_time) > time()) {
+if ($poll->getVar('polltype') == 2 || $poll->getVar('polltype') == 3 && $poll->getVar(end_time) > time()) {
     redirect_header('index.php', 3, _PL_SHOW_ELECTIONSMODE);
 
     exit();

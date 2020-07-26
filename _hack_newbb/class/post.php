@@ -139,7 +139,7 @@ class Post extends ArtObject
         }
         $this->attachment_array = [];
 
-        if (null === $attach_array) {
+        if ($attach_array === null) {
             $attach_array = array_keys($attach_old); // to delete all!
         }
         if (!is_array($attach_array)) {
@@ -412,7 +412,7 @@ class Post extends ArtObject
         $uid = is_object($xoopsUser) ? $xoopsUser->getVar('uid') : 0;
 
         $post_NO++;
-        if ('desc' == mb_strtolower($order)) {
+        if (mb_strtolower($order) == 'desc') {
             $post_no = $total_posts - ($start + $post_NO) + 1;
         } else {
             $post_no = $start + $post_NO;
@@ -605,7 +605,7 @@ class NewbbPostHandler extends ArtObjectHandler
         $sql = 'SELECT p.*, t.*, tp.topic_status FROM ' . $this->db->prefix('bb_posts') . ' p LEFT JOIN ' . $this->db->prefix('bb_posts_text') . ' t ON p.post_id=t.post_id LEFT JOIN ' . $this->db->prefix('bb_topics') . ' tp ON tp.topic_id=p.topic_id WHERE p.topic_id=' . $topic_id . ' AND p.approved =' . $approved . ' ORDER BY p.post_time DESC';
         $result = $this->db->query($sql, $limit, 0);
         $ret = [];
-        while (false !== ($myrow = $this->db->fetchArray($result))) {
+        while (($myrow = $this->db->fetchArray($result)) !== false) {
             $post = $this->create(false);
             $post->assignVars($myrow);
 
@@ -824,7 +824,7 @@ class NewbbPostHandler extends ArtObjectHandler
      */
     public function delete(XoopsObject $post, $isDeleteOne = true, $force = false)
     {
-        if (!is_object($post) || 0 == $post->getVar('post_id')) {
+        if (!is_object($post) || $post->getVar('post_id') == 0) {
             return false;
         }
         if ($isDeleteOne) {
@@ -863,7 +863,7 @@ class NewbbPostHandler extends ArtObjectHandler
         global $xoopsModule, $xoopsConfig;
         static $forum_lastpost = [];
 
-        if (!is_object($post) || 0 == $post->getVar('post_id')) {
+        if (!is_object($post) || $post->getVar('post_id') == 0) {
             return false;
         }
 
@@ -915,7 +915,7 @@ class NewbbPostHandler extends ArtObjectHandler
                         require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
                         $poll = new Umfrage($poll_id);
-                        if (false !== $poll->delete()) {
+                        if ($poll->delete() !== false) {
                             UmfrageOption::deleteByPollId($poll->getVar('poll_id'));
                             UmfrageLog::deleteByPollId($poll->getVar('poll_id'));
                             xoops_comment_delete($xoopsModule->getVar('mid'), $poll->getVar('poll_id'));
@@ -994,7 +994,7 @@ class NewbbPostHandler extends ArtObjectHandler
         }
         if (isset($criteria) && is_subclass_of($criteria, 'criteriaelement')) {
             $sql .= ' ' . $criteria->renderWhere();
-            if ('' != $criteria->getSort()) {
+            if ($criteria->getSort() != '') {
                 $sql .= ' ORDER BY ' . $criteria->getSort() . ' ' . $criteria->getOrder();
             }
         }
@@ -1004,7 +1004,7 @@ class NewbbPostHandler extends ArtObjectHandler
 
             return $ret;
         }
-        while (false !== ($myrow = $this->db->fetchArray($result))) {
+        while (($myrow = $this->db->fetchArray($result)) !== false) {
             $post = $this->create(false);
             $post->assignVars($myrow);
             $ret[$myrow['post_id']] = $post;
