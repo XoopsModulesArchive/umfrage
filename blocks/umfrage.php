@@ -79,7 +79,7 @@ function b_umfrage_show($opts)
     $poll_sicht = 0;
 
     if ($poll_res) {
-        list($poll_sicht) = $xoopsDB->fetchrow($poll_res);
+        list($poll_sicht) = $xoopsDB->fetchRow($poll_res);
 
         $poll_sicht = intval($poll_sicht);
     }

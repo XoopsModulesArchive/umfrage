@@ -579,7 +579,7 @@ if ($op == "log") {
 				$uname = $xoopsConfig['anonymous'];
 				echo "<td align='center'>".$uname."</td>";
 			}
-			echo "<td>".formatTimeStamp($logs_arr[$i]->getVar("time"), "l")."</td>";
+			echo "<td>".formatTimestamp($logs_arr[$i]->getVar("time"), "l")."</td>";
 			//			echo "<td>"._DELETE."</td>";
 			echo "</tr>";
 		}
