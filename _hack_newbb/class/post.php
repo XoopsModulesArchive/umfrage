@@ -787,7 +787,7 @@ class NewbbPostHandler extends ArtObjectHandler
             foreach ($post_text_vars as $key) {
                 $text_obj->vars[$key] = $post->vars[$key];
             }
-            $post->destoryVars($post_text_vars);
+            $post->destroyVars($post_text_vars);
             if (!$post_id = parent::insert($post, $force)) {
                 return false;
             }
@@ -823,7 +823,7 @@ class NewbbPostHandler extends ArtObjectHandler
             foreach ($post_text_vars as $key) {
                 $text_obj->vars[$key] = $post->vars[$key];
             }
-            $post->destoryVars($post_text_vars);
+            $post->destroyVars($post_text_vars);
             if (!$post_id = parent::insert($post, $force)) {
                 xoops_error($post->getErrors());
 
@@ -1014,7 +1014,7 @@ class NewbbPostHandler extends ArtObjectHandler
         if (!empty($join)) {
             $sql .= $join;
         }
-        if (isset($criteria) && is_subclass_of($criteria, 'criteriaelement')) {
+        if (isset($criteria) && $criteria instanceof \criteriaelement) {
             $sql .= ' ' . $criteria->renderWhere();
             if ($criteria->getSort() != '') {
                 $sql .= ' ORDER BY ' . $criteria->getSort() . ' ' . $criteria->getOrder();
