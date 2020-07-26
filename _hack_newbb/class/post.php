@@ -970,7 +970,7 @@ class NewbbPostHandler extends ArtObjectHandler
      */
     public function getPostCount($criteria = null)
     {
-        return parent::getCount($criteria);
+        return $this->getCount($criteria);
     }
 
     /*
