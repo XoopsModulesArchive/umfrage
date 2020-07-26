@@ -470,13 +470,24 @@ define('_NEWBB_SECURITY_CODE_FAILED', 'Sicherheitscode falsch');
 // For user info
 // If you have customized userbar, define here.
 require_once XOOPS_ROOT_PATH . '/modules/newbb/class/user.php';
+
+/**
+ * Class User_language
+ */
 class User_language extends User
 {
+    /**
+     * User_language constructor.
+     * @param $user
+     */
     public function __construct(&$user)
     {
         parent::__construct($user);
     }
 
+    /**
+     * @return array|null
+     */
     public function getUserbar()
     {
         global $xoopsModuleConfig, $xoopsUser, $isadmin;

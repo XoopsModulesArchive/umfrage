@@ -35,6 +35,10 @@ require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrageoption.php";
 require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragelog.php";
 require_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragerenderer.php";
 
+/**
+ * @param $a
+ * @return mixed|string
+ */
 function gethostbyaddr_with_cache($a)
 {
 	global $dns_cache;

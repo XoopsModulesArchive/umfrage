@@ -33,6 +33,10 @@ declare(strict_types=1);
 // ------------------------------------------------------------------------- //
 require __DIR__ . '/admin_header.php';
 
+/**
+ * @param $path
+ * @return false|string
+ */
 function newbb_admin_getPathStatus($path)
 {
     if (empty($path)) {
@@ -50,17 +54,30 @@ function newbb_admin_getPathStatus($path)
     return $path_status;
 }
 
+/**
+ * @param     $target
+ * @param int $mode
+ * @return bool
+ */
 function newbb_admin_mkdir($target, $mode = 0777)
 {
     // http://www.php.net/manual/en/function.mkdir.php
     return is_dir($target) or (newbb_admin_mkdir(dirname($target), $mode) and mkdir($target, $mode));
 }
 
+/**
+ * @param     $target
+ * @param int $mode
+ * @return bool
+ */
 function newbb_admin_chmod($target, $mode = 0777)
 {
     return @chmod($target, $mode);
 }
 
+/**
+ * @return array
+ */
 function newbb_getImageLibs()
 {
     global $xoopsModuleConfig;

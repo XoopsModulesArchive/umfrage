@@ -33,11 +33,19 @@ declare(strict_types=1);
 // ------------------------------------------------------------------------- //
 require_once XOOPS_ROOT_PATH . '/kernel/object.php';
 
+/**
+ * Class UmfrageOption
+ */
 class UmfrageOption extends XoopsObject
 {
     public $db;
 
     // constructor
+
+    /**
+     * UmfrageOption constructor.
+     * @param null $id
+     */
     public function __construct($id = null)
     {
         $this->db = Database::getInstance();
@@ -62,6 +70,10 @@ class UmfrageOption extends XoopsObject
     }
 
     // public
+
+    /**
+     * @return false
+     */
     public function store()
     {
         if (!$this->cleanVars()) {
@@ -95,6 +107,10 @@ class UmfrageOption extends XoopsObject
     }
 
     // private
+
+    /**
+     * @param $id
+     */
     public function load($id)
     {
         $sql = 'SELECT * FROM ' . $this->db->prefix('umfrage_option') . ' WHERE option_id=' . $id . '';
@@ -105,6 +121,10 @@ class UmfrageOption extends XoopsObject
     }
 
     // public
+
+    /**
+     * @return bool
+     */
     public function delete()
     {
         $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $this->db->prefix('umfrage_option'), $this->getVar('option_id'));
@@ -127,6 +147,11 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
+
+    /**
+     * @param $poll_id
+     * @return array
+     */
     public static function &getAllByPollId($poll_id)
     {
         $db = Database::getInstance();
@@ -146,6 +171,11 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
+
+    /**
+     * @param $poll_id
+     * @return bool
+     */
     public static function deleteByPollId($poll_id)
     {
         $db = Database::getInstance();
@@ -160,6 +190,11 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
+
+    /**
+     * @param $poll_id
+     * @return bool
+     */
     public static function resetCountByPollId($poll_id)
     {
         $db = Database::getInstance();

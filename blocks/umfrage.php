@@ -33,6 +33,10 @@ require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
 
+/**
+ * @param $poll_id
+ * @return bool
+ */
 function hasVoted($poll_id)
 {
     global $_COOKIE;
@@ -67,6 +71,8 @@ function hasVoted($poll_id)
  * $opts[1] = show percent (1=yes)
  * $opts[2] = show bar (1=yes)
  * @param mixed $opts
+ * @return array|false
+ * @return array|false
  */
 function b_umfrage_show($opts)
 {
@@ -79,7 +85,7 @@ function b_umfrage_show($opts)
     $poll_sicht = 0;
 
     if ($poll_res) {
-        list($poll_sicht) = $xoopsDB->fetchRow($poll_res);
+        [$poll_sicht] = $xoopsDB->fetchRow($poll_res);
 
         $poll_sicht = intval($poll_sicht);
     }
@@ -225,6 +231,8 @@ function b_umfrage_show($opts)
  * $options[1] = show percent (1=yes)
  * $options[2] = show bar (1=yes)
  * @param mixed $options
+ * @return string
+ * @return string
  */
 function b_umfrage_edit($options)
 {

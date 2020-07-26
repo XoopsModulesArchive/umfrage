@@ -34,6 +34,9 @@ declare(strict_types=1);
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
 
+/**
+ * Class UmfrageRenderer
+ */
 class UmfrageRenderer
 {
     // private
@@ -41,12 +44,21 @@ class UmfrageRenderer
     public $poll;
 
     // constructor
+
+    /**
+     * UmfrageRenderer constructor.
+     * @param $poll
+     */
     public function __construct($poll)
     {
         $this->poll = $poll;
     }
 
     // public
+
+    /**
+     * @return string
+     */
     public function renderForm()
     {
         $content = "<form action='" . XOOPS_URL . "/modules/umfrage/index.php' method='post'>";
@@ -82,6 +94,9 @@ class UmfrageRenderer
         return $content;
     }
 
+    /**
+     * @param $tpl
+     */
     public function assignForm($tpl)
     {
         $options_arr = &UmfrageOption::getAllByPollId($this->poll->getVar('poll_id'));
@@ -157,6 +172,9 @@ class UmfrageRenderer
         echo '</td></tr></table></div><br>';
     }
 
+    /**
+     * @param $tpl
+     */
     public function assignResults($tpl)
     {
         global $xoopsUser;

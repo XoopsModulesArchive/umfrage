@@ -37,6 +37,9 @@ if (!defined('XOOPS_ROOT_PATH')) {
 defined('NEWBB_FUNCTIONS_INI') || require XOOPS_ROOT_PATH . '/modules/newbb/include/functions.ini.php';
 newbb_load_object();
 
+/**
+ * Class Post
+ */
 class Post extends ArtObject
 {
     public $attachment_array = [];
@@ -69,6 +72,9 @@ class Post extends ArtObject
 
     // ////////////////////////////////////////////////////////////////////////////////////
     // attachment functions    TODO: there should be a file/attachment management class
+    /**
+     * @return array|mixed|null
+     */
     public function getAttachment()
     {
         if (count($this->attachment_array)) {
@@ -84,6 +90,10 @@ class Post extends ArtObject
         return $this->attachment_array;
     }
 
+    /**
+     * @param $attach_key
+     * @return false|mixed
+     */
     public function incrementDownload($attach_key)
     {
         if (!$attach_key) {
@@ -94,6 +104,9 @@ class Post extends ArtObject
         return $this->attachment_array[strval($attach_key)]['num_download'];
     }
 
+    /**
+     * @return bool
+     */
     public function saveAttachment()
     {
         if (is_array($this->attachment_array) && count($this->attachment_array) > 0) {
@@ -112,6 +125,10 @@ class Post extends ArtObject
         return true;
     }
 
+    /**
+     * @param null $attach_array
+     * @return bool
+     */
     public function deleteAttachment($attach_array = null)
     {
         global $xoopsModuleConfig;
@@ -147,6 +164,13 @@ class Post extends ArtObject
         return true;
     }
 
+    /**
+     * @param string $name_saved
+     * @param string $name_display
+     * @param string $mimetype
+     * @param int    $num_download
+     * @return bool
+     */
     public function setAttachment($name_saved = '', $name_display = '', $mimetype = '', $num_download = 0)
     {
         static $counter = 0;
@@ -170,6 +194,10 @@ class Post extends ArtObject
         return true;
     }
 
+    /**
+     * @param false $asSource
+     * @return string
+     */
     public function displayAttachment($asSource = false)
     {
         global $xoopsModule, $xoopsModuleConfig;
@@ -208,6 +236,10 @@ class Post extends ArtObject
     // attachment functions
     // ////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * @param string $poster_name
+     * @return bool
+     */
     public function setPostEdit($poster_name = '')
     {
         global $xoopsConfig, $xoopsModuleConfig, $xoopsUser;
@@ -244,6 +276,9 @@ class Post extends ArtObject
         return true;
     }
 
+    /**
+     * @return false|string
+     */
     public function displayPostEdit()
     {
         global $myts, $xoopsModuleConfig;
@@ -271,6 +306,10 @@ class Post extends ArtObject
         return $post_edit;
     }
 
+    /**
+     * @param false $imageAsSource
+     * @return array
+     */
     public function &getPostBody($imageAsSource = false)
     {
         global $xoopsConfig, $xoopsModuleConfig, $xoopsUser, $myts;
@@ -311,16 +350,27 @@ class Post extends ArtObject
         return $post;
     }
 
+    /**
+     * @return bool
+     */
     public function isTopic()
     {
         return !$this->getVar('pid');
     }
 
+    /**
+     * @param string $action_tag
+     * @return mixed
+     */
     public function checkTimelimit($action_tag = 'edit_timelimit')
     {
         return newbb_checkTimelimit($this->getVar('post_time'), $action_tag);
     }
 
+    /**
+     * @param int $uid
+     * @return bool
+     */
     public function checkIdentity($uid = -1)
     {
         global $xoopsUser;
@@ -340,6 +390,11 @@ class Post extends ArtObject
     }
 
     // TODO: cleaning up and merge with post hanldings in viewpost.php
+
+    /**
+     * @param $isadmin
+     * @return array
+     */
     public function showPost($isadmin)
     {
         global $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $xoopsUser, $myts, $xoopsTpl;
@@ -508,13 +563,24 @@ class Post extends ArtObject
     }
 }
 
+/**
+ * Class NewbbPostHandler
+ */
 class NewbbPostHandler extends ArtObjectHandler
 {
+    /**
+     * NewbbPostHandler constructor.
+     * @param $db
+     */
     public function __construct($db)
     {
         $this->ArtObjectHandler($db, 'bb_posts', 'Post', 'post_id', 'subject');
     }
 
+    /**
+     * @param mixed|null $id
+     * @return \XoopsObject|null
+     */
     public function &get($id)
     {
         $id = intval($id);
@@ -528,6 +594,12 @@ class NewbbPostHandler extends ArtObjectHandler
         return $post;
     }
 
+    /**
+     * @param int $topic_id
+     * @param int $limit
+     * @param int $approved
+     * @return array
+     */
     public function &getByLimit($topic_id, $limit, $approved = 1)
     {
         $sql = 'SELECT p.*, t.*, tp.topic_status FROM ' . $this->db->prefix('bb_posts') . ' p LEFT JOIN ' . $this->db->prefix('bb_posts_text') . ' t ON p.post_id=t.post_id LEFT JOIN ' . $this->db->prefix('bb_topics') . ' tp ON tp.topic_id=p.topic_id WHERE p.topic_id=' . $topic_id . ' AND p.approved =' . $approved . ' ORDER BY p.post_time DESC';
@@ -544,16 +616,29 @@ class NewbbPostHandler extends ArtObjectHandler
         return $ret;
     }
 
+    /**
+     * @param $post
+     * @return mixed
+     */
     public function getPostForPDF($post)
     {
         return $post->getPostBody(true);
     }
 
+    /**
+     * @param $post
+     * @return mixed
+     */
     public function getPostForPrint($post)
     {
         return $post->getPostBody();
     }
 
+    /**
+     * @param       $post
+     * @param false $force
+     * @return bool
+     */
     public function approve(&$post, $force = false)
     {
         if (empty($post)) {
@@ -604,6 +689,11 @@ class NewbbPostHandler extends ArtObjectHandler
         return true;
     }
 
+    /**
+     * @param $topic_id
+     * @param $subject
+     * @return bool
+     */
     public function insertnewsubject($topic_id, $subject)
     {
         $sql = 'UPDATE ' . $this->db->prefix('bb_topics') . ' SET topic_subject = ' . intval($subject) . " WHERE topic_id = $topic_id";
@@ -617,6 +707,11 @@ class NewbbPostHandler extends ArtObjectHandler
         return true;
     }
 
+    /**
+     * @param \XoopsObject $post
+     * @param bool         $force
+     * @return array|false|int|mixed|null
+     */
     public function insert(XoopsObject $post, $force = true)
     {
         global $xoopsUser, $xoopsConfig;
@@ -721,6 +816,12 @@ class NewbbPostHandler extends ArtObjectHandler
         return $post->getVar('post_id');
     }
 
+    /**
+     * @param \XoopsObject $post
+     * @param bool         $isDeleteOne
+     * @param false        $force
+     * @return bool
+     */
     public function delete(XoopsObject $post, $isDeleteOne = true, $force = false)
     {
         if (!is_object($post) || 0 == $post->getVar('post_id')) {
@@ -752,6 +853,11 @@ class NewbbPostHandler extends ArtObjectHandler
         return true;
     }
 
+    /**
+     * @param       $post
+     * @param false $force
+     * @return bool
+     */
     public function _delete($post, $force = false)
     {
         global $xoopsModule, $xoopsConfig;
@@ -858,6 +964,10 @@ class NewbbPostHandler extends ArtObjectHandler
         return true;
     }
 
+    /**
+     * @param null $criteria
+     * @return int
+     */
     public function getPostCount($criteria = null)
     {
         return parent::getCount($criteria);
@@ -865,6 +975,13 @@ class NewbbPostHandler extends ArtObjectHandler
 
     /*
      * TODO: combining viewtopic.php
+     */
+    /**
+     * @param null $criteria
+     * @param int  $limit
+     * @param int  $start
+     * @param null $join
+     * @return array
      */
     public function &getPostsByLimit($criteria = null, $limit = 1, $start = 0, $join = null)
     {

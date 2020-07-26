@@ -41,11 +41,17 @@ if (defined('NEWBB_FUNCTIONS_INI')) {
 
 require_once XOOPS_ROOT_PATH . '/Frameworks/art/functions.php';
 
+/**
+ * @return bool
+ */
 function newbb_load_object()
 {
     return load_object();
 }
 
+/**
+ * @param $message
+ */
 function newbb_message($message)
 {
     global $xoopsModuleConfig;
@@ -63,6 +69,9 @@ function newbb_message($message)
     }
 }
 
+/**
+ * @return array|mixed|null
+ */
 function newbb_load_config()
 {
     static $moduleConfig;
@@ -102,6 +111,9 @@ function newbb_load_config()
     return $moduleConfig;
 }
 
+/**
+ * @return array|mixed|null
+ */
 function getConfigForBlock()
 {
     return newbb_load_config();
@@ -137,6 +149,12 @@ function getConfigForBlock()
 }
 
 // Backword compatible
+/**
+ * @param        $filename
+ * @param string $module
+ * @param string $default
+ * @return bool|mixed
+ */
 function newbb_load_lang_file($filename, $module = '', $default = 'english')
 {
     if (function_exists('xoops_load_lang_file')) {
@@ -155,11 +173,21 @@ function newbb_load_lang_file($filename, $module = '', $default = 'english')
 }
 
 // Adapted from PMA_getIp() [phpmyadmin project]
+/**
+ * @param false $asString
+ * @return false|int|mixed
+ */
 function newbb_getIP($asString = false)
 {
     return mod_getIP($asString);
 }
 
+/**
+ * @param        $time
+ * @param string $format
+ * @param string $timeoffset
+ * @return false|string
+ */
 function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
 {
     /*

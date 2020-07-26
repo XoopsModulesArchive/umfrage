@@ -33,11 +33,19 @@ declare(strict_types=1);
 // ------------------------------------------------------------------------- //
 require_once XOOPS_ROOT_PATH . '/kernel/object.php';
 
+/**
+ * Class Umfrage
+ */
 class Umfrage extends XoopsObject
 {
     public $db;
 
     //constructor
+
+    /**
+     * Umfrage constructor.
+     * @param null $id
+     */
     public function __construct($id = null)
     {
         $this->db = Database::getInstance();
@@ -84,6 +92,10 @@ class Umfrage extends XoopsObject
     }
 
     // public
+
+    /**
+     * @return false
+     */
     public function store()
     {
         if (!$this->cleanVars()) {
@@ -125,6 +137,10 @@ class Umfrage extends XoopsObject
     }
 
     // private
+
+    /**
+     * @param $id
+     */
     public function load($id)
     {
         $sql = 'SELECT * FROM ' . $this->db->prefix('umfrage_desc') . ' WHERE poll_id=' . $id . '';
@@ -135,6 +151,10 @@ class Umfrage extends XoopsObject
     }
 
     // public
+
+    /**
+     * @return bool
+     */
     public function hasExpired()
     {
         if ($this->getVar('end_time') > time()) {
@@ -145,6 +165,10 @@ class Umfrage extends XoopsObject
     }
 
     // public
+
+    /**
+     * @return bool
+     */
     public function delete()
     {
         $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $this->db->prefix('umfrage_desc'), $this->getVar('poll_id'));
@@ -157,6 +181,15 @@ class Umfrage extends XoopsObject
     }
 
     // private, static
+
+    /**
+     * @param array  $criteria
+     * @param bool   $asobject
+     * @param string $orderby
+     * @param int    $limit
+     * @param int    $start
+     * @return array
+     */
     public static function &getAll($criteria = [], $asobject = true, $orderby = 'end_time DESC', $limit = 0, $start = 0)
     {
         $db = Database::getInstance();
@@ -198,6 +231,14 @@ class Umfrage extends XoopsObject
     }
 
     // public
+
+    /**
+     * @param      $option_id
+     * @param      $ip
+     * @param null $user_id
+     * @param null $user
+     * @return bool
+     */
     public function vote($option_id, $ip, $user_id = null, $user = null)
     {
         if (!empty($option_id)) {
@@ -267,6 +308,11 @@ class Umfrage extends XoopsObject
     }
 
     // Notify the voter
+
+    /**
+     * @param null $user
+     * @return bool
+     */
     public function notifyVoter($user = null)
     {
         global $xoopsConfig;
