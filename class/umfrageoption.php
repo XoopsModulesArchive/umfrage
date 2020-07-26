@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -28,107 +28,155 @@
 // URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
-include_once XOOPS_ROOT_PATH."/class/xoopsobject.php";
+include_once XOOPS_ROOT_PATH . '/class/xoopsobject.php';
 
-class UmfrageOption extends XoopsObject {
-	var $db;
+class UmfrageOption extends XoopsObject
+{
+    public $db;
 
-	// constructor
-	function UmfrageOption($id = null) {
-		$this->db = & Database :: getInstance();
-		$this->initVar("option_id", XOBJ_DTYPE_INT, null, false);
-		$this->initVar("poll_id", XOBJ_DTYPE_INT, null, false);
-		$this->initVar("option_text", XOBJ_DTYPE_TXTBOX, null, true, 255);
-		$this->initVar("option_count", XOBJ_DTYPE_INT, 0, false);
-		$this->initVar("option_color", XOBJ_DTYPE_OTHER, null, false);
-		if (!empty ($id)) {
-			if (is_array($id)) {
-				$this->assignVars($id);
-			} else {
-				$this->load(intval($id));
-			}
-		}
-	}
+    // constructor
 
-	// public
-	function store() {
-		if (!$this->cleanVars()) {
-			return false;
-		}
-		foreach ($this->cleanVars as $k => $v) {
-			$$k = $v;
-		}
-		if (empty ($option_id)) {
-			$option_id = $this->db->genId($this->db->prefix("umfrage_option")."_option_id_seq");
-			$sql = "INSERT INTO ".$this->db->prefix("umfrage_option")." (option_id, poll_id, option_text, option_count, option_color) VALUES ($option_id, $poll_id, ".$this->db->quoteString($option_text).", $option_count, ".$this->db->quoteString($option_color).")";
-		} else {
-			$sql = "UPDATE ".$this->db->prefix("umfrage_option")." SET option_text=".$this->db->quoteString($option_text).", option_count=$option_count, option_color=".$this->db->quoteString($option_color)."  WHERE option_id=".$option_id."";
-		}
-		//echo $sql;
-		if (!$result = $this->db->query($sql)) {
-			$this->setErrors("Could not store data in the database.");
-			return false;
-		}
-		if (empty ($option_id)) {
-			return $this->db->getInsertId();
-		}
-		return $option_id;
-	}
+    public function UmfrageOption($id = null)
+    {
+        $this->db = &Database :: getInstance();
 
-	// private
-	function load($id) {
-		$sql = "SELECT * FROM ".$this->db->prefix("umfrage_option")." WHERE option_id=".$id."";
-		$myrow = $this->db->fetchArray($this->db->query($sql));
-		$this->assignVars($myrow);
-	}
+        $this->initVar('option_id', XOBJ_DTYPE_INT, null, false);
 
-	// public
-	function delete() {
-		$sql = sprintf("DELETE FROM %s WHERE option_id = %u", $this->db->prefix("umfrage_option"), $this->getVar("option_id"));
-		if (!$this->db->query($sql)) {
-			return false;
-		}
-		return true;
-	}
+        $this->initVar('poll_id', XOBJ_DTYPE_INT, null, false);
 
-	// public
-	function updateCount() {
-		$votes = UmfrageLog :: getTotalVotesByOptionId($this->getVar("option_id"));
-		$sql = "UPDATE ".$this->db->prefix("umfrage_option")." SET option_count=$votes WHERE option_id=".$this->getVar("option_id")."";
-		$this->db->query($sql);
-	}
+        $this->initVar('option_text', XOBJ_DTYPE_TXTBOX, null, true, 255);
 
-	// public static
-	function & getAllByPollId($poll_id) {
-		$db = & Database :: getInstance();
-		$ret = array ();
-		$sql = "SELECT * FROM ".$db->prefix("umfrage_option")." WHERE poll_id=".intval($poll_id)." ORDER BY option_id";
-		$result = $db->query($sql);
-		while ($myrow = $db->fetchArray($result)) {
-			$ret[] = new UmfrageOption($myrow);
-		}
-		//echo $sql;
-		return $ret;
-	}
+        $this->initVar('option_count', XOBJ_DTYPE_INT, 0, false);
 
-	// public static
-	function deleteByPollId($poll_id) {
-		$db = & Database :: getInstance();
-		$sql = sprintf("DELETE FROM %s WHERE poll_id = %u", $db->prefix("umfrage_option"), intval($poll_id));
-		if (!$db->query($sql)) {
-			return false;
-		}
-		return true;
-	}
+        $this->initVar('option_color', XOBJ_DTYPE_OTHER, null, false);
 
-	// public static
-	function resetCountByPollId($poll_id) {
-		$db = & Database :: getInstance();
-		$sql = "UPDATE ".$db->prefix("umfrage_option")." SET option_count=0 WHERE poll_id=".intval($poll_id);
-		if (!$db->query($sql)) {
-			return false;
-		}
-		return true;
-	}
+        if (!empty($id)) {
+            if (is_array($id)) {
+                $this->assignVars($id);
+            } else {
+                $this->load(intval($id));
+            }
+        }
+    }
+
+    // public
+
+    public function store()
+    {
+        if (!$this->cleanVars()) {
+            return false;
+        }
+
+        foreach ($this->cleanVars as $k => $v) {
+            $$k = $v;
+        }
+
+        if (empty($option_id)) {
+            $option_id = $this->db->genId($this->db->prefix('umfrage_option') . '_option_id_seq');
+
+            $sql = 'INSERT INTO ' . $this->db->prefix('umfrage_option') . " (option_id, poll_id, option_text, option_count, option_color) VALUES ($option_id, $poll_id, " . $this->db->quoteString($option_text) . ", $option_count, " . $this->db->quoteString($option_color) . ')';
+        } else {
+            $sql = 'UPDATE ' . $this->db->prefix('umfrage_option') . ' SET option_text=' . $this->db->quoteString($option_text) . ", option_count=$option_count, option_color=" . $this->db->quoteString($option_color) . '  WHERE option_id=' . $option_id . '';
+        }
+
+        //echo $sql;
+
+        if (!$result = $this->db->query($sql)) {
+            $this->setErrors('Could not store data in the database.');
+
+            return false;
+        }
+
+        if (empty($option_id)) {
+            return $this->db->getInsertId();
+        }
+
+        return $option_id;
+    }
+
+    // private
+
+    public function load($id)
+    {
+        $sql = 'SELECT * FROM ' . $this->db->prefix('umfrage_option') . ' WHERE option_id=' . $id . '';
+
+        $myrow = $this->db->fetchArray($this->db->query($sql));
+
+        $this->assignVars($myrow);
+    }
+
+    // public
+
+    public function delete()
+    {
+        $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $this->db->prefix('umfrage_option'), $this->getVar('option_id'));
+
+        if (!$this->db->query($sql)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // public
+
+    public function updateCount()
+    {
+        $votes = UmfrageLog :: getTotalVotesByOptionId($this->getVar('option_id'));
+
+        $sql = 'UPDATE ' . $this->db->prefix('umfrage_option') . " SET option_count=$votes WHERE option_id=" . $this->getVar('option_id') . '';
+
+        $this->db->query($sql);
+    }
+
+    // public static
+
+    public function &getAllByPollId($poll_id)
+    {
+        $db = &Database :: getInstance();
+
+        $ret = [];
+
+        $sql = 'SELECT * FROM ' . $db->prefix('umfrage_option') . ' WHERE poll_id=' . intval($poll_id) . ' ORDER BY option_id';
+
+        $result = $db->query($sql);
+
+        while ($myrow = $db->fetchArray($result)) {
+            $ret[] = new self($myrow);
+        }
+
+        //echo $sql;
+
+        return $ret;
+    }
+
+    // public static
+
+    public function deleteByPollId($poll_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_option'), intval($poll_id));
+
+        if (!$db->query($sql)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // public static
+
+    public function resetCountByPollId($poll_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = 'UPDATE ' . $db->prefix('umfrage_option') . ' SET option_count=0 WHERE poll_id=' . intval($poll_id);
+
+        if (!$db->query($sql)) {
+            return false;
+        }
+
+        return true;
+    }
 }
-?>

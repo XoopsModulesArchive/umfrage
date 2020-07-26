@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -30,150 +29,219 @@
 // URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
-include_once XOOPS_ROOT_PATH."/class/xoopsobject.php";
+include_once XOOPS_ROOT_PATH . '/class/xoopsobject.php';
 
-class UmfrageLog extends XoopsObject {
-	var $db;
+class UmfrageLog extends XoopsObject
+{
+    public $db;
 
-	// constructor
-	function UmfrageLog($id = null) {
-		$this->db = & Database :: getInstance();
-		$this->initVar("log_id", XOBJ_DTYPE_INT, 0);
-		$this->initVar("poll_id", XOBJ_DTYPE_INT, null, true);
-		$this->initVar("option_id", XOBJ_DTYPE_INT, null, true);
-		$this->initVar("ip", XOBJ_DTYPE_OTHER, null);
-		$this->initVar("user_id", XOBJ_DTYPE_INT, 0);
-		$this->initVar("time", XOBJ_DTYPE_INT, null);
-		if (!empty ($id)) {
-			if (is_array($id)) {
-				$this->assignVars($id);
-			} else {
-				$this->load(intval($id));
-			}
-		}
-	}
+    // constructor
 
-	// public
-	function store() {
-		if (!$this->cleanVars()) {
-			return false;
-		}
-		foreach ($this->cleanVars as $k => $v) {
-			$$k = $v;
-		}
-		$log_id = $this->db->genId($this->db->prefix("umfrage_log")."_log_id_seq");
-		$sql = "INSERT INTO ".$this->db->prefix("umfrage_log")." (log_id, poll_id, option_id, ip, user_id, time) VALUES ($log_id, $poll_id, $option_id, ".$this->db->quoteString($ip).", $user_id, ".time().")";
-		$result = $this->db->query($sql);
-		if (!$result) {
-			$this->setErrors("Could not store log data in the database.");
-			return false;
-		}
-		return $option_id;
-	}
+    public function UmfrageLog($id = null)
+    {
+        $this->db = &Database :: getInstance();
 
-	// private
-	function load($id) {
-		$sql = "SELECT * FROM ".$this->db->prefix("umfrage_log")." WHERE log_id=".$id."";
-		$myrow = $this->db->fetchArray($this->db->query($sql));
-		$this->assignVars($myrow);
-	}
+        $this->initVar('log_id', XOBJ_DTYPE_INT, 0);
 
-	// public
-	function delete() {
-		$sql = sprintf("DELETE FROM %s WHERE log_id = %u", $this->db->prefix("umfrage_log"), $this->getVar("log_id"));
-		if (!$this->db->query($sql)) {
-			return false;
-		}
-		return true;
-	}
+        $this->initVar('poll_id', XOBJ_DTYPE_INT, null, true);
 
-	// public static
-	function & getAllByPollId($poll_id, $orderby = "time ASC") {
-		$db = & Database :: getInstance();
-		$ret = array ();
-		$sql = "SELECT * FROM ".$db->prefix("umfrage_log")." WHERE poll_id=".intval($poll_id)." ORDER BY $orderby";
-		$result = $db->query($sql);
-		while ($myrow = $db->fetchArray($result)) {
-			$ret[] = new UmfrageLog($myrow);
-		}
-		//echo $sql;
-		return $ret;
-	}
+        $this->initVar('option_id', XOBJ_DTYPE_INT, null, true);
 
-	// public static
-	function hasVoted($poll_id, $ip, $user_id = null) {
-		global $xoopsModuleConfig;
-		$db = & Database :: getInstance();
-		$sql = "SELECT COUNT(*) FROM ".$db->prefix("umfrage_log")." WHERE poll_id=".intval($poll_id);
+        $this->initVar('ip', XOBJ_DTYPE_OTHER, null);
 
-		// If Cookie exists, the user has already voted using this browser, although it could be using a different login
-		if ($xoopsModuleConfig['controlbycookie'] == 1 and $_COOKIE['voted_polls['.$poll_id.']']) {
-			return true;		
-		}
+        $this->initVar('user_id', XOBJ_DTYPE_INT, 0);
 
-		// Logged in user? Look for his UID in the voting database.
-		if (!empty ($user_id)) {
-			$sql .= " AND user_id=".intval($user_id);
-		}
+        $this->initVar('time', XOBJ_DTYPE_INT, null);
 
-		// ISegura.es: Can the user vote? Apply IP and Cookie controls if available.		
-		if ($xoopsModuleConfig['controlbyip'] == 1 ) { // ISegura.es: We check if IP control is activated.
-			$sql .= " AND ip='".$ip."'";
-		} elseif (!$user_id) { // If is anonymous, but IP is not activated, we have no other way to control he has already voted.
-			return false;
-		}
+        if (!empty($id)) {
+            if (is_array($id)) {
+                $this->assignVars($id);
+            } else {
+                $this->load(intval($id));
+            }
+        }
+    }
 
-		list ($count) = $db->fetchRow($db->query($sql));
-		if ($count > 0) {
-			return true;
-		}
-		return false;
-	}
+    // public
 
-	// public static
-	function deleteByPollId($poll_id) {
-		$db = & Database :: getInstance();
-		$sql = sprintf("DELETE FROM %s WHERE poll_id = %u", $db->prefix("umfrage_log"), intval($poll_id));
-		if (!$db->query($sql)) {
-			return false;
-		}
-		return true;
-	}
+    public function store()
+    {
+        if (!$this->cleanVars()) {
+            return false;
+        }
 
-	// public static
-	function deleteByOptionId($option_id) {
-		$db = & Database :: getInstance();
-		$sql = sprintf("DELETE FROM %s WHERE option_id = %u", $db->prefix("umfrage_log"), intval($option_id));
-		if (!$db->query($sql)) {
-			return false;
-		}
-		return true;
-	}
+        foreach ($this->cleanVars as $k => $v) {
+            $$k = $v;
+        }
 
-	// public static
-	function getTotalVotersByPollId($poll_id) {
-		$db = & Database :: getInstance();
-		$sql = "SELECT DISTINCT user_id FROM ".$db->prefix("umfrage_log")." WHERE poll_id=".intval($poll_id)." AND user_id > 0";
-		$users = $db->getRowsNum($db->query($sql));
-		$sql = "SELECT DISTINCT ip FROM ".$db->prefix("umfrage_log")." WHERE poll_id=".intval($poll_id)." AND user_id=0";
-		$anons = $db->getRowsNum($db->query($sql));
-		return $users + $anons;
-	}
+        $log_id = $this->db->genId($this->db->prefix('umfrage_log') . '_log_id_seq');
 
-	// public static
-	function getTotalVotesByPollId($poll_id) {
-		$db = & Database :: getInstance();
-		$sql = "SELECT COUNT(*) FROM ".$db->prefix("umfrage_log")." WHERE poll_id = ".intval($poll_id);
-		list ($votes) = $db->fetchRow($db->query($sql));
-		return $votes;
-	}
+        $sql = 'INSERT INTO ' . $this->db->prefix('umfrage_log') . " (log_id, poll_id, option_id, ip, user_id, time) VALUES ($log_id, $poll_id, $option_id, " . $this->db->quoteString($ip) . ", $user_id, " . time() . ')';
 
-	// public static
-	function getTotalVotesByOptionId($option_id) {
-		$db = & Database :: getInstance();
-		$sql = "SELECT COUNT(*) FROM ".$db->prefix("umfrage_log")." WHERE option_id = ".intval($option_id);
-		list ($votes) = $db->fetchRow($db->query($sql));
-		return $votes;
-	}
+        $result = $this->db->query($sql);
+
+        if (!$result) {
+            $this->setErrors('Could not store log data in the database.');
+
+            return false;
+        }
+
+        return $option_id;
+    }
+
+    // private
+
+    public function load($id)
+    {
+        $sql = 'SELECT * FROM ' . $this->db->prefix('umfrage_log') . ' WHERE log_id=' . $id . '';
+
+        $myrow = $this->db->fetchArray($this->db->query($sql));
+
+        $this->assignVars($myrow);
+    }
+
+    // public
+
+    public function delete()
+    {
+        $sql = sprintf('DELETE FROM %s WHERE log_id = %u', $this->db->prefix('umfrage_log'), $this->getVar('log_id'));
+
+        if (!$this->db->query($sql)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // public static
+
+    public function &getAllByPollId($poll_id, $orderby = 'time ASC')
+    {
+        $db = &Database :: getInstance();
+
+        $ret = [];
+
+        $sql = 'SELECT * FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . " ORDER BY $orderby";
+
+        $result = $db->query($sql);
+
+        while ($myrow = $db->fetchArray($result)) {
+            $ret[] = new self($myrow);
+        }
+
+        //echo $sql;
+
+        return $ret;
+    }
+
+    // public static
+
+    public function hasVoted($poll_id, $ip, $user_id = null)
+    {
+        global $xoopsModuleConfig;
+
+        $db = &Database :: getInstance();
+
+        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id);
+
+        // If Cookie exists, the user has already voted using this browser, although it could be using a different login
+
+        if (1 == $xoopsModuleConfig['controlbycookie'] and $_COOKIE['voted_polls[' . $poll_id . ']']) {
+            return true;
+        }
+
+        // Logged in user? Look for his UID in the voting database.
+
+        if (!empty($user_id)) {
+            $sql .= ' AND user_id=' . intval($user_id);
+        }
+
+        // ISegura.es: Can the user vote? Apply IP and Cookie controls if available.
+        if (1 == $xoopsModuleConfig['controlbyip']) { // ISegura.es: We check if IP control is activated.
+            $sql .= " AND ip='" . $ip . "'";
+        } elseif (!$user_id) { // If is anonymous, but IP is not activated, we have no other way to control he has already voted.
+            return false;
+        }
+
+        list($count) = $db->fetchRow($db->query($sql));
+
+        if ($count > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // public static
+
+    public function deleteByPollId($poll_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_log'), intval($poll_id));
+
+        if (!$db->query($sql)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // public static
+
+    public function deleteByOptionId($option_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $db->prefix('umfrage_log'), intval($option_id));
+
+        if (!$db->query($sql)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // public static
+
+    public function getTotalVotersByPollId($poll_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = 'SELECT DISTINCT user_id FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . ' AND user_id > 0';
+
+        $users = $db->getRowsNum($db->query($sql));
+
+        $sql = 'SELECT DISTINCT ip FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . ' AND user_id=0';
+
+        $anons = $db->getRowsNum($db->query($sql));
+
+        return $users + $anons;
+    }
+
+    // public static
+
+    public function getTotalVotesByPollId($poll_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id = ' . intval($poll_id);
+
+        list($votes) = $db->fetchRow($db->query($sql));
+
+        return $votes;
+    }
+
+    // public static
+
+    public function getTotalVotesByOptionId($option_id)
+    {
+        $db = &Database :: getInstance();
+
+        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE option_id = ' . intval($option_id);
+
+        list($votes) = $db->fetchRow($db->query($sql));
+
+        return $votes;
+    }
 }
-?>

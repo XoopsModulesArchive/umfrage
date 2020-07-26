@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -26,35 +26,36 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-include "../../mainfile.php";
-include XOOPS_ROOT_PATH."/modules/umfrage/include/constants.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrage.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfrageoption.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragelog.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragerenderer.php";
+include '../../mainfile.php';
+include XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
+include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
+include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
+include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 $poll_id = $_GET['poll_id'];
 
-$poll_id = (!empty ($poll_id)) ? intval($poll_id) : 0;
-if (empty ($poll_id)) {
-	redirect_header("index.php", 0);
-	exit ();
+$poll_id = (!empty($poll_id)) ? intval($poll_id) : 0;
+if (empty($poll_id)) {
+    redirect_header('index.php', 0);
+
+    exit();
 }
 
 $poll = new Umfrage($poll_id);
 
-if ($poll->getVar("polltype") == 2 || $poll->getVar("polltype") == 3 && $poll->getVar(end_time) > time()) {
-	redirect_header("index.php", 3, _PL_SHOW_ELECTIONSMODE);
-	exit ();
+if (2 == $poll->getVar('polltype') || 3 == $poll->getVar('polltype') && $poll->getVar(end_time) > time()) {
+    redirect_header('index.php', 3, _PL_SHOW_ELECTIONSMODE);
+
+    exit();
 }
 
 $xoopsOption['template_main'] = 'umfrage_results.html';
-include XOOPS_ROOT_PATH."/header.php";
+include XOOPS_ROOT_PATH . '/header.php';
 
 $renderer = new UmfrageRenderer($poll);
 $renderer->assignResults($xoopsTpl);
 
-include XOOPS_ROOT_PATH.'/include/comment_view.php';
+include XOOPS_ROOT_PATH . '/include/comment_view.php';
 
-include XOOPS_ROOT_PATH."/footer.php";
-?>
+include XOOPS_ROOT_PATH . '/footer.php';

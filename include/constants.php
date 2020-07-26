@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -26,6 +25,5 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
-define("POLL_NOTMAILED", 0);
-define("POLL_MAILED", 1);
-?>
+define('POLL_NOTMAILED', 0);
+define('POLL_MAILED', 1);

@@ -35,13 +35,13 @@ $xoops_module_header .= '<script src="'.XOOPS_URL.'/Frameworks/textsanitizer/xoo
 $topic_id = isset($_GET['topic_id']) ? intval($_GET['topic_id']) : 0;
 $post_id = !empty($_GET['post_id']) ? intval($_GET['post_id']) : 0;
 $forum_id = !empty($_GET['forum']) ? intval($_GET['forum']) : 0;
-$move = isset($_GET['move'])? strtolower($_GET['move']) : '';
+$move = isset($_GET['move']) ? strtolower($_GET['move']) : '';
 $start = !empty($_GET['start']) ? intval($_GET['start']) : 0;
-$type = (!empty($_GET['type']) && in_array($_GET['type'], array("active", "pending", "deleted")))? $_GET['type'] : "";
-$mode = !empty($_GET['mode']) ? intval($_GET['mode']) : (!empty($type)?2:0);
+$type = (!empty($_GET['type']) && in_array($_GET['type'], array("active", "pending", "deleted"))) ? $_GET['type'] : "";
+$mode = !empty($_GET['mode']) ? intval($_GET['mode']) : (!empty($type) ? 2 : 0);
 
 if ( !$topic_id && !$post_id ) {
-	$redirect = empty($forum_id)?"index.php":'viewforum.php?forum='.$forum_id;
+	$redirect = empty($forum_id) ? "index.php" : 'viewforum.php?forum='.$forum_id;
     redirect_header($redirect, 2, _MD_ERRORTOPIC);
 }
 
@@ -49,7 +49,7 @@ $topic_handler =& xoops_getmodulehandler('topic', 'newbb');
 if ( !empty($post_id) ) {
     $forumtopic =& $topic_handler->getByPost($post_id);
 } elseif(!empty($move)) {
-    $forumtopic =& $topic_handler->getByMove($topic_id, ($move == "prev")?-1:1, $forum_id);
+    $forumtopic =& $topic_handler->getByMove($topic_id, ($move == "prev") ? -1 : 1, $forum_id);
     $topic_id = $forumtopic->getVar("topic_id");
 } else {
     $forumtopic =& $topic_handler->get($topic_id);
@@ -63,7 +63,7 @@ $viewtopic_forum =& $forum_handler->get($forum_id);
 
 $isadmin = newbb_isAdmin($viewtopic_forum);
 
-if(!$isadmin && $forumtopic->getVar('approved')<0 ){
+if(!$isadmin && $forumtopic->getVar('approved') < 0 ){
     redirect_header("viewforum.php?forum=".$forum_id,2,_MD_NORIGHTTOVIEW);
     exit();
 }
@@ -96,20 +96,20 @@ $viewmode_cookie = newbb_getcookie("V");
 if(isset($_GET['viewmode']) && in_array($_GET['viewmode'], $valid_modes)) {
 	newbb_setcookie("V", $_GET['viewmode'], $forumCookie['expire']);
 }
-$viewmode = isset($_GET['viewmode'])? $_GET['viewmode'] : 
+$viewmode = isset($_GET['viewmode']) ? $_GET['viewmode'] : 
 			(
-				!empty($viewmode_cookie)?
-				$viewmode_cookie:
+				!empty($viewmode_cookie) ?
+				$viewmode_cookie :
 				(
 			/*
 					is_object($xoopsUser)?
 					$xoopsUser->getVar('umode'):
 			*/
-					@$valid_modes[$xoopsModuleConfig['view_mode']-1]
+					@$valid_modes[$xoopsModuleConfig['view_mode'] - 1]
 				)
 			);
-$viewmode = in_array($viewmode, $valid_modes)?$viewmode:"flat";
-$order = (isset($_GET['order']) && in_array(strtoupper($_GET['order']),array("DESC","ASC")))?$_GET['order']:"ASC";
+$viewmode = in_array($viewmode, $valid_modes) ? $viewmode : "flat";
+$order = (isset($_GET['order']) && in_array(strtoupper($_GET['order']),array("DESC", "ASC"))) ? $_GET['order'] : "ASC";
 			/*
 			(
 				(is_object($xoopsUser) && $xoopsUser->getVar('uorder')==1)?
@@ -120,14 +120,14 @@ $order = (isset($_GET['order']) && in_array(strtoupper($_GET['order']),array("DE
 $total_posts = $topic_handler->getPostCount($forumtopic, $type);
 
 if ($viewmode == "thread") {
-    $xoopsOption['template_main'] =  'newbb_viewtopic_thread.html';
+    $xoopsOption['template_main'] = 'newbb_viewtopic_thread.html';
     if(!empty($xoopsModuleConfig["posts_for_thread"]) && $total_posts > $xoopsModuleConfig["posts_for_thread"]) {
 	    redirect_header("viewtopic.php?topic_id=$topic_id&amp;viewmode=flat", 2, _MD_EXCEEDTHREADVIEW);
 	    exit();
     }
 	$postsArray = $topic_handler->getAllPosts($forumtopic, $order, $total_posts, $start, 0, $type);
 } else {
-    $xoopsOption['template_main'] =  'newbb_viewtopic_flat.html';
+    $xoopsOption['template_main'] = 'newbb_viewtopic_flat.html';
     $postsArray = $topic_handler->getAllPosts($forumtopic, $order, $xoopsModuleConfig['posts_per_page'], $start, $post_id, $type);
 }
 
@@ -147,8 +147,8 @@ if(!empty($xoopsModuleConfig['rss_enable'])){
 }
 $xoops_pagetitle = $forumtopic->getVar('topic_title') . ' [' . $xoopsModule->getVar('name') ." - ". $viewtopic_forum->getVar('forum_name') . "]";
 
-$xoopsOption['xoops_pagetitle']= $xoops_pagetitle;
-$xoopsOption['xoops_module_header']= $xoops_module_header;
+$xoopsOption['xoops_pagetitle'] = $xoops_pagetitle;
+$xoopsOption['xoops_module_header'] = $xoops_module_header;
 include XOOPS_ROOT_PATH."/header.php";
 if($xoopsTpl->xoops_canUpdateFromFile() && is_dir(XOOPS_THEME_PATH."/".$xoopsConfig['theme_set']."/templates/".$xoopsModule->getVar("dirname"))){
 	$xoopsTpl->assign('newbb_template_path', XOOPS_THEME_PATH."/".$xoopsConfig['theme_set']."/templates/".$xoopsModule->getVar("dirname"));
@@ -223,12 +223,12 @@ if ($topic_handler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_s
 $poster_array = array();
 $require_reply = false;
 foreach ($postsArray as $eachpost) {
-	if($eachpost->getVar('uid')>0) $poster_array[$eachpost->getVar('uid')] = 1;
-	if($eachpost->getVar('require_reply')>0) $require_reply = true;
+	if($eachpost->getVar('uid') > 0) $poster_array[$eachpost->getVar('uid')] = 1;
+	if($eachpost->getVar('require_reply') > 0) $require_reply = true;
 }
-$userid_array=array();
+$userid_array = array();
 $online = array();
-if(count($poster_array)>0){
+if(count($poster_array) > 0){
 	$member_handler =& xoops_gethandler('member');
 	$userid_array = array_keys($poster_array);
 	$user_criteria = "(".implode(",",$userid_array).")";
@@ -253,7 +253,7 @@ if($xoopsModuleConfig['groupbar_enabled']){
 }
 
 $viewtopic_users = array();
-if(count($userid_array)>0){
+if(count($userid_array) > 0){
 	$user_handler =& xoops_getmodulehandler('user', 'newbb');
 	$user_handler->setUsers($users);
 	$user_handler->setGroups($groups_disp);
@@ -271,7 +271,7 @@ unset($groups_disp);
 if($xoopsModuleConfig['allow_require_reply'] && $require_reply){
 	if(!empty($xoopsModuleConfig['cache_enabled'])){
 		$viewtopic_posters = newbb_getsession("t".$topic_id, true);
-		if(!is_array($viewtopic_posters) || count($viewtopic_posters)==0){
+		if(!is_array($viewtopic_posters) || count($viewtopic_posters) == 0){
 			$viewtopic_posters =& $topic_handler->getAllPosters($forumtopic);
 			newbb_setsession("t".$topic_id, $viewtopic_posters);
 		}
@@ -279,7 +279,7 @@ if($xoopsModuleConfig['allow_require_reply'] && $require_reply){
 		$viewtopic_posters =& $topic_handler->getAllPosters($forumtopic);
 	}
 }else{
-	$viewtopic_posters =array();
+	$viewtopic_posters = array();
 }
 
 if ($viewmode == "thread") {
@@ -287,7 +287,7 @@ if ($viewmode == "thread") {
 		$post_handler =& xoops_getmodulehandler('post', 'newbb');
 		$currentPost = $post_handler -> get($post_id);
 		
-		if(!$isadmin && $currentPost->getVar('approved')<0 ){
+		if(!$isadmin && $currentPost->getVar('approved') < 0 ){
 		    redirect_header("viewtopic.php?topic_id=".$topic_id, 2, _MD_NORIGHTTOVIEW);
 		    exit();
 		}
@@ -344,51 +344,60 @@ $ad_undigest = "";
 $admin_actions['merge'] = array(
 	"link" => $forumUrl['root'].'/topicmanager.php?mode=merge&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
 	"name" => _MD_MERGETOPIC,
-	"image" => $ad_merge);
+	"image" => $ad_merge,
+);
 $admin_actions['move'] = array(
 	"link" => $forumUrl['root'].'/topicmanager.php?mode=move&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
 	"name" => _MD_MOVETOPIC,
-	"image" => $ad_move);
+	"image" => $ad_move,
+);
 $admin_actions['delete'] = array(
 	"link" => $forumUrl['root'].'/topicmanager.php?mode=delete&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
 	"name" => _MD_DELETETOPIC,
-	"image" => $ad_delete);
+	"image" => $ad_delete,
+);
 if ( !$forumtopic->getVar('topic_status') ){
     $admin_actions['lock'] = array(
-    	"link"=>$forumUrl['root'].'/topicmanager.php?mode=lock&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
-    	"image"=>$ad_lock,
-    	"name"=>_MD_LOCKTOPIC);
+    	"link" => $forumUrl['root'].'/topicmanager.php?mode=lock&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
+    	"image" => $ad_lock,
+    	"name" => _MD_LOCKTOPIC
+);
 }else{
     $admin_actions['unlock'] = array(
-    	"link"=>$forumUrl['root'].'/topicmanager.php?mode=unlock&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
-    	"image"=>$ad_unlock,
-    	"name"=>_MD_UNLOCKTOPIC);
+    	"link" => $forumUrl['root'].'/topicmanager.php?mode=unlock&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
+    	"image" => $ad_unlock,
+    	"name" => _MD_UNLOCKTOPIC
+);
 }
 if ( !$forumtopic->getVar('topic_sticky') ){
     $admin_actions['sticky'] = array(
-    	"link"=>$forumUrl['root'].'/topicmanager.php?mode=sticky&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
-    	"image"=>$ad_sticky,
-    	"name"=>_MD_STICKYTOPIC);
+    	"link" => $forumUrl['root'].'/topicmanager.php?mode=sticky&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
+    	"image" =>$ad_sticky,
+    	"name" =>_MD_STICKYTOPIC
+);
 }else{
     $admin_actions['unsticky'] = array(
-    	"link"=>$forumUrl['root'].'/topicmanager.php?mode=unsticky&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
-    	"image"=>$ad_unsticky,
-    	"name"=>_MD_UNSTICKYTOPIC);
+    	"link" =>$forumUrl['root'].'/topicmanager.php?mode=unsticky&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
+    	"image" =>$ad_unsticky,
+    	"name" =>_MD_UNSTICKYTOPIC
+);
 }
 if ( !$forumtopic->getVar('topic_digest') ){
     $admin_actions['digest'] = array(
-    	"link"=>$forumUrl['root'].'/topicmanager.php?mode=digest&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
-    	"image"=>$ad_digest,
-    	"name"=>_MD_DIGESTTOPIC);
+    	"link" =>$forumUrl['root'].'/topicmanager.php?mode=digest&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
+    	"image" =>$ad_digest,
+    	"name" =>_MD_DIGESTTOPIC
+);
 }else{
     $admin_actions['undigest'] = array(
-    	"link"=>$forumUrl['root'].'/topicmanager.php?mode=undigest&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
-    	"image"=>$ad_undigest,
-    	"name"=>_MD_UNDIGESTTOPIC);
+    	"link" =>$forumUrl['root'].'/topicmanager.php?mode=undigest&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
+    	"image" =>$ad_undigest,
+    	"name" =>_MD_UNDIGESTTOPIC
+);
 }
 $xoopsTpl->assign_by_ref('admin_actions', $admin_actions);
 
-$xoopsTpl->assign('viewer_level', ($isadmin)?2:(is_object($xoopsUser)?1:0) );
+$xoopsTpl->assign('viewer_level', ($isadmin) ?2 :(is_object($xoopsUser) ?1 :0) );
 
 if($xoopsModuleConfig['show_permissiontable']){
 	$permission_table = $perm->permission_table($permission_set,$viewtopic_forum, $forumtopic->getVar('topic_status'), $isadmin);
@@ -418,9 +427,9 @@ if ( $forumtopic->getVar('topic_haspoll')
 	$xoopsTpl->assign('topic_poll', 1);
 	$poll = new Umfrage($forumtopic->getVar('poll_id'));
 	$renderer = new UmfrageRenderer($poll);
-	$uid = is_object($xoopsUser)?$xoopsUser->getVar("uid"):0;
+	$uid = is_object($xoopsUser) ?$xoopsUser->getVar("uid") :0;
 	$xoopsTpl->assign('lang_alreadyvoted2' , _PL_ALREADYVOTED2);
-	$xoopsTpl->assign('has_ended' , $poll->getVar('end_time')<time() ? 1 : 0);
+	$xoopsTpl->assign('has_ended' , $poll->getVar('end_time') <time() ? 1 : 0);
 	$xoopsTpl->assign('polltype',$poll->getVar('polltype'));
 	switch ($poll->getVar('polltype')){
 	    case 1: 
@@ -435,21 +444,21 @@ if ( $forumtopic->getVar('topic_haspoll')
 	    
 	}
 
-	$hasvoted=0;
+	$hasvoted =0;
 	if($xoopsUser)
 	{
 	    if(UmfrageLog::hasVoted($forumtopic->getVar('poll_id'),xoops_getenv('REMOTE_ADDR'),$xoopsUser->getVar("uid"))){
-		$hasvoted=1;
+		$hasvoted =1;
 	    }	
 	} else {
-	    $hasvoted=1;
+	    $hasvoted =1;
 	}
 
 	$xoopsTpl->assign('hasVoted' , $hasvoted);
 	$xoopsTpl->assign('lang_vote' , _PL_VOTE);
-	$xoopsTpl->assign('lang_results' , $poll->getVar("end_time")< time() ?  _PL_RESULTS : _PL_STANDINGS);
+	$xoopsTpl->assign('lang_results' , $poll->getVar("end_time") < time() ? _PL_RESULTS : _PL_STANDINGS);
 	
-	if ( UmfrageLog::hasVoted($forumtopic->getVar('poll_id'), $_SERVER['REMOTE_ADDR'], $uid) || $poll->getVar('end_time')<time() ) {
+	if ( UmfrageLog::hasVoted($forumtopic->getVar('poll_id'), $_SERVER['REMOTE_ADDR'], $uid) || $poll->getVar('end_time') <time() ) {
 		$renderer->assignResults($xoopsTpl);
 		//pollresults($forumtopic->getVar('poll_id'));
 		$xoopsTpl->assign('topic_pollresult', 1);
@@ -464,12 +473,12 @@ if ( $forumtopic->getVar('topic_haspoll')
 if ($topic_handler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_status'), "addpoll")
 ){
 	if(!$forumtopic->getVar('topic_haspoll')){	
-		if( is_object($xoopsUser) && $xoopsUser->getVar("uid")==$forumtopic->getVar("topic_poster") ){
+		if( is_object($xoopsUser) && $xoopsUser->getVar("uid") ==$forumtopic->getVar("topic_poster") ){
 			$t_poll = newbb_displayImage($forumImage['t_poll'],_MD_ADDPOLL);
 			$xoopsTpl->assign('forum_addpoll', "<a href=\"polls.php?op=add&amp;forum=".$forum_id."&amp;topic_id=".$topic_id."\">".$t_poll."</a>&nbsp;");
 		}
 	}elseif($isadmin
-		|| (is_object($poll) && is_object($xoopsUser) && $xoopsUser->getVar("uid")==$poll->getVar("user_id") )
+		|| (is_object($poll) && is_object($xoopsUser) && $xoopsUser->getVar("uid") ==$poll->getVar("user_id") )
 	){
 		$poll_edit = "";
 	    $poll_delete = "";
@@ -479,15 +488,18 @@ if ($topic_handler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_s
 	    $adminpoll_actions['editpoll'] = array(
 	    	"link" => $forumUrl['root'].'/polls.php?op=edit&amp;poll_id='.$forumtopic->getVar('poll_id').'&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
 	    	"image" => $poll_edit,
-	    	"name" => _MD_EDITPOLL);
+	    	"name" => _MD_EDITPOLL
+);
 	    $adminpoll_actions['deletepoll'] = array(
 	    	"link" => $forumUrl['root'].'/polls.php?op=delete&amp;poll_id='.$forumtopic->getVar('poll_id').'&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
 	    	"image" => $poll_delete,
-	    	"name" => _MD_DELETEPOLL);
+	    	"name" => _MD_DELETEPOLL
+);
 	    $adminpoll_actions['restartpoll'] = array(
 	    	"link" => $forumUrl['root'].'/polls.php?op=restart&amp;poll_id='.$forumtopic->getVar('poll_id').'&amp;topic_id='.$topic_id.'&amp;forum='.$forum_id,
 	    	"image" => $poll_restart,
-	    	"name" => _MD_RESTARTPOLL);
+	    	"name" => _MD_RESTARTPOLL
+);
 
 	    $xoopsTpl->assign_by_ref('adminpoll_actions', $adminpoll_actions);	
 	    unset($adminpoll_actions);
@@ -514,7 +526,7 @@ $xoopsTpl->assign('post_content',newbb_displayImage($forumImage['post_content'])
 
 if(!empty($xoopsModuleConfig['rating_enabled'])){
 	$xoopsTpl->assign('votes',$forumtopic->getVar('votes'));
-	$rating = number_format($forumtopic->getVar('rating')/2, 0);
+	$rating = number_format($forumtopic->getVar('rating') /2, 0);
 	if ( $rating < 1 ) {
 		$rating_img = newbb_displayImage($forumImage['blank']);
 	}else{
@@ -532,27 +544,27 @@ if(!empty($xoopsModuleConfig['rating_enabled'])){
 if(!empty($xoopsModuleConfig['show_jump'])){
 	$xoopsTpl->assign('forum_jumpbox', newbb_make_jumpbox($forum_id));
 }
-$xoopsTpl->assign(array('lang_forum_index' => sprintf(_MD_FORUMINDEX,htmlspecialchars($xoopsConfig['sitename'], ENT_QUOTES)), 'lang_from' => _MD_FROM, 'lang_joined' => _MD_JOINED, 'lang_posts' => _MD_POSTS, 'lang_poster' => _MD_POSTER, 'lang_thread' => _MD_THREAD, 'lang_edit' => _EDIT, 'lang_delete' => _DELETE, 'lang_reply' => _REPLY, 'lang_postedon' => _MD_POSTEDON,'lang_groups' => _MD_GROUPS));
+$xoopsTpl->assign(array('lang_forum_index' => sprintf(_MD_FORUMINDEX,htmlspecialchars($xoopsConfig['sitename'], ENT_QUOTES)), 'lang_from' => _MD_FROM, 'lang_joined' => _MD_JOINED, 'lang_posts' => _MD_POSTS, 'lang_poster' => _MD_POSTER, 'lang_thread' => _MD_THREAD, 'lang_edit' => _EDIT, 'lang_delete' => _DELETE, 'lang_reply' => _REPLY, 'lang_postedon' => _MD_POSTEDON, 'lang_groups' => _MD_GROUPS));
 
 $viewmode_options = array();
-if($viewmode=="thread"){
-	$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title"=>_FLAT);
-	$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,	"title"=>_MD_COMPACT);
-}elseif($viewmode=="compact"){
-	$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=thread&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title"=>_THREADED);
-	$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;order=".$order_current."&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,	"title"=>_FLAT);
+if($viewmode =="thread"){
+	$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title" =>_FLAT);
+	$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,	"title" =>_MD_COMPACT);
+}elseif($viewmode =="compact"){
+	$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=thread&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title" =>_THREADED);
+	$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;order=".$order_current."&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,	"title" =>_FLAT);
 	if ($order == 'DESC') {
-		$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;order=ASC&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title"=>_OLDESTFIRST);
+		$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;order=ASC&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title" =>_OLDESTFIRST);
 	} else {
-		$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;order=DESC&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title"=>_NEWESTFIRST);
+		$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;order=DESC&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title" =>_NEWESTFIRST);
 	}
 }else{
-	$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=thread&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title"=>_THREADED);
-	$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;order=".$order_current."&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title"=>_MD_COMPACT);
+	$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=thread&amp;topic_id=".$topic_id."&amp;forum=".$forum_id,"title" =>_THREADED);
+	$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=compact&amp;order=".$order_current."&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title" =>_MD_COMPACT);
 	if ($order == 'DESC') {
-		$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;order=ASC&amp;type=$type&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title"=>_OLDESTFIRST);
+		$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;order=ASC&amp;type=$type&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title" =>_OLDESTFIRST);
 	} else {
-		$viewmode_options[]= array("link"=>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;order=DESC&amp;type=$type&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title"=>_NEWESTFIRST);
+		$viewmode_options[] = array("link" =>$forumUrl['root']."/viewtopic.php?viewmode=flat&amp;order=DESC&amp;type=$type&amp;topic_id=".$topic_id."&amp;forum=".$forum_id, "title" =>_NEWESTFIRST);
 	}
 }
 switch($type){
@@ -573,7 +585,7 @@ $xoopsTpl->assign('topictype', $current_type);
 
 $xoopsTpl->assign('mode', $mode);
 $xoopsTpl->assign('type', $type);
-$xoopsTpl->assign('viewmode_compact', ($viewmode=="compact")?1:0);
+$xoopsTpl->assign('viewmode_compact', ($viewmode =="compact") ?1 :0);
 $xoopsTpl->assign_by_ref('viewmode_options', $viewmode_options);
 unset($viewmode_options);
 $xoopsTpl->assign('menumode',$menumode);
@@ -600,7 +612,7 @@ if( !empty($xoopsModuleConfig['quickreply_enabled'])
 	$quickform = "textarea";
 	$editor_configs = array();
 	$editor_configs["caption"] = _MD_MESSAGEC;
-	$editor_configs["name"] ="message";
+	$editor_configs["name"] = "message";
 	$editor_configs["rows"] = 10;
 	$editor_configs["cols"] = 60;
 	if(!$editor_handler =& xoops_gethandler("editor", true)){
@@ -621,7 +633,7 @@ if( !empty($xoopsModuleConfig['quickreply_enabled'])
 	$forum_form->addElement(new XoopsFormHidden('isreply', 1));
 	
 	$forum_form->addElement(new XoopsFormHidden('subject', _MD_RE.': '.$forumtopic->getVar('topic_title', 'e')));
-	$forum_form->addElement(new XoopsFormHidden('pid', empty($post_id)?$topic_handler->getTopPostId($topic_id):$post_id));
+	$forum_form->addElement(new XoopsFormHidden('pid', empty($post_id) ?$topic_handler->getTopPostId($topic_id) :$post_id));
 	$forum_form->addElement(new XoopsFormHidden('topic_id', $topic_id));
 	$forum_form->addElement(new XoopsFormHidden('forum', $forum_id));
 	$forum_form->addElement(new XoopsFormHidden('viewmode', $viewmode));
@@ -645,7 +657,7 @@ if( !empty($xoopsModuleConfig['quickreply_enabled'])
 
 	$toggles = newbb_getcookie('G', true);
 	$display = (in_array('qr', $toggles)) ? 'none;' : 'block;';
-    $xoopsTpl->assign('quickreply', array( 'show' => 1, 'display'=>$display, 'icon'=>newbb_displayImage($forumImage['t_qr']), 'form' => $forum_form->render()));
+    $xoopsTpl->assign('quickreply', array( 'show' => 1, 'display' =>$display, 'icon' =>newbb_displayImage($forumImage['t_qr']), 'form' => $forum_form->render()));
 	unset($forum_form);
 }else{
 	$xoopsTpl->assign('quickreply', array( 'show' => 0));

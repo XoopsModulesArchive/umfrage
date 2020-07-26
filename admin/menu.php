@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -26,7 +26,6 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 $adminmenu[0]['title'] = _MI_POLLS_ADMENU1;
-$adminmenu[0]['link'] = "admin/index.php";
+$adminmenu[0]['link'] = 'admin/index.php';
 $adminmenu[1]['title'] = _MI_POLLS_ADMENU2;
-$adminmenu[1]['link'] = "admin/index.php?op=add";
-?>
+$adminmenu[1]['link'] = 'admin/index.php?op=add';

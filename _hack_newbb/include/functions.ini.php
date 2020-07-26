@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -28,142 +28,175 @@
 //  URL: http://xoopsforge.com, http://xoops.org.cn                          //
 //  Project: Article Project                                                 //
 //  ------------------------------------------------------------------------ //
-if (!defined('XOOPS_ROOT_PATH')){ exit(); }
+if (!defined('XOOPS_ROOT_PATH')) {
+    exit();
+}
 
-if(defined("NEWBB_FUNCTIONS_INI")) return; define("NEWBB_FUNCTIONS_INI",1);
+if (defined('NEWBB_FUNCTIONS_INI')) {
+    return;
+} define('NEWBB_FUNCTIONS_INI', 1);
 
-include_once(XOOPS_ROOT_PATH."/Frameworks/art/functions.php");
+include_once(XOOPS_ROOT_PATH . '/Frameworks/art/functions.php');
 
 function newbb_load_object()
 {
-	return load_object();
+    return load_object();
 }
 
-function newbb_message( $message )
+function newbb_message($message)
 {
-	global $xoopsModuleConfig;
-	if(!empty($xoopsModuleConfig["do_debug"])){
-		if(is_array($message) || is_object($message)){
-			echo "<div><pre>";print_r($message);echo "</pre></div>";
-		}else{
-			echo "<div>$message</div>";
-		}
-	}
-	return;
+    global $xoopsModuleConfig;
+
+    if (!empty($xoopsModuleConfig['do_debug'])) {
+        if (is_array($message) || is_object($message)) {
+            echo '<div><pre>';
+
+            print_r($message);
+
+            echo '</pre></div>';
+        } else {
+            echo "<div>$message</div>";
+        }
+    }
 }
 
 function &newbb_load_config()
 {
-	static $moduleConfig;
-	if(isset($moduleConfig)){
-		return $moduleConfig;
-	}
-	
-    if(isset($GLOBALS["xoopsModule"]) && is_object($GLOBALS["xoopsModule"]) && $GLOBALS["xoopsModule"]->getVar("dirname", "n") == "newbb"){
-	    if(!empty($GLOBALS["xoopsModuleConfig"])) {
-		    $moduleConfig =& $GLOBALS["xoopsModuleConfig"];
-	    }else{
-		    return null;
-	    }
-    }else{
-		$module_handler = &xoops_gethandler('module');
-		$module = $module_handler->getByDirname("newbb");
-	
-	    $config_handler = &xoops_gethandler('config');
-	    $criteria = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
-	    $configs =& $config_handler->getConfigs($criteria);
-	    foreach(array_keys($configs) as $i){
-		    $moduleConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
-	    }
-	    unset($configs);
+    static $moduleConfig;
+
+    if (isset($moduleConfig)) {
+        return $moduleConfig;
     }
-	if($customConfig = @include(XOOPS_ROOT_PATH."/modules/newbb/include/plugin.php")){
-		$moduleConfig = array_merge($moduleConfig, $customConfig);
-	}
+
+    if (isset($GLOBALS['xoopsModule']) && is_object($GLOBALS['xoopsModule']) && 'newbb' == $GLOBALS['xoopsModule']->getVar('dirname', 'n')) {
+        if (!empty($GLOBALS['xoopsModuleConfig'])) {
+            $moduleConfig = &$GLOBALS['xoopsModuleConfig'];
+        } else {
+            return null;
+        }
+    } else {
+        $module_handler = &xoops_gethandler('module');
+
+        $module = $module_handler->getByDirname('newbb');
+
+        $config_handler = &xoops_gethandler('config');
+
+        $criteria = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
+
+        $configs = &$config_handler->getConfigs($criteria);
+
+        foreach (array_keys($configs) as $i) {
+            $moduleConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+        }
+
+        unset($configs);
+    }
+
+    if ($customConfig = @include(XOOPS_ROOT_PATH . '/modules/newbb/include/plugin.php')) {
+        $moduleConfig = array_merge($moduleConfig, $customConfig);
+    }
+
     return $moduleConfig;
 }
 
 function getConfigForBlock()
 {
-	return newbb_load_config();
-	
-	static $newbbConfig;
-	if(isset($newbbConfig)){
-		return $newbbConfig;
-	}
-	
-    if(is_object($GLOBALS["xoopsModule"]) && $GLOBALS["xoopsModule"]->getVar("dirname") == "newbb"){
-	    $newbbConfig =& $GLOBALS["xoopsModuleConfig"];
-    }else{
-		$module_handler =& xoops_gethandler('module');
-		$newbb = $module_handler->getByDirname('newbb');
-	
-	    $config_handler =& xoops_gethandler('config');
-	    $criteria = new CriteriaCompo(new Criteria('conf_modid', $newbb->getVar('mid')));
-	    $criteria->add(new Criteria('conf_name', "('show_realname', 'subject_prefix', 'allow_require_reply')", "IN"));
-	    $configs =& $config_handler->getConfigs($criteria);
-	    foreach(array_keys($configs) as $i){
-		    $newbbConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
-	    }
-	    unset($newbb, $configs);
+    return newbb_load_config();
+    static $newbbConfig;
+
+    if (isset($newbbConfig)) {
+        return $newbbConfig;
     }
+
+    if (is_object($GLOBALS['xoopsModule']) && 'newbb' == $GLOBALS['xoopsModule']->getVar('dirname')) {
+        $newbbConfig = &$GLOBALS['xoopsModuleConfig'];
+    } else {
+        $module_handler = &xoops_gethandler('module');
+
+        $newbb = $module_handler->getByDirname('newbb');
+
+        $config_handler = &xoops_gethandler('config');
+
+        $criteria = new CriteriaCompo(new Criteria('conf_modid', $newbb->getVar('mid')));
+
+        $criteria->add(new Criteria('conf_name', "('show_realname', 'subject_prefix', 'allow_require_reply')", 'IN'));
+
+        $configs = &$config_handler->getConfigs($criteria);
+
+        foreach (array_keys($configs) as $i) {
+            $newbbConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+        }
+
+        unset($newbb, $configs);
+    }
+
     return $newbbConfig;
 }
 
-
 // Backword compatible
-function newbb_load_lang_file( $filename, $module = '', $default = 'english' )
+function newbb_load_lang_file($filename, $module = '', $default = 'english')
 {
-	if(function_exists("xoops_load_lang_file")){
-		return xoops_load_lang_file($filename, $module, $default);
-	}
-	
-	$lang = $GLOBALS['xoopsConfig']['language'];
-	$path = XOOPS_ROOT_PATH . ( empty($module) ? '/' : "/modules/$module/" ) . 'language';
-	if ( !( $ret = @include_once( "$path/$lang/$filename.php" ) ) ) {
-		$ret = @include_once( "$path/$default/$filename.php" );
-	}
-	return $ret;
+    if (function_exists('xoops_load_lang_file')) {
+        return xoops_load_lang_file($filename, $module, $default);
+    }
+
+    $lang = $GLOBALS['xoopsConfig']['language'];
+
+    $path = XOOPS_ROOT_PATH . (empty($module) ? '/' : "/modules/$module/") . 'language';
+
+    if (!($ret = @include_once("$path/$lang/$filename.php"))) {
+        $ret = @include_once("$path/$default/$filename.php");
+    }
+
+    return $ret;
 }
 
 // Adapted from PMA_getIp() [phpmyadmin project]
 function newbb_getIP($asString = false)
 {
-	return mod_getIP($asString);
+    return mod_getIP($asString);
 }
 
-function newbb_formatTimestamp($time, $format = "c", $timeoffset = "")
+function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
 {
-	/*
-	if(strtolower($format) == "reg" || strtolower($format) == "") {
-		$format = "c";
-	}
-	if( (strtolower($format) == "custom" || strtolower($format) == "c") && !empty($GLOBALS["xoopsModuleConfig"]["formatTimestamp_custom"]) ) {
-		$format = $GLOBALS["xoopsModuleConfig"]["formatTimestamp_custom"];
-	}
-	
-	load_functions("locale");
-	return XoopsLocal::formatTimestamp($time, $format, $timeoffset);
-	
-	if(class_exists("XoopsLocal") && is_callable(array("XoopsLocal", "formatTimestamp")) && defined("_TODAY")){
-		return XoopsLocal::formatTimestamp($time, $format, $timeoffset);
-	}
-	
-	*/
+    /*
+    if(strtolower($format) == "reg" || strtolower($format) == "") {
+        $format = "c";
+    }
+    if( (strtolower($format) == "custom" || strtolower($format) == "c") && !empty($GLOBALS["xoopsModuleConfig"]["formatTimestamp_custom"]) ) {
+        $format = $GLOBALS["xoopsModuleConfig"]["formatTimestamp_custom"];
+    }
+
+    load_functions("locale");
+    return XoopsLocal::formatTimestamp($time, $format, $timeoffset);
+
+    if(class_exists("XoopsLocal") && is_callable(array("XoopsLocal", "formatTimestamp")) && defined("_TODAY")){
+        return XoopsLocal::formatTimestamp($time, $format, $timeoffset);
+    }
+
+    */
+
     global $xoopsConfig, $xoopsUser;
-    if(strtolower($format) == "rss" || strtolower($format) == "r"){
-    	$TIME_ZONE = "";
-    	if(!empty($GLOBALS['xoopsConfig']['server_TZ'])){
-			$server_TZ = abs(intval($GLOBALS['xoopsConfig']['server_TZ']*3600.0));
-			$prefix = ($GLOBALS['xoopsConfig']['server_TZ']<0)?" -":" +";
-			$TIME_ZONE = $prefix.date("Hi",$server_TZ);
-		}
-		$date = gmdate("D, d M Y H:i:s", intval($time)).$TIME_ZONE;
-		return $date;
-	}
-	
+
+    if ('rss' == mb_strtolower($format) || 'r' == mb_strtolower($format)) {
+        $TIME_ZONE = '';
+
+        if (!empty($GLOBALS['xoopsConfig']['server_TZ'])) {
+            $server_TZ = abs(intval($GLOBALS['xoopsConfig']['server_TZ'] * 3600.0));
+
+            $prefix = ($GLOBALS['xoopsConfig']['server_TZ'] < 0) ? ' -' : ' +';
+
+            $TIME_ZONE = $prefix . date('Hi', $server_TZ);
+        }
+
+        $date = gmdate('D, d M Y H:i:s', intval($time)) . $TIME_ZONE;
+
+        return $date;
+    }
+
     $usertimestamp = xoops_getUserTimestamp($time, $timeoffset);
-    switch (strtolower($format)) {
+
+    switch (mb_strtolower($format)) {
     case 's':
         $datestring = _SHORTDATESTRING;
         break;
@@ -171,10 +204,10 @@ function newbb_formatTimestamp($time, $format = "c", $timeoffset = "")
         $datestring = _MEDIUMDATESTRING;
         break;
     case 'mysql':
-        $datestring = "Y-m-d H:i:s";
+        $datestring = 'Y-m-d H:i:s';
         break;
     case 'rss':
-    	$datestring = "r";
+        $datestring = 'r';
         break;
     case 'l':
         $datestring = _DATESTRING;
@@ -182,20 +215,19 @@ function newbb_formatTimestamp($time, $format = "c", $timeoffset = "")
     case 'c':
     case 'custom':
     default:
-    	newbb_load_lang_file("main", "newbb");
+        newbb_load_lang_file('main', 'newbb');
         $current_timestamp = xoops_getUserTimestamp(time(), $timeoffset);
-        if(date("Ymd", $usertimestamp) == date("Ymd", $current_timestamp)){
-			$datestring = _MD_TODAY;
-		}elseif(date("Ymd", $usertimestamp+24*60*60) == date("Ymd", $current_timestamp)){
-			$datestring = _MD_YESTERDAY;
-		}elseif(date("Y", $usertimestamp) == date("Y", $current_timestamp)){
-			$datestring = _MD_MONTHDAY;
-		}else{
-			$datestring = _MD_YEARMONTHDAY;
-		}
+        if (date('Ymd', $usertimestamp) == date('Ymd', $current_timestamp)) {
+            $datestring = _MD_TODAY;
+        } elseif (date('Ymd', $usertimestamp + 24 * 60 * 60) == date('Ymd', $current_timestamp)) {
+            $datestring = _MD_YESTERDAY;
+        } elseif (date('Y', $usertimestamp) == date('Y', $current_timestamp)) {
+            $datestring = _MD_MONTHDAY;
+        } else {
+            $datestring = _MD_YEARMONTHDAY;
+        }
         break;
     }
 
     return date($datestring, $usertimestamp);
 }
-?>

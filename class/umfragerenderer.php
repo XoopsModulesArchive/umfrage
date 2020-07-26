@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -30,129 +29,189 @@
 // URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
-include_once XOOPS_ROOT_PATH."/modules/umfrage/class/umfragelog.php";
-include_once XOOPS_ROOT_PATH."/modules/umfrage/language/".$xoopsConfig['language']."/main.php";
+include_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
+include_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['language'] . '/main.php';
 
-class UmfrageRenderer {
-	// private
-	// Umfrage class object
-	var $poll;
+class UmfrageRenderer
+{
+    // private
 
-	// constructor
-	function UmfrageRenderer(& $poll) {
-		$this->poll = & $poll;
-	}
+    // Umfrage class object
 
-	// public
-	function renderForm() {
-		$content = "<form action='".XOOPS_URL."/modules/umfrage/index.php' method='post'>";
-		$content .= "<table width='100%' border='0' cellpadding='4' cellspacing='1'>\n";
-		$content .= "<tr class='bg3'><td align='center' colspan='2'><input type='hidden' name='poll_id' value='".$this->poll->getVar("poll_id")."' />\n";
-		$content .= "<b>".$this->poll->getVar("question")."</b></td></tr>\n";
-		$options_arr = & UmfrageOption :: getAllByPollId($this->poll->getVar("poll_id"));
-		$option_type = "radio";
-		$option_name = "option_id";
-		if ($this->poll->getVar("multiple") == 1) {
-			$option_type = "checkbox";
-			$option_name .= "[]";
-		}
-		foreach ($options_arr as $option) {
-			$content .= "<tr class='bg1'><td align='center'><input type='$option_type' name='$option_name' value='".$option->getVar("option_id")."' /></td><td align='left'>".$option->getVar("option_text")."</td></tr>\n";
-		}
+    public $poll;
 
-		$content .= "<tr class='bg3'><td align='center' colspan='2'><input type='submit' value='"._PL_VOTE."' />&nbsp;";
-		$content .= "<input type='button' value='"._PL_RESULTS."' class='button' onclick='location=\"".XOOPS_URL."/modules/umfrage/pollresults.php?poll_id=".$this->poll->getVar("poll_id")."\"' />";
-		$content .= "</td></tr></table></form>\n";
-		return $content;
-	}
+    // constructor
 
-	function assignForm(& $tpl) {
-		$options_arr = & UmfrageOption :: getAllByPollId($this->poll->getVar("poll_id"));
-		$option_type = "radio";
-		$option_name = "option_id";
-		if ($this->poll->getVar("multiple") == 1) {
-			$option_type = "checkbox";
-			$option_name .= "[]";
-		}
-		$i = 0;
-		foreach ($options_arr as $option) {
-			$options[$i]['input'] = "<input type='$option_type' name='$option_name' value='".$option->getVar("option_id")."' />";
-			$options[$i]['text'] = $option->getVar("option_text");
-			$i ++;
-		}
-		//$tpl->assign('poll', array('question' => $this->poll->getVar("question"), 'pollId' => $this->poll->getVar("poll_id"), 'viewresults' => XOOPS_URL."/modules/umfrage/pollresults.php?poll_id=".$this->poll->getVar("poll_id"), 'action' => XOOPS_URL."/modules/umfrage/index.php", 'options' => $options));
-		// wellwine
-		$tpl->assign('poll', array ('description' => $this->poll->getVar("description"), 'question' => $this->poll->getVar("question"), 'pollId' => $this->poll->getVar("poll_id"), 'viewresults' => XOOPS_URL."/modules/umfrage/pollresults.php?poll_id=".$this->poll->getVar("poll_id"), 'action' => XOOPS_URL."/modules/umfrage/index.php", 'options' => $options, 'polltype' => $this->poll->getVar("polltype")));
-	}
+    public function UmfrageRenderer(&$poll)
+    {
+        $this->poll = &$poll;
+    }
 
-	// public
-	function renderResults() {
-		if (!$this->poll->hasExpired()) {
-			$end_text = sprintf(_PL_ENDSAT, formatTimestamp($this->poll->getVar("end_time"), "m"));
-		} else {
-			$end_text = sprintf(_PL_ENDEDAT, formatTimestamp($this->poll->getVar("end_time"), "m"));
-		}
-		echo "<div style='text-align:center'><table width='60%' border='0' cellpadding='4' cellspacing='0'><tr class='bg3'><td><span style='font-weight:bold;'>".$this->poll->getVar("question")."</span></td></tr><tr class='bg1'><td align='right'>$end_text</td></tr></table>";
+    // public
 
-		echo "<table width='60%' border='0' cellpadding='4' cellspacing='0'>";
-		$options_arr = & UmfrageOption :: getAllByPollId($this->poll->getVar("poll_id"));
-		$total = $this->poll->getVar("votes");
-		foreach ($options_arr as $option) {
-			if ($total > 0) {
-				$percent = 100 * $option->getVar("option_count") / $total;
-			} else {
-				$percent = 0;
-			}
-			echo "<tr class='bg1'><td width='30%' align='left'>".$option->getVar("option_text")."</td><td width='70%' align='left'>";
-			if ($percent > 0) {
-				$width = intval($percent) * 2;
-				echo "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$option->getVar("option_color", "E")."' height='14' width='".$width."' align='middle' alt='".intval($percent)." %' />";
-			}
-			printf(" %d %% (%d)", $percent, $option->getVar("option_count"));
-			echo "</td></tr>";
-		}
-		echo "<tr class='bg1'><td colspan='2' align='center'><br /><b>".sprintf(_PL_TOTALVOTES, $total)."<br />".sprintf(_PL_TOTALVOTERS, $this->poll->getVar("voters"))."</b>";
-		if (!$this->poll->hasExpired()) {
-			echo "<br />[<a href='".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."'>"._PL_VOTE."</a>]";
-		}
-		echo "</td></tr></table></div><br />";
-	}
+    public function renderForm()
+    {
+        $content = "<form action='" . XOOPS_URL . "/modules/umfrage/index.php' method='post'>";
 
-	function assignResults(& $tpl) {
-		global $xoopsUser;
-		if (!$this->poll->hasExpired()) {
-			$end_text = sprintf(_PL_ENDSAT, formatTimestamp($this->poll->getVar("end_time"), "m"));
-		} else {
-			$end_text = sprintf(_PL_ENDEDAT, formatTimestamp($this->poll->getVar("end_time"), "m"));
-		}
-		$options_arr = & UmfrageOption :: getAllByPollId($this->poll->getVar("poll_id"));
-		$total = $this->poll->getVar("votes");
-		$i = 0;
-		foreach ($options_arr as $option) {
-			if ($total > 0) {
-				$percent = 100 * $option->getVar("option_count") / $total;
-			} else {
-				$percent = 0;
-			}
-			$options[$i]['text'] = $option->getVar("option_text");
-			if ($percent > 0) {
-				$width = intval($percent) * 2;
-				$options[$i]['image'] = "<img src='".XOOPS_URL."/modules/umfrage/images/colorbars/".$option->getVar("option_color", "E")."' height='14' width='".$width."' align='middle' alt='".intval($percent)." %' />";
-			}
-			$options[$i]['percent'] = sprintf(" %d %% (%d)", $percent, $option->getVar("option_count"));
-			$options[$i]['total'] = $option->getVar("option_count");
-			$i ++;
-		}
+        $content .= "<table width='100%' border='0' cellpadding='4' cellspacing='1'>\n";
 
-		if (!$this->poll->hasExpired() && $xoopsUser && !(UmfrageLog :: hasVoted($this->poll->getVar("poll_id"), xoops_getenv('REMOTE_ADDR'), $uid)))  {
-			//			$vote = "<a href='".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."'>"._PL_VOTE."</a>";
-			$vote = "<input type='button' value='"._PL_VOTE."' onclick='location=\"".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."\"' />";
-		} else {
-			$vote = "";
-		}
-		//$tpl->assign('poll', array('question' => $this->poll->getVar("question"),'end_text' => $end_text,'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar("voters")),'vote' => $vote, 'options' => $options));
-		// wellwine
-		$tpl->assign('poll', array ('description' => $this->poll->getVar("description"), 'question' => $this->poll->getVar("question"), 'end_text' => $end_text, 'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar("voters")), 'vote' => $vote, 'options' => $options));
-	}
+        $content .= "<tr class='bg3'><td align='center' colspan='2'><input type='hidden' name='poll_id' value='" . $this->poll->getVar('poll_id') . "' />\n";
+
+        $content .= '<b>' . $this->poll->getVar('question') . "</b></td></tr>\n";
+
+        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+
+        $option_type = 'radio';
+
+        $option_name = 'option_id';
+
+        if (1 == $this->poll->getVar('multiple')) {
+            $option_type = 'checkbox';
+
+            $option_name .= '[]';
+        }
+
+        foreach ($options_arr as $option) {
+            $content .= "<tr class='bg1'><td align='center'><input type='$option_type' name='$option_name' value='" . $option->getVar('option_id') . "' /></td><td align='left'>" . $option->getVar('option_text') . "</td></tr>\n";
+        }
+
+        $content .= "<tr class='bg3'><td align='center' colspan='2'><input type='submit' value='" . _PL_VOTE . "' />&nbsp;";
+
+        $content .= "<input type='button' value='" . _PL_RESULTS . "' class='button' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id') . "\"' />";
+
+        $content .= "</td></tr></table></form>\n";
+
+        return $content;
+    }
+
+    public function assignForm(&$tpl)
+    {
+        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+
+        $option_type = 'radio';
+
+        $option_name = 'option_id';
+
+        if (1 == $this->poll->getVar('multiple')) {
+            $option_type = 'checkbox';
+
+            $option_name .= '[]';
+        }
+
+        $i = 0;
+
+        foreach ($options_arr as $option) {
+            $options[$i]['input'] = "<input type='$option_type' name='$option_name' value='" . $option->getVar('option_id') . "' />";
+
+            $options[$i]['text'] = $option->getVar('option_text');
+
+            $i++;
+        }
+
+        //$tpl->assign('poll', array('question' => $this->poll->getVar("question"), 'pollId' => $this->poll->getVar("poll_id"), 'viewresults' => XOOPS_URL."/modules/umfrage/pollresults.php?poll_id=".$this->poll->getVar("poll_id"), 'action' => XOOPS_URL."/modules/umfrage/index.php", 'options' => $options));
+
+        // wellwine
+
+        $tpl->assign('poll', ['description' => $this->poll->getVar('description'), 'question' => $this->poll->getVar('question'), 'pollId' => $this->poll->getVar('poll_id'), 'viewresults' => XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id'), 'action' => XOOPS_URL . '/modules/umfrage/index.php', 'options' => $options, 'polltype' => $this->poll->getVar('polltype')]);
+    }
+
+    // public
+
+    public function renderResults()
+    {
+        if (!$this->poll->hasExpired()) {
+            $end_text = sprintf(_PL_ENDSAT, formatTimestamp($this->poll->getVar('end_time'), 'm'));
+        } else {
+            $end_text = sprintf(_PL_ENDEDAT, formatTimestamp($this->poll->getVar('end_time'), 'm'));
+        }
+
+        echo "<div style='text-align:center'><table width='60%' border='0' cellpadding='4' cellspacing='0'><tr class='bg3'><td><span style='font-weight:bold;'>" . $this->poll->getVar('question') . "</span></td></tr><tr class='bg1'><td align='right'>$end_text</td></tr></table>";
+
+        echo "<table width='60%' border='0' cellpadding='4' cellspacing='0'>";
+
+        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+
+        $total = $this->poll->getVar('votes');
+
+        foreach ($options_arr as $option) {
+            if ($total > 0) {
+                $percent = 100 * $option->getVar('option_count') / $total;
+            } else {
+                $percent = 0;
+            }
+
+            echo "<tr class='bg1'><td width='30%' align='left'>" . $option->getVar('option_text') . "</td><td width='70%' align='left'>";
+
+            if ($percent > 0) {
+                $width = intval($percent) * 2;
+
+                echo "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %' />";
+            }
+
+            printf(' %d %% (%d)', $percent, $option->getVar('option_count'));
+
+            echo '</td></tr>';
+        }
+
+        echo "<tr class='bg1'><td colspan='2' align='center'><br /><b>" . sprintf(_PL_TOTALVOTES, $total) . '<br />' . sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')) . '</b>';
+
+        if (!$this->poll->hasExpired()) {
+            echo "<br />[<a href='" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "'>" . _PL_VOTE . '</a>]';
+        }
+
+        echo '</td></tr></table></div><br />';
+    }
+
+    public function assignResults(&$tpl)
+    {
+        global $xoopsUser;
+
+        if (!$this->poll->hasExpired()) {
+            $end_text = sprintf(_PL_ENDSAT, formatTimestamp($this->poll->getVar('end_time'), 'm'));
+        } else {
+            $end_text = sprintf(_PL_ENDEDAT, formatTimestamp($this->poll->getVar('end_time'), 'm'));
+        }
+
+        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+
+        $total = $this->poll->getVar('votes');
+
+        $i = 0;
+
+        foreach ($options_arr as $option) {
+            if ($total > 0) {
+                $percent = 100 * $option->getVar('option_count') / $total;
+            } else {
+                $percent = 0;
+            }
+
+            $options[$i]['text'] = $option->getVar('option_text');
+
+            if ($percent > 0) {
+                $width = intval($percent) * 2;
+
+                $options[$i]['image'] = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %' />";
+            }
+
+            $options[$i]['percent'] = sprintf(' %d %% (%d)', $percent, $option->getVar('option_count'));
+
+            $options[$i]['total'] = $option->getVar('option_count');
+
+            $i++;
+        }
+
+        if (!$this->poll->hasExpired() && $xoopsUser && !(UmfrageLog :: hasVoted($this->poll->getVar('poll_id'), xoops_getenv('REMOTE_ADDR'), $uid))) {
+            //			$vote = "<a href='".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."'>"._PL_VOTE."</a>";
+
+            $vote = "<input type='button' value='" . _PL_VOTE . "' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "\"' />";
+        } else {
+            $vote = '';
+        }
+
+        //$tpl->assign('poll', array('question' => $this->poll->getVar("question"),'end_text' => $end_text,'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar("voters")),'vote' => $vote, 'options' => $options));
+
+        // wellwine
+
+        $tpl->assign('poll', ['description' => $this->poll->getVar('description'), 'question' => $this->poll->getVar('question'), 'end_text' => $end_text, 'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')), 'vote' => $vote, 'options' => $options]);
+    }
 }
-?>
