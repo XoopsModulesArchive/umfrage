@@ -507,7 +507,7 @@ if ($op == "log") {
 	$orderby = !empty($_GET['orderby']) ? $_GET['orderby'] : "time";
 	$orderdir = !empty($_GET['orderdir']) ? $_GET['orderdir'] : "ASC";
 
-	$poll = & new Umfrage($poll_id);
+	$poll = new Umfrage($poll_id);
 
 	xoops_cp_header();
 	echo "<h4>"._AM_POLLCONF."</h4>";
