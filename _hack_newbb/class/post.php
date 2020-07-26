@@ -41,7 +41,7 @@ class Post extends ArtObject
 {
     public $attachment_array = [];
 
-    public function Post()
+    public function __construct()
     {
         $this->initVar('post_id', XOBJ_DTYPE_INT);
         $this->initVar('topic_id', XOBJ_DTYPE_INT, 0, true);
@@ -510,7 +510,7 @@ class Post extends ArtObject
 
 class NewbbPostHandler extends ArtObjectHandler
 {
-    public function NewbbPostHandler($db)
+    public function __construct($db)
     {
         $this->ArtObjectHandler($db, 'bb_posts', 'Post', 'post_id', 'subject');
     }

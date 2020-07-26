@@ -38,7 +38,7 @@ class UmfrageOption extends XoopsObject
     public $db;
 
     // constructor
-    public function UmfrageOption($id = null)
+    public function __construct($id = null)
     {
         $this->db = Database::getInstance();
 

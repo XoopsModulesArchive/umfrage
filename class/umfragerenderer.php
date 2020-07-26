@@ -41,9 +41,9 @@ class UmfrageRenderer
     public $poll;
 
     // constructor
-    public function UmfrageRenderer(&$poll)
+    public function __construct($poll)
     {
-        $this->poll = &$poll;
+        $this->poll = $poll;
     }
 
     // public

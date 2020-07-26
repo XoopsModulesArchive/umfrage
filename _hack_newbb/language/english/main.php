@@ -469,9 +469,9 @@ define('_MD_YEARMONTHDAY', 'Y/n/j G:i');
 require_once XOOPS_ROOT_PATH . '/modules/newbb/class/user.php';
 class User_language extends User
 {
-    public function User_language(&$user)
+    public function __construct(&$user)
     {
-        $this->User($user);
+        parent::__construct($user);
     }
 
     public function getUserbar()
