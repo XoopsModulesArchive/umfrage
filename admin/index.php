@@ -623,4 +623,4 @@ if ($op == "quickupdate") {
 	redirect_header("index.php", 1, _AM_DBUPDATED);
 	exit();
 }
-?>
+
