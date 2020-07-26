@@ -162,7 +162,7 @@ if ($xoopsModuleConfig['wol_enabled']) {
 if ($viewtopic_forum->getVar('parent_forum') > 0) {
     $q = 'select forum_name from ' . $xoopsDB->prefix('bb_forums') . ' WHERE forum_id=' . $viewtopic_forum->getVar('parent_forum');
     $row = $xoopsDB->fetchArray($xoopsDB->query($q));
-    $xoopsTpl->assign(['parent_forum' => $viewtopic_forum->getVar('parent_forum'), 'parent_name' => htmlspecialchars($row['forum_name'])]);
+    $xoopsTpl->assign(['parent_forum' => $viewtopic_forum->getVar('parent_forum'), 'parent_name' => htmlspecialchars($row['forum_name'], ENT_QUOTES | ENT_HTML5)]);
 }
 
 $topic_prefix = '';
@@ -206,7 +206,7 @@ if ($topicHandler->getPermission($viewtopic_forum, $forumtopic->getVar('topic_st
     if ($forumtopic->getVar('topic_status')) {
         $xoopsTpl->assign('forum_post_or_register', _MD_TOPICLOCKED);
     } elseif (!is_object($xoopsUser)) {
-        $xoopsTpl->assign('forum_post_or_register', '<a href="' . XOOPS_URL . '/user.php?xoops_redirect=' . htmlspecialchars($xoopsRequestUri) . '">' . _MD_REGTOPOST . '</a>');
+        $xoopsTpl->assign('forum_post_or_register', '<a href="' . XOOPS_URL . '/user.php?xoops_redirect=' . htmlspecialchars($xoopsRequestUri, ENT_QUOTES | ENT_HTML5) . '">' . _MD_REGTOPOST . '</a>');
     }
 } else {
     $xoopsTpl->assign('forum_post_or_register', '');

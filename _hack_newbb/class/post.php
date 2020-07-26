@@ -441,8 +441,8 @@ class Post extends ArtObject
             $viewtopic_users[$this->getVar('uid')] :
             [
                 'poster_uid' => 0,
-                'name' => $this->getVar('poster_name') ?: htmlspecialchars($xoopsConfig['anonymous']),
-                'link' => $this->getVar('poster_name') ?: htmlspecialchars($xoopsConfig['anonymous']),
+                'name' => $this->getVar('poster_name') ?: htmlspecialchars($xoopsConfig['anonymous'], ENT_QUOTES | ENT_HTML5),
+                'link' => $this->getVar('poster_name') ?: htmlspecialchars($xoopsConfig['anonymous'], ENT_QUOTES | ENT_HTML5),
             ];
 
         $posticon = $this->getVar('icon');
