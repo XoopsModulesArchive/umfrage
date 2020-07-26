@@ -43,10 +43,7 @@ require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragelog.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
-$op = 'add';
-if (isset($_GET['op'])) {
-    $op = $_GET['op'];
-}
+$op = $_GET['op'] ?? 'add';
 if (isset($_POST['op'])) {
     $op = $_POST['op'];
 }
