@@ -581,7 +581,7 @@ class Post extends \ArtObject
 /**
  * Class NewbbPostHandler
  */
-class NewbbPostHandler extends ArtObjectHandler
+class NewbbPostHandler extends \ArtObjectHandler
 {
     /**
      * NewbbPostHandler constructor.
@@ -1014,7 +1014,7 @@ class NewbbPostHandler extends ArtObjectHandler
         if (!empty($join)) {
             $sql .= $join;
         }
-        if (isset($criteria) && $criteria instanceof \criteriaelement) {
+        if (isset($criteria) && $criteria instanceof \CriteriaElement) {
             $sql .= ' ' . $criteria->renderWhere();
             if ($criteria->getSort() != '') {
                 $sql .= ' ORDER BY ' . $criteria->getSort() . ' ' . $criteria->getOrder();
