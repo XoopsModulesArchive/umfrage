@@ -64,7 +64,7 @@ class UmfrageOption extends XoopsObject
             if (is_array($id)) {
                 $this->assignVars($id);
             } else {
-                $this->load(intval($id));
+                $this->load((int)$id);
             }
         }
     }
@@ -158,7 +158,7 @@ class UmfrageOption extends XoopsObject
 
         $ret = [];
 
-        $sql = 'SELECT * FROM ' . $db->prefix('umfrage_option') . ' WHERE poll_id=' . intval($poll_id) . ' ORDER BY option_id';
+        $sql = 'SELECT * FROM ' . $db->prefix('umfrage_option') . ' WHERE poll_id=' . (int)$poll_id . ' ORDER BY option_id';
 
         $result = $db->query($sql);
 
@@ -180,7 +180,7 @@ class UmfrageOption extends XoopsObject
     {
         $db = Database::getInstance();
 
-        $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_option'), intval($poll_id));
+        $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_option'), (int)$poll_id);
 
         if (!$db->query($sql)) {
             return false;
@@ -199,7 +199,7 @@ class UmfrageOption extends XoopsObject
     {
         $db = Database::getInstance();
 
-        $sql = 'UPDATE ' . $db->prefix('umfrage_option') . ' SET option_count=0 WHERE poll_id=' . intval($poll_id);
+        $sql = 'UPDATE ' . $db->prefix('umfrage_option') . ' SET option_count=0 WHERE poll_id=' . (int)$poll_id;
 
         if (!$db->query($sql)) {
             return false;

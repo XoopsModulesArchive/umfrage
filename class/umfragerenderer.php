@@ -153,9 +153,9 @@ class UmfrageRenderer
             echo "<tr class='bg1'><td width='30%' align='left'>" . $option->getVar('option_text') . "</td><td width='70%' align='left'>";
 
             if ($percent > 0) {
-                $width = intval($percent) * 2;
+                $width = (int)$percent * 2;
 
-                echo "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %'>";
+                echo "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . (int)$percent . " %'>";
             }
 
             printf(' %d %% (%d)', $percent, $option->getVar('option_count'));
@@ -201,9 +201,9 @@ class UmfrageRenderer
             $options[$i]['text'] = $option->getVar('option_text');
 
             if ($percent > 0) {
-                $width = intval($percent) * 2;
+                $width = (int)$percent * 2;
 
-                $options[$i]['image'] = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . intval($percent) . " %'>";
+                $options[$i]['image'] = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "' align='middle' alt='" . (int)$percent . " %'>";
             }
 
             $options[$i]['percent'] = sprintf(' %d %% (%d)', $percent, $option->getVar('option_count'));

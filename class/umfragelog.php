@@ -66,7 +66,7 @@ class UmfrageLog extends XoopsObject
             if (is_array($id)) {
                 $this->assignVars($id);
             } else {
-                $this->load(intval($id));
+                $this->load((int)$id);
             }
         }
     }
@@ -144,7 +144,7 @@ class UmfrageLog extends XoopsObject
 
         $ret = [];
 
-        $sql = 'SELECT * FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . " ORDER BY $orderby";
+        $sql = 'SELECT * FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . (int)$poll_id . " ORDER BY $orderby";
 
         $result = $db->query($sql);
 
@@ -170,7 +170,7 @@ class UmfrageLog extends XoopsObject
 
         $db = Database::getInstance();
 
-        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id);
+        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . (int)$poll_id;
 
         // If Cookie exists, the user has already voted using this browser, although it could be using a different login
         if ($xoopsModuleConfig['controlbycookie'] == 1 and $_COOKIE['voted_polls[' . $poll_id . ']']) {
@@ -179,7 +179,7 @@ class UmfrageLog extends XoopsObject
 
         // Logged in user? Look for his UID in the voting database.
         if (!empty($user_id)) {
-            $sql .= ' AND user_id=' . intval($user_id);
+            $sql .= ' AND user_id=' . (int)$user_id;
         }
 
         // ISegura.es: Can the user vote? Apply IP and Cookie controls if available.
@@ -208,7 +208,7 @@ class UmfrageLog extends XoopsObject
     {
         $db =Database::getInstance();
 
-        $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_log'), intval($poll_id));
+        $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_log'), (int)$poll_id);
 
         if (!$db->query($sql)) {
             return false;
@@ -227,7 +227,7 @@ class UmfrageLog extends XoopsObject
     {
         $db =Database::getInstance();
 
-        $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $db->prefix('umfrage_log'), intval($option_id));
+        $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $db->prefix('umfrage_log'), (int)$option_id);
 
         if (!$db->query($sql)) {
             return false;
@@ -246,11 +246,11 @@ class UmfrageLog extends XoopsObject
     {
         $db =Database::getInstance();
 
-        $sql = 'SELECT DISTINCT user_id FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . ' AND user_id > 0';
+        $sql = 'SELECT DISTINCT user_id FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . (int)$poll_id . ' AND user_id > 0';
 
         $users = $db->getRowsNum($db->query($sql));
 
-        $sql = 'SELECT DISTINCT ip FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . intval($poll_id) . ' AND user_id=0';
+        $sql = 'SELECT DISTINCT ip FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id=' . (int)$poll_id . ' AND user_id=0';
 
         $anons = $db->getRowsNum($db->query($sql));
 
@@ -267,7 +267,7 @@ class UmfrageLog extends XoopsObject
     {
         $db =Database::getInstance();
 
-        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id = ' . intval($poll_id);
+        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE poll_id = ' . (int)$poll_id;
 
         [$votes] = $db->fetchRow($db->query($sql));
 
@@ -284,7 +284,7 @@ class UmfrageLog extends XoopsObject
     {
         $db =Database::getInstance();
 
-        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE option_id = ' . intval($option_id);
+        $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('umfrage_log') . ' WHERE option_id = ' . (int)$option_id;
 
         [$votes] = $db->fetchRow($db->query($sql));
 

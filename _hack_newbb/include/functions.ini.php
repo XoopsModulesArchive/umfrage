@@ -213,14 +213,14 @@ function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
         $TIME_ZONE = '';
 
         if (!empty($GLOBALS['xoopsConfig']['server_TZ'])) {
-            $server_TZ = abs(intval($GLOBALS['xoopsConfig']['server_TZ'] * 3600.0));
+            $server_TZ = abs((int)($GLOBALS['xoopsConfig']['server_TZ'] * 3600.0));
 
             $prefix = $GLOBALS['xoopsConfig']['server_TZ'] < 0 ? ' -' : ' +';
 
             $TIME_ZONE = $prefix . date('Hi', $server_TZ);
         }
 
-        return gmdate('D, d M Y H:i:s', intval($time)) . $TIME_ZONE;
+        return gmdate('D, d M Y H:i:s', (int)$time) . $TIME_ZONE;
     }
 
     $usertimestamp = xoops_getUserTimestamp($time, $timeoffset);

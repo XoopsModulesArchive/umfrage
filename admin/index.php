@@ -56,7 +56,7 @@ $op = 'list';
 if (!empty($_GET['op'])) {
 	$op = $_GET['op'];
 }
-$poll_id = !empty($_GET['poll_id']) ? intval($_GET['poll_id']) : 0;
+$poll_id = !empty($_GET['poll_id']) ? (int)$_GET['poll_id'] : 0;
 
 if (isset($_POST)) {
 	foreach ($_POST as $k => $v) {
@@ -625,7 +625,7 @@ if ($op == 'quickupdate') {
 		if ($display[$i] != $old_display[$i] || $weight[$i] != $old_weight[$i]) {
 			$poll = new Umfrage($poll_id[$i]);
 			$poll->setVar('display', $display[$i]);
-			$poll->setVar('weight', intval($weight[$i]));
+			$poll->setVar('weight', (int)$weight[$i]);
 			$poll->store();
 		}
 	}

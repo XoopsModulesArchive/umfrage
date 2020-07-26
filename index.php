@@ -36,9 +36,9 @@ require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 // ISegura.es: HTTP_POST_VARS is from Stone age. Replacing.
 if (!empty($_POST['poll_id'])) {
-    $poll_id = intval($_POST['poll_id']);
+    $poll_id = (int)$_POST['poll_id'];
 } elseif (!empty($_GET['poll_id'])) {
-    $poll_id = intval($_GET['poll_id']);
+    $poll_id = (int)$_GET['poll_id'];
 }
 global $xoopsModuleConfig, $xoopsConfig;
 
@@ -47,9 +47,9 @@ if (empty($poll_id)) {
 
     require XOOPS_ROOT_PATH . '/header.php';
 
-    $limit = !empty($_GET['limit']) ? intval($_GET['limit']) : 50;
+    $limit = !empty($_GET['limit']) ? (int)$_GET['limit'] : 50;
 
-    $start = !empty($_GET['start']) ? intval($_GET['start']) : 0;
+    $start = !empty($_GET['start']) ? (int)$_GET['start'] : 0;
 
     $xoopsTpl->assign('lang_pollslist', _PL_POLLSLIST);
 

@@ -99,9 +99,9 @@ class Post extends ArtObject
         if (!$attach_key) {
             return false;
         }
-        $this->attachment_array[strval($attach_key)]['num_download']++;
+        $this->attachment_array[(string)$attach_key]['num_download']++;
 
-        return $this->attachment_array[strval($attach_key)]['num_download'];
+        return $this->attachment_array[(string)$attach_key]['num_download'];
     }
 
     /**
@@ -176,12 +176,12 @@ class Post extends ArtObject
         static $counter = 0;
         $this->attachment_array = $this->getAttachment();
         if ($name_saved) {
-            $key = strval(time() + $counter++);
+            $key = (string)(time() + $counter++);
             $this->attachment_array[$key] = [
-'name_saved' => $name_saved,
+                'name_saved' => $name_saved,
                 'name_display' => $name_display ?? $name_saved,
                 'mimetype' => $mimetype,
-                'num_download' => isset($num_download) ? intval($num_download) : 0,
+                'num_download' => isset($num_download) ? (int)$num_download : 0,
                 ];
         }
         if (is_array($this->attachment_array)) {
@@ -297,9 +297,9 @@ class Post extends ArtObject
         }
         if (is_array($post_edits) && count($post_edits) > 0) {
             foreach ($post_edits as $postedit) {
-                $edit_time = intval($postedit['edit_time']);
+                $edit_time = (int)$postedit['edit_time'];
                 $edit_user = $myts->stripSlashesGPC($postedit['edit_user']);
-                $post_edit .= _MD_EDITEDBY . ' ' . $edit_user . ' ' . _MD_ON . ' ' . formatTimestamp(intval($edit_time)) . '<br>';
+                $post_edit .= _MD_EDITEDBY . ' ' . $edit_user . ' ' . _MD_ON . ' ' . formatTimestamp((int)$edit_time) . '<br>';
             }
         }
 
@@ -583,7 +583,7 @@ class NewbbPostHandler extends ArtObjectHandler
      */
     public function &get($id)
     {
-        $id = intval($id);
+        $id = (int)$id;
         $post = null;
         $sql = 'SELECT p.*, t.* FROM ' . $this->db->prefix('bb_posts') . ' p LEFT JOIN ' . $this->db->prefix('bb_posts_text') . ' t ON p.post_id=t.post_id WHERE p.post_id=' . $id;
         if ($array = $this->db->fetchArray($this->db->query($sql))) {
@@ -696,7 +696,7 @@ class NewbbPostHandler extends ArtObjectHandler
      */
     public function insertnewsubject($topic_id, $subject)
     {
-        $sql = 'UPDATE ' . $this->db->prefix('bb_topics') . ' SET topic_subject = ' . intval($subject) . " WHERE topic_id = $topic_id";
+        $sql = 'UPDATE ' . $this->db->prefix('bb_topics') . ' SET topic_subject = ' . (int)$subject . " WHERE topic_id = $topic_id";
         $result = $this->db->queryF($sql);
         if (!$result) {
             newbb_message('update topic subject error:' . $sql);
@@ -998,7 +998,7 @@ class NewbbPostHandler extends ArtObjectHandler
                 $sql .= ' ORDER BY ' . $criteria->getSort() . ' ' . $criteria->getOrder();
             }
         }
-        $result = $this->db->query($sql, intval($limit), intval($start));
+        $result = $this->db->query($sql, (int)$limit, (int)$start);
         if (!$result) {
             newbb_message('NewbbPostHandler::getPostsByLimit error:' . $sql);
 
@@ -1060,7 +1060,7 @@ class NewbbPostHandler extends ArtObjectHandler
     {
         $crit_expire = new CriteriaCompo(new Criteria('approved', 0, '<='));
         if (!empty($expire)) {
-            $crit_expire->add(new Criteria('post_time', time() - intval($expire), '<'));
+            $crit_expire->add(new Criteria('post_time', time() - (int)$expire, '<'));
         }
 
         return $this->deleteAll($crit_expire, true/*, true*/);

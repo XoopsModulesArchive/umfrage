@@ -87,7 +87,7 @@ function b_umfrage_show($opts)
     if ($poll_res) {
         [$poll_sicht] = $xoopsDB->fetchRow($poll_res);
 
-        $poll_sicht = intval($poll_sicht);
+        $poll_sicht = (int)$poll_sicht;
     }
 
     if ($poll_sicht == 1) {
@@ -154,10 +154,10 @@ function b_umfrage_show($opts)
                     $percent = 0;
                 }
 
-                if (intval($percent) > 0 && $show_bar) {
-                    $width = intval($percent);
+                if ((int)$percent > 0 && $show_bar) {
+                    $width = (int)$percent;
 
-                    $img = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "%' align='middle' alt='" . intval($percent) . " %'>";
+                    $img = "<img src='" . XOOPS_URL . '/modules/umfrage/images/colorbars/' . $option->getVar('option_color', 'E') . "' height='14' width='" . $width . "%' align='middle' alt='" . (int)$percent . " %'>";
                 } else {
                     $img = '';
                 }

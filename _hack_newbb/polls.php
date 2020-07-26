@@ -48,16 +48,16 @@ if (isset($_POST['op'])) {
     $op = $_POST['op'];
 }
 if (isset($_GET['poll_id'])) {
-    $poll_id = intval($_GET['poll_id']);
+    $poll_id = (int)$_GET['poll_id'];
 }
 if (isset($_POST['poll_id'])) {
-    $poll_id = intval($_POST['poll_id']);
+    $poll_id = (int)$_POST['poll_id'];
 }
 if (isset($_GET['topic_id'])) {
-    $topic_id = intval($_GET['topic_id']);
+    $topic_id = (int)$_GET['topic_id'];
 }
 if (isset($_POST['topic_id'])) {
-    $topic_id = intval($_POST['topic_id']);
+    $topic_id = (int)$_POST['topic_id'];
 }
 
 if (!isset($moduleHandler)) {
@@ -241,10 +241,10 @@ if ($op == 'save') {
     $poll->setVar('display', 0);
 
     //$weight = (empty($_POST['weight']))?"":$_POST['weight'];
-    $poll->setVar('weight', intval(@$_POST['weight']));
+    $poll->setVar('weight', (int)@$_POST['weight']);
 
     //$weight = (empty($_POST['multiple']))?"":$_POST['multiple'];
-    $poll->setVar('multiple', intval(@$_POST['multiple']));
+    $poll->setVar('multiple', (int)@$_POST['multiple']);
 
     if (!empty($_POST['notify'])) {
         // if notify, set mail status to "not mailed"
@@ -455,10 +455,10 @@ if ($op == 'update') {
     $poll->setVar('display', 0);
 
     //$weight = (empty($_POST['weight']))?"":$_POST['weight'];
-    $poll->setVar('weight', intval(@$_POST['weight']));
+    $poll->setVar('weight', (int)@$_POST['weight']);
 
     //$multiple = (empty($_POST['multiple']))?"":$_POST['multiple'];
-    $poll->setVar('multiple', intval(@$_POST['multiple']));
+    $poll->setVar('multiple', (int)@$_POST['multiple']);
 
     if (!empty($_POST['notify']) && $end_time > time()) {
         // if notify, set mail status to "not mailed"

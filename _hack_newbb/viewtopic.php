@@ -33,13 +33,13 @@ require __DIR__ . '/header.php';
 // To enable image auto-resize by js
 $xoops_module_header .= '<script src="' . XOOPS_URL . '/Frameworks/textsanitizer/xoops.js" type="text/javascript"></script>';
 
-$topic_id = isset($_GET['topic_id']) ? intval($_GET['topic_id']) : 0;
-$post_id = !empty($_GET['post_id']) ? intval($_GET['post_id']) : 0;
-$forum_id = !empty($_GET['forum']) ? intval($_GET['forum']) : 0;
+$topic_id = isset($_GET['topic_id']) ? (int)$_GET['topic_id'] : 0;
+$post_id = !empty($_GET['post_id']) ? (int)$_GET['post_id'] : 0;
+$forum_id = !empty($_GET['forum']) ? (int)$_GET['forum'] : 0;
 $move = isset($_GET['move']) ? mb_strtolower($_GET['move']) : '';
-$start = !empty($_GET['start']) ? intval($_GET['start']) : 0;
+$start = !empty($_GET['start']) ? (int)$_GET['start'] : 0;
 $type = !empty($_GET['type']) && in_array($_GET['type'], ['active', 'pending', 'deleted'], true) ? $_GET['type'] : '';
-$mode = !empty($_GET['mode']) ? intval($_GET['mode']) : (!empty($type) ? 2 : 0);
+$mode = !empty($_GET['mode']) ? (int)$_GET['mode'] : (!empty($type) ? 2 : 0);
 
 if (!$topic_id && !$post_id) {
     $redirect = empty($forum_id) ? 'index.php' : 'viewforum.php?forum=' . $forum_id;
@@ -171,7 +171,7 @@ if ($forumtopic->getVar('topic_subject')
  && $viewtopic_forum->getVar('allow_subject_prefix')
 ) {
     $subjectpres = explode(',', $xoopsModuleConfig['subject_prefix']);
-    $topic_prefix = $subjectpres[intval($forumtopic->getVar('topic_subject'))] . ' ';
+    $topic_prefix = $subjectpres[(int)$forumtopic->getVar('topic_subject')] . ' ';
 }
 $xoopsTpl->assign([
     'topic_title' => '<a href="' . $forumUrl['root'] . '/viewtopic.php?viewmode=' . $viewmode . '&amp;type=' . $type . '&amp;topic_id=' . $topic_id . '&amp;forum=' . $forum_id . '">' . $topic_prefix . $forumtopic->getVar('topic_title') . '</a>',

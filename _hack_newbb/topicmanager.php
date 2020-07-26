@@ -35,11 +35,11 @@ require __DIR__ . '/header.php';
 
 if (isset($_POST['submit'])) {
     foreach (['forum', 'topic_id', 'newforum', 'newtopic'] as $getint) {
-        ${$getint} = isset($_POST[$getint]) ? intval($_POST[$getint]) : 0;
+        ${$getint} = isset($_POST[$getint]) ? (int)$_POST[$getint] : 0;
     }
 } else {
     foreach (['forum', 'topic_id'] as $getint) {
-        ${$getint} = isset($_GET[$getint]) ? intval($_GET[$getint]) : 0;
+        ${$getint} = isset($_GET[$getint]) ? (int)$_GET[$getint] : 0;
     }
 }
 

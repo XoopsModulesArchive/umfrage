@@ -37,7 +37,7 @@ require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfragerenderer.php';
 
 $poll_id = $_GET['poll_id'];
 
-$poll_id = !empty($poll_id) ? intval($poll_id) : 0;
+$poll_id = !empty($poll_id) ? (int)$poll_id : 0;
 if (empty($poll_id)) {
     redirect_header('index.php', 0);
 

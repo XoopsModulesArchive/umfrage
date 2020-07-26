@@ -86,7 +86,7 @@ class Umfrage extends XoopsObject
             if (is_array($id)) {
                 $this->assignVars($id);
             } else {
-                $this->load(intval($id));
+                $this->load((int)$id);
             }
         }
     }
@@ -211,7 +211,7 @@ class Umfrage extends XoopsObject
         if (!$asobject) {
             $sql = 'SELECT poll_id FROM ' . $db->prefix('umfrage_desc') . "$where_query ORDER BY $orderby";
 
-            $result = $db->query($sql, intval($limit), intval($start));
+            $result = $db->query($sql, (int)$limit, (int)$start);
 
             while (($myrow = $db->fetchArray($result)) !== false) {
                 $ret[] = $myrow['poll_id'];
