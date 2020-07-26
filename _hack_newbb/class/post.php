@@ -596,7 +596,7 @@ class NewbbPostHandler extends \ArtObjectHandler
      * @param mixed|null $id
      * @return \XoopsObject|null
      */
-    public function &get($id)
+    public function get($id = null, $fields = null)
     {
         $id   = (int)$id;
         $post = null;
@@ -1041,7 +1041,7 @@ class NewbbPostHandler extends \ArtObjectHandler
      *
      * @return    bool    true on success
      */
-    public function cleanOrphan()
+    public function cleanOrphan($table_link = '', $field_link = '', $field_object = '')
     {
         parent::cleanOrphan($this->db->prefix('bb_topics'), 'topic_id');
         parent::cleanOrphan($this->db->prefix('bb_posts_text'), 'post_id');
