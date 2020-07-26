@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -36,10 +38,9 @@ class Umfrage extends XoopsObject
     public $db;
 
     //constructor
-
     public function Umfrage($id = null)
     {
-        $this->db = &Database :: getInstance();
+        $this->db = &Database::getInstance();
 
         $this->initVar('poll_id', XOBJ_DTYPE_INT, null, false);
 
@@ -83,7 +84,6 @@ class Umfrage extends XoopsObject
     }
 
     // public
-
     public function store()
     {
         if (!$this->cleanVars()) {
@@ -111,7 +111,6 @@ class Umfrage extends XoopsObject
         }
 
         //echo "<br>$sql<br>";
-
         if (!$result = $this->db->queryF($sql)) {
             $this->setErrors('Could not store data in the database.');
 
@@ -126,7 +125,6 @@ class Umfrage extends XoopsObject
     }
 
     // private
-
     public function load($id)
     {
         $sql = 'SELECT * FROM ' . $this->db->prefix('umfrage_desc') . ' WHERE poll_id=' . $id . '';
@@ -137,7 +135,6 @@ class Umfrage extends XoopsObject
     }
 
     // public
-
     public function hasExpired()
     {
         if ($this->getVar('end_time') > time()) {
@@ -148,7 +145,6 @@ class Umfrage extends XoopsObject
     }
 
     // public
-
     public function delete()
     {
         $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $this->db->prefix('umfrage_desc'), $this->getVar('poll_id'));
@@ -161,10 +157,9 @@ class Umfrage extends XoopsObject
     }
 
     // private, static
-
     public function &getAll($criteria = [], $asobject = true, $orderby = 'end_time DESC', $limit = 0, $start = 0)
     {
-        $db = &Database :: getInstance();
+        $db = &Database::getInstance();
 
         $ret = [];
 
@@ -199,12 +194,10 @@ class Umfrage extends XoopsObject
         }
 
         //echo $sql;
-
         return $ret;
     }
 
     // public
-
     public function vote($option_id, $ip, $user_id = null, $user = null)
     {
         if (!empty($option_id)) {
@@ -262,12 +255,11 @@ class Umfrage extends XoopsObject
     }
 
     // public
-
     public function updateCount()
     {
-        $votes = UmfrageLog :: getTotalVotesByPollId($this->getVar('poll_id'));
+        $votes = UmfrageLog::getTotalVotesByPollId($this->getVar('poll_id'));
 
-        $voters = UmfrageLog :: getTotalVotersByPollId($this->getVar('poll_id'));
+        $voters = UmfrageLog::getTotalVotersByPollId($this->getVar('poll_id'));
 
         $sql = 'UPDATE ' . $this->db->prefix('umfrage_desc') . " SET votes=$votes, voters=$voters WHERE poll_id=" . $this->getVar('poll_id') . '';
 
@@ -275,13 +267,11 @@ class Umfrage extends XoopsObject
     }
 
     // Notify the voter
-
     public function notifyVoter($user = null)
     {
         global $xoopsConfig;
 
         // ISegura.es: Send mesage to user if requested.
-
         if ($user and 1 == $this->getVar('mail_voter')) {
             $xoopsMailer = &getMailer();
 
@@ -317,7 +307,6 @@ class Umfrage extends XoopsObject
 
             return true;
         }
-  
 
         return false;
     }

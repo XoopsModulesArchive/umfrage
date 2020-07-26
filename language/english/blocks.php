@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 // Blocks
 define('_BL_POLL_EDIT_SHOWRESULTS', 'Show results if expired or voted ');

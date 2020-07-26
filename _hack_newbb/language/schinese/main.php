@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id: main.php 17 2010-11-18 09:43:42 Nachenko $
 if (defined('MAIN_DEFINED')) {
     return;

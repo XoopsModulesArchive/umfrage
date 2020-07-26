@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -35,10 +38,9 @@ class UmfrageOption extends XoopsObject
     public $db;
 
     // constructor
-
     public function UmfrageOption($id = null)
     {
-        $this->db = &Database :: getInstance();
+        $this->db = &Database::getInstance();
 
         $this->initVar('option_id', XOBJ_DTYPE_INT, null, false);
 
@@ -60,7 +62,6 @@ class UmfrageOption extends XoopsObject
     }
 
     // public
-
     public function store()
     {
         if (!$this->cleanVars()) {
@@ -80,7 +81,6 @@ class UmfrageOption extends XoopsObject
         }
 
         //echo $sql;
-
         if (!$result = $this->db->query($sql)) {
             $this->setErrors('Could not store data in the database.');
 
@@ -95,7 +95,6 @@ class UmfrageOption extends XoopsObject
     }
 
     // private
-
     public function load($id)
     {
         $sql = 'SELECT * FROM ' . $this->db->prefix('umfrage_option') . ' WHERE option_id=' . $id . '';
@@ -106,7 +105,6 @@ class UmfrageOption extends XoopsObject
     }
 
     // public
-
     public function delete()
     {
         $sql = sprintf('DELETE FROM %s WHERE option_id = %u', $this->db->prefix('umfrage_option'), $this->getVar('option_id'));
@@ -119,10 +117,9 @@ class UmfrageOption extends XoopsObject
     }
 
     // public
-
     public function updateCount()
     {
-        $votes = UmfrageLog :: getTotalVotesByOptionId($this->getVar('option_id'));
+        $votes = UmfrageLog::getTotalVotesByOptionId($this->getVar('option_id'));
 
         $sql = 'UPDATE ' . $this->db->prefix('umfrage_option') . " SET option_count=$votes WHERE option_id=" . $this->getVar('option_id') . '';
 
@@ -130,10 +127,9 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
-
     public function &getAllByPollId($poll_id)
     {
-        $db = &Database :: getInstance();
+        $db = &Database::getInstance();
 
         $ret = [];
 
@@ -146,15 +142,13 @@ class UmfrageOption extends XoopsObject
         }
 
         //echo $sql;
-
         return $ret;
     }
 
     // public static
-
     public function deleteByPollId($poll_id)
     {
-        $db = &Database :: getInstance();
+        $db = &Database::getInstance();
 
         $sql = sprintf('DELETE FROM %s WHERE poll_id = %u', $db->prefix('umfrage_option'), intval($poll_id));
 
@@ -166,10 +160,9 @@ class UmfrageOption extends XoopsObject
     }
 
     // public static
-
     public function resetCountByPollId($poll_id)
     {
-        $db = &Database :: getInstance();
+        $db = &Database::getInstance();
 
         $sql = 'UPDATE ' . $db->prefix('umfrage_option') . ' SET option_count=0 WHERE poll_id=' . intval($poll_id);
 

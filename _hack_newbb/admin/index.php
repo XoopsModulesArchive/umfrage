@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 // ------------------------------------------------------------------------ //
 // XOOPS - PHP Content Management System                      //
@@ -50,7 +53,6 @@ function newbb_admin_getPathStatus($path)
 function newbb_admin_mkdir($target, $mode = 0777)
 {
     // http://www.php.net/manual/en/function.mkdir.php
-
     return is_dir($target) or (newbb_admin_mkdir(dirname($target), $mode) and mkdir($target, $mode));
 }
 
@@ -122,7 +124,7 @@ function newbb_getImageLibs()
     return $imageLibs;
 }
 
-$op = (isset($_GET['op'])) ? $_GET['op'] : '';
+$op = $_GET['op'] ?? '';
 
 switch ($op) {
     case 'createdir':
@@ -130,29 +132,31 @@ switch ($op) {
             $path = $_GET['path'];
         }
         $res = newbb_admin_mkdir($path);
-        $msg = ($res) ? _AM_NEWBB_DIRCREATED : _AM_NEWBB_DIRNOTCREATED;
+        $msg = $res ? _AM_NEWBB_DIRCREATED : _AM_NEWBB_DIRNOTCREATED;
         redirect_header('index.php', 2, $msg . ': ' . $path);
-        exit();
+
+       exit();
         break;
     case 'setperm':
         if (isset($_GET['path'])) {
             $path = $_GET['path'];
         }
         $res = newbb_admin_chmod($path, 0777);
-        $msg = ($res) ? _AM_NEWBB_PERMSET : _AM_NEWBB_PERMNOTSET;
+        $msg = $res ? _AM_NEWBB_PERMSET : _AM_NEWBB_PERMNOTSET;
         redirect_header('index.php', 2, $msg . ': ' . $path);
-        exit();
+
+       exit();
         break;
     case 'senddigest':
-        $digestHandler =  xoops_getModuleHandler('digest', 'newbb');
+        $digestHandler = xoops_getModuleHandler('digest', 'newbb');
         $res = $digestHandler->process(true);
-        $msg = ($res) ? _AM_NEWBB_DIGEST_FAILED : _AM_NEWBB_DIGEST_SENT;
+        $msg = $res ? _AM_NEWBB_DIGEST_FAILED : _AM_NEWBB_DIGEST_SENT;
         redirect_header('index.php', 2, $msg);
-        exit();
+
+       exit();
         break;
     case 'default':
-    default:
-
+        default:
         xoops_cp_header();
 
         loadModuleAdminMenu(0, 'Index');
@@ -161,14 +165,14 @@ switch ($op) {
         echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_PREFERENCES . '</legend>';
 
         echo "<div style='padding: 12px;'>" . _AM_NEWBB_POLLMODULE . ': ';
-        $moduleHandler =  xoops_getHandler('module');
-        $umfrage =  $moduleHandler->getByDirname('umfrage');
+        $moduleHandler = xoops_getHandler('module');
+        $umfrage = $moduleHandler->getByDirname('umfrage');
         if (is_object($umfrage)) {
             $isOK = $umfrage->getVar('isactive');
         } else {
             $isOK = false;
         }
-        echo ($isOK) ? _AM_NEWBB_AVAILABLE : _AM_NEWBB_NOTAVAILABLE;
+        echo $isOK ? _AM_NEWBB_AVAILABLE : _AM_NEWBB_NOTAVAILABLE;
         echo '</div>';
         echo "<div style='padding: 8px;'>";
         echo "<a href='http://www.imagemagick.org' target='_blank'>" . _AM_NEWBB_IMAGEMAGICK . '&nbsp;</a>';
@@ -222,7 +226,7 @@ switch ($op) {
         echo _AM_NEWBB_TOTALVIEWS . ' <strong>' . get_total_views() . '</strong></div>';
         echo '</fieldset><br>';
 
-        $reportHandler =  xoops_getModuleHandler('report', 'newbb');
+        $reportHandler = xoops_getModuleHandler('report', 'newbb');
         echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_REPORT . '</legend>';
         echo "<div style='padding: 12px;'><a href='admin_report.php'>" . _AM_NEWBB_REPORT_PENDING . '</a> <strong>' . $reportHandler->getCount(new Criteria('report_result', 0)) . '</strong> | ';
         echo _AM_NEWBB_REPORT_PROCESSED . ' <strong>' . $reportHandler->getCount(new Criteria('report_result', 1)) . '</strong>';
@@ -230,13 +234,12 @@ switch ($op) {
         echo '</fieldset><br>';
 
         if ($xoopsModuleConfig['email_digest'] > 0) {
-            $digestHandler =  xoops_getModuleHandler('digest', 'newbb');
+            $digestHandler = xoops_getModuleHandler('digest', 'newbb');
 
             echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_NEWBB_DIGEST . '</legend>';
 
-            $due = ($digestHandler->checkStatus()) / 60; // minutes
-
-            $prompt = ($due > 0) ? sprintf(_AM_NEWBB_DIGEST_PAST, $due) : sprintf(_AM_NEWBB_DIGEST_NEXT, abs($due));
+            $due = $digestHandler->checkStatus() / 60; // minutes
+            $prompt = $due > 0 ? sprintf(_AM_NEWBB_DIGEST_PAST, $due) : sprintf(_AM_NEWBB_DIGEST_NEXT, abs($due));
 
             echo "<div style='padding: 12px;'><a href='index.php?op=senddigest'>" . $prompt . '</a> | ';
 
@@ -253,11 +256,12 @@ switch ($op) {
          * Not good but works
          */
         if (!empty($xoopsModuleConfig['enable_usermoderate'])) {
-            $moderateHandler =  xoops_getModuleHandler('moderate', 'newbb');
+            $moderateHandler = xoops_getModuleHandler('moderate', 'newbb');
 
             $moderateHandler->clearGarbage();
         }
 
         xoops_cp_footer();
-        break;
+
+       break;
 }

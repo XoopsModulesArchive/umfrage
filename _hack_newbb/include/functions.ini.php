@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -75,11 +78,11 @@ function &newbb_load_config()
             return null;
         }
     } else {
-        $moduleHandler =  xoops_getHandler('module');
+        $moduleHandler = xoops_getHandler('module');
 
         $module = $moduleHandler->getByDirname('newbb');
 
-        $configHandler =  xoops_getHandler('config');
+        $configHandler = xoops_getHandler('config');
 
         $criteria = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
 
@@ -111,11 +114,11 @@ function getConfigForBlock()
     if (is_object($GLOBALS['xoopsModule']) && 'newbb' == $GLOBALS['xoopsModule']->getVar('dirname')) {
         $newbbConfig = &$GLOBALS['xoopsModuleConfig'];
     } else {
-        $moduleHandler =  xoops_getHandler('module');
+        $moduleHandler = xoops_getHandler('module');
 
         $newbb = $moduleHandler->getByDirname('newbb');
 
-        $configHandler =  xoops_getHandler('config');
+        $configHandler = xoops_getHandler('config');
 
         $criteria = new CriteriaCompo(new Criteria('conf_modid', $newbb->getVar('mid')));
 
@@ -184,38 +187,41 @@ function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
         if (!empty($GLOBALS['xoopsConfig']['server_TZ'])) {
             $server_TZ = abs(intval($GLOBALS['xoopsConfig']['server_TZ'] * 3600.0));
 
-            $prefix = ($GLOBALS['xoopsConfig']['server_TZ'] < 0) ? ' -' : ' +';
+            $prefix = $GLOBALS['xoopsConfig']['server_TZ'] < 0 ? ' -' : ' +';
 
             $TIME_ZONE = $prefix . date('Hi', $server_TZ);
         }
 
-        $date = gmdate('D, d M Y H:i:s', intval($time)) . $TIME_ZONE;
-
-        return $date;
+        return gmdate('D, d M Y H:i:s', intval($time)) . $TIME_ZONE;
     }
 
     $usertimestamp = xoops_getUserTimestamp($time, $timeoffset);
 
     switch (mb_strtolower($format)) {
     case 's':
-        $datestring = _SHORTDATESTRING;
-        break;
+            $datestring = _SHORTDATESTRING;
+
+           break;
     case 'm':
-        $datestring = _MEDIUMDATESTRING;
-        break;
+            $datestring = _MEDIUMDATESTRING;
+
+           break;
     case 'mysql':
-        $datestring = 'Y-m-d H:i:s';
-        break;
+            $datestring = 'Y-m-d H:i:s';
+
+           break;
     case 'rss':
-        $datestring = 'r';
-        break;
+            $datestring = 'r';
+
+           break;
     case 'l':
-        $datestring = _DATESTRING;
-        break;
+            $datestring = _DATESTRING;
+
+           break;
     case 'c':
-    case 'custom':
-    default:
-        newbb_load_lang_file('main', 'newbb');
+            case 'custom':
+            default:
+            newbb_load_lang_file('main', 'newbb');
         $current_timestamp = xoops_getUserTimestamp(time(), $timeoffset);
         if (date('Ymd', $usertimestamp) == date('Ymd', $current_timestamp)) {
             $datestring = _MD_TODAY;
@@ -226,7 +232,8 @@ function newbb_formatTimestamp($time, $format = 'c', $timeoffset = '')
         } else {
             $datestring = _MD_YEARMONTHDAY;
         }
-        break;
+
+           break;
     }
 
     return date($datestring, $usertimestamp);

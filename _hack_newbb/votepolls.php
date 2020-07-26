@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -49,7 +52,7 @@ if (!empty($_POST['forum'])) {
     $forum = intval($_GET['forum']);
 }
 
-$topicHandler =  xoops_getModuleHandler('topic', 'newbb');
+$topicHandler = xoops_getModuleHandler('topic', 'newbb');
 $topic_obj = &$topicHandler->get($topic_id);
 if (!$topicHandler->getPermission($topic_obj->getVar('forum_id'), $topic_obj->getVar('topic_status'), 'vote')) {
     redirect_header('javascript:history.go(-1);', 2, _NOPERM);

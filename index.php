@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -44,9 +47,9 @@ if (empty($poll_id)) {
 
     require XOOPS_ROOT_PATH . '/header.php';
 
-    $limit = (!empty($_GET['limit'])) ? intval($_GET['limit']) : 50;
+    $limit = !empty($_GET['limit']) ? intval($_GET['limit']) : 50;
 
-    $start = (!empty($_GET['start'])) ? intval($_GET['start']) : 0;
+    $start = !empty($_GET['start']) ? intval($_GET['start']) : 0;
 
     $xoopsTpl->assign('lang_pollslist', _PL_POLLSLIST);
 
@@ -59,15 +62,13 @@ if (empty($poll_id)) {
     $xoopsTpl->assign('lang_expiration', _PL_EXPIRATION);
 
     // add 1 to $limit to know whether there are more polls
-
     $polls_arr = &Umfrage::getAll([], true, 'weight ASC, end_time DESC', $limit + 1, $start);
 
     $polls_count = count($polls_arr);
 
-    $max = ($polls_count > $limit) ? $limit : $polls_count;
+    $max = $polls_count > $limit ? $limit : $polls_count;
 
     // Last column is only shown when there is a result available for viewing
-
     $showlastcol = 0;
 
     for ($i = 0; $i < $max; $i++) {
@@ -116,7 +117,6 @@ if (empty($poll_id)) {
         $xoopsTpl->append('polls', $polls);
 
         // Test if the Front block has to be removed at the end of the poll
-
         if ($polls_arr[$i]->hasExpired() && $polls_arr[$i]->getVar('autoblockremove') && $polls_arr[$i]->getVar('display')) {
             $polls_arr[$i]->setVar('display', 0);
 
@@ -170,7 +170,6 @@ if (empty($poll_id)) {
                 $total = $polls_arr[$i]->getVar('votes');
 
                 // Number of digits for Formatting
-
                 if (0 != $total) {
                     $digits = 1 + floor(log10($total));
                 } else {
@@ -211,7 +210,7 @@ if (empty($poll_id)) {
 
     require XOOPS_ROOT_PATH . '/footer.php';
 } elseif (!empty($_POST['option_id'])) {
-    $voted_polls = (!empty($_COOKIE['voted_polls'])) ? $_COOKIE['voted_polls'] : [];
+    $voted_polls = !empty($_COOKIE['voted_polls']) ? $_COOKIE['voted_polls'] : [];
 
     $mail_author = false;
 
@@ -220,7 +219,6 @@ if (empty($poll_id)) {
     if (!$poll->hasExpired()) {
         if (empty($voted_polls[$poll_id]) or 0 == $xoopsModuleConfig['controlbycookie']) {
             // ISegura.es: Check poll response limit if Multiple
-
             $multilimit = $poll->getVar('multilimit');
 
             if ($multilimit > 0 and 1 == $poll->getVar('multiple') and (count($_POST['option_id']) > $multilimit)) {
@@ -268,7 +266,6 @@ if (empty($poll_id)) {
     }
 
     //election mode
-
     if (1 != $poll->getVars('polltype')) {
         redirect_header(XOOPS_URL . '/modules/umfrage/index.php', 2, $msg);
     } else {

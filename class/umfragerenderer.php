@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -35,20 +37,16 @@ require_once XOOPS_ROOT_PATH . '/modules/umfrage/language/' . $xoopsConfig['lang
 class UmfrageRenderer
 {
     // private
-
     // Umfrage class object
-
     public $poll;
 
     // constructor
-
     public function UmfrageRenderer(&$poll)
     {
         $this->poll = &$poll;
     }
 
     // public
-
     public function renderForm()
     {
         $content = "<form action='" . XOOPS_URL . "/modules/umfrage/index.php' method='post'>";
@@ -59,7 +57,7 @@ class UmfrageRenderer
 
         $content .= '<b>' . $this->poll->getVar('question') . "</b></td></tr>\n";
 
-        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+        $options_arr = &UmfrageOption::getAllByPollId($this->poll->getVar('poll_id'));
 
         $option_type = 'radio';
 
@@ -86,7 +84,7 @@ class UmfrageRenderer
 
     public function assignForm(&$tpl)
     {
-        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+        $options_arr = &UmfrageOption::getAllByPollId($this->poll->getVar('poll_id'));
 
         $option_type = 'radio';
 
@@ -109,14 +107,11 @@ class UmfrageRenderer
         }
 
         //$tpl->assign('poll', array('question' => $this->poll->getVar("question"), 'pollId' => $this->poll->getVar("poll_id"), 'viewresults' => XOOPS_URL."/modules/umfrage/pollresults.php?poll_id=".$this->poll->getVar("poll_id"), 'action' => XOOPS_URL."/modules/umfrage/index.php", 'options' => $options));
-
         // wellwine
-
         $tpl->assign('poll', ['description' => $this->poll->getVar('description'), 'question' => $this->poll->getVar('question'), 'pollId' => $this->poll->getVar('poll_id'), 'viewresults' => XOOPS_URL . '/modules/umfrage/pollresults.php?poll_id=' . $this->poll->getVar('poll_id'), 'action' => XOOPS_URL . '/modules/umfrage/index.php', 'options' => $options, 'polltype' => $this->poll->getVar('polltype')]);
     }
 
     // public
-
     public function renderResults()
     {
         if (!$this->poll->hasExpired()) {
@@ -129,7 +124,7 @@ class UmfrageRenderer
 
         echo "<table width='60%' border='0' cellpadding='4' cellspacing='0'>";
 
-        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+        $options_arr = &UmfrageOption::getAllByPollId($this->poll->getVar('poll_id'));
 
         $total = $this->poll->getVar('votes');
 
@@ -172,7 +167,7 @@ class UmfrageRenderer
             $end_text = sprintf(_PL_ENDEDAT, formatTimestamp($this->poll->getVar('end_time'), 'm'));
         }
 
-        $options_arr = &UmfrageOption :: getAllByPollId($this->poll->getVar('poll_id'));
+        $options_arr = &UmfrageOption::getAllByPollId($this->poll->getVar('poll_id'));
 
         $total = $this->poll->getVar('votes');
 
@@ -200,18 +195,15 @@ class UmfrageRenderer
             $i++;
         }
 
-        if (!$this->poll->hasExpired() && $xoopsUser && !(UmfrageLog :: hasVoted($this->poll->getVar('poll_id'), xoops_getenv('REMOTE_ADDR'), $uid))) {
-            //			$vote = "<a href='".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."'>"._PL_VOTE."</a>";
-
+        if (!$this->poll->hasExpired() && $xoopsUser && !UmfrageLog::hasVoted($this->poll->getVar('poll_id'), xoops_getenv('REMOTE_ADDR'), $uid)) {
+            //          $vote = "<a href='".XOOPS_URL."/modules/umfrage/index.php?poll_id=".$this->poll->getVar("poll_id")."'>"._PL_VOTE."</a>";
             $vote = "<input type='button' value='" . _PL_VOTE . "' onclick='location=\"" . XOOPS_URL . '/modules/umfrage/index.php?poll_id=' . $this->poll->getVar('poll_id') . "\"'>";
         } else {
             $vote = '';
         }
 
         //$tpl->assign('poll', array('question' => $this->poll->getVar("question"),'end_text' => $end_text,'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar("voters")),'vote' => $vote, 'options' => $options));
-
         // wellwine
-
         $tpl->assign('poll', ['description' => $this->poll->getVar('description'), 'question' => $this->poll->getVar('question'), 'end_text' => $end_text, 'totalVotes' => sprintf(_PL_TOTALVOTES, $total), 'totalVoters' => sprintf(_PL_TOTALVOTERS, $this->poll->getVar('voters')), 'vote' => $vote, 'options' => $options]);
     }
 }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -61,9 +64,9 @@ if (isset($_POST['topic_id'])) {
 }
 
 if (!isset($moduleHandler)) {
-    $moduleHandler =  xoops_getHandler('module');
+    $moduleHandler = xoops_getHandler('module');
 }
-$umfrage =  $moduleHandler->getByDirname('umfrage');
+$umfrage = $moduleHandler->getByDirname('umfrage');
 if (!is_object($umfrage) || !$umfrage->getVar('isactive')) {
     redirect_header('javascript:history.go(-1);', 2, _MD_POLLMODULE_ERROR);
 
@@ -72,10 +75,10 @@ if (!is_object($umfrage) || !$umfrage->getVar('isactive')) {
 
 require XOOPS_ROOT_PATH . '/header.php';
 
-$topicHandler =  xoops_getModuleHandler('topic', 'newbb');
+$topicHandler = xoops_getModuleHandler('topic', 'newbb');
 $forumtopic = &$topicHandler->get($topic_id);
 $forum = $forumtopic->getVar('forum_id');
-$forumHandler =  xoops_getModuleHandler('forum', 'newbb');
+$forumHandler = xoops_getModuleHandler('forum', 'newbb');
 $viewtopic_forum = &$forumHandler->get($forum);
 if (!$forumHandler->getPermission($viewtopic_forum)) {
     redirect_header('index.php', 2, _MD_NORIGHTTOACCESS);
@@ -148,7 +151,7 @@ if ('add' == $op) {
     $barcolor_array = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
 
     for ($i = 0; $i < 10; $i++) {
-        $current_bar = ('blank.gif' != current($barcolor_array)) ? current($barcolor_array) : next($barcolor_array);
+        $current_bar = 'blank.gif' != current($barcolor_array) ? current($barcolor_array) : next($barcolor_array);
 
         $option_text = new XoopsFormText('', 'option_text[]', 50, 255);
 
@@ -188,7 +191,6 @@ if ('add' == $op) {
     $poll_form->addElement($poll_topic_id_hidden);
 
     //require XOOPS_ROOT_PATH."/header.php";
-
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
@@ -225,11 +227,9 @@ if ('save' == $op) {
     $poll = new Umfrage();
 
     //$question = (empty($_POST['question']))?"":$_POST['question'];
-
     $poll->setVar('question', @$_POST['question']);
 
     //$description = (empty($_POST['description']))?"":$_POST['description'];
-
     $poll->setVar('description', @$_POST['description']);
 
     if (!empty($_POST['end_time'])) {
@@ -238,27 +238,22 @@ if ('save' == $op) {
         $poll->setVar('end_time', userTimeToServerTime(strtotime($_POST['end_time']), $timezone));
     } else {
         // if expiration date is not set, set it to 10 days from now
-
         $poll->setVar('end_time', time() + (86400 * 10));
     }
 
     $poll->setVar('display', 0);
 
     //$weight = (empty($_POST['weight']))?"":$_POST['weight'];
-
     $poll->setVar('weight', intval(@$_POST['weight']));
 
     //$weight = (empty($_POST['multiple']))?"":$_POST['multiple'];
-
     $poll->setVar('multiple', intval(@$_POST['multiple']));
 
     if (!empty($_POST['notify'])) {
         // if notify, set mail status to "not mailed"
-
         $poll->setVar('mail_status', POLL_NOTMAILED);
     } else {
         // if not notify, set mail status to already "mailed"
-
         $poll->setVar('mail_status', POLL_MAILED);
     }
 
@@ -268,7 +263,7 @@ if ('save' == $op) {
 
     $new_poll_id = $poll->store();
 
-    $option_color = (empty($_POST['option_color'])) ? null : $_POST['option_color'];
+    $option_color = empty($_POST['option_color']) ? null : $_POST['option_color'];
 
     if (!empty($new_poll_id)) {
         $i = 0;
@@ -415,7 +410,6 @@ if ('edit' == $op) {
     $poll_form->addElement($submit_button);
 
     //require XOOPS_ROOT_PATH."/header.php";
-
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
@@ -448,14 +442,12 @@ if ('update' == $op) {
     $poll = new Umfrage($poll_id);
 
     //$question = (empty($_POST['question']))?"":$_POST['question'];
-
     $poll->setVar('question', @$_POST['question']);
 
     //$description = (empty($_POST['description']))?"":$_POST['description'];
-
     $poll->setVar('description', @$_POST['description']);
 
-    $end_time = (empty($_POST['end_time'])) ? '' : $_POST['end_time'];
+    $end_time = empty($_POST['end_time']) ? '' : $_POST['end_time'];
 
     if (!empty($end_time)) {
         $timezone = is_object($xoopsUser) ? $xoopsUser->timezone() : null;
@@ -466,20 +458,16 @@ if ('update' == $op) {
     $poll->setVar('display', 0);
 
     //$weight = (empty($_POST['weight']))?"":$_POST['weight'];
-
     $poll->setVar('weight', intval(@$_POST['weight']));
 
     //$multiple = (empty($_POST['multiple']))?"":$_POST['multiple'];
-
     $poll->setVar('multiple', intval(@$_POST['multiple']));
 
     if (!empty($_POST['notify']) && $end_time > time()) {
         // if notify, set mail status to "not mailed"
-
         $poll->setVar('mail_status', POLL_NOTMAILED);
     } else {
         // if not notify, set mail status to already "mailed"
-
         $poll->setVar('mail_status', POLL_MAILED);
     }
 
@@ -491,9 +479,9 @@ if ('update' == $op) {
 
     $i = 0;
 
-    $option_id = (empty($_POST['option_id'])) ? null : $_POST['option_id'];
+    $option_id = empty($_POST['option_id']) ? null : $_POST['option_id'];
 
-    $option_color = (empty($_POST['option_color'])) ? null : $_POST['option_color'];
+    $option_color = empty($_POST['option_color']) ? null : $_POST['option_color'];
 
     foreach ($option_id as $opid) {
         $option = new UmfrageOption($opid);
@@ -540,7 +528,7 @@ if ('addmore' == $op) {
     $barcolor_array = &XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . '/modules/umfrage/images/colorbars/');
 
     for ($i = 0; $i < 10; $i++) {
-        $current_bar = ('blank.gif' != current($barcolor_array)) ? current($barcolor_array) : next($barcolor_array);
+        $current_bar = 'blank.gif' != current($barcolor_array) ? current($barcolor_array) : next($barcolor_array);
 
         $option_text = new XoopsFormText('', 'option_text[]', 50, 255);
 
@@ -584,7 +572,6 @@ if ('addmore' == $op) {
     $poll_form->addElement($poll_id_hidden);
 
     //require XOOPS_ROOT_PATH."/header.php";
-
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
@@ -618,7 +605,7 @@ if ('savemore' == $op) {
 
     $i = 0;
 
-    $option_color = (empty($_POST['option_color'])) ? null : $_POST['option_color'];
+    $option_color = empty($_POST['option_color']) ? null : $_POST['option_color'];
 
     foreach ($option_text as $optxt) {
         $optxt = trim($optxt);
@@ -649,7 +636,6 @@ if ('savemore' == $op) {
 
 if ('delete' == $op) {
     //require XOOPS_ROOT_PATH."/header.php";
-
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll = new Umfrage($_GET['poll_id']);
@@ -673,7 +659,6 @@ if ('delete_ok' == $op) {
         xoops_template_clear_module_cache($xoopsModule->getVar('mid'));
 
         // delete comments for this poll
-
         xoops_comment_delete($xoopsModule->getVar('mid'), $poll->getVar('poll_id'));
 
         $sql = 'UPDATE ' . $xoopsDB->prefix('bb_topics') . " SET votes = 0, topic_haspoll = 0, poll_id = 0 WHERE topic_id = $topic_id";
@@ -722,7 +707,6 @@ if ('restart' == $op) {
     $poll_form->addElement($submit_button);
 
     //require XOOPS_ROOT_PATH."/header.php";
-
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     $poll_form->display();
@@ -734,7 +718,7 @@ if ('restart' == $op) {
 if ('restart_ok' == $op) {
     $poll = new Umfrage($poll_id);
 
-    $end_time = (empty($_POST['end_time'])) ? '' : $_POST['end_time'];
+    $end_time = empty($_POST['end_time']) ? '' : $_POST['end_time'];
 
     if (!empty($end_time)) {
         $timezone = is_object($xoopsUser) ? $xoopsUser->timezone() : null;
@@ -746,17 +730,14 @@ if ('restart_ok' == $op) {
 
     if (!empty($_POST['notify']) && $end_time > time()) {
         // if notify, set mail status to "not mailed"
-
         $poll->setVar('mail_status', POLL_NOTMAILED);
     } else {
         // if not notify, set mail status to already "mailed"
-
         $poll->setVar('mail_status', POLL_MAILED);
     }
 
     if (!empty($_POST['reset'])) {
         // reset all logs
-
         UmfrageLog::deleteByPollId($poll->getVar('poll_id'));
 
         UmfrageOption::resetCountByPollId($poll->getVar('poll_id'));
@@ -781,7 +762,6 @@ if ('restart_ok' == $op) {
 
 if ('log' == $op) {
     //require XOOPS_ROOT_PATH."/header.php";
-
     echo '<h4>' . _MD_POLL_POLLCONF . '</h4>';
 
     echo '<br>View Log<br> Sorry, not yet. ;-)';

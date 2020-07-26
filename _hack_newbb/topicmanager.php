@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 // $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
@@ -46,11 +49,11 @@ if (!$topic_id) {
     redirect_header($redirect, 2, _MD_ERRORTOPIC);
 }
 
-$topicHandler =  xoops_getModuleHandler('topic', 'newbb');
+$topicHandler = xoops_getModuleHandler('topic', 'newbb');
 $forum = $topicHandler->get($topic_id, 'forum_id');
 $forum_new = !empty($newtopic) ? $topicHandler->get($newtopic, 'forum_id') : 0;
 
-$forumHandler =  xoops_getModuleHandler('forum', 'newbb');
+$forumHandler = xoops_getModuleHandler('forum', 'newbb');
 if (!$forumHandler->getPermission($forum, 'moderate')
     || (!empty($forum_new) && !$forumHandler->getPermission($forum_new, 'reply')) // The forum for the topic to be merged to
     || (!empty($newforum) && !$forumHandler->getPermission($newforum, 'post')) // The forum to be moved to
@@ -61,7 +64,7 @@ if (!$forumHandler->getPermission($forum, 'moderate')
 }
 
 if ($xoopsModuleConfig['wol_enabled']) {
-    $onlineHandler =  xoops_getModuleHandler('online', 'newbb');
+    $onlineHandler = xoops_getModuleHandler('online', 'newbb');
 
     $onlineHandler->init($forum);
 }
@@ -91,20 +94,16 @@ if (isset($_POST['submit'])) {
 
     if ('delete' == $mode) {
         //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
-
         $topicHandler->delete($topic_id);
 
         $forumHandler->synchronization($forum);
 
         //sync($topic_id, "topic");
-
         //xoops_notification_deletebyitem ($xoopsModule->getVar('mid'), 'thread', $topic_id);
-
         echo $action[$mode]['msg'] . "<p><a href='viewforum.php?forum=$forum'>" . _MD_RETURNTOTHEFORUM . "</a></p><p><a href='index.php'>" . _MD_RETURNFORUMINDEX . '</a></p>';
     } elseif ('merge' == $mode) {
         //$topicHandler = xoops_getModuleHandler('topic', 'newbb');
-
-        $postHandler =  xoops_getModuleHandler('post', 'newbb');
+        $postHandler = xoops_getModuleHandler('post', 'newbb');
 
         $newtopic_obj = &$topicHandler->get($newtopic);
 
@@ -227,7 +226,7 @@ if (isset($_POST['submit'])) {
 
         $box = '<select name="newforum" size="1">';
 
-        $categoryHandler =  xoops_getModuleHandler('category', 'newbb');
+        $categoryHandler = xoops_getModuleHandler('category', 'newbb');
 
         $categories = $categoryHandler->getAllCats('access', true);
 

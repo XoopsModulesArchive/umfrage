@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 // $Id$
 //  ------------------------------------------------------------------------ //
@@ -37,7 +39,7 @@ function hasVoted($poll_id)
 
     global $xoopsUser, $xoopsModuleConfig;
 
-    $voted_polls = (!empty($_COOKIE['voted_polls'])) ? $_COOKIE['voted_polls'] : [];
+    $voted_polls = !empty($_COOKIE['voted_polls']) ? $_COOKIE['voted_polls'] : [];
 
     if (empty($voted_polls[$poll_id]) or 0 == $xoopsModuleConfig['controlbycookie']) {
         if (is_object($xoopsUser)) {
@@ -53,11 +55,9 @@ function hasVoted($poll_id)
 
             return true;
         }
-  
 
         return false;
     }
-  
 
     return true;
 }
@@ -87,7 +87,7 @@ function b_umfrage_show($opts)
     if (1 == $poll_sicht) {
         $show_result = false;
     } else {
-        $show_result = (1 == $opts[0]) ? true : false;
+        $show_result = 1 == $opts[0] ? true : false;
     }
 
     if (is_object($xoopsUser)) {
@@ -96,9 +96,9 @@ function b_umfrage_show($opts)
         $uid = null;
     }
 
-    $show_percent = (1 == $opts[1]) ? true : false;
+    $show_percent = 1 == $opts[1] ? true : false;
 
-    $show_bar = (1 == $opts[2]) ? true : false;
+    $show_bar = 1 == $opts[2] ? true : false;
 
     $block = [];
 
@@ -113,7 +113,6 @@ function b_umfrage_show($opts)
     $block['lang_vote'] = _PL_VOTE;
 
     //$block['lang_results'] = _PL_RESULTS;
-
     $block['lang_alreadyvoted'] = _PL_ALREADYVOTED2;
 
     $block['lang_expiration'] = _PL_EXPIRATION;
@@ -122,7 +121,7 @@ function b_umfrage_show($opts)
 
     $block['lang_onlyregistered'] = _PL_ONLYREGISTERED;
 
-    $block['notregistered'] = (null === $uid) ? 1 : 0;
+    $block['notregistered'] = null === $uid ? 1 : 0;
 
     $block['csspath'] = XOOPS_URL . '/modules/umfrage/templates';
 
@@ -166,14 +165,16 @@ function b_umfrage_show($opts)
                 $options[] = ['percent' => $percent, 'image' => $img, 'text' => $option->getVar('option_text')];
             }
 
-            $poll = ['expired' => $expired,
+            $poll = [
+'expired' => $expired,
                 'id' => $polls[$i]->getVar('poll_id'),
                 'question' => $polls[$i]->getVar('question'),
                 'options' => $options,
                 'hasVoted' => hasVoted($polls[$i]->getVar('poll_id')) ? 1 : 0,
                 'poll_end' => $poll_end,
                 'polltype' => $polls[$i]->getVar('polltype'),
-                'lang_result' => $lang_results, ];
+                'lang_result' => $lang_results,
+];
         } else {
             $option_type = 'radio';
 
@@ -189,7 +190,8 @@ function b_umfrage_show($opts)
                 $options[] = ['id' => $option->getVar('option_id'), 'text' => $option->getVar('option_text')];
             }
 
-            $poll = ['expired' => $expired,
+            $poll = [
+'expired' => $expired,
                 'id' => $polls[$i]->getVar('poll_id'),
                 'question' => $polls[$i]->getVar('question'),
                 'option_type' => $option_type,
@@ -198,7 +200,8 @@ function b_umfrage_show($opts)
                 'hasVoted' => hasVoted($polls[$i]->getVar('poll_id')) ? 1 : 0,
                 'poll_end' => $poll_end,
                 'polltype' => $polls[$i]->getVar('polltype'),
-                'lang_result' => $lang_results, ];
+                'lang_result' => $lang_results,
+];
         }
 
         $block['polls'][] = &$poll;
