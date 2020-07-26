@@ -28,7 +28,7 @@ declare(strict_types=1);
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-require dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(__DIR__, 2) . '/mainfile.php';
 require XOOPS_ROOT_PATH . '/modules/umfrage/include/constants.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrage.php';
 require_once XOOPS_ROOT_PATH . '/modules/umfrage/class/umfrageoption.php';
