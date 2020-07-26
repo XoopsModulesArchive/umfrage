@@ -36,7 +36,7 @@ require_once XOOPS_ROOT_PATH . '/kernel/object.php';
 /**
  * Class UmfrageOption
  */
-class UmfrageOption extends XoopsObject
+class UmfrageOption extends \XoopsObject
 {
     public $db;
 

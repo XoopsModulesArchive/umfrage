@@ -40,7 +40,7 @@ newbb_load_object();
 /**
  * Class Post
  */
-class Post extends ArtObject
+class Post extends \ArtObject
 {
     public $attachment_array = [];
 
