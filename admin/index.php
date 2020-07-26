@@ -63,7 +63,7 @@ if (isset($_POST)) {
 if ($op == "list") {
 	$limit = !empty($_GET['limit']) ? $_GET['limit'] : 30;
 	$start = !empty($_GET['start']) ? $_GET['start'] : 0;
-	$polls_arr = & Umfrage :: getAll(array(), true, "weight ASC, end_time DESC", $limit + 1, $start);
+	$polls_arr = & Umfrage :: getAll([], true, "weight ASC, end_time DESC", $limit + 1, $start);
 	xoops_cp_header();
 	echo "<h4>"._AM_POLLCONF."</h4>";
 	echo _AM_POLLINFO;
@@ -136,7 +136,7 @@ if ($op == "add") {
 	$autoblockremove_yn = new XoopsFormRadioYN(_AM_AUTOBLOCKREMOVE, "autoblockremove", 0);
 	$poll_form->addElement($autoblockremove_yn);
 
-	$polltype_array = array(1 => _AM_POLLTYPE1, 2 => _AM_POLLTYPE2, 3 => _AM_POLLTYPE3);
+	$polltype_array = [1 => _AM_POLLTYPE1, 2 => _AM_POLLTYPE2, 3 => _AM_POLLTYPE3];
 	$polltype_select = new XoopsFormSelect(_AM_POLLTYPE, "polltype", 1);
 	$polltype_select->addOptionArray($polltype_array);
 	$poll_form->addElement($polltype_select);
@@ -268,7 +268,7 @@ if ($op == "edit") {
 	$autoblockremove_yn = new XoopsFormRadioYN(_AM_AUTOBLOCKREMOVE, "autoblockremove", $poll->getVar("autoblockremove"));
 	$poll_form->addElement($autoblockremove_yn);
 
-	$polltype_array = array(1 => _AM_POLLTYPE1, 2 => _AM_POLLTYPE2, 3 => _AM_POLLTYPE3);
+	$polltype_array = [1 => _AM_POLLTYPE1, 2 => _AM_POLLTYPE2, 3 => _AM_POLLTYPE3];
 	$polltype_select = new XoopsFormSelect(_AM_POLLTYPE, "polltype", $poll->getVar("polltype"));
 	$polltype_select->addOptionArray($polltype_array);
 	$poll_form->addElement($polltype_select);
@@ -420,7 +420,7 @@ if ($op == "delete") {
 	xoops_cp_header();
 	echo "<h4>"._AM_POLLCONF."</h4>";
 	$poll = new Umfrage($_GET['poll_id']);
-	xoops_confirm(array('op' => 'delete_ok', 'poll_id' => $poll->getVar('poll_id')), 'index.php', sprintf(_AM_RUSUREDEL, $poll->getVar("question")));
+	xoops_confirm(['op' => 'delete_ok', 'poll_id' => $poll->getVar('poll_id')], 'index.php', sprintf(_AM_RUSUREDEL, $poll->getVar("question")));
 	xoops_cp_footer();
 	exit();
 }
